@@ -4,96 +4,128 @@
 
 This document is the primary source of truth for the `SCB` website project.
 
-It defines what the website is, what it must do, what it must not become, and which priorities overrule all others.
+It defines:
 
-If any later planning or implementation document conflicts with this file, this file wins unless the user explicitly overrides it.
+- what the website is
+- what the website is not
+- which constraints outrank all others
+- which source material is authoritative for migration
+- which implementation decisions are already locked
 
----
-
-## Core Principle
-
-The Skate Club Biriciana website must be:
-
-- **mobile-first**
-- **simple**
-- **robust**
-- **easy to maintain**
-- **easy to edit for non-technical admins**
-- **static-first**
-
-This website is a **general public information website for a non-profit**, not a complex app.
+If a later planning or implementation document conflicts with this file, this file wins unless the user explicitly overrides it.
 
 ---
 
-## Non-Negotiable Rules
+## Read This First
 
-### 1. Mobile-first always
+This project is a rebuild of the current public Skate Club Biriciana website into a simpler, more robust Astro site.
 
-Mobile usability is a top-level requirement, not a later polish step.
+This foundation document is intentionally short on source-site detail. The detailed audit of the existing website lives in [HANDOVER.md](/home/nout/REPO/SCB/HANDOVER.md).
 
-Every page, component, content type, and editorial workflow must be designed assuming that many visitors will access the site on phones first.
+Cold-start rule:
 
-Implications:
+- read this file first to understand product intent and constraints
+- read [HANDOVER.md](/home/nout/REPO/SCB/HANDOVER.md) second to understand the current Wix site, route inventory, migrated content scope, assets, and unresolved source-data quirks
 
-- layouts must be readable on narrow screens first
-- navigation must work comfortably on mobile
-- event information must be immediately scannable on mobile
-- blog previews must be compact and easy to scroll
-- image/video galleries must not become awkward or overloaded on mobile
-- CTAs must remain large and obvious
-- no desktop-only assumptions in layout or interaction design
+---
 
-### 2. Simplicity over cleverness
+## Project Context
 
-Do not add complexity unless it solves a real user or admin problem.
+### What is being rebuilt
 
-Implications:
+The project is the public website of **Skate Club Biriciana e.V.**, a skateboard non-profit.
 
-- prefer small, understandable systems over generalized ones
-- prefer static rendering over dynamic runtime behavior
-- prefer explicit content modeling over hidden automation
-- avoid “future-proofing” that makes the launch version harder to maintain
+The current live/public source site is a Wix website documented in [HANDOVER.md](/home/nout/REPO/SCB/HANDOVER.md).
 
-### 3. Non-technical admins must be able to edit it
+Canonical source URLs already identified:
 
-The website will not be maintained by IT specialists.
+- public/custom domain: `https://skateclubbiriciana.de`
+- direct Wix source used during audit: `https://briareos.wixsite.com/skateclubbiriciana`
 
-Implications:
+### Why a rebuild exists
 
-- content editing must be approachable
-- CMS fields must be limited and understandable
-- public content must not depend on manual code changes
-- documentation should be clear and short where possible
-- avoid requiring shell access or developer tooling for ordinary content updates
+The current Wix site is the source of public content and information architecture, but not the target implementation model and not the target design quality.
 
-### 4. Robustness over sophistication
+The rebuild exists to produce a site that is:
 
-The site should fail in obvious, manageable ways rather than in clever, hidden, brittle ways.
+- easier to maintain
+- more robust
+- better on mobile
+- easier to edit through a simple CMS
+- cleaner architecturally than the Wix source
 
-Implications:
+### What `SCB-Dash` is
 
-- avoid unnecessary runtime integrations
-- avoid coupling the website to private internal systems
-- validate content strongly at build time
-- prefer deterministic build outputs
+`SCB-Dash` is a separate private/internal dashboard project for club operations.
+
+It is **not** the website.
+
+It is **not** the source of truth for the public website launch.
+
+It matters only as a possible future system boundary, mainly around event data export. It should not shape the website architecture beyond the rule that the public website must stay independent from it.
+
+---
+
+## Core Product Statement
+
+The `SCB` website is a **mobile-first public information website** for a non-profit.
+
+It is not a complex application.
+
+Its job is to help visitors quickly find:
+
+- who the club is
+- what the club does
+- current news
+- upcoming events
+- membership information
+- contact information
+- media and downloadable documents
+
+That is the product.
+
+---
+
+## Non-Negotiable Priorities
+
+These priorities outrank visual flourishes, extra features, and speculative integrations.
+
+### 1. Mobile-first
+
+Mobile is the primary layout target, not a fallback.
+
+Every page and component must be designed from the phone view outward.
+
+### 2. Simplicity
+
+The site must stay small in scope and understandable in structure.
+
+If two solutions both work, choose the simpler one.
+
+### 3. Robustness
+
+The website must keep functioning without depending on fragile live integrations or app-like behavior.
+
+### 4. Easy editing for non-technical admins
+
+Normal content updates must be possible through the CMS without developer intervention.
+
+### 5. Static-first architecture
+
+Prefer build-time content and rendering over runtime systems unless there is a real requirement that cannot be met otherwise.
 
 ---
 
 ## What The Website Is
 
-The website is the public-facing digital presence of Skate Club Biriciana e.V.
+The website is:
 
-Its job is to help visitors quickly understand:
-
-- who the club is
-- what the club does
-- what events are happening
-- what the latest news is
-- how to become a member
-- how to contact the club
-- where to find media and important downloadable documents
-
-It should feel welcoming, credible, and easy to navigate.
+- a public-facing club website
+- a source of general information
+- a place to publish updates/news
+- a place to publish public events
+- a place to show simple media content
+- a place to provide downloads and contact information
 
 ---
 
@@ -101,250 +133,215 @@ It should feel welcoming, credible, and easy to navigate.
 
 The website is not:
 
-- an internal operations dashboard
-- a scheduling application
+- an internal dashboard
+- an operations tool
 - a member management system
-- a volunteer coordination app
-- a custom social network
-- a media management platform
-- a highly dynamic web app
+- a volunteer assignment system
+- a scheduling application
+- a social platform
+- a complex media platform
+- a thin frontend over private club infrastructure
 
-The website must not absorb the complexity of `SCB-Dash`.
+This project must not drift into those categories.
 
 ---
 
-## Product Summary
+## Source-Of-Truth Boundaries
 
-The target product is a lean, maintainable Astro-based website with:
+### This file
 
-- a homepage
-- a simple blog/news system
-- a public event calendar
-- a simple media gallery
+This file defines:
+
+- product intent
+- implementation boundaries
+- priority order
+- locked constraints
+
+### `HANDOVER.md`
+
+[HANDOVER.md](/home/nout/REPO/SCB/HANDOVER.md) defines:
+
+- the detailed audit of the current Wix site
+- route inventory
+- asset inventory
+- content/system inventory
+- known source inconsistencies
+- earlier planning decisions already collected
+
+### The current Wix site
+
+The current Wix site is the **content and structure reference**, not the target technical model and not the target design fidelity.
+
+This means:
+
+- preserve content categories and important public information
+- preserve key route concepts and page purpose
+- preserve assets and downloads where needed
+- do not recreate Wix widget behavior just because Wix had it
+
+---
+
+## Locked Technical Decisions
+
+The following decisions are already made and should not be reopened unless the user changes them explicitly:
+
+- Astro SSG
+- `bun`
+- Netlify-first deployment assumptions
+- Decap CMS
+- Git-backed content workflow
+- static-first architecture
+- local asset migration where practical
+- privacy-aware treatment of embeds and maps
+
+---
+
+## Relationship To `SCB-Dash`
+
+`SCB-Dash` is explicitly outside the website’s launch-critical architecture.
+
+### Hard rules
+
+- the public website must not require `SCB-Dash` at runtime
+- the public website must not inherit the dashboard’s internal data model
+- the public website must not be blocked by dashboard availability
+
+### Allowed future relationship
+
+Later, `SCB-Dash` may export selected public event data in a narrow one-way flow if the user wants that.
+
+That future possibility does not justify increasing launch complexity now.
+
+---
+
+## Product Scope
+
+### Required website feature areas
+
+The launch site must include:
+
+- homepage
+- simple blog/news system
+- public event calendar
+- simple media gallery
 - downloadable PDFs
-- contact information and contact form
-- a few supporting info pages
+- contact page
+- additional information pages
 - legal pages
 
-This is enough.
+### Explicit simplification rule
 
 The site does **not** need to be super elaborate.
 
-It must simply function well as a reliable public information website.
+The right target is a reliable, polished, easy-to-edit information site.
 
 ---
 
 ## Audience
 
-### Primary audiences
+### Public visitors
 
-- people interested in the club locally
-- skaters and families looking for events or workshops
+Primary visitors include:
+
+- local skaters
+- families
 - potential members
-- community supporters
-- people looking for basic contact and organization information
+- supporters
+- people looking for contact or club information
 
-### Secondary audiences
+### Editors
 
-- press or partners looking for basic club information
-- existing members looking for general public updates
-- visitors checking news or media content
+Editors are club admins and maintainers who are not expected to be IT specialists.
 
-### Editorial audience
-
-- club admins who need to update content through a simple CMS
+The website must be structured around their editing needs as much as around visitor-facing presentation.
 
 ---
 
-## User Success Criteria
+## Content and Page Scope
 
-The website is successful if a mobile visitor can quickly:
+### Homepage
 
-- understand what the club is
-- find upcoming events
-- read recent news
-- find membership info
-- access PDFs
-- contact the club
-- browse a few photos/videos without friction
+The homepage must communicate:
 
-The website is successful if an admin can:
-
-- add/edit a blog post
-- add/edit a public event
-- update important static page content
-- change media links or gallery items
-- do this without developer intervention in normal cases
-
----
-
-## Technical Direction
-
-### Chosen stack direction
-
-- Astro SSG
-- `bun`
-- Netlify-first deployment
-- Decap CMS
-- content collections
-- local-first asset storage
-
-### Technical philosophy
-
-- static-first
-- build-time content validation
-- minimal client-side JavaScript
-- local media/assets where practical
-- no unnecessary backend requirements
-
-### Integration principle
-
-Public website systems should stand on their own.
-
-If future integrations are added, they must be optional and non-blocking for normal site operation.
-
----
-
-## Relationship To SCB-Dash
-
-`SCB-Dash` is an internal dashboard and is not the website’s architectural center.
-
-### Hard rule
-
-The website must not depend on `SCB-Dash` to render public content at launch.
-
-### Allowed future relationship
-
-`SCB-Dash` may later export selected public event data in a controlled one-way flow.
-
-### Disallowed relationship
-
-The website must not become a thin frontend over the dashboard’s internal data model.
-
-Reason:
-
-- wrong product boundary
-- unnecessary complexity
-- higher maintenance cost
-- higher privacy/security risk
-- bad fit for non-technical site maintenance
-
----
-
-## Core Website Features
-
-The final website must include these core feature areas.
-
-### 1. Homepage
-
-The homepage should provide:
-
-- clear club identity
-- concise intro
+- club identity
+- short introduction
 - latest news preview
 - upcoming events preview
-- membership CTA
+- membership call to action
 - media/gallery teaser
-- footer with contact/social/legal links
+- footer links
 
-### 2. News / blog
+### News / blog
 
-The site needs a simple blog/news system.
+The site needs a simple post system with:
 
-Requirements:
-
-- simple post creation/editing
+- index page
 - post detail pages
-- cover image support
-- date display
-- excerpt/preview support
-- category support only if genuinely useful
+- dates
+- previews/excerpts
+- cover images where useful
 
-Avoid:
+Keep taxonomy simple. Do not build a large tagging/filtering system without a real need.
 
-- overly complex tagging/filtering systems unless clearly needed
+### Event calendar
 
-### 3. Public event calendar
-
-The event calendar is important, but it must remain simple.
-
-Requirements:
+The site needs a public event system with:
 
 - one-off events
 - recurring events
-- upcoming event list
+- upcoming list
 - month overview
 - event detail pages
-- clear mobile presentation
-- easy admin editing
 
-Avoid:
+This must remain an editorial/public calendar, not an operations scheduler.
 
-- app-style scheduling complexity
-- internal staffing/assignment concepts
-- drag/drop or dense planner UI
+### Media
 
-### 4. Media gallery
+The site needs a lightweight media area that can show:
 
-The media area should be lightweight.
+- photos
+- video links
+- YouTube links or playlists where appropriate
 
-Requirements:
+It should remain simple and easy to update.
 
-- easy way to show photos and video links
-- easy support for YouTube playlist/video links
-- simple browsing
-- mobile-friendly presentation
+### Downloads
 
-Avoid:
+The site must support downloadable files such as:
 
-- building a full custom media platform
+- membership form PDF
+- statutes PDF
 
-### 5. PDFs / downloads
+### Contact
 
-The website must support downloadable files like:
-
-- membership form
-- statutes
-
-Requirements:
-
-- obvious download UI
-- clear labels
-- local hosting where possible
-
-### 6. Contact
-
-The site needs a straightforward contact page.
-
-Requirements:
+The contact page must include:
 
 - contact form
 - fallback contact details
-- address/location info
+- location/address information
 - external map link
 
-Per current preference:
+Current preference:
 
-- use a simple map image or location block linking out to Google Maps
-- do not embed a live map if it causes avoidable cookie/privacy complexity
+- use a simple image or location block linking externally to Google Maps
+- avoid an embedded live map if it creates avoidable privacy/cookie complexity
 
-### 7. Static information pages
+### Static information pages
 
-The website needs a few normal content pages such as:
+The site also needs stable public pages such as:
 
 - about
 - membership
-- legal pages
-
-These pages should be easy to edit and stable.
+- impressum
+- datenschutz
 
 ---
 
 ## Information Architecture
 
-The public structure should stay compact and obvious.
+The public structure should stay compact and close to the current known site structure documented in [HANDOVER.md](/home/nout/REPO/SCB/HANDOVER.md).
 
-Expected top-level navigation:
+Current expected top-level navigation:
 
 - Start
 - Neuigkeiten
@@ -354,158 +351,156 @@ Expected top-level navigation:
 - Mitgliedschaft
 - Kontakt
 
-Expected legal/footer links:
+Current expected legal/footer links:
 
 - Impressum
 - Datenschutz
 
-If future simplification is needed, prefer reducing complexity over expanding navigation depth.
+Simplify only when simplification helps usability or removes Wix-specific awkwardness. Do not add extra navigation depth without a clear reason.
 
 ---
 
-## Mobile-First UX Requirements
+## Mobile-First Implementation Rules
 
-These rules are mandatory for implementation.
+These are implementation rules, not subjective design aspirations.
 
-### Navigation
+### Layout and navigation
 
-- [ ] header must remain usable on small screens
-- [ ] mobile navigation must be obvious and low-friction
-- [ ] no tiny tap targets
-- [ ] no overstuffed menus
+- design page layouts from narrow viewport upward
+- ensure primary navigation is fully usable without hover interactions
+- keep tap targets comfortably usable on touch devices
+- avoid layouts that require side-by-side desktop assumptions to make sense
 
 ### Homepage
 
-- [ ] hero content must fit mobile comfortably
-- [ ] news preview must stack cleanly
-- [ ] event preview must be scannable without dense cards
-- [ ] CTAs must remain readable and tappable
+- stack homepage content in a clear vertical reading order on mobile
+- show news and event previews in a format that remains scannable on phones
+- keep primary CTAs visible without relying on complex hero treatments
 
 ### Blog
 
-- [ ] post list must work as a clean vertical flow
-- [ ] metadata must stay readable on small screens
-- [ ] inline images must not break layout
+- render post cards and lists as readable vertical flows on mobile
+- keep metadata compact and readable
+- ensure inline media does not overflow or dominate the screen
 
 ### Calendar
 
-- [ ] upcoming events must be the primary mobile experience
-- [ ] month view must remain readable on phones
-- [ ] event detail pages must prioritize date, time, and location at the top
-- [ ] recurring event information must be understandable without clutter
+- treat the upcoming events list as the primary mobile event experience
+- keep month-view interaction lightweight
+- ensure date, time, status, and location appear near the top of event detail pages
 
 ### Media
 
-- [ ] galleries must avoid cramped thumbnail walls on small screens
-- [ ] video cards must remain legible and easy to tap
+- avoid dense thumbnail walls that become unusable on phones
+- keep video entries tappable and readable without precision clicking
 
 ### Contact
 
-- [ ] form fields must be easy to complete on mobile
-- [ ] contact info must remain obvious without zooming
+- keep the form straightforward on touch devices
+- present fallback contact information in plain readable blocks
 
 ### Performance
 
-- [ ] mobile pages must load quickly
-- [ ] avoid unnecessary client-side JS
-- [ ] optimize images and avoid oversized media payloads
+- minimize client-side JavaScript
+- optimize images for mobile delivery
+- avoid heavy interactive libraries unless they solve a real problem
 
 ---
 
-## Content and CMS Principles
+## CMS Principles
 
-### CMS goal
+The CMS exists to support routine editing by non-technical admins.
 
-The CMS exists to make normal content maintenance easy.
+### CMS must allow editing of
 
-### CMS must allow admins to edit
-
-- homepage content blocks where appropriate
 - news posts
 - events
-- media entries
+- selected homepage content blocks
 - selected static page content
-- download references
+- media entries or media references
+- downloadable file references
 
-### CMS should avoid exposing
+### CMS must avoid exposing
 
-- low-level implementation details
-- technical flags that confuse editors
-- fields that are not meaningful to public content
+- technical implementation flags that editors do not understand
+- internal/private-only data
+- fields that are only useful for developers
 
-### Editorial philosophy
+### Editorial modeling rule
 
-- structured where structure helps
-- freeform where freeform is simpler
-- minimal field count by default
+Use structured fields where structure meaningfully reduces mistakes.
+
+Use freeform content where adding more structure would only make editing harder.
 
 ---
 
 ## Design Direction
 
-The site should be more modern and intentional than the current Wix site, but not overly elaborate.
+The design target is:
 
-### The design should be
-
-- clean
-- welcoming
-- club-oriented
-- clear on mobile
-- visually stronger than Wix
+- cleaner than the current Wix site
+- more intentional than the current Wix site
+- still simple
 - still easy to maintain
+- clearly usable on mobile
 
-### The design should not be
+The target is **not** maximal visual complexity.
 
-- overly corporate
-- overloaded with effects
-- dependent on fragile motion
-- visually noisy
-- desktop-first
+The site should look better than Wix without becoming harder to maintain than Wix.
 
 ---
 
 ## Migration Philosophy
 
-The current Wix site is the content source, not the design source.
+### Migration reference
 
-### Preserve
+The current Wix site documented in [HANDOVER.md](/home/nout/REPO/SCB/HANDOVER.md) is the migration reference.
 
-- structure
-- important content
-- important assets
-- core routes/concepts
-- PDFs
-- key organization data
+### What should be preserved
 
-### Do not preserve blindly
+- page purpose
+- major information architecture
+- important public content
+- downloadable files
+- public assets worth keeping
+- organization information
 
-- bad layout patterns
-- Wix technical quirks
-- awkward route naming
-- widget complexity that does not belong in the new site
+### What should not be preserved blindly
+
+- awkward Wix route naming
+- Wix widget behavior
+- source-site implementation quirks
+- layout weaknesses
+- platform-generated noise
 
 ### Migration rule
 
-Migrate meaning and content, not Wix implementation behavior.
+Migrate public meaning and content, not Wix implementation details.
+
+### Integrity rule
+
+If source data in Wix is contradictory or suspicious, preserve the uncertainty in documentation and treat it as a manual QA item rather than silently guessing.
 
 ---
 
 ## Public Data Handling
 
-Any sensitive or uncertain organization data must be treated carefully.
+Some public data on the current site is important and may require confirmation before final publication.
 
-Examples:
+Examples already identified in [HANDOVER.md](/home/nout/REPO/SCB/HANDOVER.md) include:
 
-- legal contact details
-- bank details
+- legal contact data
+- bank/donation data
 - membership pricing
 - social links
+- event dates affected by Wix recurrence quirks
 
-These should be:
+Rule:
 
-- migrated carefully
-- clearly structured
-- easy to verify later
+- structure this data cleanly
+- migrate it carefully
+- document mismatches
+- do not silently normalize uncertain facts
 
 ---
 
@@ -516,101 +511,98 @@ These should be:
 - Astro
 - `bun`
 - Decap CMS
-- Netlify-first assumptions
+- Netlify-first deployment assumptions
 
 ### Must avoid
 
 - unnecessary SSR
-- coupling to private internal systems
-- heavy JS-first UI where static rendering is sufficient
-- maintenance patterns that require technical expertise for routine updates
+- hard runtime dependency on private systems
+- heavy JS-first solutions where static rendering is sufficient
+- maintenance patterns that require developer intervention for ordinary content updates
 
 ---
 
 ## Non-Goals For Launch
 
-Do not expand the launch scope with:
+Do not expand launch scope with:
 
-- advanced account systems
 - custom authentication
 - real-time features
+- advanced internal workflows
+- app-style dashboard functionality
 - complex search infrastructure
-- app-like dashboard features
-- internal workflow management
 - custom map systems
-- elaborate filtering unless clearly needed
+- heavyweight calendar or gallery platforms
 
 ---
 
-## Launch Priorities
+## Priority Order
 
-Priority order should be:
+When tradeoffs appear, choose in this order:
 
-1. solid mobile-first structure
-2. clean content architecture
-3. reliable event calendar
-4. simple blog/news workflow
-5. simple media gallery
-6. stable contact and membership pages
-7. legal/data correctness
-8. visual polish
+1. mobile usability
+2. editorial simplicity
+3. robustness
+4. correctness of migrated public information
+5. clarity of content structure
+6. visual polish
+7. optional enhancements
 
-This order matters.
-
-If tradeoffs appear, protect mobile usability and editorial simplicity first.
+This order is binding for implementation decisions.
 
 ---
 
-## Acceptance Criteria
+## Foundation Compliance Gates
 
-The website foundation is satisfied when:
+This document should be considered satisfied only if the implementation and supporting docs meet all of the following:
 
-- [ ] the public site is clearly mobile-first
-- [ ] the site stays understandable and maintainable
-- [ ] admins can update core content through Decap CMS
-- [ ] the site functions as a simple public information website
-- [ ] blog/news workflow is straightforward
-- [ ] event calendar is clear and easy to manage
-- [ ] galleries remain lightweight
-- [ ] downloadable PDFs are easy to access
-- [ ] the site does not depend on `SCB-Dash`
-- [ ] the site avoids unnecessary complexity
+- the project is explicitly documented as a rebuild of the current Wix public website
+- [HANDOVER.md](/home/nout/REPO/SCB/HANDOVER.md) is treated as the detailed source audit for migration
+- the site is implemented as a mobile-first public information website, not as an app-like dashboard
+- the launch architecture does not require `SCB-Dash`
+- routine editing of news, events, and selected static content is possible through Decap CMS
+- the event system remains a public/editorial calendar rather than an internal scheduling system
+- the site includes homepage, news, events, media, downloads, contact, and legal/info pages
+- the map/location treatment defaults to an external-link approach rather than an embedded live map
+- the implementation avoids unnecessary complexity that would make routine maintenance harder for non-technical admins
 
 ---
 
 ## Companion Documents
 
-This file should sit at the top of the website documentation stack.
+This file sits at the top of the website documentation stack.
 
 Recommended companion docs:
 
-- `HANDOVER.md`
-  Migration memory, source audit, Wix findings, unresolved source details
+- [HANDOVER.md](/home/nout/REPO/SCB/HANDOVER.md)
+  Detailed Wix audit, content inventory, asset inventory, unresolved source issues, previous planning memory
 
-- `calendar.md`
-  Detailed implementation plan for the self-built public event system
+- [calendar.md](/home/nout/REPO/SCB/calendar.md)
+  Detailed public calendar plan
 
 - `content-cms.md`
-  Content model and Decap collections
+  Content model and Decap collection definitions
 
 - `migration.md`
-  Wix migration workflow, manifest rules, QA checklist
+  Wix-to-Astro migration workflow and QA rules
 
 - `implementation.md`
-  Astro architecture, routes, build strategy, deployment details
+  Astro architecture, routes, build strategy, and deployment details
 
 - `editor-guide.md`
-  Short practical instructions for non-technical content editors
+  Practical instructions for non-technical editors
 
 ---
 
 ## Decision Summary
 
-The website should be treated as:
+This project should always be treated as:
 
-- a simple, mobile-first, public information site
-- easy to edit by non-technical admins
-- static-first and robust
-- separate from the internal dashboard
+- a rebuild of the current Wix public website
+- a simple public information site for a non-profit
+- mobile-first
+- easy to edit
+- static-first
+- separate from internal/private dashboard concerns
 
 That is the center of the entire project.
