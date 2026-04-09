@@ -91,6 +91,13 @@ That is the product.
 
 These priorities outrank visual flourishes, extra features, and speculative integrations.
 
+Implementation emphasis:
+
+- prioritize Astro foundation first
+- prioritize CMS usability second
+- prioritize the public event calendar third
+- treat low-priority content disputes as secondary unless they block one of the three items above
+
 ### 1. Mobile-first
 
 Mobile is the primary layout target, not a fallback.
@@ -491,9 +498,10 @@ Examples already identified in [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix
 
 - legal contact data
 - bank/donation data
-- membership pricing
 - social links
 - event dates affected by Wix recurrence quirks
+
+If membership-related fee copy is later shown on the website, treat it as ordinary page/PDF content rather than as a dedicated pricing model or structured pricing subsystem.
 
 Rule:
 

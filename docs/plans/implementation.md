@@ -127,7 +127,7 @@ Use this mapping:
 - `/pics-n-vids/` -> media collection index page
 - `/veranstaltungen/` -> derived events index from events collection
 - `/veranstaltungen/[slug]/[date]/` -> generated event occurrence page from events collection
-- `/mitgliedschaft/` -> `pages/membership` plus shared pricing data from settings
+- `/mitgliedschaft/` -> `pages/membership`
 - `/kontakt/` -> `pages/contact` plus shared contact data from settings
 - `/kontakt/danke/` -> code-owned static thank-you page for successful form submissions
 - `/impressum/` -> `pages/impressum`
@@ -259,6 +259,18 @@ Assume Decap CMS is mounted at:
 Default to the simplest workable repo-backed publishing flow.
 
 Unless the user later asks for a review-heavy editorial process, prefer a straightforward publish flow over Git-complex editorial workflow features.
+
+### Backend and auth
+
+Lock launch CMS auth/backend to:
+
+- Netlify Identity + Git Gateway
+
+Reason:
+
+- lowest-friction launch path for non-technical editors
+- aligns with Netlify-first deployment
+- avoids requiring every editor to manage direct GitHub repo permissions
 
 ### Preview requirements
 

@@ -59,7 +59,6 @@ Use structured fields for:
 - links
 - repeated cards
 - board members
-- pricing summaries
 - shared contact/social data
 
 Use rich text for:
@@ -76,7 +75,6 @@ Examples:
 
 - contact details belong in shared site settings, not copied into multiple pages
 - social links belong in shared site settings
-- confirmed membership pricing summary belongs in shared site settings, not duplicated in page body prose
 
 ### Rule 5: event semantics defer to `calendar.md`
 
@@ -111,7 +109,6 @@ Must include:
 - postal/legal address
 - social links
 - donation details if published
-- membership pricing summary when confirmed for publication
 - footer text/link data
 
 Shared site settings are the implementation source for repeated facts.
@@ -191,7 +188,7 @@ Media entries may represent:
 - contact page intro/location content
 - legal page bodies
 - media entries
-- shared public contact/social/donation/membership summary data
+- shared public contact/social/donation data
 
 ### Code owned
 
@@ -225,7 +222,6 @@ Responsibilities:
 
 - shared public organization data
 - footer/social/contact data
-- membership pricing summary
 - donation details
 
 Required fields:
@@ -240,11 +236,8 @@ Optional fields:
 
 - `contactPhone`
 - `whatsApp`
-- `membershipPricingSummary`
 - `donationDetails`
 - `footerNote`
-
-If pricing remains unresolved in `public-data-register.md`, leave `membershipPricingSummary` empty and rely on the membership PDF plus instructions until the user confirms the structured summary.
 
 ### `homepage`
 
@@ -318,9 +311,9 @@ Optional fields:
 - `heroImage`
 - `notes`
 
-When pricing is confirmed for publication, the summary must render from `site-settings.membershipPricingSummary`, not from duplicated freeform prose.
+Fee information, if ever shown on this page, is ordinary page content and/or PDF-linked content.
 
-If pricing remains unresolved, use the membership PDF and application instructions instead of inventing a merged web summary.
+Do not create a dedicated pricing model or shared pricing schema for launch.
 
 #### `contact`
 
@@ -451,7 +444,6 @@ Use structured lists for:
 
 - board members
 - goals
-- membership pricing rows
 - footer/social items if edited in CMS
 
 ### Legal text
@@ -474,7 +466,6 @@ Add concise help text for fields that are easy to misuse:
 
 - social links
 - map link
-- pricing rows
 - featured announcement
 - optional category
 
@@ -502,7 +493,6 @@ Do not introduce CMS complexity that assumes editors understand Git branching or
 
 To avoid future data drift:
 
-- membership pricing summary lives in `site-settings`
 - repeated contact details live in `site-settings`
 - social links live in `site-settings`
 - board member list lives in `pages.about`

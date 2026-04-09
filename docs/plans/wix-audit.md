@@ -76,12 +76,12 @@ These were explicitly gathered through user input tools during planning.
 - Selected: `Decap CMS`
 
 ### Contact form
-- Selected: `Decide Later`
+- Selected: `Netlify Forms`
 
 Interpretation:
 - Plan should be Netlify-first
 - Editing workflow should be repo-backed via Decap CMS
-- Contact form backend choice is still open and must remain pending in planning/implementation unless the user later decides
+- Contact form should use the simplest static-friendly Netlify-native flow
 
 ## High-Level Build Direction
 Planned stack and direction:
@@ -365,7 +365,7 @@ Route:
 
 Observed structure:
 - membership intro copy
-- fee information
+- fee-related copy on the page
 - CTA with logo and membership application PDF
 - instructions to print, sign, and send application
 - footer
@@ -417,7 +417,13 @@ Additional fee details from PDF not surfaced on page:
 - one-time signup fee:
   - `5EUR per application`
 
-This means membership page copy and PDF are not fully identical; implementation must preserve both and flag any pricing mismatches for user confirmation.
+This means membership page copy and PDF are not fully identical.
+
+Planning clarification:
+
+- this does not imply a pricing subsystem
+- the website does not need a dedicated pricing model
+- any fee information kept on the site should remain plain content and/or PDF-linked content
 
 ### 11. Contact Page
 Route:
@@ -451,8 +457,8 @@ Observed internal component IDs from page:
 Current form field labels/placeholders were not fully extracted from the Wix HTML. This is still an unresolved data point and should be recovered during implementation by more targeted extraction or by manual review.
 
 Current user choice about contact backend:
-- still pending
-- user selected `Decide Later`
+- use the simplest Netlify-native launch path
+- Netlify Forms is the locked launch decision
 
 ### 12. Impressum
 Route:
@@ -566,10 +572,11 @@ These must be preserved in handoff because they materially affect planning.
 - impressum references `@SkateClubBiriciana`
 - user must confirm canonical YouTube destination
 
-3. Membership pricing split across page and PDF
+3. Membership fee text split across page and PDF
 - page mentions annual fee and family fee
 - PDF includes active/passive/supporting/family/crew and signup fee
-- user should confirm current valid fee model before publication
+- treat this as source-content mismatch only
+- do not derive a pricing schema or pricing subsystem from it
 
 4. Contact form field labels not yet fully recovered
 - structure is known

@@ -6,17 +6,19 @@ This repo is the documentation and implementation planning base for rebuilding t
 
 For a cold start, read in this order:
 
-1. [website-foundation.md](/home/nout/REPO/SCB/docs/plans/website-foundation.md)
-2. [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md)
-3. [routes-and-pages.md](/home/nout/REPO/SCB/docs/plans/routes-and-pages.md)
-4. [calendar.md](/home/nout/REPO/SCB/docs/plans/calendar.md)
-5. [content-cms.md](/home/nout/REPO/SCB/docs/plans/content-cms.md)
-6. [public-data-register.md](/home/nout/REPO/SCB/docs/plans/public-data-register.md)
-7. [implementation.md](/home/nout/REPO/SCB/docs/plans/implementation.md)
-8. [migration.md](/home/nout/REPO/SCB/docs/plans/migration.md)
+1. [cold-start.md](/home/nout/REPO/SCB/docs/plans/cold-start.md)
+2. [website-foundation.md](/home/nout/REPO/SCB/docs/plans/website-foundation.md)
+3. [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md)
+4. [routes-and-pages.md](/home/nout/REPO/SCB/docs/plans/routes-and-pages.md)
+5. [calendar.md](/home/nout/REPO/SCB/docs/plans/calendar.md)
+6. [content-cms.md](/home/nout/REPO/SCB/docs/plans/content-cms.md)
+7. [public-data-register.md](/home/nout/REPO/SCB/docs/plans/public-data-register.md)
+8. [implementation.md](/home/nout/REPO/SCB/docs/plans/implementation.md)
+9. [migration.md](/home/nout/REPO/SCB/docs/plans/migration.md)
 
 ## Doc Roles
 
+- [cold-start.md](/home/nout/REPO/SCB/docs/plans/cold-start.md): cold-start index, priority framing, locked decisions, and implementation sequence
 - [website-foundation.md](/home/nout/REPO/SCB/docs/plans/website-foundation.md): top-level product intent, constraints, priorities, and locked decisions
 - [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md): source-site audit, route inventory, source quirks, assets, and historical planning notes
 - [routes-and-pages.md](/home/nout/REPO/SCB/docs/plans/routes-and-pages.md): final public routes, page scope, and preserve/simplify/drop decisions
@@ -34,14 +36,19 @@ Locked baseline:
 - `bun`
 - Netlify-first deployment
 - Decap CMS
+- Netlify Identity + Git Gateway for Decap auth/backend
+- Netlify Forms for launch contact handling
 - static-first architecture
 - mobile-first public website
 - no launch dependency on `SCB-Dash`
+- no pricing subsystem
 
 ## Current Status
 
 All active planning docs now live under `docs/plans/`.
 
 The documentation stack is split by responsibility so later implementation work does not need to infer architecture or scope from the source audit.
+
+Use [cold-start.md](/home/nout/REPO/SCB/docs/plans/cold-start.md) first before diving into the deeper specs.
 
 Implementation scaffolding has not been started in this repo yet.

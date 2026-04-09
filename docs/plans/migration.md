@@ -289,7 +289,7 @@ Rules:
 
 - download local copies
 - preserve source URLs in the manifest
-- treat pricing content inside PDFs as high-risk factual content
+- treat fee content inside PDFs as source-observed content, not as a website-owned pricing model
 
 ### Media
 
@@ -337,7 +337,6 @@ Check against `public-data-register.md`:
 - legal/contact data
 - social links
 - donation details
-- membership pricing
 - event dates
 
 ### Required QA for events
@@ -353,9 +352,9 @@ Check:
 
 Check:
 
-- pricing summary does not silently merge conflicting source values
 - membership PDF link works
 - instructions remain intact
+- no pricing-specific schema or generated pricing summary has been invented during migration
 
 ### Required QA for redirects
 

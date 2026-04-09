@@ -400,25 +400,27 @@ Required sections:
 
 - short intro
 - benefits or reasons to join
-- pricing summary or a current-fees notice that defers to the membership PDF while pricing remains unresolved in `public-data-register.md`
 - membership PDF download
 - application instructions
+- optional plain-text fee note only if the user later wants fee copy visible on the page
 
 Preserve:
 
 - membership explanation
-- fee overview
 - membership application PDF
 - instructions for digital or postal submission
 
+If fee information appears on the page, preserve it as ordinary content only.
+
 Simplify:
 
-- pricing summary should be structured and readable once confirmed for publication
 - official downloadable form remains the authoritative application artifact
+- do not design a pricing-specific UI or data model for launch
 
 Drop at launch:
 
 - any attempt to rebuild the PDF as a full web application form
+- any pricing-specific content system, schema, or calculator
 
 ### Contact
 

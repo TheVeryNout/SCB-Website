@@ -210,20 +210,11 @@ Recommended format:
 
 ### Asset path
 
-Store event images in:
+Store event images under the shared Astro image tree at:
 
-- `public/media/events/`
+- `src/assets/images/events/`
 
-or
-
-- `src/assets/events/`
-
-Final implementation should choose one and keep it consistent.
-
-Default recommendation:
-
-- use `src/assets/events/` for images that benefit from Astro image handling
-- use `public/media/` for PDFs and unprocessed files
+Use `public/media/` only for PDFs and unprocessed raw files.
 
 ---
 

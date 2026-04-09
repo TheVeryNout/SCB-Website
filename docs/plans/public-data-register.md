@@ -101,17 +101,18 @@ Last cold-read audit source date:
 | donationBank | `VR Bank im suedlichen Franken` | audited fundraising post | pending | financial fact, requires confirmation |
 | donationReference | `Spende fuer Hallenbau` | audited fundraising post | pending | preserve only as source-observed text |
 
-### Membership Pricing
+### Membership Fee Notes
+
+These values are source observations only.
+
+They are not a website-owned pricing model and must not drive any dedicated pricing schema or pricing UI.
+
+If fee information is shown publicly, it should remain plain page/PDF content unless the user later chooses otherwise.
 
 | Key | Current value | Source | Status | Publication rule |
 | --- | --- | --- | --- | --- |
-| membershipActiveBeforeAugust | `24EUR per year` | membership page audit | conflict | pricing requires explicit user confirmation |
-| membershipActiveFromAugust | `12EUR first year` | membership page audit | conflict | pricing requires explicit user confirmation |
-| membershipFamily | `50EUR per year` | membership page audit | conflict | pricing requires explicit user confirmation |
-| membershipFamilyReduced | `35EUR from August` | membership PDF audit | conflict | pricing requires explicit user confirmation |
-| membershipCrew | `60EUR per year` | membership PDF audit | conflict | pricing requires explicit user confirmation |
-| membershipCrewReduced | `30EUR from August` | membership PDF audit | conflict | pricing requires explicit user confirmation |
-| signupFee | `5EUR per application` | membership PDF audit | conflict | pricing requires explicit user confirmation |
+| membershipPageFeeCopy | mixed fee text on membership page | membership page audit | pending | preserve only as source-observed content if needed |
+| membershipPdfFeeCopy | multiple fee rows inside membership PDF | membership PDF audit | pending | preserve through the PDF artifact; do not normalize into structured website data |
 
 ### Membership Submission Details
 
@@ -142,18 +143,17 @@ Last cold-read audit source date:
 These items must be resolved before final launch signoff:
 
 1. canonical YouTube destination
-2. current valid membership pricing model
-3. current valid donation/bank details if fundraising content stays live
+2. current valid donation/bank details if fundraising content stays live
 
 ## Current Freeze For Implementation
 
-Until the user confirms replacements, treat the unresolved items above as frozen publication blockers, not as open design questions.
+Until the user confirms replacements, treat the unresolved items above as launch-signoff publication blockers, not as open design questions and not as core foundation blockers.
 
 Use these safe defaults:
 
 - do not invent a single canonical YouTube account in shared settings or the footer while the conflict remains unresolved
+- use the current Wix-linked public destination as a temporary placeholder when implementation needs a concrete YouTube URL before final signoff
 - preserve audited per-item video destinations in migrated media content where needed
-- do not merge conflicting membership pricing values into one new canonical web pricing table without user confirmation
 - if fundraising content remains in scope, do not newly feature donation details outside source-parity migration until the user confirms them
 
 ---
@@ -196,4 +196,4 @@ This document is satisfied only when:
 - every risky public fact has a status
 - every conflicting fact is explicit
 - later agents can tell which values are safe to treat as final
-- legal, financial, social, and pricing data are no longer scattered across other docs
+- legal, financial, and social data are no longer scattered across other docs
