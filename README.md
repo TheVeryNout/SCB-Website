@@ -15,6 +15,7 @@ For a cold start, read in this order:
 7. [public-data-register.md](/home/nout/REPO/SCB/docs/plans/public-data-register.md)
 8. [implementation.md](/home/nout/REPO/SCB/docs/plans/implementation.md)
 9. [migration.md](/home/nout/REPO/SCB/docs/plans/migration.md)
+10. [parallel-agent-environment.md](/home/nout/REPO/SCB/docs/plans/parallel-agent-environment.md)
 
 ## Doc Roles
 
@@ -27,6 +28,7 @@ For a cold start, read in this order:
 - [public-data-register.md](/home/nout/REPO/SCB/docs/plans/public-data-register.md): risky public facts and confirmation status
 - [implementation.md](/home/nout/REPO/SCB/docs/plans/implementation.md): Astro/Netlify/Decap technical architecture
 - [migration.md](/home/nout/REPO/SCB/docs/plans/migration.md): Wix-to-Astro migration workflow, manifest, and QA rules
+- [parallel-agent-environment.md](/home/nout/REPO/SCB/docs/plans/parallel-agent-environment.md): multi-agent orchestration, concurrency safety, observability, and security guardrails
 
 ## Current Direction
 
@@ -52,3 +54,13 @@ The documentation stack is split by responsibility so later implementation work 
 Use [cold-start.md](/home/nout/REPO/SCB/docs/plans/cold-start.md) first before diving into the deeper specs.
 
 Implementation scaffolding has not been started in this repo yet.
+
+## Parallel Agent Runtime Pack
+
+A concrete multi-agent runtime pack now exists at `.codex/agents/` with:
+
+- orchestrator and specialized worker agent profiles
+- shard/task board template for parallel runs
+- explicit merge checkpoints and dependency handling
+
+Use this folder when delegating work in parallel instead of running a single monolithic agent turn.
