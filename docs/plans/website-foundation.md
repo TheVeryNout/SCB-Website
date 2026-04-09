@@ -20,12 +20,12 @@ If a later planning or implementation document conflicts with this file, this fi
 
 This project is a rebuild of the current public Skate Club Biriciana website into a simpler, more robust Astro site.
 
-This foundation document is intentionally short on source-site detail. The detailed audit of the existing website lives in [HANDOVER.md](/home/nout/REPO/SCB/HANDOVER.md).
+This foundation document is intentionally short on source-site detail. The detailed audit of the existing website lives in [wix-audit.md](/home/nout/REPO/SCB/wix-audit.md).
 
 Cold-start rule:
 
 - read this file first to understand product intent and constraints
-- read [HANDOVER.md](/home/nout/REPO/SCB/HANDOVER.md) second to understand the current Wix site, route inventory, migrated content scope, assets, and unresolved source-data quirks
+- read [wix-audit.md](/home/nout/REPO/SCB/wix-audit.md) second to understand the current Wix site, route inventory, migrated content scope, assets, and unresolved source-data quirks
 
 ---
 
@@ -35,7 +35,7 @@ Cold-start rule:
 
 The project is the public website of **Skate Club Biriciana e.V.**, a skateboard non-profit.
 
-The current live/public source site is a Wix website documented in [HANDOVER.md](/home/nout/REPO/SCB/HANDOVER.md).
+The current live/public source site is a Wix website documented in [wix-audit.md](/home/nout/REPO/SCB/wix-audit.md).
 
 Canonical source URLs already identified:
 
@@ -157,9 +157,9 @@ This file defines:
 - priority order
 - locked constraints
 
-### `HANDOVER.md`
+### `wix-audit.md`
 
-[HANDOVER.md](/home/nout/REPO/SCB/HANDOVER.md) defines:
+[wix-audit.md](/home/nout/REPO/SCB/wix-audit.md) defines:
 
 - the detailed audit of the current Wix site
 - route inventory
@@ -339,7 +339,7 @@ The site also needs stable public pages such as:
 
 ## Information Architecture
 
-The public structure should stay compact and close to the current known site structure documented in [HANDOVER.md](/home/nout/REPO/SCB/HANDOVER.md).
+The public structure should stay compact and close to the current known site structure documented in [wix-audit.md](/home/nout/REPO/SCB/wix-audit.md).
 
 Current expected top-level navigation:
 
@@ -454,7 +454,7 @@ The site should look better than Wix without becoming harder to maintain than Wi
 
 ### Migration reference
 
-The current Wix site documented in [HANDOVER.md](/home/nout/REPO/SCB/HANDOVER.md) is the migration reference.
+The current Wix site documented in [wix-audit.md](/home/nout/REPO/SCB/wix-audit.md) is the migration reference.
 
 ### What should be preserved
 
@@ -487,7 +487,7 @@ If source data in Wix is contradictory or suspicious, preserve the uncertainty i
 
 Some public data on the current site is important and may require confirmation before final publication.
 
-Examples already identified in [HANDOVER.md](/home/nout/REPO/SCB/HANDOVER.md) include:
+Examples already identified in [wix-audit.md](/home/nout/REPO/SCB/wix-audit.md) include:
 
 - legal contact data
 - bank/donation data
@@ -557,7 +557,7 @@ This order is binding for implementation decisions.
 This document should be considered satisfied only if the implementation and supporting docs meet all of the following:
 
 - the project is explicitly documented as a rebuild of the current Wix public website
-- [HANDOVER.md](/home/nout/REPO/SCB/HANDOVER.md) is treated as the detailed source audit for migration
+- [wix-audit.md](/home/nout/REPO/SCB/wix-audit.md) is treated as the detailed source audit for migration
 - the site is implemented as a mobile-first public information website, not as an app-like dashboard
 - the launch architecture does not require `SCB-Dash`
 - routine editing of news, events, and selected static content is possible through Decap CMS
@@ -574,7 +574,7 @@ This file sits at the top of the website documentation stack.
 
 Recommended companion docs:
 
-- [HANDOVER.md](/home/nout/REPO/SCB/HANDOVER.md)
+- [wix-audit.md](/home/nout/REPO/SCB/wix-audit.md)
   Detailed Wix audit, content inventory, asset inventory, unresolved source issues, previous planning memory
 
 - [calendar.md](/home/nout/REPO/SCB/calendar.md)

@@ -799,7 +799,7 @@ No launch dependency on:
 
 Do not trust Wix event slugs as canonical date truth.
 
-The handover already identified slug/date mismatches.
+The Wix audit already identified slug/date mismatches.
 
 ### Migration method
 

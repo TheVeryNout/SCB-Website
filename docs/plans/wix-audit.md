@@ -1,7 +1,29 @@
-# HANDOVER: Skate Club Biriciana e.V. Astro Rebuild
+# Wix Source Audit: Skate Club Biriciana e.V. Astro Rebuild
 
 ## Purpose
-This document captures the full current understanding of the Skate Club Biriciana e.V. website rebuild so a cold-start continuation can resume planning or implementation without relying on prior chat context.
+This document captures the current audited understanding of the public Wix source site for the Skate Club Biriciana e.V. website rebuild.
+
+## Scope Note
+This file is the Wix/source-site audit and historical planning record.
+
+It remains authoritative for:
+
+- observed Wix routes and content
+- observed assets and source URLs
+- source inconsistencies and manual QA items
+- historical planning context already captured
+
+It is not the primary normative source for current architecture, page scope, CMS modeling, or migration process once newer companion docs exist.
+
+When they exist, prefer these newer docs for active decisions:
+
+- [website-foundation.md](/home/nout/REPO/SCB/website-foundation.md)
+- `routes-and-pages.md`
+- `content-cms.md`
+- `implementation.md`
+- `migration.md`
+- `public-data-register.md`
+- [calendar.md](/home/nout/REPO/SCB/calendar.md)
 
 ## User Request
 The user wants the current Wix website for the skateboard non-profit "Skate Club Biriciana e.V." rebuilt completely with Astro SSG.
@@ -25,7 +47,7 @@ The user explicitly said:
   - a complete component list
 
 ## Important Historical Note
-This handover preserves the planning state reached before execution was allowed.
+This audit preserves the planning state reached before execution was allowed.
 
 At the time this was first assembled:
 - the session had been in Plan Mode
@@ -851,12 +873,14 @@ This is not yet executed.
 
 ## Cold-Start Resume Instructions
 If restarting from scratch:
-1. Read this handover first.
-2. Reconfirm current collaboration mode and newest user instructions.
-3. Do not assume unresolved inputs are decided.
-4. Preserve the pending items list and raise them at the right moment.
-5. Keep `bun`, Astro SSG, Netlify, and Decap CMS as the current chosen defaults unless the user changes them.
-6. Treat this file as the canonical planning baseline, but always prefer newer direct user instructions if they conflict.
+1. Read `README.md` first.
+2. Read [website-foundation.md](/home/nout/REPO/SCB/website-foundation.md) second.
+3. Read this audit third.
+4. Reconfirm current collaboration mode and newest user instructions.
+5. Do not assume unresolved inputs are decided.
+6. Preserve the pending items list and raise them at the right moment.
+7. Keep `bun`, Astro SSG, Netlify, and Decap CMS as the current chosen defaults unless the user changes them.
+8. Treat this file as the source-audit baseline, not as the primary normative spec when newer companion docs exist.
 
 ## Source URLs Used During Analysis
 - Homepage:
