@@ -12,7 +12,7 @@ Use it to decide:
 - Netlify and Decap assumptions
 - redirect and build rules
 
-If this document conflicts with [wix-audit.md](/home/nout/REPO/SCB/wix-audit.md), this document wins unless [website-foundation.md](/home/nout/REPO/SCB/website-foundation.md), `routes-and-pages.md`, `content-cms.md`, or the user says otherwise.
+If this document conflicts with [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md), this document wins unless [website-foundation.md](/home/nout/REPO/SCB/docs/plans/website-foundation.md), `routes-and-pages.md`, `content-cms.md`, or the user says otherwise.
 
 ---
 
@@ -52,11 +52,11 @@ This document does not define:
 
 Those belong in:
 
-- [website-foundation.md](/home/nout/REPO/SCB/website-foundation.md)
+- [website-foundation.md](/home/nout/REPO/SCB/docs/plans/website-foundation.md)
 - `routes-and-pages.md`
 - `public-data-register.md`
 - `migration.md`
-- [calendar.md](/home/nout/REPO/SCB/calendar.md)
+- [calendar.md](/home/nout/REPO/SCB/docs/plans/calendar.md)
 
 ---
 
@@ -98,7 +98,9 @@ Use this project structure once implementation begins:
       pics-n-vids.astro
       veranstaltungen/
       mitgliedschaft.astro
-      kontakt.astro
+      kontakt/
+        index.astro
+        danke.astro
       impressum.astro
       datenschutz.astro
 ```
@@ -127,6 +129,7 @@ Use this mapping:
 - `/veranstaltungen/[slug]/[date]/` -> generated event occurrence page from events collection
 - `/mitgliedschaft/` -> `pages/membership` plus shared pricing data from settings
 - `/kontakt/` -> `pages/contact` plus shared contact data from settings
+- `/kontakt/danke/` -> code-owned static thank-you page for successful form submissions
 - `/impressum/` -> `pages/impressum`
 - `/datenschutz/` -> `pages/datenschutz`
 
@@ -163,7 +166,7 @@ Do not use client-side code for:
 
 Calendar recurrence expansion and occurrence derivation happen at build time.
 
-Calendar semantics defer to [calendar.md](/home/nout/REPO/SCB/calendar.md).
+Calendar semantics defer to [calendar.md](/home/nout/REPO/SCB/docs/plans/calendar.md).
 
 ---
 
@@ -289,9 +292,16 @@ Do not create launch-critical secrets unless required by the chosen contact form
 
 ### Contact form rule
 
-Contact form backend remains intentionally unresolved.
+Use Netlify Forms for the launch contact form.
 
-Implementation must keep the contact page backend-agnostic and compatible with a future Netlify-friendly form handling choice.
+Implementation requirements:
+
+- use a plain HTML form that Netlify can process without custom server code
+- no SSR, serverless function, or third-party form SaaS for launch
+- required launch fields are `name`, `email`, and `message`, with optional `subject`
+- include Netlify form naming and a low-friction honeypot field
+- successful submissions redirect to `/kontakt/danke/`
+- fallback email/contact details remain visible on `/kontakt/` even if form handling fails later
 
 ---
 

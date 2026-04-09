@@ -11,7 +11,7 @@ Use it to decide:
 - what each page must contain
 - which Wix behaviors are preserved, simplified, or dropped
 
-If this document conflicts with [wix-audit.md](/home/nout/REPO/SCB/wix-audit.md), this document wins unless [website-foundation.md](/home/nout/REPO/SCB/website-foundation.md) or the user says otherwise.
+If this document conflicts with [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md), this document wins unless [website-foundation.md](/home/nout/REPO/SCB/docs/plans/website-foundation.md) or the user says otherwise.
 
 ---
 
@@ -63,7 +63,7 @@ Use these persistent footer links:
 - `Impressum` -> `/impressum/`
 - `Datenschutz` -> `/datenschutz/`
 - Instagram
-- YouTube
+- confirmed YouTube link only if [public-data-register.md](/home/nout/REPO/SCB/docs/plans/public-data-register.md) marks a canonical destination safe to publish
 - email/contact reference
 
 ### Launch route set
@@ -79,6 +79,7 @@ The public site must ship with these routes:
 - `/veranstaltungen/[slug]/[date]/`
 - `/mitgliedschaft/`
 - `/kontakt/`
+- `/kontakt/danke/`
 - `/impressum/`
 - `/datenschutz/`
 
@@ -300,7 +301,7 @@ Preserve:
 
 - media/video function
 - visible video titles
-- YouTube destination
+- source-audited video destinations without inventing a global channel CTA
 
 Simplify:
 
@@ -348,7 +349,7 @@ Drop at launch:
 - Wix widget behavior
 - repeated marketing blocks that distract from event discovery
 
-Calendar-specific behavior is defined in [calendar.md](/home/nout/REPO/SCB/calendar.md).
+Calendar-specific behavior is defined in [calendar.md](/home/nout/REPO/SCB/docs/plans/calendar.md).
 
 ### Event Detail
 
@@ -399,7 +400,7 @@ Required sections:
 
 - short intro
 - benefits or reasons to join
-- pricing summary
+- pricing summary or a current-fees notice that defers to the membership PDF while pricing remains unresolved in `public-data-register.md`
 - membership PDF download
 - application instructions
 
@@ -412,7 +413,7 @@ Preserve:
 
 Simplify:
 
-- pricing summary should be structured and readable
+- pricing summary should be structured and readable once confirmed for publication
 - official downloadable form remains the authoritative application artifact
 
 Drop at launch:
@@ -453,7 +454,27 @@ Simplify:
 - do not embed a live map by default
 - use a simple location block or static image linking out to Google Maps
 
-Contact backend remains intentionally open and must not be decided here.
+Contact backend is defined in [implementation.md](/home/nout/REPO/SCB/docs/plans/implementation.md) and must not be re-decided here.
+
+### Contact Thank You
+
+Route:
+
+- `/kontakt/danke/`
+
+Purpose:
+
+- confirm successful contact form submission without adding app-like behavior
+
+Required sections:
+
+- short confirmation message
+- link back to `/kontakt/`
+- fallback contact email or homepage link
+
+Simplify:
+
+- keep this as a static utility page only
 
 ### Impressum
 
@@ -560,9 +581,9 @@ Do not launch with:
 
 ## Content Source Rules Per Page
 
-- Public page purpose and broad structure come from the current Wix site as documented in [wix-audit.md](/home/nout/REPO/SCB/wix-audit.md).
-- Product constraints come from [website-foundation.md](/home/nout/REPO/SCB/website-foundation.md).
-- Calendar-specific rendering and modeling come from [calendar.md](/home/nout/REPO/SCB/calendar.md).
+- Public page purpose and broad structure come from the current Wix site as documented in [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md).
+- Product constraints come from [website-foundation.md](/home/nout/REPO/SCB/docs/plans/website-foundation.md).
+- Calendar-specific rendering and modeling come from [calendar.md](/home/nout/REPO/SCB/docs/plans/calendar.md).
 - Risky public facts must be checked against `public-data-register.md` before being treated as final.
 
 ---

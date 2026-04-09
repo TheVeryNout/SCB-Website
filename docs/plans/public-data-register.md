@@ -145,6 +145,17 @@ These items must be resolved before final launch signoff:
 2. current valid membership pricing model
 3. current valid donation/bank details if fundraising content stays live
 
+## Current Freeze For Implementation
+
+Until the user confirms replacements, treat the unresolved items above as frozen publication blockers, not as open design questions.
+
+Use these safe defaults:
+
+- do not invent a single canonical YouTube account in shared settings or the footer while the conflict remains unresolved
+- preserve audited per-item video destinations in migrated media content where needed
+- do not merge conflicting membership pricing values into one new canonical web pricing table without user confirmation
+- if fundraising content remains in scope, do not newly feature donation details outside source-parity migration until the user confirms them
+
 ---
 
 ## Publication Rules

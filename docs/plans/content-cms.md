@@ -11,7 +11,7 @@ Use it to decide:
 - which fields are structured vs freeform
 - which content belongs in shared settings vs individual pages
 
-If this document conflicts with [wix-audit.md](/home/nout/REPO/SCB/wix-audit.md), this document wins unless [website-foundation.md](/home/nout/REPO/SCB/website-foundation.md) or the user says otherwise.
+If this document conflicts with [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md), this document wins unless [website-foundation.md](/home/nout/REPO/SCB/docs/plans/website-foundation.md) or the user says otherwise.
 
 ---
 
@@ -76,11 +76,11 @@ Examples:
 
 - contact details belong in shared site settings, not copied into multiple pages
 - social links belong in shared site settings
-- membership pricing summary belongs in shared site settings, not duplicated in page body prose
+- confirmed membership pricing summary belongs in shared site settings, not duplicated in page body prose
 
 ### Rule 5: event semantics defer to `calendar.md`
 
-This document creates the `events` collection, but event field semantics, recurrence, occurrence URLs, and status behavior are governed by [calendar.md](/home/nout/REPO/SCB/calendar.md).
+This document creates the `events` collection, but event field semantics, recurrence, occurrence URLs, and status behavior are governed by [calendar.md](/home/nout/REPO/SCB/docs/plans/calendar.md).
 
 ---
 
@@ -111,7 +111,7 @@ Must include:
 - postal/legal address
 - social links
 - donation details if published
-- membership pricing summary
+- membership pricing summary when confirmed for publication
 - footer text/link data
 
 Shared site settings are the implementation source for repeated facts.
@@ -163,7 +163,7 @@ Purpose:
 
 - publish public event definitions for the website calendar
 
-All event-model rules defer to [calendar.md](/home/nout/REPO/SCB/calendar.md).
+All event-model rules defer to [calendar.md](/home/nout/REPO/SCB/docs/plans/calendar.md).
 
 ### Media collection
 
@@ -235,14 +235,16 @@ Required fields:
 - `contactEmail`
 - `postalAddress`
 - `socialLinks`
-- `membershipPricingSummary`
 
 Optional fields:
 
 - `contactPhone`
 - `whatsApp`
+- `membershipPricingSummary`
 - `donationDetails`
 - `footerNote`
+
+If pricing remains unresolved in `public-data-register.md`, leave `membershipPricingSummary` empty and rely on the membership PDF plus instructions until the user confirms the structured summary.
 
 ### `homepage`
 
@@ -316,7 +318,9 @@ Optional fields:
 - `heroImage`
 - `notes`
 
-Pricing summary must render from `site-settings.membershipPricingSummary`, not from duplicated freeform prose.
+When pricing is confirmed for publication, the summary must render from `site-settings.membershipPricingSummary`, not from duplicated freeform prose.
+
+If pricing remains unresolved, use the membership PDF and application instructions instead of inventing a merged web summary.
 
 #### `contact`
 
@@ -384,7 +388,7 @@ Type:
 
 Required rule:
 
-- model fields, recurrence, and validation must match [calendar.md](/home/nout/REPO/SCB/calendar.md)
+- model fields, recurrence, and validation must match [calendar.md](/home/nout/REPO/SCB/docs/plans/calendar.md)
 
 This document must not redefine those semantics.
 
@@ -512,11 +516,11 @@ If a page needs the same fact in two places, render it from one shared source.
 
 ## Source Of Truth Mapping
 
-- Product constraints: [website-foundation.md](/home/nout/REPO/SCB/website-foundation.md)
+- Product constraints: [website-foundation.md](/home/nout/REPO/SCB/docs/plans/website-foundation.md)
 - Page scope: `routes-and-pages.md`
-- Calendar semantics: [calendar.md](/home/nout/REPO/SCB/calendar.md)
+- Calendar semantics: [calendar.md](/home/nout/REPO/SCB/docs/plans/calendar.md)
 - Public fact confirmation: `public-data-register.md`
-- Wix source evidence: [wix-audit.md](/home/nout/REPO/SCB/wix-audit.md)
+- Wix source evidence: [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md)
 
 ---
 
