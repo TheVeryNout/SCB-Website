@@ -24,9 +24,9 @@ This foundation document is intentionally short on source-site detail. The detai
 
 Cold-start rule:
 
-- read this file first to understand product intent and constraints
-- read [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md) second to understand the current Wix site, route inventory, migrated content scope, assets, and unresolved source-data quirks
-- continue with [README.md](/home/nout/REPO/SCB/README.md) for the current stack order after those first two documents
+- normal repo entry starts at [README.md](/home/nout/REPO/SCB/README.md), then [cold-start.md](/home/nout/REPO/SCB/docs/plans/cold-start.md)
+- this file is the first normative specification to read after [cold-start.md](/home/nout/REPO/SCB/docs/plans/cold-start.md)
+- after this file, continue to [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md), then follow the order listed in [cold-start.md](/home/nout/REPO/SCB/docs/plans/cold-start.md)
 
 ---
 

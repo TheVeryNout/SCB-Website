@@ -159,6 +159,12 @@ Use a single website event content type with a model designed for public communi
 - `visibility`: `public | hidden`
 - `source`: `website | imported-dash | migrated-wix`
 
+Field-semantics rule:
+
+- `status` describes the public state of an event
+- `visibility` controls whether the event is rendered publicly at all
+- `hidden` is a visibility value, not an event status
+
 ### Recurrence block
 
 Every event must include either:
@@ -237,9 +243,17 @@ Store the recurrence rule once in content, then expand it into concrete public e
 - weekly
 - monthly
 
+Launch implementation rule:
+
+- Decap CMS must expose only `none`, `weekly`, and `monthly` for launch
+- launch monthly support is limited to same-date monthly recurrence
+- same-weekday monthly recurrence stays out of scope until explicitly needed
+
 ### Daily recurrence
 
-Support in schema, but treat as lower priority unless a real public use case exists.
+Keep `daily` in the schema only as a forward-compatible reserved value.
+
+It is not part of the launch CMS UI and does not need launch implementation support.
 
 Reason:
 
@@ -452,8 +466,9 @@ Admins should be able to edit:
 - title required
 - summary required
 - start required
-- if end is omitted, allow same-day fallback only if explicitly supported
+- `endDate` and `endTime` required for launch
 - recurrence fields only shown when recurrence is enabled
+- launch recurrence controls expose only `none`, `weekly`, and same-date `monthly`
 
 ---
 
@@ -524,6 +539,11 @@ Default recommendation:
 
 - require end time for launch
 
+Launch rule:
+
+- do not implement an omitted-end fallback at launch
+- for same-day events, store `endDate` equal to `startDate`
+
 Reason:
 
 - keeps display logic simple
@@ -551,7 +571,11 @@ Per user preference, use:
 - `cancelled`: keep visible, clearly marked
 - `postponed`: keep visible with explanatory copy
 - `tentative`: visible with caution label
-- `hidden`: never rendered publicly
+
+Visibility rule:
+
+- `visibility: hidden` means the event is never rendered publicly
+- hidden is not a `status` value
 
 ---
 
@@ -851,7 +875,8 @@ The calendar implementation is done when all of the following are true:
 - static Astro rendering
 - Decap CMS `events` collection
 - occurrence URLs include date
-- weekly recurrence supported for launch
+- launch recurrence UI supports `none`, `weekly`, and same-date `monthly`
+- `daily` recurrence remains schema-reserved only
 - `Europe/Berlin` timezone
 - end time required
 - public map links only, no embedded live map
