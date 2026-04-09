@@ -12,7 +12,7 @@ Use it to decide:
 - Netlify and Decap assumptions
 - redirect and build rules
 
-If this document conflicts with [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md), this document wins unless [website-foundation.md](/home/nout/REPO/SCB/docs/plans/website-foundation.md), `routes-and-pages.md`, `content-cms.md`, or the user says otherwise.
+If this document conflicts with [wix-audit.md](/home/nout/REPO/SCB-Website/docs/plans/wix-audit.md), this document wins unless [website-foundation.md](/home/nout/REPO/SCB-Website/docs/plans/website-foundation.md), `routes-and-pages.md`, `content-cms.md`, or the user says otherwise.
 
 ---
 
@@ -52,11 +52,11 @@ This document does not define:
 
 Those belong in:
 
-- [website-foundation.md](/home/nout/REPO/SCB/docs/plans/website-foundation.md)
+- [website-foundation.md](/home/nout/REPO/SCB-Website/docs/plans/website-foundation.md)
 - `routes-and-pages.md`
 - `public-data-register.md`
 - `migration.md`
-- [calendar.md](/home/nout/REPO/SCB/docs/plans/calendar.md)
+- [calendar.md](/home/nout/REPO/SCB-Website/docs/plans/calendar.md)
 
 ---
 
@@ -166,7 +166,7 @@ Do not use client-side code for:
 
 Calendar recurrence expansion and occurrence derivation happen at build time.
 
-Calendar semantics defer to [calendar.md](/home/nout/REPO/SCB/docs/plans/calendar.md).
+Calendar semantics defer to [calendar.md](/home/nout/REPO/SCB-Website/docs/plans/calendar.md).
 
 ---
 

@@ -12,7 +12,7 @@ Use it to decide:
 - how unresolved source issues are tracked
 - how migration QA and signoff work
 
-If this document conflicts with [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md), this document wins on process unless [website-foundation.md](/home/nout/REPO/SCB/docs/plans/website-foundation.md) or the user says otherwise.
+If this document conflicts with [wix-audit.md](/home/nout/REPO/SCB-Website/docs/plans/wix-audit.md), this document wins on process unless [website-foundation.md](/home/nout/REPO/SCB-Website/docs/plans/website-foundation.md) or the user says otherwise.
 
 ---
 
@@ -35,10 +35,10 @@ This document does not define:
 
 Those belong in:
 
-- [website-foundation.md](/home/nout/REPO/SCB/docs/plans/website-foundation.md)
+- [website-foundation.md](/home/nout/REPO/SCB-Website/docs/plans/website-foundation.md)
 - `routes-and-pages.md`
 - `implementation.md`
-- [calendar.md](/home/nout/REPO/SCB/docs/plans/calendar.md)
+- [calendar.md](/home/nout/REPO/SCB-Website/docs/plans/calendar.md)
 - `public-data-register.md`
 
 ---
@@ -400,12 +400,12 @@ Final launch signoff requires:
 
 ## Source Of Truth Mapping During Migration
 
-- Product constraints: [website-foundation.md](/home/nout/REPO/SCB/docs/plans/website-foundation.md)
+- Product constraints: [website-foundation.md](/home/nout/REPO/SCB-Website/docs/plans/website-foundation.md)
 - Page scope: `routes-and-pages.md`
 - Content model: `content-cms.md`
-- Calendar logic: [calendar.md](/home/nout/REPO/SCB/docs/plans/calendar.md)
+- Calendar logic: [calendar.md](/home/nout/REPO/SCB-Website/docs/plans/calendar.md)
 - Public fact risk status: `public-data-register.md`
-- Source evidence and audit notes: [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md)
+- Source evidence and audit notes: [wix-audit.md](/home/nout/REPO/SCB-Website/docs/plans/wix-audit.md)
 
 ---
 

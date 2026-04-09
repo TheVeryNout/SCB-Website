@@ -20,13 +20,13 @@ If a later planning or implementation document conflicts with this file, this fi
 
 This project is a rebuild of the current public Skate Club Biriciana website into a simpler, more robust Astro site.
 
-This foundation document is intentionally short on source-site detail. The detailed audit of the existing website lives in [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md).
+This foundation document is intentionally short on source-site detail. The detailed audit of the existing website lives in [wix-audit.md](/home/nout/REPO/SCB-Website/docs/plans/wix-audit.md).
 
 Cold-start rule:
 
-- normal repo entry starts at [README.md](/home/nout/REPO/SCB/README.md), then [cold-start.md](/home/nout/REPO/SCB/docs/plans/cold-start.md)
-- this file is the first normative specification to read after [cold-start.md](/home/nout/REPO/SCB/docs/plans/cold-start.md)
-- after this file, continue to [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md), then follow the order listed in [cold-start.md](/home/nout/REPO/SCB/docs/plans/cold-start.md)
+- normal repo entry starts at [README.md](/home/nout/REPO/SCB-Website/README.md), then [cold-start.md](/home/nout/REPO/SCB-Website/docs/plans/cold-start.md)
+- this file is the first normative specification to read after [cold-start.md](/home/nout/REPO/SCB-Website/docs/plans/cold-start.md)
+- after this file, continue to [wix-audit.md](/home/nout/REPO/SCB-Website/docs/plans/wix-audit.md), then follow the order listed in [cold-start.md](/home/nout/REPO/SCB-Website/docs/plans/cold-start.md)
 
 ---
 
@@ -36,7 +36,7 @@ Cold-start rule:
 
 The project is the public website of **Skate Club Biriciana e.V.**, a skateboard non-profit.
 
-The current live/public source site is a Wix website documented in [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md).
+The current live/public source site is a Wix website documented in [wix-audit.md](/home/nout/REPO/SCB-Website/docs/plans/wix-audit.md).
 
 Canonical source URLs already identified:
 
@@ -158,21 +158,21 @@ This project must not drift into those categories.
 
 Use this authority order for active decisions:
 
-1. [website-foundation.md](/home/nout/REPO/SCB/docs/plans/website-foundation.md)
+1. [website-foundation.md](/home/nout/REPO/SCB-Website/docs/plans/website-foundation.md)
    Product intent, priority order, locked constraints, and project-level boundaries
-2. [routes-and-pages.md](/home/nout/REPO/SCB/docs/plans/routes-and-pages.md)
+2. [routes-and-pages.md](/home/nout/REPO/SCB-Website/docs/plans/routes-and-pages.md)
    Final public route set, page purpose, required sections, preserve/simplify/drop decisions
-3. [calendar.md](/home/nout/REPO/SCB/docs/plans/calendar.md)
+3. [calendar.md](/home/nout/REPO/SCB-Website/docs/plans/calendar.md)
    Canonical public event model, recurrence rules, occurrence URLs, calendar behavior
-4. [content-cms.md](/home/nout/REPO/SCB/docs/plans/content-cms.md)
+4. [content-cms.md](/home/nout/REPO/SCB-Website/docs/plans/content-cms.md)
    Content ownership, Decap collections, shared data ownership, editable-vs-code boundaries
-5. [public-data-register.md](/home/nout/REPO/SCB/docs/plans/public-data-register.md)
+5. [public-data-register.md](/home/nout/REPO/SCB-Website/docs/plans/public-data-register.md)
    Confirmation state and publication safety for risky public facts
-6. [implementation.md](/home/nout/REPO/SCB/docs/plans/implementation.md)
+6. [implementation.md](/home/nout/REPO/SCB-Website/docs/plans/implementation.md)
    Technical structure, route-to-content wiring, asset handling, hosting, and build rules
-7. [migration.md](/home/nout/REPO/SCB/docs/plans/migration.md)
+7. [migration.md](/home/nout/REPO/SCB-Website/docs/plans/migration.md)
    Migration workflow, manifest rules, QA process, and redirect generation process
-8. [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md)
+8. [wix-audit.md](/home/nout/REPO/SCB-Website/docs/plans/wix-audit.md)
    Audited Wix routes, content, assets, source quirks, and historical planning context
 
 ### The current Wix site
@@ -346,7 +346,7 @@ The site also needs stable public pages such as:
 
 ## Information Architecture
 
-The public structure should stay compact and close to the current known site structure documented in [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md).
+The public structure should stay compact and close to the current known site structure documented in [wix-audit.md](/home/nout/REPO/SCB-Website/docs/plans/wix-audit.md).
 
 Current expected top-level navigation:
 
@@ -461,7 +461,7 @@ The site should look better than Wix without becoming harder to maintain than Wi
 
 ### Migration reference
 
-The current Wix site documented in [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md) is the migration reference.
+The current Wix site documented in [wix-audit.md](/home/nout/REPO/SCB-Website/docs/plans/wix-audit.md) is the migration reference.
 
 ### What should be preserved
 
@@ -494,7 +494,7 @@ If source data in Wix is contradictory or suspicious, preserve the uncertainty i
 
 Some public data on the current site is important and may require confirmation before final publication.
 
-Examples already identified in [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md) include:
+Examples already identified in [wix-audit.md](/home/nout/REPO/SCB-Website/docs/plans/wix-audit.md) include:
 
 - legal contact data
 - bank/donation data
@@ -565,7 +565,7 @@ This order is binding for implementation decisions.
 This document should be considered satisfied only if the implementation and supporting docs meet all of the following:
 
 - the project is explicitly documented as a rebuild of the current Wix public website
-- [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md) is treated as the detailed source audit for migration
+- [wix-audit.md](/home/nout/REPO/SCB-Website/docs/plans/wix-audit.md) is treated as the detailed source audit for migration
 - the site is implemented as a mobile-first public information website, not as an app-like dashboard
 - the launch architecture does not require `SCB-Dash`
 - routine editing of news, events, and selected static content is possible through Decap CMS
@@ -582,25 +582,25 @@ This file sits at the top of the website documentation stack.
 
 Recommended companion docs:
 
-- [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md)
+- [wix-audit.md](/home/nout/REPO/SCB-Website/docs/plans/wix-audit.md)
   Detailed Wix audit, content inventory, asset inventory, unresolved source issues, previous planning memory
 
-- [routes-and-pages.md](/home/nout/REPO/SCB/docs/plans/routes-and-pages.md)
+- [routes-and-pages.md](/home/nout/REPO/SCB-Website/docs/plans/routes-and-pages.md)
   Final route/page scope and preserve/simplify/drop decisions
 
-- [calendar.md](/home/nout/REPO/SCB/docs/plans/calendar.md)
+- [calendar.md](/home/nout/REPO/SCB-Website/docs/plans/calendar.md)
   Detailed public calendar plan
 
-- [content-cms.md](/home/nout/REPO/SCB/docs/plans/content-cms.md)
+- [content-cms.md](/home/nout/REPO/SCB-Website/docs/plans/content-cms.md)
   Content model and Decap collection definitions
 
-- [public-data-register.md](/home/nout/REPO/SCB/docs/plans/public-data-register.md)
+- [public-data-register.md](/home/nout/REPO/SCB-Website/docs/plans/public-data-register.md)
   Confirmation status for risky public facts
 
-- [implementation.md](/home/nout/REPO/SCB/docs/plans/implementation.md)
+- [implementation.md](/home/nout/REPO/SCB-Website/docs/plans/implementation.md)
   Astro architecture, routes, build strategy, and deployment details
 
-- [migration.md](/home/nout/REPO/SCB/docs/plans/migration.md)
+- [migration.md](/home/nout/REPO/SCB-Website/docs/plans/migration.md)
   Wix-to-Astro migration workflow and QA rules
 
 Optional support docs may be added later, but they are not part of the normative stack until they actually exist.

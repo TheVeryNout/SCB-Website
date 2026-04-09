@@ -17,13 +17,13 @@ It is not the primary normative source for current architecture, page scope, CMS
 
 When they exist, prefer these newer docs for active decisions:
 
-- [website-foundation.md](/home/nout/REPO/SCB/docs/plans/website-foundation.md)
+- [website-foundation.md](/home/nout/REPO/SCB-Website/docs/plans/website-foundation.md)
 - `routes-and-pages.md`
 - `content-cms.md`
 - `implementation.md`
 - `migration.md`
 - `public-data-register.md`
-- [calendar.md](/home/nout/REPO/SCB/docs/plans/calendar.md)
+- [calendar.md](/home/nout/REPO/SCB-Website/docs/plans/calendar.md)
 
 ## User Request
 The user wants the current Wix website for the skateboard non-profit "Skate Club Biriciana e.V." rebuilt completely with Astro SSG.
@@ -594,13 +594,13 @@ That material was intentionally retired after the documentation stack was split 
 
 Use these docs for active decisions instead:
 
-- [website-foundation.md](/home/nout/REPO/SCB/docs/plans/website-foundation.md)
-- [routes-and-pages.md](/home/nout/REPO/SCB/docs/plans/routes-and-pages.md)
-- [calendar.md](/home/nout/REPO/SCB/docs/plans/calendar.md)
-- [content-cms.md](/home/nout/REPO/SCB/docs/plans/content-cms.md)
-- [public-data-register.md](/home/nout/REPO/SCB/docs/plans/public-data-register.md)
-- [implementation.md](/home/nout/REPO/SCB/docs/plans/implementation.md)
-- [migration.md](/home/nout/REPO/SCB/docs/plans/migration.md)
+- [website-foundation.md](/home/nout/REPO/SCB-Website/docs/plans/website-foundation.md)
+- [routes-and-pages.md](/home/nout/REPO/SCB-Website/docs/plans/routes-and-pages.md)
+- [calendar.md](/home/nout/REPO/SCB-Website/docs/plans/calendar.md)
+- [content-cms.md](/home/nout/REPO/SCB-Website/docs/plans/content-cms.md)
+- [public-data-register.md](/home/nout/REPO/SCB-Website/docs/plans/public-data-register.md)
+- [implementation.md](/home/nout/REPO/SCB-Website/docs/plans/implementation.md)
+- [migration.md](/home/nout/REPO/SCB-Website/docs/plans/migration.md)
 
 This audit should now be used only for:
 

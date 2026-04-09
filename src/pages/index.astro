@@ -1,0 +1,89 @@
+---
+import Container from "../components/Container.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const setupCards = [
+  {
+    title: "Astro foundation",
+    body: "Static output, trailing slashes, strict TypeScript, and Bun-managed scripts are configured in-repo.",
+  },
+  {
+    title: "Tailwind baseline",
+    body: "Tailwind 4 is wired through the Vite plugin with a small site shell ready for real route work.",
+  },
+  {
+    title: "CMS shell",
+    body: "Decap is mounted at /admin/ with Netlify Identity and Git Gateway settings prepared for the current branch.",
+  },
+];
+
+const nextSlices = [
+  "Replace the bootstrap CMS placeholder with the real collections from the planning stack.",
+  "Add Astro content collections and validation for homepage, pages, posts, events, media, and settings.",
+  "Build the public routes and event pipeline in the locked implementation order.",
+];
+---
+
+<BaseLayout
+  title="SCB Website"
+  description="Bootstrap foundation for the Skate Club Biriciana e.V. Astro rebuild."
+>
+  <section class="py-16 sm:py-24">
+    <Container>
+      <div class="grid gap-10 lg:grid-cols-[1.3fr_0.9fr] lg:items-start">
+        <div class="space-y-8">
+          <div class="space-y-5">
+            <p class="inline-flex rounded-full border border-amber-500/40 bg-amber-100 px-4 py-2 text-xs font-semibold tracking-[0.2em] text-slate-950 uppercase">
+              SCB Website Rebuild
+            </p>
+            <h1 class="max-w-3xl text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
+              Astro foundation in place, ready for CMS collections and route work.
+            </h1>
+            <p class="max-w-2xl text-lg leading-8 text-slate-700">
+              This repo now has the project baseline needed to move from planning into implementation without introducing React or a heavy UI stack ahead of real requirements.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-4">
+            <a class="inline-flex items-center justify-center rounded-full bg-slate-950 px-6 py-3 text-sm font-semibold text-white no-underline transition hover:bg-slate-800" href="/admin/">
+              Open CMS shell
+            </a>
+            <span class="inline-flex items-center rounded-full border border-slate-300 bg-white/75 px-5 py-3 text-sm text-slate-700">
+              Bun + Astro 6 + Tailwind 4
+            </span>
+          </div>
+        </div>
+
+        <div class="rounded-[2rem] border border-slate-900/10 bg-white/80 p-6 shadow-[0_20px_60px_-30px_rgba(15,23,42,0.35)] backdrop-blur">
+          <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Current focus</p>
+          <ul class="mt-5 space-y-4">
+            {
+              nextSlices.map((item) => (
+                <li class="flex gap-3 text-sm leading-6 text-slate-700">
+                  <span class="mt-1 h-2.5 w-2.5 flex-none rounded-full bg-amber-500"></span>
+                  <span>{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <section class="pb-16 sm:pb-24">
+    <Container>
+      <div class="grid gap-5 md:grid-cols-3">
+        {
+          setupCards.map((card) => (
+            <article class="rounded-[1.75rem] border border-slate-900/10 bg-white/85 p-6 shadow-[0_18px_45px_-35px_rgba(15,23,42,0.4)]">
+              <h2 class="text-lg font-semibold text-slate-950">{card.title}</h2>
+              <p class="mt-3 text-sm leading-6 text-slate-700">{card.body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </Container>
+  </section>
+</BaseLayout>
+

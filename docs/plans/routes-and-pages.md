@@ -11,7 +11,7 @@ Use it to decide:
 - what each page must contain
 - which Wix behaviors are preserved, simplified, or dropped
 
-If this document conflicts with [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md), this document wins unless [website-foundation.md](/home/nout/REPO/SCB/docs/plans/website-foundation.md) or the user says otherwise.
+If this document conflicts with [wix-audit.md](/home/nout/REPO/SCB-Website/docs/plans/wix-audit.md), this document wins unless [website-foundation.md](/home/nout/REPO/SCB-Website/docs/plans/website-foundation.md) or the user says otherwise.
 
 ---
 
@@ -63,7 +63,7 @@ Use these persistent footer links:
 - `Impressum` -> `/impressum/`
 - `Datenschutz` -> `/datenschutz/`
 - Instagram
-- confirmed YouTube link only if [public-data-register.md](/home/nout/REPO/SCB/docs/plans/public-data-register.md) marks a canonical destination safe to publish
+- confirmed YouTube link only if [public-data-register.md](/home/nout/REPO/SCB-Website/docs/plans/public-data-register.md) marks a canonical destination safe to publish
 - email/contact reference
 
 ### Launch route set
@@ -349,7 +349,7 @@ Drop at launch:
 - Wix widget behavior
 - repeated marketing blocks that distract from event discovery
 
-Calendar-specific behavior is defined in [calendar.md](/home/nout/REPO/SCB/docs/plans/calendar.md).
+Calendar-specific behavior is defined in [calendar.md](/home/nout/REPO/SCB-Website/docs/plans/calendar.md).
 
 ### Event Detail
 
@@ -456,7 +456,7 @@ Simplify:
 - do not embed a live map by default
 - use a simple location block or static image linking out to Google Maps
 
-Contact backend is defined in [implementation.md](/home/nout/REPO/SCB/docs/plans/implementation.md) and must not be re-decided here.
+Contact backend is defined in [implementation.md](/home/nout/REPO/SCB-Website/docs/plans/implementation.md) and must not be re-decided here.
 
 ### Contact Thank You
 
@@ -583,9 +583,9 @@ Do not launch with:
 
 ## Content Source Rules Per Page
 
-- Public page purpose and broad structure come from the current Wix site as documented in [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md).
-- Product constraints come from [website-foundation.md](/home/nout/REPO/SCB/docs/plans/website-foundation.md).
-- Calendar-specific rendering and modeling come from [calendar.md](/home/nout/REPO/SCB/docs/plans/calendar.md).
+- Public page purpose and broad structure come from the current Wix site as documented in [wix-audit.md](/home/nout/REPO/SCB-Website/docs/plans/wix-audit.md).
+- Product constraints come from [website-foundation.md](/home/nout/REPO/SCB-Website/docs/plans/website-foundation.md).
+- Calendar-specific rendering and modeling come from [calendar.md](/home/nout/REPO/SCB-Website/docs/plans/calendar.md).
 - Risky public facts must be checked against `public-data-register.md` before being treated as final.
 
 ---

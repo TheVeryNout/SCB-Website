@@ -109,21 +109,21 @@ Do not invert this order by polishing media or low-priority copy before the Astr
 
 Use the docs in this order after finishing this file:
 
-1. [website-foundation.md](/home/nout/REPO/SCB/docs/plans/website-foundation.md)
+1. [website-foundation.md](/home/nout/REPO/SCB-Website/docs/plans/website-foundation.md)
    Product intent, boundaries, locked constraints
-2. [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md)
+2. [wix-audit.md](/home/nout/REPO/SCB-Website/docs/plans/wix-audit.md)
    Source-site observations, assets, route inventory, source quirks
-3. [routes-and-pages.md](/home/nout/REPO/SCB/docs/plans/routes-and-pages.md)
+3. [routes-and-pages.md](/home/nout/REPO/SCB-Website/docs/plans/routes-and-pages.md)
    Final route set and page contracts
-4. [calendar.md](/home/nout/REPO/SCB/docs/plans/calendar.md)
+4. [calendar.md](/home/nout/REPO/SCB-Website/docs/plans/calendar.md)
    Canonical event model and recurrence behavior
-5. [content-cms.md](/home/nout/REPO/SCB/docs/plans/content-cms.md)
+5. [content-cms.md](/home/nout/REPO/SCB-Website/docs/plans/content-cms.md)
    CMS ownership boundaries and content collections
-6. [public-data-register.md](/home/nout/REPO/SCB/docs/plans/public-data-register.md)
+6. [public-data-register.md](/home/nout/REPO/SCB-Website/docs/plans/public-data-register.md)
    High-risk public facts and confirmation status
-7. [implementation.md](/home/nout/REPO/SCB/docs/plans/implementation.md)
+7. [implementation.md](/home/nout/REPO/SCB-Website/docs/plans/implementation.md)
    Technical structure, hosting, route wiring, asset conventions
-8. [migration.md](/home/nout/REPO/SCB/docs/plans/migration.md)
+8. [migration.md](/home/nout/REPO/SCB-Website/docs/plans/migration.md)
    Migration workflow, manifest, QA rules
 
 ---

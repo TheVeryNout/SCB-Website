@@ -6,29 +6,29 @@ This repo is the documentation and implementation planning base for rebuilding t
 
 For a cold start, read in this order:
 
-1. [cold-start.md](/home/nout/REPO/SCB/docs/plans/cold-start.md)
-2. [website-foundation.md](/home/nout/REPO/SCB/docs/plans/website-foundation.md)
-3. [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md)
-4. [routes-and-pages.md](/home/nout/REPO/SCB/docs/plans/routes-and-pages.md)
-5. [calendar.md](/home/nout/REPO/SCB/docs/plans/calendar.md)
-6. [content-cms.md](/home/nout/REPO/SCB/docs/plans/content-cms.md)
-7. [public-data-register.md](/home/nout/REPO/SCB/docs/plans/public-data-register.md)
-8. [implementation.md](/home/nout/REPO/SCB/docs/plans/implementation.md)
-9. [migration.md](/home/nout/REPO/SCB/docs/plans/migration.md)
-10. [parallel-agent-environment.md](/home/nout/REPO/SCB/docs/plans/parallel-agent-environment.md)
+1. [cold-start.md](/home/nout/REPO/SCB-Website/docs/plans/cold-start.md)
+2. [website-foundation.md](/home/nout/REPO/SCB-Website/docs/plans/website-foundation.md)
+3. [wix-audit.md](/home/nout/REPO/SCB-Website/docs/plans/wix-audit.md)
+4. [routes-and-pages.md](/home/nout/REPO/SCB-Website/docs/plans/routes-and-pages.md)
+5. [calendar.md](/home/nout/REPO/SCB-Website/docs/plans/calendar.md)
+6. [content-cms.md](/home/nout/REPO/SCB-Website/docs/plans/content-cms.md)
+7. [public-data-register.md](/home/nout/REPO/SCB-Website/docs/plans/public-data-register.md)
+8. [implementation.md](/home/nout/REPO/SCB-Website/docs/plans/implementation.md)
+9. [migration.md](/home/nout/REPO/SCB-Website/docs/plans/migration.md)
+10. [parallel-agent-environment.md](/home/nout/REPO/SCB-Website/docs/plans/parallel-agent-environment.md)
 
 ## Doc Roles
 
-- [cold-start.md](/home/nout/REPO/SCB/docs/plans/cold-start.md): cold-start index, priority framing, locked decisions, and implementation sequence
-- [website-foundation.md](/home/nout/REPO/SCB/docs/plans/website-foundation.md): top-level product intent, constraints, priorities, and locked decisions
-- [wix-audit.md](/home/nout/REPO/SCB/docs/plans/wix-audit.md): source-site audit, route inventory, source quirks, assets, and historical planning notes
-- [routes-and-pages.md](/home/nout/REPO/SCB/docs/plans/routes-and-pages.md): final public routes, page scope, and preserve/simplify/drop decisions
-- [calendar.md](/home/nout/REPO/SCB/docs/plans/calendar.md): canonical event/calendar behavior and schema semantics
-- [content-cms.md](/home/nout/REPO/SCB/docs/plans/content-cms.md): content model and Decap CMS ownership rules
-- [public-data-register.md](/home/nout/REPO/SCB/docs/plans/public-data-register.md): risky public facts and confirmation status
-- [implementation.md](/home/nout/REPO/SCB/docs/plans/implementation.md): Astro/Netlify/Decap technical architecture
-- [migration.md](/home/nout/REPO/SCB/docs/plans/migration.md): Wix-to-Astro migration workflow, manifest, and QA rules
-- [parallel-agent-environment.md](/home/nout/REPO/SCB/docs/plans/parallel-agent-environment.md): multi-agent orchestration, concurrency safety, observability, and security guardrails
+- [cold-start.md](/home/nout/REPO/SCB-Website/docs/plans/cold-start.md): cold-start index, priority framing, locked decisions, and implementation sequence
+- [website-foundation.md](/home/nout/REPO/SCB-Website/docs/plans/website-foundation.md): top-level product intent, constraints, priorities, and locked decisions
+- [wix-audit.md](/home/nout/REPO/SCB-Website/docs/plans/wix-audit.md): source-site audit, route inventory, source quirks, assets, and historical planning notes
+- [routes-and-pages.md](/home/nout/REPO/SCB-Website/docs/plans/routes-and-pages.md): final public routes, page scope, and preserve/simplify/drop decisions
+- [calendar.md](/home/nout/REPO/SCB-Website/docs/plans/calendar.md): canonical event/calendar behavior and schema semantics
+- [content-cms.md](/home/nout/REPO/SCB-Website/docs/plans/content-cms.md): content model and Decap CMS ownership rules
+- [public-data-register.md](/home/nout/REPO/SCB-Website/docs/plans/public-data-register.md): risky public facts and confirmation status
+- [implementation.md](/home/nout/REPO/SCB-Website/docs/plans/implementation.md): Astro/Netlify/Decap technical architecture
+- [migration.md](/home/nout/REPO/SCB-Website/docs/plans/migration.md): Wix-to-Astro migration workflow, manifest, and QA rules
+- [parallel-agent-environment.md](/home/nout/REPO/SCB-Website/docs/plans/parallel-agent-environment.md): multi-agent orchestration, concurrency safety, observability, and security guardrails
 
 ## Current Direction
 
@@ -51,9 +51,16 @@ All active planning docs now live under `docs/plans/`.
 
 The documentation stack is split by responsibility so later implementation work does not need to infer architecture or scope from the source audit.
 
-Use [cold-start.md](/home/nout/REPO/SCB/docs/plans/cold-start.md) first before diving into the deeper specs.
+Use [cold-start.md](/home/nout/REPO/SCB-Website/docs/plans/cold-start.md) first before diving into the deeper specs.
 
-Implementation scaffolding has not been started in this repo yet.
+Foundation scaffolding is now in place in this repo:
+
+- Astro project bootstrap
+- Tailwind 4 baseline
+- Bun-managed package/scripts setup
+- Decap CMS admin shell at `/admin/`
+
+Content collections, route implementation, and migration work still remain.
 
 ## Parallel Agent Runtime Pack
 

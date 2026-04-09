@@ -1,0 +1,26 @@
+backend:
+  name: git-gateway
+  branch: master
+
+local_backend: true
+locale: de
+media_folder: "public/media/uploads"
+public_folder: "/media/uploads"
+
+# Temporary bootstrap collection so the admin shell has a concrete document
+# until the real Astro content collections are implemented.
+collections:
+  - name: "bootstrap"
+    label: "Bootstrap"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: "cms/bootstrap.md"
+        label: "CMS Bootstrap"
+        name: "cms_bootstrap"
+        fields:
+          - { label: "Titel", name: "title", widget: "string" }
+          - { label: "Status", name: "status", widget: "hidden", default: "foundation" }
+          - { label: "Notiz", name: "body", widget: "markdown", required: false }
+

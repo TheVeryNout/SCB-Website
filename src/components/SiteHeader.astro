@@ -1,0 +1,61 @@
+---
+import Container from "./Container.astro";
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+
+const navItems = [
+  { href: "/", label: "Start" },
+  { href: "/neuigkeiten/", label: "Neuigkeiten" },
+  { href: "/ueber-uns/", label: "Uber uns" },
+  { href: "/pics-n-vids/", label: "Pics n Vids" },
+  { href: "/veranstaltungen/", label: "Veranstaltungen" },
+  { href: "/mitgliedschaft/", label: "Mitgliedschaft" },
+  { href: "/kontakt/", label: "Kontakt" },
+];
+---
+
+<header class="border-b border-slate-900/10 bg-white/75 backdrop-blur">
+  <Container class="py-5">
+    <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+      <div class="space-y-1">
+        <a class="inline-flex items-center gap-3 text-lg font-semibold tracking-[0.16em] text-slate-950 uppercase no-underline" href="/">
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-amber-500/50 bg-amber-300/55 text-sm font-bold text-slate-950">
+            SCB
+          </span>
+          Skate Club Biriciana e.V.
+        </a>
+        <p class="max-w-2xl text-sm text-slate-700">
+          Astro foundation for the public website rebuild with a static-first CMS and event calendar.
+        </p>
+      </div>
+
+      <nav aria-label="Primary" class="flex flex-wrap gap-2">
+        {
+          navItems.map((item) => {
+            const isActive = currentPath === item.href;
+
+            return (
+              <a
+                href={item.href}
+                aria-current={isActive ? "page" : undefined}
+                class:list={[
+                  "rounded-full border px-4 py-2 text-sm font-medium transition",
+                  isActive
+                    ? "border-slate-950 bg-slate-950 text-white no-underline"
+                    : "border-slate-300 bg-white/80 text-slate-800 no-underline hover:border-amber-500 hover:bg-amber-100",
+                ]}
+              >
+                {item.label}
+              </a>
+            );
+          })
+        }
+      </nav>
+    </div>
+  </Container>
+</header>
+
