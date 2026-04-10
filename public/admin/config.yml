@@ -2,7 +2,14 @@ backend:
   name: git-gateway
   branch: master
 
-local_backend: true
+# On localhost, Decap talks to the local proxy server instead of Netlify's
+# hosted Git Gateway. Outside localhost, the normal git-gateway backend applies.
+local_backend:
+  url: http://127.0.0.1:8081/api/v1
+  allowed_hosts:
+    - 127.0.0.1
+    - localhost
+
 locale: de
 media_folder: "public/media/uploads"
 public_folder: "/media/uploads"
@@ -23,4 +30,3 @@ collections:
           - { label: "Titel", name: "title", widget: "string" }
           - { label: "Status", name: "status", widget: "hidden", default: "foundation" }
           - { label: "Notiz", name: "body", widget: "markdown", required: false }
-

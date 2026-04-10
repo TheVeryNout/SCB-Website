@@ -62,6 +62,26 @@ Foundation scaffolding is now in place in this repo:
 
 Content collections, route implementation, and migration work still remain.
 
+## Local CMS Workflow
+
+The CMS is configured for two environments:
+
+- deployed: Decap uses Netlify Identity + Git Gateway against the `master` branch
+- local: Decap switches to a local proxy backend at `http://127.0.0.1:8081/api/v1`
+
+Useful commands:
+
+- `bun run dev`: Astro dev server only
+- `bun run cms:proxy`: local Decap proxy server only
+- `bun run dev:cms`: Astro dev server and Decap proxy together
+
+Local CMS notes:
+
+- open the `/admin/` route on whatever local Astro URL the dev server prints, usually `http://localhost:4321/admin/`
+- the proxy server is for local development only and is intentionally unauthenticated
+- `local_backend` only activates on localhost, so production still uses Git Gateway
+- local CMS publishing writes to your local Git repo and working tree; it does not call Netlify
+
 ## Parallel Agent Runtime Pack
 
 A concrete multi-agent runtime pack now exists at `.codex/agents/` with:

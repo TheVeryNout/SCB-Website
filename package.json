@@ -9,14 +9,18 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "dev:cms": "concurrently -k -n site,cms -c cyan,yellow \"astro dev\" \"decap-server\"",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "cms:proxy": "decap-server"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.1.5",
+    "concurrently": "^9.2.1",
+    "decap-server": "^3.6.0",
     "tailwindcss": "^4.2.2",
     "typescript": "^5.9.3"
   }
