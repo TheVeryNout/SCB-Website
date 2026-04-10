@@ -81,6 +81,19 @@ Use [execution-plan.md](/home/nout/REPO/SCB-Website/docs/plans/execution-plan.md
 
 Use [status-checklist.md](/home/nout/REPO/SCB-Website/docs/plans/status-checklist.md) immediately after that so the next conversation starts from recorded state instead of inference.
 
+## Minimal Resume Prompt
+
+This repo is supposed to support low-friction continuation.
+
+Once the planning stack and `AGENTS.md` are in place, a new conversation should normally only need a short prompt such as:
+
+- `Resume from the current committed state and continue the next slice recorded in docs/plans/status-checklist.md`
+- `Resume from the current committed state and implement the next Phase 5 routes`
+
+Do not rely on the user to keep re-pasting the same startup, evidence, asset, or handoff rules if those rules are already documented in the repo.
+
+If a future agent feels the need to repeat stable rule boilerplate in chat, that is a sign the missing rule should be added to the committed docs instead.
+
 ## Local CMS Workflow
 
 The CMS is configured for two environments:

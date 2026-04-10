@@ -198,6 +198,7 @@ Audit notes:
 1. The control-state drift across Phases 1 to 4 has now been normalized in the committed tracking docs. Future work must continue from the updated progress snapshot with Phase 5 active, instead of re-inferring phase status from repo artifacts.
 2. Wix event slug dates remain source evidence only. They are not route truth, redirect truth, or migration truth without visible-content verification.
 3. `src/assets/images/wix-staging/` is a large tracked staging workspace at about `43M`, but current code references are not a valid basis for pruning it yet. Many staged assets may still be needed for later route build-out and migration work. Any cleanup there must wait for explicit asset curation after the relevant implementation phases are complete.
+4. Stable resume rules are now explicitly owned by `AGENTS.md`, `README.md`, and the execution-plan handoff section. Future continuation prompts should be short and task-specific unless they intentionally override the repo-owned workflow.
 
 ---
 
@@ -207,6 +208,7 @@ Audit notes:
 - active phase for the next resume should be Phase 5 route implementation
 - exact next continuation point: use the new shared page primitives to implement the remaining singleton-backed routes first, starting with `/ueber-uns/`, `/mitgliedschaft/`, and `/kontakt/`, before moving on to the news/media/legal route set
 - open exceptions: Phase 5 to Phase 7 remain incomplete, and Astro check still reports only non-blocking Zod deprecation hints from `src/content/config.ts`
+- prompt rule for the next resume: a short prompt should be sufficient because the stable startup and handoff rules now live in committed docs
 
 ---
 

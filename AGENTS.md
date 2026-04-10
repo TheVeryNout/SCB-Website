@@ -75,6 +75,27 @@ At the start of the session, explicitly determine and state:
 
 If that is not clear from committed files, do not silently assume completion.
 
+### Prompt Minimization Rule
+
+Stable continuation workflow belongs in committed repo docs, not in repeated user prompts.
+
+Use this rule:
+
+- if a rule is repo-stable and likely to matter across more than one conversation, it should live in `AGENTS.md`, `execution-plan.md`, `status-checklist.md`, or another appropriate committed doc
+- do not require the user to keep pasting the same startup, evidence, asset, or handoff rules once the repo docs already encode them
+- future continuation prompts should be short and task-specific by default
+- a continuation prompt should normally only need:
+  - resume from current committed state
+  - the specific task or route slice to continue
+  - any intentional override to the normal repo rules
+- if an agent finds itself needing to restate a stable rule list in chat more than once, that is a documentation failure and the rule should be promoted into committed docs during the same session
+
+Minimal prompt target:
+
+- a new conversation should usually be able to start from a short prompt such as `Resume from the current committed state and continue the next route slice recorded in status-checklist.md`
+
+The purpose of the planning stack is to reduce prompt friction, not move that burden onto the user.
+
 ---
 
 ## Non-Negotiable Phase Rules

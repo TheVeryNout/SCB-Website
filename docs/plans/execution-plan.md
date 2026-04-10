@@ -413,8 +413,29 @@ Update this state after every substantial work session:
 - [ ] update the relevant spec doc if a real implementation decision sharpened it
 - [ ] note blockers, assumptions, and deferred items in a committed doc, not only in chat
 - [ ] leave the repo in a buildable state unless a blocker makes that impossible
+- [ ] if stable startup or continuation rules had to be repeated in chat, promote them into committed docs so the next conversation can resume from a short prompt
 
 This checklist is the main defense against context drift.
+
+### Minimal Resume Prompt Rule
+
+The default goal is that a future conversation can resume from a short prompt, not a pasted wall of rules.
+
+Expected pattern:
+
+- the repo docs own stable workflow rules
+- the prompt only needs to identify the current continuation slice or any override
+
+Good prompt shape:
+
+- `Resume from the current committed state and continue the next route slice recorded in status-checklist.md`
+- `Resume from the current committed state and implement /ueber-uns/ and /mitgliedschaft/ next`
+
+Bad prompt shape:
+
+- restating the same phase-tracking, evidence, asset, and handoff rules that the repo docs already encode
+
+If a short prompt is not enough, fix the docs rather than expecting the user to carry the missing process state manually.
 
 ---
 
