@@ -13,6 +13,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
+    "test": "bun test",
     "cms:proxy": "decap-server",
     "capture:wix-assets": "python scripts/download_wix_assets.py",
     "stage:wix-assets": "python scripts/stage_wix_assets.py"

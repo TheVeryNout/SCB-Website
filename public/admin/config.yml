@@ -2,8 +2,6 @@ backend:
   name: git-gateway
   branch: master
 
-# On localhost, Decap talks to the local proxy server instead of Netlify's
-# hosted Git Gateway. Outside localhost, the normal git-gateway backend applies.
 local_backend:
   url: http://127.0.0.1:8081/api/v1
   allowed_hosts:
@@ -11,22 +9,261 @@ local_backend:
     - localhost
 
 locale: de
-media_folder: "public/media/uploads"
-public_folder: "/media/uploads"
+media_folder: "src/assets/images/uploads"
+media_folder_relative: true
+public_folder: ""
 
-# Temporary bootstrap collection so the admin shell has a concrete document
-# until the real Astro content collections are implemented.
 collections:
-  - name: "bootstrap"
-    label: "Bootstrap"
+  - name: "site-settings"
+    label: "Website-Einstellungen"
     delete: false
     editor:
       preview: false
     files:
-      - file: "cms/bootstrap.md"
-        label: "CMS Bootstrap"
-        name: "cms_bootstrap"
+      - file: "src/content/settings/site-settings.md"
+        label: "Allgemein"
+        name: "site_settings"
+        fields:
+          - { label: "Organisationsname", name: "organizationName", widget: "string" }
+          - { label: "Kurzbeschreibung", name: "siteDescription", widget: "text" }
+          - { label: "Kontakt-E-Mail", name: "contactEmail", widget: "string" }
+          - { label: "Telefon", name: "contactPhone", widget: "string", required: false }
+          - { label: "WhatsApp", name: "whatsApp", widget: "string", required: false }
+          - { label: "Postanschrift", name: "postalAddress", widget: "text" }
+          - label: "Social Links"
+            name: "socialLinks"
+            widget: "list"
+            summary: "{{fields.label}}"
+            hint: "Wiederverwendete Social-Links fuer Footer und Kontaktflaechen."
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+          - { label: "Spendenhinweis", name: "donationDetails", widget: "text", required: false }
+          - { label: "Footer-Notiz", name: "footerNote", widget: "text", required: false }
+
+  - name: "homepage"
+    label: "Startseite"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: "src/content/homepage/home.md"
+        label: "Startseite"
+        name: "home"
+        fields:
+          - { label: "Seitentitel", name: "title", widget: "string" }
+          - { label: "Hero-Titel", name: "heroTitle", widget: "string" }
+          - { label: "Hero-Intro", name: "heroIntro", widget: "text" }
+          - { label: "Hero-Bild", name: "heroImage", widget: "image", required: false }
+          - label: "Featured Announcement"
+            name: "featuredAnnouncement"
+            widget: "object"
+            required: false
+            collapsed: true
+            hint: "Optionaler Hinweisblock fuer eine einzelne wichtige Meldung."
+            fields:
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Text", name: "body", widget: "text" }
+              - { label: "Link-Label", name: "linkLabel", widget: "string", required: false }
+              - { label: "Link-URL", name: "linkUrl", widget: "string", required: false }
+          - { label: "Mitgliedschaft Titel", name: "membershipCtaTitle", widget: "string", required: false }
+          - { label: "Mitgliedschaft Text", name: "membershipCtaText", widget: "text", required: false }
+          - { label: "Mitgliedschaft Button", name: "membershipCtaLabel", widget: "string", required: false }
+          - { label: "Medien Titel", name: "mediaTeaserTitle", widget: "string", required: false }
+          - { label: "Medien Text", name: "mediaTeaserText", widget: "text", required: false }
+          - { label: "Body", name: "body", widget: "markdown", required: false }
+
+  - name: "pages"
+    label: "Seiten"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: "src/content/pages/about.md"
+        label: "Ueber uns"
+        name: "about"
         fields:
           - { label: "Titel", name: "title", widget: "string" }
-          - { label: "Status", name: "status", widget: "hidden", default: "foundation" }
-          - { label: "Notiz", name: "body", widget: "markdown", required: false }
+          - { label: "Intro", name: "intro", widget: "text" }
+          - { label: "Hero-Bild", name: "heroImage", widget: "image", required: false }
+          - label: "Vereinsziele"
+            name: "goals"
+            widget: "list"
+            hint: "Kurze, einzelne Ziele statt freier Textliste."
+            field: { label: "Ziel", name: "goal", widget: "string" }
+          - label: "Vorstand"
+            name: "boardMembers"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Rolle", name: "role", widget: "string" }
+              - { label: "Bild", name: "image", widget: "image", required: false }
+          - { label: "Satzung PDF", name: "statutesPdf", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+      - file: "src/content/pages/membership.md"
+        label: "Mitgliedschaft"
+        name: "membership"
+        fields:
+          - { label: "Titel", name: "title", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "text" }
+          - label: "Vorteile"
+            name: "benefits"
+            widget: "list"
+            field: { label: "Vorteil", name: "benefit", widget: "string" }
+          - label: "Anleitung"
+            name: "applicationInstructions"
+            widget: "list"
+            field: { label: "Schritt", name: "step", widget: "string" }
+          - { label: "Mitgliedsantrag PDF", name: "membershipFormPdf", widget: "string" }
+          - label: "Hinweise"
+            name: "notes"
+            widget: "list"
+            required: false
+            field: { label: "Hinweis", name: "note", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown", required: false }
+
+      - file: "src/content/pages/contact.md"
+        label: "Kontakt"
+        name: "contact"
+        fields:
+          - { label: "Titel", name: "title", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "text" }
+          - { label: "Ort", name: "locationName", widget: "string" }
+          - { label: "Kartenlink", name: "mapUrl", widget: "string", hint: "Externer Kartenlink, kein Embed." }
+          - { label: "Adress-Override", name: "addressOverride", widget: "text", required: false }
+          - { label: "Kartenbild", name: "mapImage", widget: "image", required: false }
+          - { label: "Ortshinweis", name: "locationNotes", widget: "text", required: false }
+          - { label: "Body", name: "body", widget: "markdown", required: false }
+
+      - file: "src/content/pages/impressum.md"
+        label: "Impressum"
+        name: "impressum"
+        fields:
+          - { label: "Titel", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+      - file: "src/content/pages/datenschutz.md"
+        label: "Datenschutz"
+        name: "datenschutz"
+        fields:
+          - { label: "Titel", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "posts"
+    label: "Neuigkeiten"
+    folder: "src/content/posts"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    slug: "{{fields.slug}}"
+    summary: "{{fields.title}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Veroeffentlicht am", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ" }
+      - { label: "Kurztext", name: "excerpt", widget: "text" }
+      - { label: "Cover-Bild", name: "coverImage", widget: "image", required: false }
+      - label: "Galerie"
+        name: "gallery"
+        widget: "list"
+        required: false
+        field: { label: "Bild", name: "image", widget: "image" }
+      - { label: "Kategorie", name: "category", widget: "string", required: false, hint: "Optional und bewusst einfach gehalten." }
+      - { label: "Aktualisiert am", name: "updatedAt", widget: "datetime", required: false, format: "YYYY-MM-DDTHH:mm:ssZ" }
+      - { label: "Quell-URL", name: "sourceUrl", widget: "string", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "events"
+    label: "Veranstaltungen"
+    folder: "src/content/events"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    slug: "{{fields.slug}}"
+    summary: "{{fields.title}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Kurzbeschreibung", name: "summary", widget: "text" }
+      - { label: "Status", name: "status", widget: "select", default: "scheduled", options: ["scheduled", "cancelled", "postponed", "tentative"] }
+      - { label: "Sichtbarkeit", name: "visibility", widget: "select", default: "public", options: ["public", "hidden"] }
+      - { label: "Startdatum", name: "startDate", widget: "date", format: "YYYY-MM-DD" }
+      - { label: "Startzeit", name: "startTime", widget: "string", default: "10:00", hint: "24-Stunden-Format, z.B. 10:00" }
+      - { label: "Enddatum", name: "endDate", widget: "date", format: "YYYY-MM-DD" }
+      - { label: "Endzeit", name: "endTime", widget: "string", default: "12:00", hint: "24-Stunden-Format, z.B. 12:00" }
+      - { label: "Zeitzone", name: "timezone", widget: "hidden", default: "Europe/Berlin" }
+      - label: "Wiederholung"
+        name: "recurrence"
+        widget: "object"
+        collapsed: true
+        hint: "Fuer den Start nur keine Wiederholung, woechentlich oder gleicher Tag pro Monat."
+        fields:
+          - { label: "Typ", name: "type", widget: "select", default: "none", options: ["none", "weekly", "monthly"] }
+          - { label: "Intervall", name: "interval", widget: "number", default: 1, value_type: "int", min: 1, required: false }
+          - label: "Wochentage"
+            name: "daysOfWeek"
+            widget: "select"
+            multiple: true
+            required: false
+            options: ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+          - { label: "Tag im Monat", name: "dayOfMonth", widget: "number", required: false, value_type: "int", min: 1, max: 31 }
+          - { label: "Bis einschliesslich", name: "until", widget: "date", required: false, format: "YYYY-MM-DD" }
+          - { label: "Maximale Anzahl", name: "count", widget: "number", required: false, value_type: "int", min: 1 }
+          - label: "Ausnahmen"
+            name: "exclusions"
+            widget: "list"
+            required: false
+            field: { label: "Datum", name: "date", widget: "date", format: "YYYY-MM-DD" }
+          - label: "Zusatztermine"
+            name: "inclusions"
+            widget: "list"
+            required: false
+            field: { label: "Datum", name: "date", widget: "date", format: "YYYY-MM-DD" }
+      - { label: "Ort", name: "locationName", widget: "string" }
+      - { label: "Adresse", name: "address", widget: "text", required: false }
+      - { label: "Kartenlink", name: "mapUrl", widget: "string", required: false }
+      - { label: "Hinweis bei Wetter", name: "weatherNote", widget: "text", required: false }
+      - { label: "CTA Label", name: "ctaLabel", widget: "string", required: false }
+      - { label: "CTA URL", name: "ctaUrl", widget: "string", required: false }
+      - { label: "Anmeldung URL", name: "registrationUrl", widget: "string", required: false }
+      - { label: "Instagram URL", name: "instagramUrl", widget: "string", required: false }
+      - { label: "Bild", name: "heroImage", widget: "image", required: false }
+      - label: "Galerie"
+        name: "gallery"
+        widget: "list"
+        required: false
+        field: { label: "Bild", name: "image", widget: "image" }
+      - { label: "Quelle", name: "source", widget: "hidden", default: "website" }
+      - { label: "Quell-ID", name: "sourceId", widget: "hidden", required: false }
+      - { label: "Zuletzt geprueft", name: "lastVerifiedAt", widget: "date", required: false, format: "YYYY-MM-DD" }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+
+  - name: "media"
+    label: "Pics n Vids"
+    folder: "src/content/media"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    slug: "{{fields.slug}}"
+    summary: "{{fields.title}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Typ", name: "type", widget: "select", options: ["youtube", "photo-gallery", "featured-media"] }
+      - { label: "YouTube URL", name: "youtubeUrl", widget: "string", required: false }
+      - { label: "Thumbnail", name: "thumbnailImage", widget: "image", required: false }
+      - label: "Galerie"
+        name: "gallery"
+        widget: "list"
+        required: false
+        field: { label: "Bild", name: "image", widget: "image" }
+      - { label: "Kurztext", name: "summary", widget: "text", required: false }
+      - { label: "Veroeffentlicht am", name: "publishedAt", widget: "datetime", required: false, format: "YYYY-MM-DDTHH:mm:ssZ" }

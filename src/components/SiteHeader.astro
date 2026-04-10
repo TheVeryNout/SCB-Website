@@ -1,11 +1,13 @@
 ---
 import Container from "./Container.astro";
+import { getSiteSettingsEntry } from "../lib/content/site";
 
 interface Props {
   currentPath: string;
 }
 
 const { currentPath } = Astro.props;
+const settings = await getSiteSettingsEntry();
 
 const navItems = [
   { href: "/", label: "Start" },
@@ -26,10 +28,10 @@ const navItems = [
           <span class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-amber-500/50 bg-amber-300/55 text-sm font-bold text-slate-950">
             SCB
           </span>
-          Skate Club Biriciana e.V.
+          {settings.data.organizationName}
         </a>
         <p class="max-w-2xl text-sm text-slate-700">
-          Astro foundation for the public website rebuild with a static-first CMS and event calendar.
+          {settings.data.siteDescription}
         </p>
       </div>
 
@@ -58,4 +60,3 @@ const navItems = [
     </div>
   </Container>
 </header>
-
