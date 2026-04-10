@@ -129,7 +129,9 @@ Use the docs in this order after finishing this file:
    Migration workflow, manifest, QA rules
 9. [execution-plan.md](/home/nout/REPO/SCB-Website/docs/plans/execution-plan.md)
    Phase order, execution gates, checklists, multi-conversation progress control
-10. [parallel-agent-environment.md](/home/nout/REPO/SCB-Website/docs/plans/parallel-agent-environment.md)
+10. [status-checklist.md](/home/nout/REPO/SCB-Website/docs/plans/status-checklist.md)
+   Audited checklist state, open exceptions, and next-resume blocking points
+11. [parallel-agent-environment.md](/home/nout/REPO/SCB-Website/docs/plans/parallel-agent-environment.md)
    Optional parallel-work guardrails once the execution plan is stable
 
 ---
@@ -139,9 +141,10 @@ Use the docs in this order after finishing this file:
 For a brand-new conversation that is resuming implementation rather than redefining scope:
 
 1. read [execution-plan.md](/home/nout/REPO/SCB-Website/docs/plans/execution-plan.md) sections `Current Verified Repo Snapshot`, `Progress Snapshot`, and the checklist for the active phase
-2. if Wix/source evidence is needed, read [wix-reference/README.md](/home/nout/REPO/SCB-Website/docs/plans/wix-reference/README.md) and [wix-reference/manifest.json](/home/nout/REPO/SCB-Website/docs/plans/wix-reference/manifest.json)
-3. load the phase-specific docs listed in `Phase-Specific Reading Mode`
-4. only reopen the rest of the stack when a decision crosses into another domain
+2. read [status-checklist.md](/home/nout/REPO/SCB-Website/docs/plans/status-checklist.md) to see what was actually audited, what is still open, and whether an earlier phase is still blocking
+3. if Wix/source evidence is needed, read [wix-reference/README.md](/home/nout/REPO/SCB-Website/docs/plans/wix-reference/README.md) and [wix-reference/manifest.json](/home/nout/REPO/SCB-Website/docs/plans/wix-reference/manifest.json)
+4. load the phase-specific docs listed in `Phase-Specific Reading Mode`
+5. only reopen the rest of the stack when a decision crosses into another domain
 
 This keeps cold starts cheaper without weakening the spec stack.
 

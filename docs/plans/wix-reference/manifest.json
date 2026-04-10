@@ -1,0 +1,152 @@
+{
+  "capturedAt": "2026-04-10",
+  "sourceBaseUrl": "https://briareos.wixsite.com/skateclubbiriciana",
+  "captureTools": {
+    "pageCapture": "Playwright CLI",
+    "rawHtml": "curl",
+    "viewport": "1440x900",
+    "locale": "de-DE",
+    "timezone": "Europe/Berlin"
+  },
+  "routes": [
+    {
+      "label": "home",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana",
+      "targetRoute": "/",
+      "files": {
+        "screenshot": "screenshots/home-full.png",
+        "html": "html/home.html"
+      }
+    },
+    {
+      "label": "news-index",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/neuigkeiten",
+      "targetRoute": "/neuigkeiten/",
+      "files": {
+        "screenshot": "screenshots/news-index-full.png",
+        "html": "html/news-index.html"
+      }
+    },
+    {
+      "label": "post-spendenaufruf",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/post/spendenaufruf-der-scb-baut-ne-halle",
+      "targetRoute": "/neuigkeiten/[slug]/",
+      "files": {
+        "screenshot": "screenshots/post-spendenaufruf-der-scb-baut-ne-halle-full.png",
+        "html": "html/post-spendenaufruf-der-scb-baut-ne-halle.html",
+        "pdf": "pdf/post-spendenaufruf-der-scb-baut-ne-halle.pdf"
+      }
+    },
+    {
+      "label": "post-goodies-4-tricks-2025",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/post/goodies-4-tricks-2025",
+      "targetRoute": "/neuigkeiten/[slug]/",
+      "files": {
+        "screenshot": "screenshots/post-goodies-4-tricks-2025-full.png",
+        "html": "html/post-goodies-4-tricks-2025.html"
+      }
+    },
+    {
+      "label": "about",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/ueber-uns",
+      "targetRoute": "/ueber-uns/",
+      "files": {
+        "screenshot": "screenshots/ueber-uns-full.png",
+        "html": "html/ueber-uns.html"
+      }
+    },
+    {
+      "label": "media",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/pics-n-vids",
+      "targetRoute": "/pics-n-vids/",
+      "files": {
+        "screenshot": "screenshots/pics-n-vids-full.png",
+        "html": "html/pics-n-vids.html"
+      }
+    },
+    {
+      "label": "events-index",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/veranstaltungen",
+      "targetRoute": "/veranstaltungen/",
+      "files": {
+        "screenshot": "screenshots/veranstaltungen-full.png",
+        "html": "html/veranstaltungen.html"
+      }
+    },
+    {
+      "label": "event-sunday-funday",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/events/sunday-funday-2025-04-06-13-00",
+      "targetRoute": "/veranstaltungen/[slug]/[yyyy-mm-dd]/",
+      "files": {
+        "screenshot": "screenshots/event-sunday-funday-2025-04-06-13-00-full.png",
+        "html": "html/event-sunday-funday-2025-04-06-13-00.html"
+      }
+    },
+    {
+      "label": "membership-legacy",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/copy-of-veranstaltungen",
+      "targetRoute": "/mitgliedschaft/",
+      "files": {
+        "screenshot": "screenshots/copy-of-veranstaltungen-full.png",
+        "html": "html/copy-of-veranstaltungen.html"
+      }
+    },
+    {
+      "label": "contact",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/kontakt",
+      "targetRoute": "/kontakt/",
+      "files": {
+        "screenshot": "screenshots/kontakt-full.png",
+        "html": "html/kontakt.html"
+      }
+    },
+    {
+      "label": "impressum",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/impressum",
+      "targetRoute": "/impressum/",
+      "files": {
+        "screenshot": "screenshots/impressum-full.png",
+        "html": "html/impressum.html",
+        "pdf": "pdf/impressum.pdf"
+      }
+    },
+    {
+      "label": "datenschutz",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/datenschutz",
+      "targetRoute": "/datenschutz/",
+      "files": {
+        "html": "html/datenschutz.html",
+        "pdf": "pdf/datenschutz.pdf"
+      },
+      "notes": [
+        "The original screenshot was removed from the reference pack because it was unusable.",
+        "Use the HTML and PDF artifacts as the local evidence source for this page."
+      ]
+    }
+  ],
+  "feeds": [
+    {
+      "label": "blog-feed",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/blog-feed.xml",
+      "file": "feeds/blog-feed.xml"
+    }
+  ],
+  "downloads": [
+    {
+      "label": "statutes-pdf",
+      "sourceUrl": "https://36da100f-5a64-4e36-9be3-cd978447e787.filesusr.com/ugd/dfbc4d_2c1d96f6aacc4d8db2c12c3bea908a20.pdf",
+      "file": "downloads/statutes-source.pdf"
+    },
+    {
+      "label": "membership-form-pdf",
+      "sourceUrl": "https://36da100f-5a64-4e36-9be3-cd978447e787.filesusr.com/ugd/13cc9c_c6365cf2649e4c68a4b99d58884b41eb.pdf",
+      "file": "downloads/membership-form-source.pdf"
+    }
+  ],
+  "notes": [
+    "Cookie banner may appear in screenshots.",
+    "Use html captures for grep-able source inspection.",
+    "Use local reference pack first in later conversations before reopening the live Wix site.",
+    "The datenschutz page currently has HTML and PDF evidence in the pack, but no retained screenshot."
+  ]
+}

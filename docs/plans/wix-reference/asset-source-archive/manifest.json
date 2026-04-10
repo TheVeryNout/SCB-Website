@@ -1,0 +1,1474 @@
+{
+  "capturedAt": "2026-04-10T09:24:39.771781+00:00",
+  "sourceDirs": [
+    "docs/plans/wix-reference/html",
+    "docs/plans/wix-reference/feeds"
+  ],
+  "assetCountDiscovered": 89,
+  "assetCountDownloaded": 89,
+  "assetCountErrored": 0,
+  "assets": [
+    {
+      "status": "existing",
+      "localPath": "original/01c3aff52f2a4dffa526d7a9843d46ea.png",
+      "fileSize": 21665,
+      "sha256": "a77d9274fc196cca0035dd2be4eca8b59577846eeedaf1571bb35a354845ebcd",
+      "assetId": "01c3aff52f2a4dffa526d7a9843d46ea.png",
+      "downloadUrl": "https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/copy-of-veranstaltungen.html",
+        "docs/plans/wix-reference/html/datenschutz.html",
+        "docs/plans/wix-reference/html/event-sunday-funday-2025-04-06-13-00.html",
+        "docs/plans/wix-reference/html/home.html",
+        "docs/plans/wix-reference/html/impressum.html",
+        "docs/plans/wix-reference/html/kontakt.html",
+        "docs/plans/wix-reference/html/news-index.html",
+        "docs/plans/wix-reference/html/pics-n-vids.html",
+        "docs/plans/wix-reference/html/post-der-contest-in-der-zeitung.html",
+        "docs/plans/wix-reference/html/post-der-skate-club-in-der-zeitung.html",
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-2025.html",
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html",
+        "docs/plans/wix-reference/html/post-graffiti-workshop-ein-voller-erfolg.html",
+        "docs/plans/wix-reference/html/post-spende-von-der-volksbank-franken-s%C3%BCd.html",
+        "docs/plans/wix-reference/html/post-spendenaufruf-der-scb-baut-ne-halle.html",
+        "docs/plans/wix-reference/html/ueber-uns.html",
+        "docs/plans/wix-reference/html/veranstaltungen.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/11062b_f67ec9c36d8a431eabf904a991d9647f~mv2.png",
+      "fileSize": 4572,
+      "sha256": "0c9b66431c7c48e0f584645e7e84c5b4e0c0ef1bb9ba1a616857de38522ceba5",
+      "assetId": "11062b_f67ec9c36d8a431eabf904a991d9647f~mv2.png",
+      "downloadUrl": "https://static.wixstatic.com/media/11062b_f67ec9c36d8a431eabf904a991d9647f~mv2.png",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/copy-of-veranstaltungen.html",
+        "docs/plans/wix-reference/html/datenschutz.html",
+        "docs/plans/wix-reference/html/event-sunday-funday-2025-04-06-13-00.html",
+        "docs/plans/wix-reference/html/home.html",
+        "docs/plans/wix-reference/html/impressum.html",
+        "docs/plans/wix-reference/html/kontakt.html",
+        "docs/plans/wix-reference/html/news-index.html",
+        "docs/plans/wix-reference/html/pics-n-vids.html",
+        "docs/plans/wix-reference/html/post-der-contest-in-der-zeitung.html",
+        "docs/plans/wix-reference/html/post-der-skate-club-in-der-zeitung.html",
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-2025.html",
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html",
+        "docs/plans/wix-reference/html/post-graffiti-workshop-ein-voller-erfolg.html",
+        "docs/plans/wix-reference/html/post-spende-von-der-volksbank-franken-s%C3%BCd.html",
+        "docs/plans/wix-reference/html/post-spendenaufruf-der-scb-baut-ne-halle.html",
+        "docs/plans/wix-reference/html/ueber-uns.html",
+        "docs/plans/wix-reference/html/veranstaltungen.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/11062b_f67ec9c36d8a431eabf904a991d9647f~mv2.png"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/13cc9c_00222c64efe14f18a4f922fe5eb4bddb~mv2.jpg",
+      "fileSize": 422017,
+      "sha256": "926e2f7e9c136aa57975b9131595a73f723b2064b68834577e7e2e0ed321bc48",
+      "assetId": "13cc9c_00222c64efe14f18a4f922fe5eb4bddb~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_00222c64efe14f18a4f922fe5eb4bddb~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-2025.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_00222c64efe14f18a4f922fe5eb4bddb~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"31ae9ea0d793aa250321c0ec3b98cf05\"",
+      "lastModified": "Tue, 15 Apr 2025 08:16:52 GMT",
+      "status": "downloaded",
+      "localPath": "original/13cc9c_024087fefd6c49ea97727f71a06969a0~mv2.jpg",
+      "fileSize": 134563,
+      "sha256": "1d5c805d4a52898d8768fc977d6962b7a8357e33eac8a6f3e494144efbd4038d",
+      "assetId": "13cc9c_024087fefd6c49ea97727f71a06969a0~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_024087fefd6c49ea97727f71a06969a0~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-graffiti-workshop-ein-voller-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_024087fefd6c49ea97727f71a06969a0~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"ea457b1b347f7dcd85cceac2f15e9ae5\"",
+      "lastModified": "Tue, 15 Apr 2025 08:16:58 GMT",
+      "status": "downloaded",
+      "localPath": "original/13cc9c_06495e3407dc4374bb5d44d55922739c~mv2.jpg",
+      "fileSize": 180319,
+      "sha256": "2364f6a20c1f49a793b559355664abdd9b9a346cacf3d928d3e247d786b48328",
+      "assetId": "13cc9c_06495e3407dc4374bb5d44d55922739c~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_06495e3407dc4374bb5d44d55922739c~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-graffiti-workshop-ein-voller-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_06495e3407dc4374bb5d44d55922739c~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"73806231ca61c032b25f136564c62407\"",
+      "lastModified": "Tue, 15 Apr 2025 08:16:46 GMT",
+      "status": "downloaded",
+      "localPath": "original/13cc9c_0c95d382c44c4d1b909ddb417e3068af~mv2.jpg",
+      "fileSize": 149785,
+      "sha256": "b1ef27af24392c3ddd1db8f9fc337ddbeb534cecb1785e3fdee8034081576dbd",
+      "assetId": "13cc9c_0c95d382c44c4d1b909ddb417e3068af~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_0c95d382c44c4d1b909ddb417e3068af~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-graffiti-workshop-ein-voller-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_0c95d382c44c4d1b909ddb417e3068af~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/13cc9c_20a1ad333afd4c4e8cf78436236bbbad~mv2.webp",
+      "fileSize": 35122,
+      "sha256": "0ead04c91cba9a4c9d72ac1e9c8dd863f9e6bf0ea08ea8d965df89ef85d54f60",
+      "assetId": "13cc9c_20a1ad333afd4c4e8cf78436236bbbad~mv2.webp",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_20a1ad333afd4c4e8cf78436236bbbad~mv2.webp",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-spendenaufruf-der-scb-baut-ne-halle.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_20a1ad333afd4c4e8cf78436236bbbad~mv2.webp"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"6c85b2957a1068f47c49c5fd2fc6abe1\"",
+      "lastModified": "Tue, 15 Apr 2025 08:16:58 GMT",
+      "status": "downloaded",
+      "localPath": "original/13cc9c_23009f2e63764e599be335498245b90b~mv2.jpg",
+      "fileSize": 151021,
+      "sha256": "33ac00c03b2a73de70b73e31ca3ff044412f2242ff61e91238b392ddab6faccd",
+      "assetId": "13cc9c_23009f2e63764e599be335498245b90b~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_23009f2e63764e599be335498245b90b~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-graffiti-workshop-ein-voller-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_23009f2e63764e599be335498245b90b~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"469f40fde0081b6eb6ab2e4bc7b8a7f5\"",
+      "lastModified": "Tue, 15 Apr 2025 08:16:52 GMT",
+      "status": "downloaded",
+      "localPath": "original/13cc9c_23bc270df37145a88c92ca32fd9665a0~mv2.jpg",
+      "fileSize": 136427,
+      "sha256": "6b953ef82ff8a579bdd793a1a3be806c1da74ebcfc5f2faf1acfc500a19daf1d",
+      "assetId": "13cc9c_23bc270df37145a88c92ca32fd9665a0~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_23bc270df37145a88c92ca32fd9665a0~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-graffiti-workshop-ein-voller-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_23bc270df37145a88c92ca32fd9665a0~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"d9b4154435536d722680c4b7aeb03e2a\"",
+      "lastModified": "Tue, 15 Apr 2025 08:16:56 GMT",
+      "status": "downloaded",
+      "localPath": "original/13cc9c_24671ca3aff9466d92fcb6a605419201~mv2.jpg",
+      "fileSize": 165067,
+      "sha256": "112544285dffa4ca08a91502ced5edc2d24b6d2b2907b86b808ea7e1c56cea71",
+      "assetId": "13cc9c_24671ca3aff9466d92fcb6a605419201~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_24671ca3aff9466d92fcb6a605419201~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-graffiti-workshop-ein-voller-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_24671ca3aff9466d92fcb6a605419201~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/13cc9c_26692438fbd24a45a05ab59b11794437~mv2.webp",
+      "fileSize": 47130,
+      "sha256": "a440a32295d8be9e18bb9e708edf4ed3fb813ddce09f865b41a7229055854fe8",
+      "assetId": "13cc9c_26692438fbd24a45a05ab59b11794437~mv2.webp",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_26692438fbd24a45a05ab59b11794437~mv2.webp",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-spendenaufruf-der-scb-baut-ne-halle.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_26692438fbd24a45a05ab59b11794437~mv2.webp"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"884be4d46ed95984c5f4f517ec127cd3\"",
+      "lastModified": "Tue, 15 Apr 2025 08:16:49 GMT",
+      "status": "downloaded",
+      "localPath": "original/13cc9c_35dcfa1b05074118b2cff951cf5d458a~mv2.jpg",
+      "fileSize": 200753,
+      "sha256": "a1546121d79ad344ceb57f2e5c14230d864569c0bce7c83772a4f59734954e29",
+      "assetId": "13cc9c_35dcfa1b05074118b2cff951cf5d458a~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_35dcfa1b05074118b2cff951cf5d458a~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-graffiti-workshop-ein-voller-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_35dcfa1b05074118b2cff951cf5d458a~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/13cc9c_3a81589abcb14be3b2269ca99d19b625~mv2.webp",
+      "fileSize": 29674,
+      "sha256": "ee92cc48b63cfd6bfd55012315c806e6597a77664572dd1856ec8212299eabc2",
+      "assetId": "13cc9c_3a81589abcb14be3b2269ca99d19b625~mv2.webp",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_3a81589abcb14be3b2269ca99d19b625~mv2.webp",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-spendenaufruf-der-scb-baut-ne-halle.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_3a81589abcb14be3b2269ca99d19b625~mv2.webp"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/13cc9c_40230571cb024f61b6936ee67952d0f3~mv2.jpg",
+      "fileSize": 667482,
+      "sha256": "c1b3823ddb238aa359a8111dbc9b7e70b8d39bb0817710e4ff64e2077d128684",
+      "assetId": "13cc9c_40230571cb024f61b6936ee67952d0f3~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_40230571cb024f61b6936ee67952d0f3~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/feeds/blog-feed.xml",
+        "docs/plans/wix-reference/html/home.html",
+        "docs/plans/wix-reference/html/news-index.html",
+        "docs/plans/wix-reference/html/post-graffiti-workshop-ein-voller-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_40230571cb024f61b6936ee67952d0f3~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"369b610c35d73eeaed487af9260187dd\"",
+      "lastModified": "Tue, 15 Apr 2025 08:16:52 GMT",
+      "status": "downloaded",
+      "localPath": "original/13cc9c_51e0eeb775d64f83b2fb63f6819a7396~mv2.jpg",
+      "fileSize": 97667,
+      "sha256": "8eb167e8a969ef91ea1f2f4b4e5e7f56084d25427eb47857277b3843a772114a",
+      "assetId": "13cc9c_51e0eeb775d64f83b2fb63f6819a7396~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_51e0eeb775d64f83b2fb63f6819a7396~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-graffiti-workshop-ein-voller-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_51e0eeb775d64f83b2fb63f6819a7396~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"5d8c003537d7e1df8e5d75fe98ebcf02\"",
+      "lastModified": "Tue, 15 Apr 2025 08:16:46 GMT",
+      "status": "downloaded",
+      "localPath": "original/13cc9c_5292cd7cde5b4c7f953f9d6bf8e0ae88~mv2.jpg",
+      "fileSize": 133838,
+      "sha256": "0679d0b31965f20d88a0641e4cfcc07c34a7d24c0b8e46f352c73f57bbf422a7",
+      "assetId": "13cc9c_5292cd7cde5b4c7f953f9d6bf8e0ae88~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_5292cd7cde5b4c7f953f9d6bf8e0ae88~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-graffiti-workshop-ein-voller-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_5292cd7cde5b4c7f953f9d6bf8e0ae88~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"2a70c8ea3cfcc333752147f59683cc30\"",
+      "lastModified": "Tue, 15 Apr 2025 08:16:46 GMT",
+      "status": "downloaded",
+      "localPath": "original/13cc9c_54492a06f76e41fdada4274e7c5da1a4~mv2.jpg",
+      "fileSize": 125871,
+      "sha256": "e7cc184112eb90192223af8bae1c98c0207b468ea32f6cf5166f8c1da3f0d411",
+      "assetId": "13cc9c_54492a06f76e41fdada4274e7c5da1a4~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_54492a06f76e41fdada4274e7c5da1a4~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-graffiti-workshop-ein-voller-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_54492a06f76e41fdada4274e7c5da1a4~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/13cc9c_55418248d54d421da5396ea8731c4c31~mv2.jpg",
+      "fileSize": 239026,
+      "sha256": "b2b3f265b385181e7178b95fda8270e173aac6e52e3f76a1902badaa00637cf5",
+      "assetId": "13cc9c_55418248d54d421da5396ea8731c4c31~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_55418248d54d421da5396ea8731c4c31~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-2025.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_55418248d54d421da5396ea8731c4c31~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"5e655f3884150fb8b4e2b3f154a40e19\"",
+      "lastModified": "Tue, 15 Apr 2025 08:16:46 GMT",
+      "status": "downloaded",
+      "localPath": "original/13cc9c_5953211fe98b4ac38aa3806fd0abeaa1~mv2.jpg",
+      "fileSize": 168761,
+      "sha256": "aff1495dd4f0a79c9b22e9e51efaa3318aea1a1f0efc5e630cb5f6e4d365cd8c",
+      "assetId": "13cc9c_5953211fe98b4ac38aa3806fd0abeaa1~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_5953211fe98b4ac38aa3806fd0abeaa1~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-graffiti-workshop-ein-voller-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_5953211fe98b4ac38aa3806fd0abeaa1~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/13cc9c_5d42f5b6e79b4c8d82915bb0900bd7b1~mv2.jpg",
+      "fileSize": 421987,
+      "sha256": "6be9ee5df490198a91ae62bdf133a845fd96093314673eb1b3e30c47ea735cdc",
+      "assetId": "13cc9c_5d42f5b6e79b4c8d82915bb0900bd7b1~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_5d42f5b6e79b4c8d82915bb0900bd7b1~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-2025.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_5d42f5b6e79b4c8d82915bb0900bd7b1~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/13cc9c_6236ead8d9454138965e5685250e2f80~mv2.jpg",
+      "fileSize": 303529,
+      "sha256": "9286adc6cad0096d19e8032bac89723208ef8f3fa807d8c6a7a6707944a9b474",
+      "assetId": "13cc9c_6236ead8d9454138965e5685250e2f80~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_6236ead8d9454138965e5685250e2f80~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-2025.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_6236ead8d9454138965e5685250e2f80~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/13cc9c_64a5f980369046549ea203557f483ce4~mv2.webp",
+      "fileSize": 33700,
+      "sha256": "ece7afb0968984df6f3267e0fffef00bf79a8f9fdb20a962fab06dfefbe79828",
+      "assetId": "13cc9c_64a5f980369046549ea203557f483ce4~mv2.webp",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_64a5f980369046549ea203557f483ce4~mv2.webp",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-spendenaufruf-der-scb-baut-ne-halle.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_64a5f980369046549ea203557f483ce4~mv2.webp"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"d0f9ef207e3e1640569f0f927f5192eb\"",
+      "lastModified": "Tue, 15 Apr 2025 08:16:55 GMT",
+      "status": "downloaded",
+      "localPath": "original/13cc9c_688e1483cb5845c4a3ff0ad5bd971362~mv2.jpg",
+      "fileSize": 104676,
+      "sha256": "ef2cf9f716871a2a7274d983d1e32ee4694aae864314e447cd5a2a96f53bc572",
+      "assetId": "13cc9c_688e1483cb5845c4a3ff0ad5bd971362~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_688e1483cb5845c4a3ff0ad5bd971362~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-graffiti-workshop-ein-voller-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_688e1483cb5845c4a3ff0ad5bd971362~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/13cc9c_6daaffde0d1f47eb98c05349b8530ca8~mv2.webp",
+      "fileSize": 41594,
+      "sha256": "ff52a1930b5a1ae6ea5c18ddfd921b7a44d9caefea6ef329e03d01e5054098bf",
+      "assetId": "13cc9c_6daaffde0d1f47eb98c05349b8530ca8~mv2.webp",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_6daaffde0d1f47eb98c05349b8530ca8~mv2.webp",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-spendenaufruf-der-scb-baut-ne-halle.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_6daaffde0d1f47eb98c05349b8530ca8~mv2.webp"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/13cc9c_77515bbb32674d24a1988a0c7519e672~mv2.webp",
+      "fileSize": 57156,
+      "sha256": "e0f571f115d139fc8c90eb011affffe7d109c917338678f3ee32c93fdccaea45",
+      "assetId": "13cc9c_77515bbb32674d24a1988a0c7519e672~mv2.webp",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_77515bbb32674d24a1988a0c7519e672~mv2.webp",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-spendenaufruf-der-scb-baut-ne-halle.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_77515bbb32674d24a1988a0c7519e672~mv2.webp"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"dc4b33f39ac39cfdca0da4b1a2c7afc5\"",
+      "lastModified": "Tue, 15 Apr 2025 08:16:52 GMT",
+      "status": "downloaded",
+      "localPath": "original/13cc9c_82de31be4bac4b87b1deafedb679fa27~mv2.jpg",
+      "fileSize": 138841,
+      "sha256": "4bc25413e2528d3361bf32e58ee5a42edf81df924b64e851915deb4f634d1bd1",
+      "assetId": "13cc9c_82de31be4bac4b87b1deafedb679fa27~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_82de31be4bac4b87b1deafedb679fa27~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-graffiti-workshop-ein-voller-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_82de31be4bac4b87b1deafedb679fa27~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/13cc9c_83765ff02c71450da9b040e7b4905484~mv2.jpg",
+      "fileSize": 340721,
+      "sha256": "b26b2046cd41dfd657725790d4b906c4161eab7b365819aea7166149250d918b",
+      "assetId": "13cc9c_83765ff02c71450da9b040e7b4905484~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_83765ff02c71450da9b040e7b4905484~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-2025.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_83765ff02c71450da9b040e7b4905484~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/13cc9c_8acbcb58a79544008bd656094ab96414~mv2.jpg",
+      "fileSize": 252757,
+      "sha256": "180ac4a01268d8b0637c038a39d97dd87cc49d4c50582a7b0a9e6dc04ffd6816",
+      "assetId": "13cc9c_8acbcb58a79544008bd656094ab96414~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_8acbcb58a79544008bd656094ab96414~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-2025.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_8acbcb58a79544008bd656094ab96414~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/13cc9c_924df90d95844d9f8cefb500f869fef4~mv2.jpg",
+      "fileSize": 369029,
+      "sha256": "a34b5bc58b0c9fc03f78a40fc4dc8f8700d9a789b5456144b1167d399c248872",
+      "assetId": "13cc9c_924df90d95844d9f8cefb500f869fef4~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_924df90d95844d9f8cefb500f869fef4~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-2025.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_924df90d95844d9f8cefb500f869fef4~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/13cc9c_93a5c55bbbb144b4a7c835e307fd4f87~mv2.webp",
+      "fileSize": 59754,
+      "sha256": "71b1518d5125cf50639f212315ba7c17268d32a1e13e15b0b32d4d12a9be76f7",
+      "assetId": "13cc9c_93a5c55bbbb144b4a7c835e307fd4f87~mv2.webp",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_93a5c55bbbb144b4a7c835e307fd4f87~mv2.webp",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-spendenaufruf-der-scb-baut-ne-halle.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_93a5c55bbbb144b4a7c835e307fd4f87~mv2.webp"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"76e58a4ea4b94849482b5e9e0b41dc7c\"",
+      "lastModified": "Tue, 15 Apr 2025 08:16:55 GMT",
+      "status": "downloaded",
+      "localPath": "original/13cc9c_9661947c1c824e03ae7e553367c71325~mv2.jpg",
+      "fileSize": 114312,
+      "sha256": "24537a1dfaf8c204ede862695ec5bb28b7584b3d30f09d5ae804e98e8fb7a627",
+      "assetId": "13cc9c_9661947c1c824e03ae7e553367c71325~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_9661947c1c824e03ae7e553367c71325~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-graffiti-workshop-ein-voller-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_9661947c1c824e03ae7e553367c71325~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/13cc9c_9b4b8f17abe74d40b3915128c22f33d5~mv2.jpg",
+      "fileSize": 303244,
+      "sha256": "392d9359943770f01f8a62c505ba49cb102e08a5b2df2ea072052a38ec2ca3df",
+      "assetId": "13cc9c_9b4b8f17abe74d40b3915128c22f33d5~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_9b4b8f17abe74d40b3915128c22f33d5~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/feeds/blog-feed.xml",
+        "docs/plans/wix-reference/html/home.html",
+        "docs/plans/wix-reference/html/news-index.html",
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-2025.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_9b4b8f17abe74d40b3915128c22f33d5~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/13cc9c_a4f0149f699541868ec4c431484d91a7~mv2.jpg",
+      "fileSize": 213207,
+      "sha256": "4a5cec31f213ceabe85e4aeff03f6484f196c6c7e4079c87359c4f03e3915b6e",
+      "assetId": "13cc9c_a4f0149f699541868ec4c431484d91a7~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_a4f0149f699541868ec4c431484d91a7~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-2025.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_a4f0149f699541868ec4c431484d91a7~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"e52c713eb4bc73a792ef24b15f10b7eb\"",
+      "lastModified": "Tue, 15 Apr 2025 08:16:59 GMT",
+      "status": "downloaded",
+      "localPath": "original/13cc9c_a5856ab6a44c44f1a711116954d178f8~mv2.jpg",
+      "fileSize": 169059,
+      "sha256": "68a27f882015455517089e6a71525d0efd3f2cd462097176ace89443686acd7b",
+      "assetId": "13cc9c_a5856ab6a44c44f1a711116954d178f8~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_a5856ab6a44c44f1a711116954d178f8~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-graffiti-workshop-ein-voller-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_a5856ab6a44c44f1a711116954d178f8~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/13cc9c_ae9388c4b99842caaff70ccd00415727~mv2.jpg",
+      "fileSize": 181458,
+      "sha256": "fc9df94197dbb8944474abcd33b8c64c18b51bdd4257543395ca07839a10dd43",
+      "assetId": "13cc9c_ae9388c4b99842caaff70ccd00415727~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_ae9388c4b99842caaff70ccd00415727~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/feeds/blog-feed.xml",
+        "docs/plans/wix-reference/html/home.html",
+        "docs/plans/wix-reference/html/news-index.html",
+        "docs/plans/wix-reference/html/post-spendenaufruf-der-scb-baut-ne-halle.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_ae9388c4b99842caaff70ccd00415727~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/13cc9c_b024bbf8eb6f4ee08c1b3a5fca4f86d0~mv2.jpg",
+      "fileSize": 266878,
+      "sha256": "25b5b28334967416cc4da61c5dfb974fdbdbb448d6e8a8e69bbcd567ab17cd9a",
+      "assetId": "13cc9c_b024bbf8eb6f4ee08c1b3a5fca4f86d0~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_b024bbf8eb6f4ee08c1b3a5fca4f86d0~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-2025.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_b024bbf8eb6f4ee08c1b3a5fca4f86d0~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/13cc9c_b8c6b92af9f2429dbfcdc1bede23d1cf~mv2.webp",
+      "fileSize": 186800,
+      "sha256": "830dc63777785c2a6cd64f1f29bd02fcb35d52e8d48c07cd0445f8e15a912cf7",
+      "assetId": "13cc9c_b8c6b92af9f2429dbfcdc1bede23d1cf~mv2.webp",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_b8c6b92af9f2429dbfcdc1bede23d1cf~mv2.webp",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/event-sunday-funday-2025-04-06-13-00.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_b8c6b92af9f2429dbfcdc1bede23d1cf~mv2.webp"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"a7f7056e575ce2f59094d25dee590136\"",
+      "lastModified": "Tue, 15 Apr 2025 08:16:49 GMT",
+      "status": "downloaded",
+      "localPath": "original/13cc9c_ba8e9e63f5064d89bd45bd5591dc1205~mv2.jpg",
+      "fileSize": 112351,
+      "sha256": "8ba8380c78841ebdbf6bee5763626eddd175e71a2dc9a7ea3174470c3f340e6e",
+      "assetId": "13cc9c_ba8e9e63f5064d89bd45bd5591dc1205~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_ba8e9e63f5064d89bd45bd5591dc1205~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-graffiti-workshop-ein-voller-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_ba8e9e63f5064d89bd45bd5591dc1205~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/13cc9c_bec592486d444a97987370bd08470385~mv2.jpg",
+      "fileSize": 355221,
+      "sha256": "8e73631d13e1e4f9ce8f1f470288a74a802aa4501951bd8b8d1db2f4da844093",
+      "assetId": "13cc9c_bec592486d444a97987370bd08470385~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_bec592486d444a97987370bd08470385~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-2025.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_bec592486d444a97987370bd08470385~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/13cc9c_d2cf4f765f504960a33f56e7d9387b94~mv2.jpg",
+      "fileSize": 120042,
+      "sha256": "d6c04e56721ef7c7cc768bb444e0e74753ea5f1292d4f48a4b186516a53eca62",
+      "assetId": "13cc9c_d2cf4f765f504960a33f56e7d9387b94~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_d2cf4f765f504960a33f56e7d9387b94~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-spendenaufruf-der-scb-baut-ne-halle.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_d2cf4f765f504960a33f56e7d9387b94~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"742626407097d3fdefbcfa925d6d6c4f\"",
+      "lastModified": "Tue, 15 Apr 2025 08:19:35 GMT",
+      "status": "downloaded",
+      "localPath": "original/13cc9c_e46318e6b8e34442815c92c1f6ae229d~mv2.jpg",
+      "fileSize": 447027,
+      "sha256": "9a402f1e34bed7cfad39ce5c5067935b57dadccdc9412d25c7c57409ca2571c5",
+      "assetId": "13cc9c_e46318e6b8e34442815c92c1f6ae229d~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_e46318e6b8e34442815c92c1f6ae229d~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-graffiti-workshop-ein-voller-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_e46318e6b8e34442815c92c1f6ae229d~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/13cc9c_e8b3327ed0414eed92e9933653672911~mv2.jpg",
+      "fileSize": 307194,
+      "sha256": "b47f37e1fe4e4f6201e71f37aa295df0375a07757d1996e4ebeb51f60d8964da",
+      "assetId": "13cc9c_e8b3327ed0414eed92e9933653672911~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_e8b3327ed0414eed92e9933653672911~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-2025.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_e8b3327ed0414eed92e9933653672911~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/13cc9c_ebf3ffe4796d4eb48427b301137f5366~mv2.jpg",
+      "fileSize": 243786,
+      "sha256": "aa5019cb2151d7515a9a9d9f2273cb93ec5a9fdf93f4736f685bc3829d7ec25d",
+      "assetId": "13cc9c_ebf3ffe4796d4eb48427b301137f5366~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_ebf3ffe4796d4eb48427b301137f5366~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-2025.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_ebf3ffe4796d4eb48427b301137f5366~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"dc297d531c29ca5d0134cfb0edda77a7\"",
+      "lastModified": "Tue, 15 Apr 2025 08:16:55 GMT",
+      "status": "downloaded",
+      "localPath": "original/13cc9c_f0e2d08e4e184a1fb4d2a150838dcdeb~mv2.jpg",
+      "fileSize": 99997,
+      "sha256": "ffb5d1f973b560256f23f558672f9e1b2e7656cce19c73648953d721d5f052b9",
+      "assetId": "13cc9c_f0e2d08e4e184a1fb4d2a150838dcdeb~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_f0e2d08e4e184a1fb4d2a150838dcdeb~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-graffiti-workshop-ein-voller-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_f0e2d08e4e184a1fb4d2a150838dcdeb~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"cb5a5bb33a7f3a703dd12875fb0a232b\"",
+      "lastModified": "Tue, 15 Apr 2025 08:16:49 GMT",
+      "status": "downloaded",
+      "localPath": "original/13cc9c_f3cbd94dcd424b4ebfd3fce61282f31c~mv2.jpg",
+      "fileSize": 202698,
+      "sha256": "b32cfc85b36222c859ea6f403512167974e4f1b4062086c8ae6f91e630c9e378",
+      "assetId": "13cc9c_f3cbd94dcd424b4ebfd3fce61282f31c~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_f3cbd94dcd424b4ebfd3fce61282f31c~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-graffiti-workshop-ein-voller-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_f3cbd94dcd424b4ebfd3fce61282f31c~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/13cc9c_f7018eb502eb4f729aa73332c8e89bbe~mv2.jpg",
+      "fileSize": 333937,
+      "sha256": "7539b25afcd6fed160abcdb12901947f62e3d42b72af1da7b31d5d9912010ab1",
+      "assetId": "13cc9c_f7018eb502eb4f729aa73332c8e89bbe~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_f7018eb502eb4f729aa73332c8e89bbe~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-2025.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_f7018eb502eb4f729aa73332c8e89bbe~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"a3be0bdcb65e4b62dd9c9ca6984fb6fd\"",
+      "lastModified": "Tue, 15 Apr 2025 08:16:49 GMT",
+      "status": "downloaded",
+      "localPath": "original/13cc9c_fbfbf312de614ed788e8b1bf1502fe45~mv2.jpg",
+      "fileSize": 189630,
+      "sha256": "c96b82f65255dbf2622bf2b21b34415b06cc59bc75aa1f035a4effbaeea405ac",
+      "assetId": "13cc9c_fbfbf312de614ed788e8b1bf1502fe45~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/13cc9c_fbfbf312de614ed788e8b1bf1502fe45~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-graffiti-workshop-ein-voller-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/13cc9c_fbfbf312de614ed788e8b1bf1502fe45~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/537c64_3a32361a029546239becfe5b0e5ae483~mv2.jpg",
+      "fileSize": 15457240,
+      "sha256": "04e359d64656152fcf4fc6cdd27610ba9de14a52bd4d3cfe5325d52de3183553",
+      "assetId": "537c64_3a32361a029546239becfe5b0e5ae483~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/537c64_3a32361a029546239becfe5b0e5ae483~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/pics-n-vids.html",
+        "docs/plans/wix-reference/html/post-der-contest-in-der-zeitung.html",
+        "docs/plans/wix-reference/html/post-der-skate-club-in-der-zeitung.html",
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-2025.html",
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html",
+        "docs/plans/wix-reference/html/post-graffiti-workshop-ein-voller-erfolg.html",
+        "docs/plans/wix-reference/html/post-spende-von-der-volksbank-franken-s%C3%BCd.html",
+        "docs/plans/wix-reference/html/post-spendenaufruf-der-scb-baut-ne-halle.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/537c64_3a32361a029546239becfe5b0e5ae483~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/9c608a_dea47d9b9cef4e9f82b4ced1c704afa7~mv2_d_3000_2004_s_2.jpg",
+      "fileSize": 1185701,
+      "sha256": "a1266f9114d20ae9814a342fa9bf1adc6088c6dc71999457cd34153ab4021b05",
+      "assetId": "9c608a_dea47d9b9cef4e9f82b4ced1c704afa7~mv2_d_3000_2004_s_2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/9c608a_dea47d9b9cef4e9f82b4ced1c704afa7~mv2_d_3000_2004_s_2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/copy-of-veranstaltungen.html",
+        "docs/plans/wix-reference/html/datenschutz.html",
+        "docs/plans/wix-reference/html/event-sunday-funday-2025-04-06-13-00.html",
+        "docs/plans/wix-reference/html/impressum.html",
+        "docs/plans/wix-reference/html/veranstaltungen.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/9c608a_dea47d9b9cef4e9f82b4ced1c704afa7~mv2_d_3000_2004_s_2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"1bd52b6e260ca6d2f815a5ce54be0f13\"",
+      "lastModified": "Mon, 23 Mar 2026 09:20:25 GMT",
+      "status": "downloaded",
+      "localPath": "original/dfbc4d_0b705773d27e49c6a5bc9970e8e53b6e~mv2.jpg",
+      "fileSize": 180371,
+      "sha256": "a5081ba7d2b561ea64da8a8d086b21fe3f167ff7992f7ed8830d265eac93cd36",
+      "assetId": "dfbc4d_0b705773d27e49c6a5bc9970e8e53b6e~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_0b705773d27e49c6a5bc9970e8e53b6e~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_0b705773d27e49c6a5bc9970e8e53b6e~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/dfbc4d_0c5a0de8605c42cbbf4d5ebc30565f1e~mv2.png",
+      "fileSize": 217994,
+      "sha256": "d7da128a265d7f5f310b97f31a23057e9068c650ff1396a8cddc88c020b7f667",
+      "assetId": "dfbc4d_0c5a0de8605c42cbbf4d5ebc30565f1e~mv2.png",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_0c5a0de8605c42cbbf4d5ebc30565f1e~mv2.png",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/copy-of-veranstaltungen.html",
+        "docs/plans/wix-reference/html/datenschutz.html",
+        "docs/plans/wix-reference/html/event-sunday-funday-2025-04-06-13-00.html",
+        "docs/plans/wix-reference/html/home.html",
+        "docs/plans/wix-reference/html/impressum.html",
+        "docs/plans/wix-reference/html/kontakt.html",
+        "docs/plans/wix-reference/html/news-index.html",
+        "docs/plans/wix-reference/html/pics-n-vids.html",
+        "docs/plans/wix-reference/html/post-der-contest-in-der-zeitung.html",
+        "docs/plans/wix-reference/html/post-der-skate-club-in-der-zeitung.html",
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-2025.html",
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html",
+        "docs/plans/wix-reference/html/post-graffiti-workshop-ein-voller-erfolg.html",
+        "docs/plans/wix-reference/html/post-spende-von-der-volksbank-franken-s%C3%BCd.html",
+        "docs/plans/wix-reference/html/post-spendenaufruf-der-scb-baut-ne-halle.html",
+        "docs/plans/wix-reference/html/ueber-uns.html",
+        "docs/plans/wix-reference/html/veranstaltungen.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_0c5a0de8605c42cbbf4d5ebc30565f1e~mv2.png"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"3bfa0e428df100715c574495f1eef469\"",
+      "lastModified": "Mon, 23 Mar 2026 09:20:05 GMT",
+      "status": "downloaded",
+      "localPath": "original/dfbc4d_0d6596f962d7489da3e9dd6e40a1b249~mv2.jpg",
+      "fileSize": 179664,
+      "sha256": "e55756b39535a35499f1970c9ce99e556b9aa08fe7cf1345d89c8c8f312c72d1",
+      "assetId": "dfbc4d_0d6596f962d7489da3e9dd6e40a1b249~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_0d6596f962d7489da3e9dd6e40a1b249~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_0d6596f962d7489da3e9dd6e40a1b249~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"3283dff703d4ad944e71fd5b7cbe2ccf\"",
+      "lastModified": "Mon, 23 Mar 2026 09:20:05 GMT",
+      "status": "downloaded",
+      "localPath": "original/dfbc4d_0d86af42619946669a816d28c4200de8~mv2.jpg",
+      "fileSize": 183040,
+      "sha256": "fc4c222c51eae31647730070b4563c97592a73430fc2d9fe83c6a89baab05bdd",
+      "assetId": "dfbc4d_0d86af42619946669a816d28c4200de8~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_0d86af42619946669a816d28c4200de8~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_0d86af42619946669a816d28c4200de8~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/dfbc4d_0ecb329538bd422b8ff9b34f2106689a~mv2.jpg",
+      "fileSize": 61696,
+      "sha256": "6826bdd85879149d6140aa1435ba35595497e9be8022f86d7029e6f0e964f2f3",
+      "assetId": "dfbc4d_0ecb329538bd422b8ff9b34f2106689a~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_0ecb329538bd422b8ff9b34f2106689a~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/home.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_0ecb329538bd422b8ff9b34f2106689a~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/dfbc4d_257e47ce94d34232b100d26716444ebe~mv2.jpg",
+      "fileSize": 61464,
+      "sha256": "24666923228be79ff0619ccc73f1c60bcb1b509aaae2e369a20bec21e993cb59",
+      "assetId": "dfbc4d_257e47ce94d34232b100d26716444ebe~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_257e47ce94d34232b100d26716444ebe~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/home.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_257e47ce94d34232b100d26716444ebe~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"dea0a899c08794a5dedec432e28ff8d6\"",
+      "lastModified": "Wed, 25 Sep 2024 12:40:25 GMT",
+      "status": "downloaded",
+      "localPath": "original/dfbc4d_29592f7330fb4f7d8b313464d065cd59~mv2.jpg",
+      "fileSize": 1389171,
+      "sha256": "18d69bebe7be164dfc35e7e26bc1f3f4d104e0ae769ee05ab3aa72925b2ddb2f",
+      "assetId": "dfbc4d_29592f7330fb4f7d8b313464d065cd59~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_29592f7330fb4f7d8b313464d065cd59~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-der-skate-club-in-der-zeitung.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_29592f7330fb4f7d8b313464d065cd59~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"eb67839b9f4b5a75a0a1fad26dbd53a6\"",
+      "lastModified": "Mon, 23 Mar 2026 09:20:05 GMT",
+      "status": "downloaded",
+      "localPath": "original/dfbc4d_2a5a87a690e34a87a3d53c10c486be3a~mv2.jpg",
+      "fileSize": 307049,
+      "sha256": "a283f471112d28636f312991c6ca99eaa948670544a5cecadd0a7a1371bd9817",
+      "assetId": "dfbc4d_2a5a87a690e34a87a3d53c10c486be3a~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_2a5a87a690e34a87a3d53c10c486be3a~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_2a5a87a690e34a87a3d53c10c486be3a~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"5b97c5fb945bd620550019824e3ad47b\"",
+      "lastModified": "Mon, 23 Mar 2026 09:20:05 GMT",
+      "status": "downloaded",
+      "localPath": "original/dfbc4d_376680f3e3b04b4abc7a8c5459ae0a61~mv2.jpg",
+      "fileSize": 226307,
+      "sha256": "caa82a87a2f7208aaa7dd46de373775af765263a206a8e496c385f84522d575c",
+      "assetId": "dfbc4d_376680f3e3b04b4abc7a8c5459ae0a61~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_376680f3e3b04b4abc7a8c5459ae0a61~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_376680f3e3b04b4abc7a8c5459ae0a61~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/dfbc4d_3825bd53a4d64365a4edd84a395cd7c9~mv2.jpg",
+      "fileSize": 643168,
+      "sha256": "8908b05666167714e5fe3770e62e9dd2beeeaa4fb154e87bfa7245e135753bd2",
+      "assetId": "dfbc4d_3825bd53a4d64365a4edd84a395cd7c9~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_3825bd53a4d64365a4edd84a395cd7c9~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/feeds/blog-feed.xml",
+        "docs/plans/wix-reference/html/post-der-skate-club-in-der-zeitung.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_3825bd53a4d64365a4edd84a395cd7c9~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"c386fa954df6c5f854ec47c9f1c5724e\"",
+      "lastModified": "Mon, 23 Mar 2026 09:20:05 GMT",
+      "status": "downloaded",
+      "localPath": "original/dfbc4d_3a56ab4be9ff40a6892106318e0bfb47~mv2.jpg",
+      "fileSize": 121344,
+      "sha256": "5dc4f1cd5be594a2fd29b15aee39f1fa414c0dc09acde9cc36e50d4d4080c981",
+      "assetId": "dfbc4d_3a56ab4be9ff40a6892106318e0bfb47~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_3a56ab4be9ff40a6892106318e0bfb47~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_3a56ab4be9ff40a6892106318e0bfb47~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"5edafc2e9494aeed37c002c5bb79a5de\"",
+      "lastModified": "Mon, 23 Mar 2026 09:20:05 GMT",
+      "status": "downloaded",
+      "localPath": "original/dfbc4d_3d6d4bfb62414b928d4cad2a29688a59~mv2.jpg",
+      "fileSize": 107254,
+      "sha256": "b5668592f63e682d69f37222cfa4a661d051ebf0c38aed19cf2203153e37d0d9",
+      "assetId": "dfbc4d_3d6d4bfb62414b928d4cad2a29688a59~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_3d6d4bfb62414b928d4cad2a29688a59~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_3d6d4bfb62414b928d4cad2a29688a59~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/dfbc4d_43bd619f89664d5d97e7053ac7e702e0~mv2.jpg",
+      "fileSize": 276957,
+      "sha256": "6aef981cb5ae6ef4e3551c7cb8daa1c333c4e2ae0917d504e445e3020c427d07",
+      "assetId": "dfbc4d_43bd619f89664d5d97e7053ac7e702e0~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_43bd619f89664d5d97e7053ac7e702e0~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/ueber-uns.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_43bd619f89664d5d97e7053ac7e702e0~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/dfbc4d_5415700252604e53b99070fb0076183d~mv2.jpg",
+      "fileSize": 148380,
+      "sha256": "fbc2a4e8dbf303bbf65a73900cc09f986476e7aea0147cfd71c79240560684fd",
+      "assetId": "dfbc4d_5415700252604e53b99070fb0076183d~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_5415700252604e53b99070fb0076183d~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/home.html",
+        "docs/plans/wix-reference/html/kontakt.html",
+        "docs/plans/wix-reference/html/news-index.html",
+        "docs/plans/wix-reference/html/post-der-contest-in-der-zeitung.html",
+        "docs/plans/wix-reference/html/post-der-skate-club-in-der-zeitung.html",
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-2025.html",
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html",
+        "docs/plans/wix-reference/html/post-graffiti-workshop-ein-voller-erfolg.html",
+        "docs/plans/wix-reference/html/post-spende-von-der-volksbank-franken-s%C3%BCd.html",
+        "docs/plans/wix-reference/html/post-spendenaufruf-der-scb-baut-ne-halle.html",
+        "docs/plans/wix-reference/html/ueber-uns.html",
+        "docs/plans/wix-reference/html/veranstaltungen.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_5415700252604e53b99070fb0076183d~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"a38d2157cc6ba578221b95d91fc43fad\"",
+      "lastModified": "Mon, 23 Mar 2026 09:20:05 GMT",
+      "status": "downloaded",
+      "localPath": "original/dfbc4d_5662fe01b0e94037b277cdf46a6ac624~mv2.jpg",
+      "fileSize": 157000,
+      "sha256": "6466274c83beaae05c146100cb6f9a1b99b173a46f672a6218c188835576b5af",
+      "assetId": "dfbc4d_5662fe01b0e94037b277cdf46a6ac624~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_5662fe01b0e94037b277cdf46a6ac624~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_5662fe01b0e94037b277cdf46a6ac624~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/dfbc4d_581b537602574727b9ff441188b0817c~mv2.jpeg",
+      "fileSize": 130586,
+      "sha256": "f134ce72a0d1302b78103fef5c3511fdb4db92e57d13797c3e4999b4d3b58543",
+      "assetId": "dfbc4d_581b537602574727b9ff441188b0817c~mv2.jpeg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_581b537602574727b9ff441188b0817c~mv2.jpeg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/feeds/blog-feed.xml"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_581b537602574727b9ff441188b0817c~mv2.jpeg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/dfbc4d_59e1e64566d44ea2b074b9cf058761e7~mv2.jpg",
+      "fileSize": 1739174,
+      "sha256": "6872208fd1e566a3c1d25cd7a2ce6a12b1be8c31b083f4c2f1f2edf92eef2c31",
+      "assetId": "dfbc4d_59e1e64566d44ea2b074b9cf058761e7~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_59e1e64566d44ea2b074b9cf058761e7~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/feeds/blog-feed.xml",
+        "docs/plans/wix-reference/html/post-der-contest-in-der-zeitung.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_59e1e64566d44ea2b074b9cf058761e7~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/dfbc4d_62a9f344d0f341809e139fb705be5245~mv2.jpg",
+      "fileSize": 290447,
+      "sha256": "3a227b057a5217a39c21cf168d79405bacdeb31f7b5a1003360296cbb56faa8d",
+      "assetId": "dfbc4d_62a9f344d0f341809e139fb705be5245~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_62a9f344d0f341809e139fb705be5245~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/ueber-uns.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_62a9f344d0f341809e139fb705be5245~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"eaa7c6bccb1b392d28c6e7021830ead5\"",
+      "lastModified": "Mon, 23 Mar 2026 09:20:05 GMT",
+      "status": "downloaded",
+      "localPath": "original/dfbc4d_66c89ab392734f06ada7cf4458074bb3~mv2.jpg",
+      "fileSize": 208321,
+      "sha256": "cb0f7880fb4c89fc5702844d2eb06a21de23d528f220cf3de5e8410895cb630e",
+      "assetId": "dfbc4d_66c89ab392734f06ada7cf4458074bb3~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_66c89ab392734f06ada7cf4458074bb3~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_66c89ab392734f06ada7cf4458074bb3~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/dfbc4d_6af01197129448a3937b17f95f419cc0~mv2.jpg",
+      "fileSize": 156764,
+      "sha256": "da542df81f282278b90a024335d3b7d75ba2a0bb3670723003395882729fc36c",
+      "assetId": "dfbc4d_6af01197129448a3937b17f95f419cc0~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_6af01197129448a3937b17f95f419cc0~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/ueber-uns.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_6af01197129448a3937b17f95f419cc0~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"a108492f7f4601d1f09297ed5695540e\"",
+      "lastModified": "Mon, 23 Mar 2026 09:20:05 GMT",
+      "status": "downloaded",
+      "localPath": "original/dfbc4d_6d9c118eaf9e412eab343ba006b018b4~mv2.jpg",
+      "fileSize": 119188,
+      "sha256": "4ae9bdbcaec8389f5ed8eb190f4f617d249353520d4094059a04f966fc1b39d1",
+      "assetId": "dfbc4d_6d9c118eaf9e412eab343ba006b018b4~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_6d9c118eaf9e412eab343ba006b018b4~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_6d9c118eaf9e412eab343ba006b018b4~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"6c6914fdb7f5c40e908aa9ca23b15002\"",
+      "lastModified": "Mon, 23 Mar 2026 09:20:33 GMT",
+      "status": "downloaded",
+      "localPath": "original/dfbc4d_70717f57f27c4718b159d0320729e90e~mv2.jpg",
+      "fileSize": 115164,
+      "sha256": "ec4d6117fd8aed62972e60c4f2c2271edbd8626fc75c1c5458551a3e1b86757d",
+      "assetId": "dfbc4d_70717f57f27c4718b159d0320729e90e~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_70717f57f27c4718b159d0320729e90e~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_70717f57f27c4718b159d0320729e90e~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"a1e390d7d93417ea64acef0d25f96eb0\"",
+      "lastModified": "Mon, 23 Mar 2026 09:20:05 GMT",
+      "status": "downloaded",
+      "localPath": "original/dfbc4d_7344fe5ba1684364a4a90b6bee74032b~mv2.jpg",
+      "fileSize": 109801,
+      "sha256": "b8aa3d7a0be391dc61f18b8260dcf4397b8da67f5ec9bfca45724ed928ffaf5b",
+      "assetId": "dfbc4d_7344fe5ba1684364a4a90b6bee74032b~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_7344fe5ba1684364a4a90b6bee74032b~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_7344fe5ba1684364a4a90b6bee74032b~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"73543cbea22f0d6fec71d46fcbca08fb\"",
+      "lastModified": "Mon, 23 Mar 2026 09:20:05 GMT",
+      "status": "downloaded",
+      "localPath": "original/dfbc4d_98ec23c533d640488c16ed8c7d5c6f65~mv2.jpg",
+      "fileSize": 162816,
+      "sha256": "9a559518a8a1cdbfb31483caac53eec6c339844c774505378998a0b75db79a90",
+      "assetId": "dfbc4d_98ec23c533d640488c16ed8c7d5c6f65~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_98ec23c533d640488c16ed8c7d5c6f65~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_98ec23c533d640488c16ed8c7d5c6f65~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/dfbc4d_9c5b429a33d24f9199426a8918c10409~mv2.jpg",
+      "fileSize": 77398,
+      "sha256": "6ae53ac3ac5b2e35b867a0d5f0074d21fb0ebcbaae1f86a794f843366d3b5b00",
+      "assetId": "dfbc4d_9c5b429a33d24f9199426a8918c10409~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_9c5b429a33d24f9199426a8918c10409~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/home.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_9c5b429a33d24f9199426a8918c10409~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/dfbc4d_9da7d41c6cb74570b718efd6b78169c4~mv2.jpg",
+      "fileSize": 55350,
+      "sha256": "e07bf3c48c9770d507a542d4867d00250747af1f9311e73e408aacbfc486f8e9",
+      "assetId": "dfbc4d_9da7d41c6cb74570b718efd6b78169c4~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_9da7d41c6cb74570b718efd6b78169c4~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/ueber-uns.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_9da7d41c6cb74570b718efd6b78169c4~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"9ba67af5edec47d7b289c5f81ea978e4\"",
+      "lastModified": "Mon, 23 Mar 2026 09:20:05 GMT",
+      "status": "downloaded",
+      "localPath": "original/dfbc4d_9f27a917a75847449af22f581a5f6177~mv2.jpg",
+      "fileSize": 219304,
+      "sha256": "3814a008770813ec8a2f96d6d57f714d6db6f9a6225aa5460e8a610605b90ee3",
+      "assetId": "dfbc4d_9f27a917a75847449af22f581a5f6177~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_9f27a917a75847449af22f581a5f6177~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_9f27a917a75847449af22f581a5f6177~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"4eae7ad665fb2a3108ac01f89119f669\"",
+      "lastModified": "Mon, 09 Feb 2026 09:21:35 GMT",
+      "status": "downloaded",
+      "localPath": "original/dfbc4d_a4b7ccd507724b948671fb09a70afe94~mv2.jpg",
+      "fileSize": 1200032,
+      "sha256": "22549f7f994ab747715a8b324c1f8c4c35d1c6e1aeda3b0bc9f3dc3c8e96fa82",
+      "assetId": "dfbc4d_a4b7ccd507724b948671fb09a70afe94~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_a4b7ccd507724b948671fb09a70afe94~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-der-contest-in-der-zeitung.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_a4b7ccd507724b948671fb09a70afe94~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"e310632e2aa504d1564b7fc961f4caa7\"",
+      "lastModified": "Mon, 23 Mar 2026 09:20:05 GMT",
+      "status": "downloaded",
+      "localPath": "original/dfbc4d_a4d2a26e6e874f71aeaeed66c5e5b821~mv2.jpg",
+      "fileSize": 183477,
+      "sha256": "d048cc85d8e3042d37f5af1d5aded78cb1775947fe619e57623325a03521fd9c",
+      "assetId": "dfbc4d_a4d2a26e6e874f71aeaeed66c5e5b821~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_a4d2a26e6e874f71aeaeed66c5e5b821~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_a4d2a26e6e874f71aeaeed66c5e5b821~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"4195be1434ae402abe06807bf27a8ef5\"",
+      "lastModified": "Mon, 23 Mar 2026 09:20:24 GMT",
+      "status": "downloaded",
+      "localPath": "original/dfbc4d_b66c2e98587b49baa8c1380d3bda125c~mv2.jpg",
+      "fileSize": 121280,
+      "sha256": "6c15179b6a49fb033d3eeaf5de54b5da6304481be83736a4a01dbaf98d6e402e",
+      "assetId": "dfbc4d_b66c2e98587b49baa8c1380d3bda125c~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_b66c2e98587b49baa8c1380d3bda125c~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_b66c2e98587b49baa8c1380d3bda125c~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/dfbc4d_b81f189593f74c3a9072afe00e72095a~mv2.jpg",
+      "fileSize": 80302,
+      "sha256": "114c84dfe8c217b7b262d966fccfbba4cc1b75234dc1c682a4e7c02d57382bc9",
+      "assetId": "dfbc4d_b81f189593f74c3a9072afe00e72095a~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_b81f189593f74c3a9072afe00e72095a~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/ueber-uns.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_b81f189593f74c3a9072afe00e72095a~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"987aac8075ecedf5d581f36d1fcad844\"",
+      "lastModified": "Mon, 23 Mar 2026 09:20:05 GMT",
+      "status": "downloaded",
+      "localPath": "original/dfbc4d_c0955c5ed5924dca83df6de4ed9d61ab~mv2.jpg",
+      "fileSize": 277145,
+      "sha256": "0cd81911cdfd467196b3ce1d12399f494f14da03fecf98124af926749a6704d6",
+      "assetId": "dfbc4d_c0955c5ed5924dca83df6de4ed9d61ab~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_c0955c5ed5924dca83df6de4ed9d61ab~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_c0955c5ed5924dca83df6de4ed9d61ab~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"f78ceba78eaf3d11b203b13bcb818383\"",
+      "lastModified": "Mon, 23 Mar 2026 09:20:05 GMT",
+      "status": "downloaded",
+      "localPath": "original/dfbc4d_c15b005743294d2b9a27364c4d39a5cd~mv2.jpg",
+      "fileSize": 177897,
+      "sha256": "4e8475561b63163e5595466d9c4eb8f146541835251e5ca0843e4c0982b66a0f",
+      "assetId": "dfbc4d_c15b005743294d2b9a27364c4d39a5cd~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_c15b005743294d2b9a27364c4d39a5cd~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_c15b005743294d2b9a27364c4d39a5cd~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"c8e659eed605fcf4f327900e3a7b86d6\"",
+      "lastModified": "Mon, 23 Mar 2026 09:20:05 GMT",
+      "status": "downloaded",
+      "localPath": "original/dfbc4d_c94e25bd34a545218e776703508626cc~mv2.jpg",
+      "fileSize": 227480,
+      "sha256": "4a0be3acbcb0de45e7ca3829c4453f4b25d6e647c6fd77fcd16333fc5bbd6896",
+      "assetId": "dfbc4d_c94e25bd34a545218e776703508626cc~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_c94e25bd34a545218e776703508626cc~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_c94e25bd34a545218e776703508626cc~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"1eaa4b2e7f12ba67c1ca347d470377e5\"",
+      "lastModified": "Mon, 23 Mar 2026 09:20:06 GMT",
+      "status": "downloaded",
+      "localPath": "original/dfbc4d_d186c8eab1484810bd0d67e3d9520da0~mv2.jpg",
+      "fileSize": 190211,
+      "sha256": "297c41e308bb7f17ac293dc0641ed1b72c0507d91eed5d5f265bcf4ed18d719b",
+      "assetId": "dfbc4d_d186c8eab1484810bd0d67e3d9520da0~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_d186c8eab1484810bd0d67e3d9520da0~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_d186c8eab1484810bd0d67e3d9520da0~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/dfbc4d_d22c6e8ff3f54d19a657aa5fcc53cd91~mv2.png",
+      "fileSize": 824103,
+      "sha256": "0aa8da2ff4db197c3d4e775e339cc0c311572247085c0f9514277e52b7446e2e",
+      "assetId": "dfbc4d_d22c6e8ff3f54d19a657aa5fcc53cd91~mv2.png",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_d22c6e8ff3f54d19a657aa5fcc53cd91~mv2.png",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/home.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_d22c6e8ff3f54d19a657aa5fcc53cd91~mv2.png"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/dfbc4d_d4de6327ca7c4883bd7dbc4c3a4e0a84~mv2.jpg",
+      "fileSize": 166424,
+      "sha256": "29a20156da80e9a283df4c65d5d3ecc30918667f76530bf3617902c46953a3e8",
+      "assetId": "dfbc4d_d4de6327ca7c4883bd7dbc4c3a4e0a84~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_d4de6327ca7c4883bd7dbc4c3a4e0a84~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/feeds/blog-feed.xml",
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_d4de6327ca7c4883bd7dbc4c3a4e0a84~mv2.jpg"
+      ]
+    },
+    {
+      "status": "existing",
+      "localPath": "original/dfbc4d_d71543eec4ac4f3fb7aa44a865c6d601~mv2.jpg",
+      "fileSize": 7227358,
+      "sha256": "a07135047c2e970213755383bdca5ac180efe7f5de27ceec5909c0171e5552d7",
+      "assetId": "dfbc4d_d71543eec4ac4f3fb7aa44a865c6d601~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_d71543eec4ac4f3fb7aa44a865c6d601~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/feeds/blog-feed.xml",
+        "docs/plans/wix-reference/html/post-spende-von-der-volksbank-franken-s%C3%BCd.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_d71543eec4ac4f3fb7aa44a865c6d601~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"a1de97e061ade7ef9c0e21b764e29281\"",
+      "lastModified": "Mon, 23 Mar 2026 09:20:05 GMT",
+      "status": "downloaded",
+      "localPath": "original/dfbc4d_ec4023209b9b493097a53a2df3af7671~mv2.jpg",
+      "fileSize": 241139,
+      "sha256": "a899b241b44263bf6291a2265b655acee6f10159573e50efe21357b1fcab58ad",
+      "assetId": "dfbc4d_ec4023209b9b493097a53a2df3af7671~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_ec4023209b9b493097a53a2df3af7671~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_ec4023209b9b493097a53a2df3af7671~mv2.jpg"
+      ]
+    },
+    {
+      "contentType": "image/jpeg",
+      "etag": "\"8e4bcbe6f51e5534e1ea89e96fbccfef\"",
+      "lastModified": "Mon, 23 Mar 2026 09:20:05 GMT",
+      "status": "downloaded",
+      "localPath": "original/dfbc4d_fe37f4bab7804846aecaa2baac84cebf~mv2.jpg",
+      "fileSize": 327766,
+      "sha256": "5e27df6ceb67c460904b377d69487189bd7ea575cfb795ff370241f86e2cf8a7",
+      "assetId": "dfbc4d_fe37f4bab7804846aecaa2baac84cebf~mv2.jpg",
+      "downloadUrl": "https://static.wixstatic.com/media/dfbc4d_fe37f4bab7804846aecaa2baac84cebf~mv2.jpg",
+      "sourceFiles": [
+        "docs/plans/wix-reference/html/post-goodies-4-tricks-event-trotz-regen-ein-erfolg.html"
+      ],
+      "variantUrls": [
+        "https://static.wixstatic.com/media/dfbc4d_fe37f4bab7804846aecaa2baac84cebf~mv2.jpg"
+      ]
+    }
+  ],
+  "errors": []
+}

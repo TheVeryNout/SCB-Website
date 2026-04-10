@@ -45,7 +45,7 @@ As of `2026-04-10`, the repository baseline has been verified to this level:
 - Playwright CLI is installed and Chromium has been installed for local capture work
 - current implemented public routes are only the bootstrap homepage and `/admin/`
 - the Decap config still uses a temporary bootstrap collection
-- a committed Wix reference pack exists under `docs/plans/wix-reference/`
+- lightweight Wix reference metadata exists under `docs/plans/wix-reference/`, while heavy capture artifacts may remain local-only
 - a raw downloaded Wix asset archive exists under `docs/plans/wix-reference/asset-source-archive/`
 
 Known not-yet-done items:
@@ -118,6 +118,12 @@ Update these first when resuming work:
 - [ ] Phase 6 complete
 - [ ] Phase 7 complete
 
+Unchecked earlier phases are blockers.
+
+Do not treat a later phase as implicitly cleared just because related repo artifacts already exist.
+
+Cross-check this section against [status-checklist.md](/home/nout/REPO/SCB-Website/docs/plans/status-checklist.md) before resuming work.
+
 ---
 
 ## Bootstrap Verification Checklist
@@ -174,6 +180,7 @@ bunx playwright pdf https://briareos.wixsite.com/skateclubbiriciana/impressum do
 - [ ] `/datenschutz/`
 - [ ] the news index and at least two representative news posts
 - [ ] capture Playwright PDFs for long-form or legal pages when a screenshot is not enough
+- [ ] if a needed launch-route screenshot is unusable or blocked, record the exception and keep alternate local evidence such as HTML and/or PDF
 - [ ] capture `blog-feed.xml`
 - [ ] inventory Wix-linked PDFs and public asset URLs
 - [ ] record route targets, risks, and unresolved contradictions in the manifest
@@ -399,6 +406,7 @@ When in doubt, serialize the work instead of creating merge churn.
 
 Update this state after every substantial work session:
 
+- [ ] update [status-checklist.md](/home/nout/REPO/SCB-Website/docs/plans/status-checklist.md) with the audited current state and any exceptions
 - [ ] mark completed phase checklist items in this file
 - [ ] update `migration/manifest.json` statuses for anything touched
 - [ ] update the relevant spec doc if a real implementation decision sharpened it

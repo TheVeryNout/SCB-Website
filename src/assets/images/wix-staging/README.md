@@ -8,6 +8,13 @@ This folder is an Astro-facing staging tree built from the downloaded Wix asset 
 - give later implementation work stable local folders to pull from
 - preserve the original downloaded pack separately under `docs/plans/wix-reference/asset-source-archive/`
 
+## Working Rule
+
+- treat this folder as the implementation-facing staging workspace during migration and page build-out
+- files here may be used directly by the site while migration is still in progress
+- do not prune this folder only because the current code references a smaller subset at one point in time
+- decide any later asset curation only after the relevant routes, posts, media entries, and migration scope are actually complete
+
 ## Layout
 
 - `shared/site/`: common site chrome, icons, and assets used across many pages

@@ -16,7 +16,8 @@ For a cold start, read in this order:
 8. [implementation.md](/home/nout/REPO/SCB-Website/docs/plans/implementation.md)
 9. [migration.md](/home/nout/REPO/SCB-Website/docs/plans/migration.md)
 10. [execution-plan.md](/home/nout/REPO/SCB-Website/docs/plans/execution-plan.md)
-11. [parallel-agent-environment.md](/home/nout/REPO/SCB-Website/docs/plans/parallel-agent-environment.md)
+11. [status-checklist.md](/home/nout/REPO/SCB-Website/docs/plans/status-checklist.md)
+12. [parallel-agent-environment.md](/home/nout/REPO/SCB-Website/docs/plans/parallel-agent-environment.md)
 
 ## Doc Roles
 
@@ -30,6 +31,7 @@ For a cold start, read in this order:
 - [implementation.md](/home/nout/REPO/SCB-Website/docs/plans/implementation.md): Astro/Netlify/Decap technical architecture
 - [migration.md](/home/nout/REPO/SCB-Website/docs/plans/migration.md): Wix-to-Astro migration workflow, manifest, and QA rules
 - [execution-plan.md](/home/nout/REPO/SCB-Website/docs/plans/execution-plan.md): phase-gated delivery plan, checklist discipline, and multi-conversation handoff rules
+- [status-checklist.md](/home/nout/REPO/SCB-Website/docs/plans/status-checklist.md): audited checklist state, open exceptions, and required next-resume starting point
 - [parallel-agent-environment.md](/home/nout/REPO/SCB-Website/docs/plans/parallel-agent-environment.md): multi-agent orchestration, concurrency safety, observability, and security guardrails
 
 ## Current Direction
@@ -62,7 +64,7 @@ Foundation scaffolding is now in place in this repo:
 - Bun-managed package/scripts setup
 - Decap CMS admin shell at `/admin/`
 - Playwright CLI available for live Wix reference capture
-- committed local Wix reference pack under `docs/plans/wix-reference/`
+- lightweight Wix reference metadata under `docs/plans/wix-reference/`, with heavy local captures kept outside normal git tracking
 - automated Wix asset downloader via `bun run capture:wix-assets`
 - raw downloaded Wix media archived under `docs/plans/wix-reference/asset-source-archive/`
 - Astro-facing staged Wix asset tree under `src/assets/images/wix-staging/` via `bun run stage:wix-assets`
@@ -73,8 +75,11 @@ The docs are now split into:
 
 - normative specs that define what must be built
 - one execution plan that defines the order, gates, and checklists for building it cleanly across multiple conversations
+- one audited status checklist that records what has actually been checked and what is still open
 
 Use [execution-plan.md](/home/nout/REPO/SCB-Website/docs/plans/execution-plan.md) as the controlling work plan once the core specs have been read.
+
+Use [status-checklist.md](/home/nout/REPO/SCB-Website/docs/plans/status-checklist.md) immediately after that so the next conversation starts from recorded state instead of inference.
 
 ## Local CMS Workflow
 

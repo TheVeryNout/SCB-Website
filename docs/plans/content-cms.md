@@ -284,11 +284,11 @@ Required fields:
 - `body`
 - `goals`
 - `boardMembers`
+- `statutesPdf`
 
 Optional fields:
 
 - `heroImage`
-- `statutesPdf`
 
 `boardMembers` must be structured entries with:
 

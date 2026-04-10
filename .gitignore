@@ -4,4 +4,17 @@ dist/
 .netlify/
 .DS_Store
 
-docs/plans/wix-reference/
+# Keep only lightweight Wix reference metadata in git.
+# Heavy captures stay local: screenshots, raw HTML, PDFs, downloads, and raw archive assets.
+docs/plans/wix-reference/**
+!docs/plans/wix-reference/
+!docs/plans/wix-reference/README.md
+!docs/plans/wix-reference/manifest.json
+!docs/plans/wix-reference/notes/
+!docs/plans/wix-reference/notes/**
+!docs/plans/wix-reference/feeds/
+!docs/plans/wix-reference/feeds/blog-feed.xml
+!docs/plans/wix-reference/asset-source-archive/
+docs/plans/wix-reference/asset-source-archive/**
+!docs/plans/wix-reference/asset-source-archive/README.md
+!docs/plans/wix-reference/asset-source-archive/manifest.json
