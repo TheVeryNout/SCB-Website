@@ -35,6 +35,7 @@ Audited scope:
 - the second Phase 5 singleton-route slice for `/ueber-uns/`, `/mitgliedschaft/`, `/kontakt/`, and `/kontakt/danke/`
 - the legal-route follow-up for `/impressum/` and `/datenschutz/` from the retained local HTML/PDF evidence pack
 - the final Phase 5 collection-route slice for `/neuigkeiten/`, `/neuigkeiten/[slug]/`, and `/pics-n-vids/`
+- the first substantive Phase 6 migration batch for retained-news backfill, local media galleries, the canonical migration manifest, and avoidable Wix dependency cleanup
 
 ---
 
@@ -212,6 +213,38 @@ Audit notes:
 
 ---
 
+## Phase 6 Audit
+
+Overall status:
+
+- [x] Phase 6 implementation has started in the repo
+- [ ] Phase 6 is not yet signoff-clean in this audit
+
+Checklist status:
+
+- [ ] homepage copy and featured sections are fully migrated
+- [ ] static-page content is fully migrated
+- [x] news posts and dates are migrated from retained local evidence
+- [ ] event entries are fully migrated and reconciled against retained evidence
+- [x] media references and curated thumbnails are migrated from retained local evidence
+- [x] localized PDFs are present and tracked through the migration manifest
+- [x] local images worth preserving are in active use through migrated posts and media entries
+- [x] avoidable Wix-hosted production dependencies touched in this batch were removed
+- [x] `migration/manifest.json` exists and records touched migration items
+- [x] unresolved contradictions are recorded instead of guessed
+
+Audit notes:
+
+- `migration/manifest.json` now exists as the canonical Phase 6 tracker and records retained-evidence routes, posts, event/media items, localized PDFs, and open QA notes.
+- The posts collection now covers the full retained `blog-feed.xml` inventory: the six missing entries were migrated with preserved publication dates, local cover images, and source URLs from the retained evidence pack.
+- The retained post slug/title mismatch for `spende-von-der-volksbank-franken-sued` is now explicit in the manifest. Per user instruction, the Astro slug preserves the source URL naming while the visible title follows the retained post content.
+- `parkausbesserungen` was migrated conservatively from the retained feed sentence only. The manifest keeps that entry qa-pending because the retained evidence after the first complete sentence is truncated and was not guessed.
+- `/pics-n-vids/` now separates external video links from local photo-gallery entries, and two curated gallery entries were added from retained local post evidence plus staged local images.
+- The migrated `impressum` content no longer points users back to the Wix `/kontakt` route; it now references the local `/kontakt/` route instead of keeping that avoidable production dependency.
+- Verification passed with `bun run check`, `bun run build`, and Playwright Chromium phone-width screenshots at `390x844` for `/`, `/neuigkeiten/`, `/neuigkeiten/graffiti-workshop-ein-voller-erfolg/`, and `/pics-n-vids/` served from `bun run preview -- --host 127.0.0.1 --port 4322`.
+
+---
+
 ## Findings To Carry Forward
 
 1. The control-state drift across Phases 1 to 4 has now been normalized in the committed tracking docs. Future work must continue from the updated progress snapshot with Phase 5 active, instead of re-inferring phase status from repo artifacts.
@@ -221,6 +254,10 @@ Audit notes:
 5. Playwright mobile presets currently default to WebKit, but the local verification environment only has Chromium installed. For phone-width QA in this repo state, use Playwright with explicit Chromium viewport sizing unless WebKit is intentionally installed again.
 6. The `datenschutz` content no longer needs to be treated as a missing-route blocker. The retained local HTML/PDF evidence was sufficient to populate the canonical page entry without reopening Wix.
 7. Phase 5 no longer has a route backlog. Future work should not reopen route implementation unless migration evidence or QA reveals a concrete bug.
+8. The news migration backlog from the retained feed is now closed, but homepage/static-page parity and the event migration pass still keep Phase 6 open.
+9. `migration/manifest.json` is now the canonical Phase 6 migration tracker. Future migration work should update it directly instead of leaving route/content state only in `status-checklist.md`.
+10. The retained `spende-von-der-volksbank-franken-sued` evidence contains a real source contradiction between visible title/body text and source URL slug. That mismatch is preserved intentionally and should not be normalized away in later cleanup.
+11. `/pics-n-vids/` now supports both external video destinations and local photo-gallery entries, so later media migration can keep using the canonical `media` collection instead of inventing a separate gallery surface.
 
 ---
 
@@ -228,8 +265,8 @@ Audit notes:
 
 - continuation is allowed
 - active phase for the next resume should be Phase 6 content and asset migration
-- exact next continuation point: start the Phase 6 migration pass by populating the remaining content collections and localized assets from the retained local evidence pack, beginning with the news/media entries and any remaining static-page copy normalization
-- open exceptions: Phase 6 and Phase 7 remain incomplete, and Astro check still reports only non-blocking Zod deprecation hints from `src/content/config.ts`
+- exact next continuation point: finish the remaining Phase 6 parity pass against the retained local evidence pack by auditing homepage copy, static-page copy, and the event migration/index state, then update `migration/manifest.json` statuses from `qa-pending` toward `approved` or `blocked`
+- open exceptions: Phase 6 and Phase 7 remain incomplete; homepage and static-page source parity are still only partially audited, event migration is still partial, `parkausbesserungen` remains qa-pending on truncated retained evidence, and Astro check still reports only non-blocking Zod deprecation hints from `src/content/config.ts`
 - prompt rule for the next resume: a short prompt should be sufficient because the stable startup and handoff rules now live in committed docs
 
 ---

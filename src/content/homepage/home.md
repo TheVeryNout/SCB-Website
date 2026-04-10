@@ -5,7 +5,7 @@ heroIntro: "Egal ob jung oder alt, Anfaenger oder Profi: Beim SCB ist jede Perso
 heroImage: "../../assets/images/wix-staging/homepage/site/13cc9c_40230571cb024f61b6936ee67952d0f3~mv2.jpg"
 featuredAnnouncement:
   title: "Spendenaufruf: Der Skate Club baut 'ne Halle!"
-  body: "Der Verein baut gemeinsam mit Partnern eine Halle in Weissenburg. Jede Spende hilft beim Ausbau der Flaechen fuer Brett und Rad."
+  body: "Der Skate Club baut eine Halle in Weissenburg. Helft mit und spendet."
   linkLabel: "Zum Beitrag"
   linkUrl: "/neuigkeiten/spendenaufruf-der-scb-baut-ne-halle/"
 membershipCtaTitle: "Mitglied werden beim SCB"

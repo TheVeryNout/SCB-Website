@@ -1,0 +1,339 @@
+{
+  "createdAt": "2026-04-10",
+  "lastUpdatedAt": "2026-04-10",
+  "notes": [
+    "This manifest tracks Phase 6 migration work from committed repo files and the retained local evidence pack under docs/plans/wix-reference/.",
+    "Statuses remain qa-pending until route-level verification and final Phase 7 checks are complete.",
+    "Source-observed conflicts stay explicit here instead of being normalized into silent content assumptions."
+  ],
+  "records": [
+    {
+      "id": "homepage-home",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana",
+      "sourceType": "page",
+      "targetRoute": "/",
+      "targetContentPath": "src/content/homepage/home.md",
+      "localAssetPaths": [
+        "src/assets/images/wix-staging/homepage/site/13cc9c_40230571cb024f61b6936ee67952d0f3~mv2.jpg"
+      ],
+      "status": "qa-pending",
+      "needsManualQa": true,
+      "publicDataRisk": "none",
+      "notes": [
+        "Homepage entry exists and now uses source-parity featured announcement copy from retained local evidence.",
+        "Hero and section copy still need a final route-by-route parity pass against the retained home evidence."
+      ]
+    },
+    {
+      "id": "page-about",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/ueber-uns",
+      "sourceType": "page",
+      "targetRoute": "/ueber-uns/",
+      "targetContentPath": "src/content/pages/about.md",
+      "localAssetPaths": [
+        "src/assets/images/wix-staging/pages/about/dfbc4d_43bd619f89664d5d97e7053ac7e702e0~mv2.jpg",
+        "public/media/pdfs/statutes.pdf"
+      ],
+      "status": "qa-pending",
+      "needsManualQa": true,
+      "publicDataRisk": "membership",
+      "notes": [
+        "Route content and localized statutes PDF exist.",
+        "Board/member wording remains source-parity migration content and has not been separately reconfirmed."
+      ]
+    },
+    {
+      "id": "page-membership",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/copy-of-veranstaltungen",
+      "sourceType": "page",
+      "targetRoute": "/mitgliedschaft/",
+      "targetContentPath": "src/content/pages/membership.md",
+      "localAssetPaths": [
+        "public/media/pdfs/membership-form.pdf"
+      ],
+      "status": "qa-pending",
+      "needsManualQa": true,
+      "publicDataRisk": "membership",
+      "notes": [
+        "Membership route content and localized form PDF exist.",
+        "Fee copy remains source-observed and should stay easy to review before launch signoff."
+      ]
+    },
+    {
+      "id": "page-contact",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/kontakt",
+      "sourceType": "page",
+      "targetRoute": "/kontakt/",
+      "targetContentPath": "src/content/pages/contact.md",
+      "localAssetPaths": [],
+      "status": "qa-pending",
+      "needsManualQa": true,
+      "publicDataRisk": "none",
+      "notes": [
+        "Route content exists and uses source-observed skatepark location details."
+      ]
+    },
+    {
+      "id": "legal-impressum",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/impressum",
+      "sourceType": "legal",
+      "targetRoute": "/impressum/",
+      "targetContentPath": "src/content/pages/impressum.md",
+      "localAssetPaths": [],
+      "status": "qa-pending",
+      "needsManualQa": true,
+      "publicDataRisk": "legal",
+      "notes": [
+        "Route content exists from retained local HTML/PDF evidence.",
+        "The avoidable Wix-hosted contact link in the migrated legal body has been replaced with the local /kontakt/ route."
+      ]
+    },
+    {
+      "id": "legal-datenschutz",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/datenschutz",
+      "sourceType": "legal",
+      "targetRoute": "/datenschutz/",
+      "targetContentPath": "src/content/pages/datenschutz.md",
+      "localAssetPaths": [],
+      "status": "qa-pending",
+      "needsManualQa": true,
+      "publicDataRisk": "legal",
+      "notes": [
+        "Route content exists from retained local HTML/PDF fallback evidence."
+      ]
+    },
+    {
+      "id": "post-spendenaufruf-der-scb-baut-ne-halle",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/post/spendenaufruf-der-scb-baut-ne-halle",
+      "sourceType": "post",
+      "targetRoute": "/neuigkeiten/spendenaufruf-der-scb-baut-ne-halle/",
+      "targetContentPath": "src/content/posts/spendenaufruf-der-scb-baut-ne-halle.md",
+      "localAssetPaths": [
+        "src/assets/images/wix-staging/posts/spendenaufruf-der-scb-baut-ne-halle/13cc9c_d2cf4f765f504960a33f56e7d9387b94~mv2.jpg"
+      ],
+      "status": "qa-pending",
+      "needsManualQa": true,
+      "publicDataRisk": "financial",
+      "notes": [
+        "Post entry exists and remains tied to source-observed fundraising copy.",
+        "Bank details remain review-sensitive and stay tracked in the public data register."
+      ]
+    },
+    {
+      "id": "post-goodies-4-tricks-2025",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/post/goodies-4-tricks-2025",
+      "sourceType": "post",
+      "targetRoute": "/neuigkeiten/goodies-4-tricks-2025/",
+      "targetContentPath": "src/content/posts/goodies-4-tricks-2025.md",
+      "localAssetPaths": [
+        "src/assets/images/wix-staging/posts/goodies-4-tricks-2025/13cc9c_00222c64efe14f18a4f922fe5eb4bddb~mv2.jpg"
+      ],
+      "status": "qa-pending",
+      "needsManualQa": true,
+      "publicDataRisk": "none",
+      "notes": [
+        "Post entry exists and is now closer to retained source wording."
+      ]
+    },
+    {
+      "id": "post-graffiti-workshop-ein-voller-erfolg",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/post/graffiti-workshop-ein-voller-erfolg",
+      "sourceType": "post",
+      "targetRoute": "/neuigkeiten/graffiti-workshop-ein-voller-erfolg/",
+      "targetContentPath": "src/content/posts/graffiti-workshop-ein-voller-erfolg.md",
+      "localAssetPaths": [
+        "src/assets/images/wix-staging/homepage/site/13cc9c_40230571cb024f61b6936ee67952d0f3~mv2.jpg"
+      ],
+      "status": "qa-pending",
+      "needsManualQa": false,
+      "publicDataRisk": "none",
+      "notes": [
+        "Migrated from retained local post HTML metadata and staged local images."
+      ]
+    },
+    {
+      "id": "post-spende-von-der-volksbank-franken-sued",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/post/spende-von-der-volksbank-franken-s%C3%BCd",
+      "sourceType": "post",
+      "targetRoute": "/neuigkeiten/spende-von-der-volksbank-franken-sued/",
+      "targetContentPath": "src/content/posts/spende-von-der-volksbank-franken-sued.md",
+      "localAssetPaths": [
+        "src/assets/images/wix-staging/posts/spende-von-der-volksbank-franken-s%C3%BCd/dfbc4d_d71543eec4ac4f3fb7aa44a865c6d601~mv2.jpg"
+      ],
+      "status": "qa-pending",
+      "needsManualQa": true,
+      "publicDataRisk": "financial",
+      "notes": [
+        "The visible retained title says VR Bayern Mitte, while the source URL slug says Volksbank Franken Sued.",
+        "Per explicit user instruction, the migrated Astro slug preserves the source URL naming and the contradiction stays recorded here."
+      ]
+    },
+    {
+      "id": "post-der-contest-in-der-zeitung",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/post/der-contest-in-der-zeitung",
+      "sourceType": "post",
+      "targetRoute": "/neuigkeiten/der-contest-in-der-zeitung/",
+      "targetContentPath": "src/content/posts/der-contest-in-der-zeitung.md",
+      "localAssetPaths": [
+        "src/assets/images/wix-staging/posts/der-contest-in-der-zeitung/dfbc4d_59e1e64566d44ea2b074b9cf058761e7~mv2.jpg"
+      ],
+      "status": "qa-pending",
+      "needsManualQa": false,
+      "publicDataRisk": "none",
+      "notes": [
+        "Migrated from retained local HTML with visible post body lines preserved in summary form."
+      ]
+    },
+    {
+      "id": "post-goodies-4-tricks-event-trotz-regen-ein-erfolg",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/post/goodies-4-tricks-event-trotz-regen-ein-erfolg",
+      "sourceType": "post",
+      "targetRoute": "/neuigkeiten/goodies-4-tricks-event-trotz-regen-ein-erfolg/",
+      "targetContentPath": "src/content/posts/goodies-4-tricks-event-trotz-regen-ein-erfolg.md",
+      "localAssetPaths": [
+        "src/assets/images/wix-staging/posts/goodies-4-tricks-event-trotz-regen-ein-erfolg/dfbc4d_d4de6327ca7c4883bd7dbc4c3a4e0a84~mv2.jpg"
+      ],
+      "status": "qa-pending",
+      "needsManualQa": false,
+      "publicDataRisk": "none",
+      "notes": [
+        "Migrated from retained local HTML metadata and staged local gallery assets."
+      ]
+    },
+    {
+      "id": "post-der-skate-club-in-der-zeitung",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/post/der-skate-club-in-der-zeitung",
+      "sourceType": "post",
+      "targetRoute": "/neuigkeiten/der-skate-club-in-der-zeitung/",
+      "targetContentPath": "src/content/posts/der-skate-club-in-der-zeitung.md",
+      "localAssetPaths": [
+        "src/assets/images/wix-staging/posts/der-skate-club-in-der-zeitung/dfbc4d_3825bd53a4d64365a4edd84a395cd7c9~mv2.jpg"
+      ],
+      "status": "qa-pending",
+      "needsManualQa": false,
+      "publicDataRisk": "none",
+      "notes": [
+        "Migrated from retained local HTML metadata and staged local image assets."
+      ]
+    },
+    {
+      "id": "post-parkausbesserungen",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/post/parkausbesserungen",
+      "sourceType": "post",
+      "targetRoute": "/neuigkeiten/parkausbesserungen/",
+      "targetContentPath": "src/content/posts/parkausbesserungen.md",
+      "localAssetPaths": [
+        "src/assets/images/wix-staging/posts/parkausbesserungen/dfbc4d_581b537602574727b9ff441188b0817c~mv2.jpeg"
+      ],
+      "status": "qa-pending",
+      "needsManualQa": true,
+      "publicDataRisk": "none",
+      "notes": [
+        "The retained feed preserves one complete sentence and a truncated repair note.",
+        "The migrated body keeps only the complete source-observed statement and does not guess the truncated remainder."
+      ]
+    },
+    {
+      "id": "event-sunday-funday",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/events/sunday-funday-2025-04-06-13-00",
+      "sourceType": "event",
+      "targetRoute": "/veranstaltungen/sunday-funday/[date]/",
+      "targetContentPath": "src/content/events/sunday-funday.md",
+      "localAssetPaths": [
+        "src/assets/images/wix-staging/events/sunday-funday/13cc9c_b8c6b92af9f2429dbfcdc1bede23d1cf~mv2.webp"
+      ],
+      "status": "qa-pending",
+      "needsManualQa": true,
+      "publicDataRisk": "event-date",
+      "notes": [
+        "The source slug date differs from the visible event date; the canonical event content follows visible retained evidence, not the Wix slug."
+      ]
+    },
+    {
+      "id": "media-rollkind-videos",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/pics-n-vids",
+      "sourceType": "media",
+      "targetRoute": "/pics-n-vids/",
+      "targetContentPath": "src/content/media/rollkind-videos.md",
+      "localAssetPaths": [
+        "src/assets/images/wix-staging/homepage/site/13cc9c_9b4b8f17abe74d40b3915128c22f33d5~mv2.jpg"
+      ],
+      "status": "qa-pending",
+      "needsManualQa": true,
+      "publicDataRisk": "social-link",
+      "notes": [
+        "Per the public data register, the YouTube destination remains a conflict and is preserved only as source-parity media routing."
+      ]
+    },
+    {
+      "id": "media-graffiti-workshop-2025",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/post/graffiti-workshop-ein-voller-erfolg",
+      "sourceType": "media",
+      "targetRoute": "/pics-n-vids/",
+      "targetContentPath": "src/content/media/graffiti-workshop-2025.md",
+      "localAssetPaths": [
+        "src/assets/images/wix-staging/homepage/site/13cc9c_40230571cb024f61b6936ee67952d0f3~mv2.jpg",
+        "src/assets/images/wix-staging/posts/graffiti-workshop-ein-voller-erfolg/13cc9c_024087fefd6c49ea97727f71a06969a0~mv2.jpg",
+        "src/assets/images/wix-staging/posts/graffiti-workshop-ein-voller-erfolg/13cc9c_06495e3407dc4374bb5d44d55922739c~mv2.jpg",
+        "src/assets/images/wix-staging/posts/graffiti-workshop-ein-voller-erfolg/13cc9c_0c95d382c44c4d1b909ddb417e3068af~mv2.jpg"
+      ],
+      "status": "qa-pending",
+      "needsManualQa": false,
+      "publicDataRisk": "none",
+      "notes": [
+        "Curated local photo-gallery entry created from retained local post evidence and staged images."
+      ]
+    },
+    {
+      "id": "media-goodies-4-tricks-2024",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/post/goodies-4-tricks-event-trotz-regen-ein-erfolg",
+      "sourceType": "media",
+      "targetRoute": "/pics-n-vids/",
+      "targetContentPath": "src/content/media/goodies-4-tricks-2024.md",
+      "localAssetPaths": [
+        "src/assets/images/wix-staging/posts/goodies-4-tricks-event-trotz-regen-ein-erfolg/dfbc4d_d4de6327ca7c4883bd7dbc4c3a4e0a84~mv2.jpg",
+        "src/assets/images/wix-staging/posts/goodies-4-tricks-event-trotz-regen-ein-erfolg/dfbc4d_66c89ab392734f06ada7cf4458074bb3~mv2.jpg",
+        "src/assets/images/wix-staging/posts/goodies-4-tricks-event-trotz-regen-ein-erfolg/dfbc4d_6d9c118eaf9e412eab343ba006b018b4~mv2.jpg",
+        "src/assets/images/wix-staging/posts/goodies-4-tricks-event-trotz-regen-ein-erfolg/dfbc4d_70717f57f27c4718b159d0320729e90e~mv2.jpg"
+      ],
+      "status": "qa-pending",
+      "needsManualQa": false,
+      "publicDataRisk": "none",
+      "notes": [
+        "Curated local photo-gallery entry created from retained local post evidence and staged images."
+      ]
+    },
+    {
+      "id": "pdf-statutes",
+      "sourceUrl": "https://36da100f-5a64-4e36-9be3-cd978447e787.filesusr.com/ugd/dfbc4d_2c1d96f6aacc4d8db2c12c3bea908a20.pdf",
+      "sourceType": "pdf",
+      "targetRoute": "/ueber-uns/",
+      "targetContentPath": "public/media/pdfs/statutes.pdf",
+      "localAssetPaths": [
+        "public/media/pdfs/statutes.pdf"
+      ],
+      "status": "migrated",
+      "needsManualQa": false,
+      "publicDataRisk": "membership",
+      "notes": [
+        "Localized PDF already exists in the repo."
+      ]
+    },
+    {
+      "id": "pdf-membership-form",
+      "sourceUrl": "https://36da100f-5a64-4e36-9be3-cd978447e787.filesusr.com/ugd/13cc9c_c6365cf2649e4c68a4b99d58884b41eb.pdf",
+      "sourceType": "pdf",
+      "targetRoute": "/mitgliedschaft/",
+      "targetContentPath": "public/media/pdfs/membership-form.pdf",
+      "localAssetPaths": [
+        "public/media/pdfs/membership-form.pdf"
+      ],
+      "status": "migrated",
+      "needsManualQa": false,
+      "publicDataRisk": "membership",
+      "notes": [
+        "Localized PDF already exists in the repo."
+      ]
+    }
+  ]
+}

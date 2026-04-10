@@ -18,3 +18,6 @@ docs/plans/wix-reference/**
 docs/plans/wix-reference/asset-source-archive/**
 !docs/plans/wix-reference/asset-source-archive/README.md
 !docs/plans/wix-reference/asset-source-archive/manifest.json
+
+
+.playwright-phase6/

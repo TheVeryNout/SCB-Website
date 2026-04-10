@@ -12,7 +12,9 @@ const [settings, mediaEntries] = await Promise.all([
   getAllMedia(),
 ]);
 
-const featuredGallery = mediaEntries.find((entry) => entry.data.gallery?.length);
+const videoEntries = mediaEntries.filter((entry) => entry.data.youtubeUrl);
+const galleryEntries = mediaEntries.filter((entry) => entry.data.gallery?.length);
+const featuredGallery = galleryEntries[0];
 ---
 
 <BaseLayout
@@ -36,7 +38,7 @@ const featuredGallery = mediaEntries.find((entry) => entry.data.gallery?.length)
 
           <div class="mt-6 grid gap-4">
             {
-              mediaEntries.map((entry) => (
+              videoEntries.map((entry) => (
                 <article class="rounded-[1.5rem] border border-slate-200 bg-white/75 p-5">
                   <div class="grid gap-4 sm:grid-cols-[9rem_1fr] sm:items-start">
                     {
@@ -90,23 +92,68 @@ const featuredGallery = mediaEntries.find((entry) => entry.data.gallery?.length)
           </SurfaceCard>
 
           {
-            featuredGallery?.data.gallery?.length ? (
+            galleryEntries.length > 0 ? (
               <SurfaceCard as="section" aria-labelledby="media-gallery-heading">
                 <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Bilder</p>
                 <h2 id="media-gallery-heading" class="mt-2 text-2xl font-semibold text-slate-950">
                   Kuratierte Eindruecke
                 </h2>
-                <div class="mt-6 grid gap-4 sm:grid-cols-2">
-                  {
-                    featuredGallery.data.gallery.slice(0, 4).map((image, index) => (
-                      <EditorialImage
-                        src={image}
-                        alt={`Medienbild ${index + 1} aus dem Umfeld von ${settings.data.organizationName}`}
-                        class="min-h-[10rem]"
-                        sizes="(min-width: 640px) 14rem, 100vw"
-                      />
-                    ))
-                  }
+                <div class="mt-6 grid gap-5">
+                  <div class="grid gap-4 sm:grid-cols-2">
+                    {
+                      featuredGallery?.data.gallery?.slice(0, 4).map((image, index) => (
+                        <EditorialImage
+                          src={image}
+                          alt={`Medienbild ${index + 1} aus dem Umfeld von ${settings.data.organizationName}`}
+                          class="min-h-[10rem]"
+                          sizes="(min-width: 640px) 14rem, 100vw"
+                        />
+                      ))
+                    }
+                  </div>
+
+                  <div class="grid gap-4">
+                    {
+                      galleryEntries.map((entry) => (
+                        <article class="rounded-[1.5rem] border border-slate-200 bg-white/75 p-5">
+                          <div class="grid gap-4 sm:grid-cols-[9rem_1fr] sm:items-start">
+                            {
+                              entry.data.thumbnailImage ? (
+                                <EditorialImage
+                                  src={entry.data.thumbnailImage}
+                                  alt={`Vorschaubild fuer ${entry.data.title}`}
+                                  class="min-h-[8rem]"
+                                  sizes="9rem"
+                                />
+                              ) : null
+                            }
+
+                            <div class="space-y-3">
+                              <div>
+                                <p class="text-xs font-semibold tracking-[0.16em] text-slate-500 uppercase">
+                                  Fotogalerie
+                                </p>
+                                <h3 class="mt-2 text-lg font-semibold text-slate-950">{entry.data.title}</h3>
+                                {
+                                  entry.data.summary ? (
+                                    <p class="mt-3 text-sm leading-6 text-slate-700">{entry.data.summary}</p>
+                                  ) : null
+                                }
+                              </div>
+
+                              {
+                                entry.data.gallery?.length ? (
+                                  <p class="text-xs font-medium tracking-[0.14em] text-slate-500 uppercase">
+                                    {entry.data.gallery.length} lokale Bilder migriert
+                                  </p>
+                                ) : null
+                              }
+                            </div>
+                          </div>
+                        </article>
+                      ))
+                    }
+                  </div>
                 </div>
               </SurfaceCard>
             ) : null

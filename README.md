@@ -69,7 +69,12 @@ Foundation scaffolding is now in place in this repo:
 - raw downloaded Wix media archived under `docs/plans/wix-reference/asset-source-archive/`
 - Astro-facing staged Wix asset tree under `src/assets/images/wix-staging/` via `bun run stage:wix-assets`
 
-Content collections and migration work still remain.
+Content collections are now real and Phase 6 migration is in progress:
+
+- canonical `migration/manifest.json` now exists
+- retained news feed inventory has been migrated into the posts collection
+- local media gallery entries now exist alongside external video references
+- homepage and static-page parity plus fuller event migration still remain open
 
 The docs are now split into:
 
@@ -84,7 +89,7 @@ Use [status-checklist.md](/home/nout/REPO/SCB-Website/docs/plans/status-checklis
 Current phase status from the audited ledger:
 
 - Phases 1 to 5 are cleared
-- Phase 6 content and asset migration is the active next phase
+- Phase 6 content and asset migration is active and partially completed
 
 ## Minimal Resume Prompt
 

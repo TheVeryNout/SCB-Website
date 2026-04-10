@@ -52,9 +52,7 @@ As of `2026-04-10`, the repository baseline has been verified to this level:
 
 Known not-yet-done items:
 
-- `migration/` workspace has not been created yet
-- `migration/manifest.json` does not exist yet
-- the public route set is now implemented through Phase 5, but migration and deploy hardening work remain
+- the public route set is implemented through Phase 5 and now has a partial Phase 6 migration pass, but full migration signoff and deploy hardening still remain
 - `netlify.toml` has not been created yet
 
 Use this snapshot to avoid re-auditing the bootstrap from scratch in a later conversation.
@@ -334,14 +332,14 @@ Move real content, images, PDFs, and media references into the final site struct
 
 - [ ] migrate homepage copy and featured sections
 - [ ] migrate static-page content
-- [ ] migrate news posts and dates
+- [x] migrate news posts and dates
 - [ ] migrate event entries carefully, merging Wix recurrence artifacts where appropriate
-- [ ] migrate media references and curated thumbnails
-- [ ] download and localize PDFs
-- [ ] download and localize images worth preserving
-- [ ] remove avoidable Wix-hosted production dependencies
-- [ ] update manifest records to `migrated` or `blocked`
-- [ ] record unresolved contradictions instead of guessing
+- [x] migrate media references and curated thumbnails
+- [x] download and localize PDFs
+- [x] download and localize images worth preserving
+- [x] remove avoidable Wix-hosted production dependencies
+- [x] update manifest records to `migrated` or `blocked`
+- [x] record unresolved contradictions instead of guessing
 
 ### Exit gate
 

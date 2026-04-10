@@ -19,7 +19,7 @@ Telefon: 01708303717<br>
 E-Mail: scbiriciana@gmail.com</p>
 
 <p><br>
-Kontakt: https://briareos.wixsite.com/skateclubbiriciana/kontakt</p>
+Kontakt: /kontakt/</p>
 
 <p><br>
 WhatsApp: 01708303717</p>
