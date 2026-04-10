@@ -12,6 +12,8 @@ This file is an overview and routing document.
 
 It does not replace the canonical owner docs.
 
+It also does not replace the execution checklist stack; use [execution-plan.md](/home/nout/REPO/SCB-Website/docs/plans/execution-plan.md) once the normative specs below are loaded.
+
 ---
 
 ## Project In One Sentence
@@ -125,6 +127,23 @@ Use the docs in this order after finishing this file:
    Technical structure, hosting, route wiring, asset conventions
 8. [migration.md](/home/nout/REPO/SCB-Website/docs/plans/migration.md)
    Migration workflow, manifest, QA rules
+9. [execution-plan.md](/home/nout/REPO/SCB-Website/docs/plans/execution-plan.md)
+   Phase order, execution gates, checklists, multi-conversation progress control
+10. [parallel-agent-environment.md](/home/nout/REPO/SCB-Website/docs/plans/parallel-agent-environment.md)
+   Optional parallel-work guardrails once the execution plan is stable
+
+---
+
+## Fast Resume Path
+
+For a brand-new conversation that is resuming implementation rather than redefining scope:
+
+1. read [execution-plan.md](/home/nout/REPO/SCB-Website/docs/plans/execution-plan.md) sections `Current Verified Repo Snapshot`, `Progress Snapshot`, and the checklist for the active phase
+2. if Wix/source evidence is needed, read [wix-reference/README.md](/home/nout/REPO/SCB-Website/docs/plans/wix-reference/README.md) and [wix-reference/manifest.json](/home/nout/REPO/SCB-Website/docs/plans/wix-reference/manifest.json)
+3. load the phase-specific docs listed in `Phase-Specific Reading Mode`
+4. only reopen the rest of the stack when a decision crosses into another domain
+
+This keeps cold starts cheaper without weakening the spec stack.
 
 ---
 
@@ -139,6 +158,8 @@ Ready now:
 - route set
 - event-calendar direction
 - migration process shape
+- implementation-safe bootstrap
+- Playwright-based live Wix reference workflow
 
 Needs to stay explicit during implementation:
 
@@ -178,3 +199,4 @@ This file is doing its job only if a new implementer can answer all of the follo
 - what matters most
 - what can be safely ignored for now
 - which doc to read next for each decision domain
+- which doc controls the phase checklist and progress state

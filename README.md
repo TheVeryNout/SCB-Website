@@ -15,7 +15,8 @@ For a cold start, read in this order:
 7. [public-data-register.md](/home/nout/REPO/SCB-Website/docs/plans/public-data-register.md)
 8. [implementation.md](/home/nout/REPO/SCB-Website/docs/plans/implementation.md)
 9. [migration.md](/home/nout/REPO/SCB-Website/docs/plans/migration.md)
-10. [parallel-agent-environment.md](/home/nout/REPO/SCB-Website/docs/plans/parallel-agent-environment.md)
+10. [execution-plan.md](/home/nout/REPO/SCB-Website/docs/plans/execution-plan.md)
+11. [parallel-agent-environment.md](/home/nout/REPO/SCB-Website/docs/plans/parallel-agent-environment.md)
 
 ## Doc Roles
 
@@ -28,6 +29,7 @@ For a cold start, read in this order:
 - [public-data-register.md](/home/nout/REPO/SCB-Website/docs/plans/public-data-register.md): risky public facts and confirmation status
 - [implementation.md](/home/nout/REPO/SCB-Website/docs/plans/implementation.md): Astro/Netlify/Decap technical architecture
 - [migration.md](/home/nout/REPO/SCB-Website/docs/plans/migration.md): Wix-to-Astro migration workflow, manifest, and QA rules
+- [execution-plan.md](/home/nout/REPO/SCB-Website/docs/plans/execution-plan.md): phase-gated delivery plan, checklist discipline, and multi-conversation handoff rules
 - [parallel-agent-environment.md](/home/nout/REPO/SCB-Website/docs/plans/parallel-agent-environment.md): multi-agent orchestration, concurrency safety, observability, and security guardrails
 
 ## Current Direction
@@ -59,8 +61,20 @@ Foundation scaffolding is now in place in this repo:
 - Tailwind 4 baseline
 - Bun-managed package/scripts setup
 - Decap CMS admin shell at `/admin/`
+- Playwright CLI available for live Wix reference capture
+- committed local Wix reference pack under `docs/plans/wix-reference/`
+- automated Wix asset downloader via `bun run capture:wix-assets`
+- raw downloaded Wix media archived under `docs/plans/wix-reference/asset-source-archive/`
+- Astro-facing staged Wix asset tree under `src/assets/images/wix-staging/` via `bun run stage:wix-assets`
 
 Content collections, route implementation, and migration work still remain.
+
+The docs are now split into:
+
+- normative specs that define what must be built
+- one execution plan that defines the order, gates, and checklists for building it cleanly across multiple conversations
+
+Use [execution-plan.md](/home/nout/REPO/SCB-Website/docs/plans/execution-plan.md) as the controlling work plan once the core specs have been read.
 
 ## Local CMS Workflow
 

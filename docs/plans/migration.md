@@ -67,6 +67,55 @@ Final production content must not depend on Wix-hosted assets where local copies
 
 ---
 
+## Source Capture Tooling
+
+When the live Wix site is used as a reference during implementation, migration, or QA, use Playwright CLI as the default capture tool.
+
+Required bias:
+
+- use `bunx playwright screenshot <url> <file>` for page-state evidence
+- use `bunx playwright pdf <url> <file>` for long-form and legal-page reference captures when useful
+- if the browser binary is missing, install it with `bunx playwright install chromium`
+
+Rules:
+
+- capture evidence before transforming content
+- store captured evidence in `migration/raw/` or another explicit working directory, not only in terminal notes
+- if cookie banners or overlays obscure important content, record that fact and capture a clean reference view before migration decisions depend on it
+- when a pre-implementation reference pack exists under [wix-reference/](/home/nout/REPO/SCB-Website/docs/plans/wix-reference/), use it as the first source of local evidence before reopening the live site
+- when a downloaded raw asset archive exists under [wix-reference/asset-source-archive/](/home/nout/REPO/SCB-Website/docs/plans/wix-reference/asset-source-archive/), use it before scraping the same Wix images again
+
+---
+
+## Recommendation For Multi-Conversation Work
+
+If implementation will span multiple conversations, complete the launch reference capture before major site construction begins.
+
+Reason:
+
+- local evidence survives conversation boundaries better than repeated live browsing
+- the live Wix site may change
+- later migration and QA work becomes faster when screenshots, PDFs, feeds, and asset references are already committed locally
+
+Recommended minimum pre-capture pack:
+
+- Playwright screenshots for every launch route
+- Playwright PDFs for legal pages and any long-form content where screenshots are not enough
+- `blog-feed.xml`
+- direct PDF URLs and downloaded copies where available
+- a manifest record for every captured route or asset
+
+Recommended location for this pre-capture pack:
+
+- [wix-reference/](/home/nout/REPO/SCB-Website/docs/plans/wix-reference/)
+
+Extended pack if you want maximum implementation independence:
+
+- raw HTML captures for the main pages and representative post/event pages
+- normalized per-route notes extracted from the raw captures
+
+---
+
 ## Migration Working Structure
 
 Use this working structure when migration begins:
@@ -164,6 +213,7 @@ Each manifest record must track:
 
 Capture and store:
 
+- Playwright screenshots and, where useful, Playwright PDFs of the launch routes
 - route HTML or equivalent source capture
 - blog feed XML
 - direct PDFs

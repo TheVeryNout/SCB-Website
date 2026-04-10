@@ -13,7 +13,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "cms:proxy": "decap-server"
+    "cms:proxy": "decap-server",
+    "capture:wix-assets": "python scripts/download_wix_assets.py",
+    "stage:wix-assets": "python scripts/stage_wix_assets.py"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
