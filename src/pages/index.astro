@@ -1,5 +1,6 @@
 ---
 import Container from "../components/Container.astro";
+import UpcomingEventsList from "../components/events/UpcomingEventsList.astro";
 import {
   getHomepageEntry,
   getLatestPosts,
@@ -7,7 +8,6 @@ import {
   getUpcomingOccurrences,
   validateSiteContent,
 } from "../lib/content/site";
-import { formatGermanDate, formatGermanTimeRange } from "../lib/events/engine";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 await validateSiteContent();
@@ -52,30 +52,7 @@ const [homepage, settings, latestPosts, upcomingEvents] = await Promise.all([
 
         <div class="rounded-[2rem] border border-slate-900/10 bg-white/80 p-6 shadow-[0_20px_60px_-30px_rgba(15,23,42,0.35)] backdrop-blur">
           <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Nächste Termine</p>
-          {
-            upcomingEvents.length > 0 ? (
-              <ul class="mt-5 space-y-4">
-                {
-                  upcomingEvents.map((occurrence) => (
-                    <li class="rounded-2xl border border-slate-200 bg-white/80 p-4">
-                      <p class="text-xs font-semibold tracking-[0.18em] text-slate-500 uppercase">
-                        {formatGermanDate(occurrence.occurrenceDate)}
-                      </p>
-                      <h2 class="mt-2 text-lg font-semibold text-slate-950">{occurrence.title}</h2>
-                      <p class="mt-2 text-sm text-slate-700">
-                        {formatGermanTimeRange(occurrence.startTime, occurrence.endTime)} · {occurrence.locationName}
-                      </p>
-                      <p class="mt-3 text-sm leading-6 text-slate-700">{occurrence.summary}</p>
-                    </li>
-                  ))
-                }
-              </ul>
-            ) : (
-              <p class="mt-5 text-sm leading-6 text-slate-700">
-                Aktuell sind keine öffentlichen Termine im Voraus eingetragen.
-              </p>
-            )
-          }
+          <UpcomingEventsList occurrences={upcomingEvents} />
         </div>
       </div>
     </Container>

@@ -80,7 +80,11 @@
       "files": {
         "screenshot": "screenshots/event-sunday-funday-2025-04-06-13-00-full.png",
         "html": "html/event-sunday-funday-2025-04-06-13-00.html"
-      }
+      },
+      "notes": [
+        "The Wix source URL slug suggests 2025-04-06, but the visible event content shows 2025-11-30.",
+        "Treat this as a migration QA issue and derive the canonical Astro occurrence date from verified visible content, not from the Wix slug."
+      ]
     },
     {
       "label": "membership-legacy",

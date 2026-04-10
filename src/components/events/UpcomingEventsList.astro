@@ -1,0 +1,30 @@
+---
+import UpcomingEventCard from "./UpcomingEventCard.astro";
+import type { EventOccurrence } from "../../lib/events/model";
+
+interface Props {
+  occurrences: EventOccurrence[];
+  emptyMessage?: string;
+}
+
+const {
+  occurrences,
+  emptyMessage = "Aktuell sind keine oeffentlichen Termine im Voraus eingetragen.",
+} = Astro.props;
+---
+
+{
+  occurrences.length > 0 ? (
+    <ul class="mt-5 space-y-4">
+      {
+        occurrences.map((occurrence) => (
+          <li>
+            <UpcomingEventCard occurrence={occurrence} />
+          </li>
+        ))
+      }
+    </ul>
+  ) : (
+    <p class="mt-5 text-sm leading-6 text-slate-700">{emptyMessage}</p>
+  )
+}

@@ -1,6 +1,7 @@
 export const EVENT_STATUS_VALUES = ["scheduled", "cancelled", "postponed", "tentative"] as const;
 export const EVENT_VISIBILITY_VALUES = ["public", "hidden"] as const;
 export const EVENT_SOURCE_VALUES = ["website", "imported-dash", "migrated-wix"] as const;
+export const EVENT_MIGRATION_QA_ISSUE_VALUES = ["wix-slug-date-mismatch"] as const;
 export const RECURRENCE_TYPE_VALUES = ["none", "daily", "weekly", "monthly"] as const;
 export const WEEKDAY_KEYS = [
   "monday",
@@ -15,6 +16,7 @@ export const WEEKDAY_KEYS = [
 export type EventStatus = (typeof EVENT_STATUS_VALUES)[number];
 export type EventVisibility = (typeof EVENT_VISIBILITY_VALUES)[number];
 export type EventSource = (typeof EVENT_SOURCE_VALUES)[number];
+export type EventMigrationQaIssue = (typeof EVENT_MIGRATION_QA_ISSUE_VALUES)[number];
 export type RecurrenceType = (typeof RECURRENCE_TYPE_VALUES)[number];
 export type WeekdayKey = (typeof WEEKDAY_KEYS)[number];
 
@@ -66,6 +68,20 @@ export interface EventOccurrence extends WebsiteEventRecord {
   occurrencePath: string;
   sortKey: string;
   isRecurring: boolean;
+}
+
+export interface EventOccurrenceRouteParams {
+  slug: string;
+  date: string;
+}
+
+export interface WixEventMigrationQaFinding {
+  code: EventMigrationQaIssue;
+  sourceUrl: string;
+  sourceSlugDate: string;
+  visibleDate: string;
+  canonicalDate: string;
+  message: string;
 }
 
 export interface OccurrenceExpansionOptions {

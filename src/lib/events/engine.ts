@@ -1,14 +1,17 @@
 import type {
   EventOccurrence,
+  EventOccurrenceRouteParams,
   OccurrenceExpansionOptions,
   WebsiteEventRecord,
   WeekdayKey,
+  WixEventMigrationQaFinding,
 } from "./model";
 
 const DEFAULT_HORIZON_PAST_MONTHS = 3;
 const DEFAULT_HORIZON_FUTURE_MONTHS = 18;
 const ISO_DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 const ISO_TIME_PATTERN = /^([01]\d|2[0-3]):[0-5]\d$/;
+const WIX_EVENT_SLUG_DATE_PATTERN = /\/events\/[^/]+-(\d{4}-\d{2}-\d{2})(?:-\d{2}-\d{2})?(?:[/?#]|$)/;
 const WEEKDAY_INDEX: Record<WeekdayKey, number> = {
   monday: 1,
   tuesday: 2,
@@ -123,6 +126,15 @@ export function getCurrentBerlinDateTimeKey(referenceDate = new Date()): string 
 
 export function buildOccurrencePath(slug: string, dateKey: string): string {
   return `/veranstaltungen/${slug}/${dateKey}/`;
+}
+
+export function buildOccurrenceRouteParams(
+  occurrence: Pick<EventOccurrence, "slug" | "occurrenceDate">,
+): EventOccurrenceRouteParams {
+  return {
+    slug: occurrence.slug,
+    date: occurrence.occurrenceDate,
+  };
 }
 
 export function formatGermanDate(dateKey: string): string {
@@ -379,6 +391,24 @@ export function getUpcomingOccurrences(
   return typeof limit === "number" ? upcoming.slice(0, limit) : upcoming;
 }
 
+export function getOccurrenceRouteParams(
+  events: WebsiteEventRecord[],
+  options: OccurrenceExpansionOptions = {},
+): EventOccurrenceRouteParams[] {
+  return getAllOccurrences(events, options).map((occurrence) => buildOccurrenceRouteParams(occurrence));
+}
+
+export function getOccurrenceBySlugAndDate(
+  events: WebsiteEventRecord[],
+  slug: string,
+  occurrenceDate: string,
+  options: OccurrenceExpansionOptions = {},
+): EventOccurrence | undefined {
+  return getAllOccurrences(events, options).find(
+    (occurrence) => occurrence.slug === slug && occurrence.occurrenceDate === occurrenceDate,
+  );
+}
+
 export function getRelatedOccurrences(
   events: WebsiteEventRecord[],
   slug: string,
@@ -413,4 +443,45 @@ export function groupOccurrencesByMonth(
       label: formatGermanMonthLabel(month),
       occurrences: monthOccurrences,
     }));
+}
+
+export function extractWixEventSlugDate(sourceUrl: string): string | undefined {
+  const match = sourceUrl.match(WIX_EVENT_SLUG_DATE_PATTERN);
+
+  if (!match?.[1]) {
+    return undefined;
+  }
+
+  parseDateKey(match[1]);
+
+  return match[1];
+}
+
+export function getWixSlugDateMismatchQaFinding(
+  sourceUrl: string,
+  canonicalDate: string,
+  visibleDate = canonicalDate,
+): WixEventMigrationQaFinding | undefined {
+  parseDateKey(canonicalDate);
+  parseDateKey(visibleDate);
+
+  const sourceSlugDate = extractWixEventSlugDate(sourceUrl);
+
+  if (!sourceSlugDate) {
+    return undefined;
+  }
+
+  if (sourceSlugDate === canonicalDate && sourceSlugDate === visibleDate) {
+    return undefined;
+  }
+
+  return {
+    code: "wix-slug-date-mismatch",
+    sourceUrl,
+    sourceSlugDate,
+    visibleDate,
+    canonicalDate,
+    message:
+      "The Wix source URL date does not match the visible/canonical event date. Treat this as migration QA, not canonical truth.",
+  };
 }

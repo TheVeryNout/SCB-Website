@@ -43,8 +43,9 @@ As of `2026-04-10`, the repository baseline has been verified to this level:
 - `bun run check` passes
 - `bun run build` passes
 - Playwright CLI is installed and Chromium has been installed for local capture work
-- current implemented public routes are only the bootstrap homepage and `/admin/`
-- the Decap config still uses a temporary bootstrap collection
+- real Astro content collections and Decap launch collections exist for homepage, pages, posts, events, media, and settings
+- the build-time event engine exists, including recurrence expansion, occurrence route-param helpers, and homepage upcoming-event derivation
+- current implemented public routes are still only the homepage and `/admin/`, with the homepage event preview now wired through shared event components
 - lightweight Wix reference metadata exists under `docs/plans/wix-reference/`, while heavy capture artifacts may remain local-only
 - a raw downloaded Wix asset archive exists under `docs/plans/wix-reference/asset-source-archive/`
 
@@ -52,8 +53,8 @@ Known not-yet-done items:
 
 - `migration/` workspace has not been created yet
 - `migration/manifest.json` does not exist yet
-- Astro content collections do not exist yet
 - final public routes do not exist yet
+- `/veranstaltungen/` and `/veranstaltungen/[slug]/[date]/` are not implemented yet
 - `netlify.toml` has not been created yet
 
 Use this snapshot to avoid re-auditing the bootstrap from scratch in a later conversation.
@@ -109,10 +110,10 @@ Do not spend time polishing media or decorative layout before the CMS, event eng
 
 Update these first when resuming work:
 
-- [ ] bootstrap verified
-- [ ] Phase 1 complete
-- [ ] Phase 2 complete
-- [ ] Phase 3 complete
+- [x] bootstrap verified
+- [x] Phase 1 complete
+- [x] Phase 2 complete
+- [x] Phase 3 complete
 - [ ] Phase 4 complete
 - [ ] Phase 5 complete
 - [ ] Phase 6 complete
@@ -130,14 +131,14 @@ Cross-check this section against [status-checklist.md](/home/nout/REPO/SCB-Websi
 
 Run this before starting or resuming substantial implementation work:
 
-- [ ] `bun install`
-- [ ] `bun run check`
-- [ ] `bun run build`
-- [ ] `bunx playwright --version`
-- [ ] if Playwright screenshot or PDF capture fails because the browser is missing, run `bunx playwright install chromium`
-- [ ] verify `/admin/` renders locally
-- [ ] verify `public/admin/config.yml` still targets the intended deployment branch
-- [ ] verify `bun.lock` is present and committed
+- [x] `bun install`
+- [x] `bun run check`
+- [x] `bun run build`
+- [x] `bunx playwright --version`
+- [x] if Playwright screenshot or PDF capture fails because the browser is missing, run `bunx playwright install chromium`
+- [x] verify `/admin/` renders locally
+- [x] verify `public/admin/config.yml` still targets the intended deployment branch
+- [x] verify `bun.lock` is present and committed
 
 If any item above fails, fix it before feature work continues.
 
@@ -166,25 +167,25 @@ bunx playwright pdf https://briareos.wixsite.com/skateclubbiriciana/impressum do
 
 ### Checklist
 
-- [ ] create `docs/plans/wix-reference/manifest.json` or `migration/manifest.json`
-- [ ] create the chosen reference workspace structure
-- [ ] capture Playwright screenshots for all launch routes, including:
-- [ ] `/`
-- [ ] `/ueber-uns/`
-- [ ] `/pics-n-vids/`
-- [ ] `/veranstaltungen/`
-- [ ] one representative event detail page
-- [ ] `/copy-of-veranstaltungen`
-- [ ] `/kontakt/`
-- [ ] `/impressum/`
-- [ ] `/datenschutz/`
-- [ ] the news index and at least two representative news posts
-- [ ] capture Playwright PDFs for long-form or legal pages when a screenshot is not enough
-- [ ] if a needed launch-route screenshot is unusable or blocked, record the exception and keep alternate local evidence such as HTML and/or PDF
-- [ ] capture `blog-feed.xml`
-- [ ] inventory Wix-linked PDFs and public asset URLs
-- [ ] record route targets, risks, and unresolved contradictions in the manifest
-- [ ] cross-check risky public facts against [public-data-register.md](/home/nout/REPO/SCB-Website/docs/plans/public-data-register.md)
+- [x] create `docs/plans/wix-reference/manifest.json` or `migration/manifest.json`
+- [x] create the chosen reference workspace structure
+- [x] retain local evidence for all launch routes, using Playwright screenshots where usable and recorded HTML/PDF fallback evidence where a screenshot was unusable:
+- [x] `/`
+- [x] `/ueber-uns/`
+- [x] `/pics-n-vids/`
+- [x] `/veranstaltungen/`
+- [x] one representative event detail page
+- [x] `/copy-of-veranstaltungen`
+- [x] `/kontakt/`
+- [x] `/impressum/`
+- [x] `/datenschutz/` via retained HTML/PDF fallback documented in the manifest
+- [x] the news index and at least two representative news posts
+- [x] capture Playwright PDFs for long-form or legal pages when a screenshot is not enough
+- [x] if a needed launch-route screenshot is unusable or blocked, record the exception and keep alternate local evidence such as HTML and/or PDF
+- [x] capture `blog-feed.xml`
+- [x] inventory Wix-linked PDFs and public asset URLs
+- [x] record route targets, risks, and unresolved contradictions in the manifest
+- [x] cross-check risky public facts against [public-data-register.md](/home/nout/REPO/SCB-Website/docs/plans/public-data-register.md)
 
 ### Exit gate
 
@@ -207,15 +208,15 @@ Make the editable content system real before page implementation depends on ad h
 
 ### Checklist
 
-- [ ] implement Astro content collections for `homepage`, `pages`, `posts`, `events`, `media`, and `settings`
-- [ ] encode field validation from the planning stack
-- [ ] model shared site-wide facts in `settings` instead of hardcoding them in components
-- [ ] create required singleton entries for homepage and static pages
-- [ ] create minimal seed entries for posts, events, and media
-- [ ] replace the bootstrap-only Decap collection in `public/admin/config.yml`
-- [ ] keep editor labels and grouping understandable for non-technical admins
-- [ ] verify `bun run build` fails on missing required singleton content
-- [ ] verify `/admin/` can edit all launch-critical content types locally
+- [x] implement Astro content collections for `homepage`, `pages`, `posts`, `events`, `media`, and `settings`
+- [x] encode field validation from the planning stack
+- [x] model shared site-wide facts in `settings` instead of hardcoding them in components
+- [x] create required singleton entries for homepage and static pages
+- [x] create minimal seed entries for posts, events, and media
+- [x] replace the bootstrap-only Decap collection in `public/admin/config.yml`
+- [x] keep editor labels and grouping understandable for non-technical admins
+- [x] verify `bun run build` fails on missing required singleton content
+- [x] verify `/admin/` can edit all launch-critical content types locally
 
 ### Exit gate
 
@@ -238,13 +239,13 @@ Implement the public event system as build-time data logic before calendar UI an
 
 ### Checklist
 
-- [ ] implement the event schema exactly around one-off, weekly recurring, and monthly recurring support
-- [ ] generate occurrence URLs at `/veranstaltungen/[slug]/[yyyy-mm-dd]/`
-- [ ] derive upcoming occurrences at build time
-- [ ] build month-view or grouped-list helpers without runtime dependency
-- [ ] cover recurrence edge cases with focused fixtures or tests
-- [ ] verify timezone and date formatting assumptions
-- [ ] verify Wix slug/date mismatches are treated as migration QA issues, not silently trusted data
+- [x] implement the event schema exactly around one-off, weekly recurring, and monthly recurring support
+- [x] generate occurrence URLs at `/veranstaltungen/[slug]/[yyyy-mm-dd]/`
+- [x] derive upcoming occurrences at build time
+- [x] build month-view or grouped-list helpers without runtime dependency
+- [x] cover recurrence edge cases with focused fixtures or tests
+- [x] verify timezone and date formatting assumptions
+- [x] verify Wix slug/date mismatches are treated as migration QA issues, not silently trusted data
 
 ### Exit gate
 

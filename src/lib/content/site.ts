@@ -1,7 +1,20 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 
-import { assertValidEventRecord, getUpcomingOccurrences as getUpcomingOccurrencesFromEvents } from "../events/engine";
-import type { EventOccurrence, WebsiteEventRecord } from "../events/model";
+import {
+  assertValidEventRecord,
+  getAllOccurrences as getAllOccurrencesFromEvents,
+  getOccurrenceBySlugAndDate as getOccurrenceBySlugAndDateFromEvents,
+  getOccurrenceRouteParams as getOccurrenceRouteParamsFromEvents,
+  getRelatedOccurrences as getRelatedOccurrencesFromEvents,
+  getUpcomingOccurrences as getUpcomingOccurrencesFromEvents,
+  groupOccurrencesByMonth as groupOccurrencesByMonthFromEvents,
+} from "../events/engine";
+import type {
+  EventOccurrence,
+  EventOccurrenceRouteParams,
+  OccurrenceExpansionOptions,
+  WebsiteEventRecord,
+} from "../events/model";
 
 const REQUIRED_PAGE_SLUGS = ["about", "membership", "contact", "impressum", "datenschutz"] as const;
 
@@ -266,8 +279,46 @@ export async function getAllEvents(): Promise<WebsiteEventRecord[]> {
   return (await loadValidatedSiteContent()).events;
 }
 
-export async function getUpcomingOccurrences(limit = 5): Promise<EventOccurrence[]> {
-  return getUpcomingOccurrencesFromEvents((await loadValidatedSiteContent()).events, limit);
+export async function getAllEventOccurrences(
+  options: OccurrenceExpansionOptions = {},
+): Promise<EventOccurrence[]> {
+  return getAllOccurrencesFromEvents((await loadValidatedSiteContent()).events, options);
+}
+
+export async function getUpcomingOccurrences(
+  limit = 5,
+  options: OccurrenceExpansionOptions = {},
+): Promise<EventOccurrence[]> {
+  return getUpcomingOccurrencesFromEvents((await loadValidatedSiteContent()).events, limit, options);
+}
+
+export async function getEventOccurrenceRouteParams(
+  options: OccurrenceExpansionOptions = {},
+): Promise<EventOccurrenceRouteParams[]> {
+  return getOccurrenceRouteParamsFromEvents((await loadValidatedSiteContent()).events, options);
+}
+
+export async function getEventOccurrenceBySlugAndDate(
+  slug: string,
+  date: string,
+  options: OccurrenceExpansionOptions = {},
+): Promise<EventOccurrence | undefined> {
+  return getOccurrenceBySlugAndDateFromEvents((await loadValidatedSiteContent()).events, slug, date, options);
+}
+
+export async function getRelatedEventOccurrences(
+  slug: string,
+  fromDate?: string,
+  limit?: number,
+  options: OccurrenceExpansionOptions = {},
+): Promise<EventOccurrence[]> {
+  return getRelatedOccurrencesFromEvents((await loadValidatedSiteContent()).events, slug, fromDate, limit, options);
+}
+
+export async function getEventOccurrencesGroupedByMonth(
+  options: OccurrenceExpansionOptions = {},
+): Promise<Array<{ month: string; label: string; occurrences: EventOccurrence[] }>> {
+  return groupOccurrencesByMonthFromEvents(await getAllEventOccurrences(options));
 }
 
 export async function getAllMedia(): Promise<CollectionEntry<"media">[]> {

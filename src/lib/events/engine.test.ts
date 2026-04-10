@@ -1,11 +1,20 @@
 import { describe, expect, it } from "bun:test";
 
 import {
+  buildOccurrenceRouteParams,
   buildOccurrencePath,
+  extractWixEventSlugDate,
   expandEventOccurrences,
+  getCurrentBerlinDateKey,
+  getCurrentBerlinDateTimeKey,
+  getOccurrenceBySlugAndDate,
+  getOccurrenceRouteParams,
+  getWixSlugDateMismatchQaFinding,
   getAllOccurrences,
   getRelatedOccurrences,
   getUpcomingOccurrences,
+  formatGermanDate,
+  formatGermanMonthLabel,
   groupOccurrencesByMonth,
 } from "./engine";
 import type { WebsiteEventRecord } from "./model";
@@ -267,5 +276,71 @@ describe("event engine", () => {
     expect(buildOccurrencePath("sunday-funday", "2025-11-30")).toBe(
       "/veranstaltungen/sunday-funday/2025-11-30/",
     );
+  });
+
+  it("builds route params for generated occurrences", () => {
+    const routeParams = getOccurrenceRouteParams([createEvent()], {
+      referenceDateKey: "2025-11-30",
+      horizonPastMonths: 0,
+      horizonFutureMonths: 1,
+    });
+
+    expect(routeParams).toEqual([{ slug: "sunday-funday", date: "2025-11-30" }]);
+    expect(buildOccurrenceRouteParams({ slug: "sunday-funday", occurrenceDate: "2025-11-30" })).toEqual({
+      slug: "sunday-funday",
+      date: "2025-11-30",
+    });
+  });
+
+  it("finds one occurrence by slug and date", () => {
+    const found = getOccurrenceBySlugAndDate([createEvent()], "sunday-funday", "2025-11-30", {
+      referenceDateKey: "2025-11-30",
+      horizonPastMonths: 0,
+      horizonFutureMonths: 1,
+    });
+
+    expect(found?.occurrencePath).toBe("/veranstaltungen/sunday-funday/2025-11-30/");
+  });
+
+  it("keeps the current date/time helpers pinned to Europe/Berlin", () => {
+    const reference = new Date("2026-04-10T22:15:00Z");
+
+    expect(getCurrentBerlinDateKey(reference)).toBe("2026-04-11");
+    expect(getCurrentBerlinDateTimeKey(reference)).toBe("2026-04-11T00:15");
+  });
+
+  it("formats dates and month labels for German event UI", () => {
+    expect(formatGermanDate("2025-11-30")).toBe("So., 30. November 2025");
+    expect(formatGermanMonthLabel("2025-11")).toBe("November 2025");
+  });
+
+  it("extracts the dated Wix slug segment for QA", () => {
+    expect(
+      extractWixEventSlugDate(
+        "https://briareos.wixsite.com/skateclubbiriciana/events/sunday-funday-2025-04-06-13-00",
+      ),
+    ).toBe("2025-04-06");
+  });
+
+  it("flags Wix slug/date mismatches as migration QA issues", () => {
+    const finding = getWixSlugDateMismatchQaFinding(
+      "https://briareos.wixsite.com/skateclubbiriciana/events/sunday-funday-2025-04-06-13-00",
+      "2025-11-30",
+      "2025-11-30",
+    );
+
+    if (!finding) {
+      throw new Error("Expected a Wix slug/date mismatch QA finding.");
+    }
+
+    expect(finding).toEqual({
+      code: "wix-slug-date-mismatch",
+      sourceUrl: "https://briareos.wixsite.com/skateclubbiriciana/events/sunday-funday-2025-04-06-13-00",
+      sourceSlugDate: "2025-04-06",
+      canonicalDate: "2025-11-30",
+      visibleDate: "2025-11-30",
+      message:
+        "The Wix source URL date does not match the visible/canonical event date. Treat this as migration QA, not canonical truth.",
+    });
   });
 });
