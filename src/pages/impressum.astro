@@ -1,0 +1,35 @@
+---
+import { render } from "astro:content";
+
+import Container from "../components/Container.astro";
+import PageIntro from "../components/PageIntro.astro";
+import RichText from "../components/RichText.astro";
+import SurfaceCard from "../components/SurfaceCard.astro";
+import { getRequiredPageEntry, getSiteSettingsEntry } from "../lib/content/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const [settings, legalPage] = await Promise.all([
+  getSiteSettingsEntry(),
+  getRequiredPageEntry("impressum"),
+]);
+
+const { Content } = await render(legalPage);
+---
+
+<BaseLayout
+  title={`${legalPage.data.title} | ${settings.data.organizationName}`}
+  description="Rechtliche Anbieterkennzeichnung des Skate Club Biriciana e.V."
+>
+  <section class="py-16 sm:py-20">
+    <Container class="max-w-4xl space-y-8">
+      <PageIntro eyebrow="Rechtliches" title={legalPage.data.title} />
+
+      <SurfaceCard as="section" aria-labelledby="impressum-body-heading">
+        <h2 id="impressum-body-heading" class="sr-only">Impressumstext</h2>
+        <RichText>
+          <Content />
+        </RichText>
+      </SurfaceCard>
+    </Container>
+  </section>
+</BaseLayout>

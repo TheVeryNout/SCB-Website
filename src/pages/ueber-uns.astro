@@ -1,0 +1,108 @@
+---
+import { render } from "astro:content";
+
+import Container from "../components/Container.astro";
+import EditorialImage from "../components/EditorialImage.astro";
+import LinkButton from "../components/LinkButton.astro";
+import PageIntro from "../components/PageIntro.astro";
+import RichText from "../components/RichText.astro";
+import SurfaceCard from "../components/SurfaceCard.astro";
+import { getRequiredPageEntry, getSiteSettingsEntry } from "../lib/content/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const [settings, aboutPage] = await Promise.all([
+  getSiteSettingsEntry(),
+  getRequiredPageEntry("about"),
+]);
+
+const { Content } = await render(aboutPage);
+const boardMembers = aboutPage.data.boardMembers ?? [];
+const goals = aboutPage.data.goals ?? [];
+---
+
+<BaseLayout
+  title={`${aboutPage.data.title} | ${settings.data.organizationName}`}
+  description={aboutPage.data.intro}
+>
+  <section class="py-16 sm:py-20">
+    <Container class="space-y-10">
+      <div class="grid gap-8 xl:grid-cols-[1.05fr_0.95fr] xl:items-start">
+        <PageIntro eyebrow="Uber uns" title={aboutPage.data.title} intro={aboutPage.data.intro}>
+          <div class="flex flex-wrap gap-3">
+            <LinkButton href={aboutPage.data.statutesPdf!} target="_blank" rel="noreferrer">
+              Satzung als PDF
+            </LinkButton>
+            <LinkButton href="/mitgliedschaft/" variant="outline">
+              Mitgliedschaft ansehen
+            </LinkButton>
+          </div>
+        </PageIntro>
+
+        {
+          aboutPage.data.heroImage ? (
+            <EditorialImage
+              src={aboutPage.data.heroImage}
+              alt={`Eindruck aus dem Umfeld von ${settings.data.organizationName}`}
+              class="min-h-[18rem] shadow-[0_20px_60px_-30px_rgba(15,23,42,0.35)]"
+              sizes="(min-width: 1280px) 32rem, 100vw"
+            />
+          ) : null
+        }
+      </div>
+
+      <div class="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
+        <SurfaceCard as="section" tone="warm" aria-labelledby="about-goals-heading">
+          <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Schwerpunkt</p>
+          <h2 id="about-goals-heading" class="mt-2 text-2xl font-semibold text-slate-950">
+            Wofuer der Verein arbeitet
+          </h2>
+          <ul class="mt-6 grid gap-3">
+            {
+              goals.map((goal) => (
+                <li class="rounded-2xl border border-amber-500/25 bg-white/80 px-4 py-4 text-sm leading-6 text-slate-700">
+                  {goal}
+                </li>
+              ))
+            }
+          </ul>
+        </SurfaceCard>
+
+        <SurfaceCard as="section" aria-labelledby="about-board-heading">
+          <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Verantwortung</p>
+          <h2 id="about-board-heading" class="mt-2 text-2xl font-semibold text-slate-950">
+            Vorstand und Ansprechpersonen
+          </h2>
+          <div class="mt-6 grid gap-4 sm:grid-cols-2">
+            {
+              boardMembers.map((member) => (
+                <article class="rounded-[1.5rem] border border-slate-200 bg-white/75 p-5">
+                  <p class="text-xs font-semibold tracking-[0.16em] text-slate-500 uppercase">
+                    {member.role}
+                  </p>
+                  <h3 class="mt-2 text-lg font-semibold text-slate-950">{member.name}</h3>
+                </article>
+              ))
+            }
+          </div>
+        </SurfaceCard>
+      </div>
+
+      <SurfaceCard as="section" aria-labelledby="about-story-heading">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Vereinsprofil</p>
+            <h2 id="about-story-heading" class="mt-2 text-2xl font-semibold text-slate-950">
+              Geschichte und Ausrichtung
+            </h2>
+          </div>
+          <LinkButton href="/kontakt/" variant="outline">
+            Kontakt aufnehmen
+          </LinkButton>
+        </div>
+        <RichText class="mt-6">
+          <Content />
+        </RichText>
+      </SurfaceCard>
+    </Container>
+  </section>
+</BaseLayout>

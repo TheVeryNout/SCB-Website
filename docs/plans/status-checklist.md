@@ -32,6 +32,9 @@ Audited scope:
 - Phase 3 event engine integrity
 - Phase 4 shared UI foundation completion
 - the initial Phase 5 homepage-and-events route slice
+- the second Phase 5 singleton-route slice for `/ueber-uns/`, `/mitgliedschaft/`, `/kontakt/`, and `/kontakt/danke/`
+- the legal-route follow-up for `/impressum/` and `/datenschutz/` from the retained local HTML/PDF evidence pack
+- the final Phase 5 collection-route slice for `/neuigkeiten/`, `/neuigkeiten/[slug]/`, and `/pics-n-vids/`
 
 ---
 
@@ -165,31 +168,47 @@ Audit notes:
 Overall status:
 
 - [x] Phase 5 implementation has started in the repo
-- [ ] Phase 5 is not complete in this audit
+- [x] Phase 5 is cleared as complete in this audit
 
 Checklist status:
 
 - [x] `/`
-- [ ] `/neuigkeiten/`
-- [ ] `/neuigkeiten/[slug]/`
-- [ ] `/ueber-uns/`
-- [ ] `/pics-n-vids/`
+- [x] `/neuigkeiten/`
+- [x] `/neuigkeiten/[slug]/`
+- [x] `/ueber-uns/`
+- [x] `/pics-n-vids/`
 - [x] `/veranstaltungen/`
 - [x] `/veranstaltungen/[slug]/[date]/`
-- [ ] `/mitgliedschaft/`
-- [ ] `/kontakt/`
-- [ ] `/kontakt/danke/`
-- [ ] `/impressum/`
-- [ ] `/datenschutz/`
+- [x] `/mitgliedschaft/`
+- [x] `/kontakt/`
+- [x] `/kontakt/danke/`
+- [x] `/impressum/`
+- [x] `/datenschutz/`
 - [x] latest-news and upcoming-events previews are wired from canonical collections, not duplicate CMS entries
-- [ ] shared contact and social data usage is not fully audited across the remaining route set yet
-- [ ] legal and membership downloads still need their owning routes before this item can clear
+- [x] shared contact and social data usage is now wired from `settings` across the implemented route set where those repeated facts appear
+- [x] legal and membership downloads now live on their owning pages instead of a separate top-level IA
 
 Audit notes:
 
 - `/veranstaltungen/` now renders from the build-time event engine with a bounded upcoming horizon and a static month overview, instead of leaving the event cards pointed at dead URLs.
 - `/veranstaltungen/[slug]/[date]/` now builds real occurrence pages with status, summary, location, optional body content, and related upcoming occurrences from the same recurring series.
 - The homepage was refactored onto the new shared primitives during this audit so Phase 4 is not represented only by unused abstractions.
+- `/ueber-uns/` now renders from `pages/about` with the shared hero/page-intro shell, a goals block, a structured board list, and the statutes PDF on its owning page.
+- `/mitgliedschaft/` now renders from `pages/membership` with benefits, application instructions, notes, and the official membership-form PDF on the canonical route.
+- `/kontakt/` now uses a plain Netlify Forms HTML form with honeypot and thank-you redirect, while sourcing repeated email/phone/WhatsApp/social facts from `settings` and location-specific content from `pages/contact`.
+- `/kontakt/danke/` now exists as the static post-submit utility page required by the launch contact flow.
+- Mobile-width verification was run locally via `bun run preview -- --host 127.0.0.1 --port 4322` and Playwright Chromium screenshots at `390x844` for `/ueber-uns/`, `/mitgliedschaft/`, and `/kontakt/`.
+- Verification passed with `bun test`, `bun run check`, and `bun run build`.
+- `/impressum/` now renders from `pages/impressum` on the shared legal-page shell instead of leaving the route absent while the content already existed in the collection.
+- `/datenschutz/` now renders from `pages/datenschutz`, and the previous placeholder body was replaced with the retained local Wix HTML content rather than reopening the live source.
+- The legal text migration used the existing `docs/plans/wix-reference/html/*.html` and `pdf/*.pdf` evidence already recorded in the manifest, which keeps this step inside the local-evidence boundary.
+- Mobile-width verification was also run for `/impressum/` and `/datenschutz/` via `bun run preview`; Astro bound to `127.0.0.1:4323` because `4322` was already occupied, and Playwright Chromium screenshots were captured at `390x844`.
+- `/neuigkeiten/` now renders the posts collection as a simple reverse-chronological index with cover images, dates, excerpts, and links into the canonical post routes instead of leaving the homepage news teaser disconnected from a real archive.
+- `/neuigkeiten/[slug]/` now renders individual post bodies from Astro content entries with cover imagery and related-post links, which completes the launch news/blog route layer without adding search or taxonomy overhead.
+- `/pics-n-vids/` now renders the media collection as lightweight linked media cards, preserving visible video destinations without introducing a heavyweight embed/gallery system.
+- The homepage latest-news cards now link directly to `/neuigkeiten/[slug]/`, so the Phase 5 route layer is connected end-to-end instead of only existing as standalone pages.
+- Mobile-width verification was also run for `/neuigkeiten/`, `/neuigkeiten/spendenaufruf-der-scb-baut-ne-halle/`, and `/pics-n-vids/` via `bun run preview`; Astro again bound to `127.0.0.1:4323`, and Playwright Chromium screenshots were captured at `390x844`.
+- Verification passed again with `bun test`, `bun run check`, and `bun run build` after the final route slice.
 
 ---
 
@@ -199,15 +218,18 @@ Audit notes:
 2. Wix event slug dates remain source evidence only. They are not route truth, redirect truth, or migration truth without visible-content verification.
 3. `src/assets/images/wix-staging/` is a large tracked staging workspace at about `43M`, but current code references are not a valid basis for pruning it yet. Many staged assets may still be needed for later route build-out and migration work. Any cleanup there must wait for explicit asset curation after the relevant implementation phases are complete.
 4. Stable resume rules are now explicitly owned by `AGENTS.md`, `README.md`, and the execution-plan handoff section. Future continuation prompts should be short and task-specific unless they intentionally override the repo-owned workflow.
+5. Playwright mobile presets currently default to WebKit, but the local verification environment only has Chromium installed. For phone-width QA in this repo state, use Playwright with explicit Chromium viewport sizing unless WebKit is intentionally installed again.
+6. The `datenschutz` content no longer needs to be treated as a missing-route blocker. The retained local HTML/PDF evidence was sufficient to populate the canonical page entry without reopening Wix.
+7. Phase 5 no longer has a route backlog. Future work should not reopen route implementation unless migration evidence or QA reveals a concrete bug.
 
 ---
 
 ## Continuation Status
 
 - continuation is allowed
-- active phase for the next resume should be Phase 5 route implementation
-- exact next continuation point: use the new shared page primitives to implement the remaining singleton-backed routes first, starting with `/ueber-uns/`, `/mitgliedschaft/`, and `/kontakt/`, before moving on to the news/media/legal route set
-- open exceptions: Phase 5 to Phase 7 remain incomplete, and Astro check still reports only non-blocking Zod deprecation hints from `src/content/config.ts`
+- active phase for the next resume should be Phase 6 content and asset migration
+- exact next continuation point: start the Phase 6 migration pass by populating the remaining content collections and localized assets from the retained local evidence pack, beginning with the news/media entries and any remaining static-page copy normalization
+- open exceptions: Phase 6 and Phase 7 remain incomplete, and Astro check still reports only non-blocking Zod deprecation hints from `src/content/config.ts`
 - prompt rule for the next resume: a short prompt should be sufficient because the stable startup and handoff rules now live in committed docs
 
 ---

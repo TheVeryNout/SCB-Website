@@ -122,7 +122,11 @@ const [homepage, settings, latestPosts, upcomingEvents] = await Promise.all([
                       year: "numeric",
                     }).format(new Date(post.data.publishedAt))}
                   </p>
-                  <h3 class="mt-2 text-lg font-semibold text-slate-950">{post.data.title}</h3>
+                  <h3 class="mt-2 text-lg font-semibold text-slate-950">
+                    <a class="no-underline hover:underline" href={`/neuigkeiten/${post.data.slug}/`}>
+                      {post.data.title}
+                    </a>
+                  </h3>
                   <p class="mt-3 text-sm leading-6 text-slate-700">{post.data.excerpt}</p>
                 </article>
               ))

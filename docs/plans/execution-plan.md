@@ -46,7 +46,7 @@ As of `2026-04-10`, the repository baseline has been verified to this level:
 - real Astro content collections and Decap launch collections exist for homepage, pages, posts, events, media, and settings
 - the build-time event engine exists, including recurrence expansion, occurrence route-param helpers, and homepage upcoming-event derivation
 - the shared site shell now includes reusable page-intro, rich-text, CTA, card, image, and event metadata/status patterns, with mobile-width verification recorded in the status ledger
-- current implemented public routes are `/`, `/veranstaltungen/`, `/veranstaltungen/[slug]/[date]/`, and `/admin/`
+- current implemented public routes are `/`, `/neuigkeiten/`, `/neuigkeiten/[slug]/`, `/ueber-uns/`, `/pics-n-vids/`, `/veranstaltungen/`, `/veranstaltungen/[slug]/[date]/`, `/mitgliedschaft/`, `/kontakt/`, `/kontakt/danke/`, `/impressum/`, `/datenschutz/`, and `/admin/`
 - lightweight Wix reference metadata exists under `docs/plans/wix-reference/`, while heavy capture artifacts may remain local-only
 - a raw downloaded Wix asset archive exists under `docs/plans/wix-reference/asset-source-archive/`
 
@@ -54,7 +54,7 @@ Known not-yet-done items:
 
 - `migration/` workspace has not been created yet
 - `migration/manifest.json` does not exist yet
-- several launch routes still do not exist yet, including the news, singleton content, media, and legal route set outside the homepage/events slice
+- the public route set is now implemented through Phase 5, but migration and deploy hardening work remain
 - `netlify.toml` has not been created yet
 
 Use this snapshot to avoid re-auditing the bootstrap from scratch in a later conversation.
@@ -115,7 +115,7 @@ Update these first when resuming work:
 - [x] Phase 2 complete
 - [x] Phase 3 complete
 - [x] Phase 4 complete
-- [ ] Phase 5 complete
+- [x] Phase 5 complete
 - [ ] Phase 6 complete
 - [ ] Phase 7 complete
 
@@ -296,20 +296,20 @@ Implement the entire public route set against the real content model and shared 
 ### Checklist
 
 - [x] `/`
-- [ ] `/neuigkeiten/`
-- [ ] `/neuigkeiten/[slug]/`
-- [ ] `/ueber-uns/`
-- [ ] `/pics-n-vids/`
+- [x] `/neuigkeiten/`
+- [x] `/neuigkeiten/[slug]/`
+- [x] `/ueber-uns/`
+- [x] `/pics-n-vids/`
 - [x] `/veranstaltungen/`
 - [x] `/veranstaltungen/[slug]/[date]/`
-- [ ] `/mitgliedschaft/`
-- [ ] `/kontakt/`
-- [ ] `/kontakt/danke/`
-- [ ] `/impressum/`
-- [ ] `/datenschutz/`
+- [x] `/mitgliedschaft/`
+- [x] `/kontakt/`
+- [x] `/kontakt/danke/`
+- [x] `/impressum/`
+- [x] `/datenschutz/`
 - [x] wire latest-news and upcoming-events previews from collections, not duplicate CMS entries
-- [ ] keep shared contact and social data sourced from settings where appropriate
-- [ ] keep legal and membership downloads on their owning pages instead of adding extra top-level IA
+- [x] keep shared contact and social data sourced from settings where appropriate
+- [x] keep legal and membership downloads on their owning pages instead of adding extra top-level IA
 
 ### Exit gate
 
@@ -429,7 +429,7 @@ Expected pattern:
 Good prompt shape:
 
 - `Resume from the current committed state and continue the next route slice recorded in status-checklist.md`
-- `Resume from the current committed state and implement /ueber-uns/ and /mitgliedschaft/ next`
+- `Resume from the current committed state and continue Phase 6 migration from status-checklist.md`
 
 Bad prompt shape:
 

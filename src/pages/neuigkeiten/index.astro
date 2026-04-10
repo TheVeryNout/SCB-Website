@@ -1,0 +1,93 @@
+---
+import Container from "../../components/Container.astro";
+import EditorialImage from "../../components/EditorialImage.astro";
+import LinkButton from "../../components/LinkButton.astro";
+import PageIntro from "../../components/PageIntro.astro";
+import SurfaceCard from "../../components/SurfaceCard.astro";
+import { getAllPosts, getSiteSettingsEntry } from "../../lib/content/site";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const [settings, posts] = await Promise.all([
+  getSiteSettingsEntry(),
+  getAllPosts(),
+]);
+
+const dateFormatter = new Intl.DateTimeFormat("de-DE", {
+  day: "2-digit",
+  month: "long",
+  year: "numeric",
+});
+---
+
+<BaseLayout
+  title={`Neuigkeiten | ${settings.data.organizationName}`}
+  description="Aktuelle Vereinsnachrichten, Rueckblicke und oeffentliche Updates des Skate Club Biriciana e.V."
+>
+  <section class="py-16 sm:py-20">
+    <Container class="space-y-10">
+      <PageIntro
+        eyebrow="Neuigkeiten"
+        title="Aktuelle Meldungen aus Verein, Szene und Projekten"
+        intro="Die Beitraege bleiben bewusst schlicht: chronologisch, mobil gut lesbar und ohne ueberladene Blog-Funktionen."
+      />
+
+      <div class="grid gap-5">
+        {
+          posts.map((post, index) => (
+            <SurfaceCard
+              as="article"
+              aria-labelledby={`post-${post.data.slug}-heading`}
+              class="grid gap-5 lg:grid-cols-[0.9fr_1.1fr]"
+            >
+              {
+                post.data.coverImage ? (
+                  <EditorialImage
+                    src={post.data.coverImage}
+                    alt={`Titelbild zum Beitrag ${post.data.title}`}
+                    class="min-h-[14rem]"
+                    sizes="(min-width: 1024px) 24rem, 100vw"
+                  />
+                ) : (
+                  <div class="rounded-[2rem] border border-dashed border-slate-300 bg-white/60 p-6 text-sm leading-6 text-slate-600">
+                    Bildmaterial wurde fuer diesen Beitrag nicht als eigenes Teaserbild gepflegt.
+                  </div>
+                )
+              }
+
+              <div class="space-y-4">
+                <div class="flex flex-wrap items-center gap-3">
+                  <p class="text-xs font-semibold tracking-[0.16em] text-slate-500 uppercase">
+                    {dateFormatter.format(new Date(post.data.publishedAt))}
+                  </p>
+                  {
+                    post.data.category ? (
+                      <span class="rounded-full border border-amber-500/35 bg-amber-100/80 px-3 py-1 text-xs font-semibold tracking-[0.12em] text-slate-950 uppercase">
+                        {post.data.category}
+                      </span>
+                    ) : null
+                  }
+                  <span class="rounded-full border border-slate-300 bg-white/80 px-3 py-1 text-xs text-slate-600">
+                    Beitrag {index + 1}
+                  </span>
+                </div>
+
+                <div>
+                  <h2 id={`post-${post.data.slug}-heading`} class="text-2xl font-semibold text-slate-950">
+                    <a class="no-underline hover:underline" href={`/neuigkeiten/${post.data.slug}/`}>
+                      {post.data.title}
+                    </a>
+                  </h2>
+                  <p class="mt-3 text-sm leading-7 text-slate-700">{post.data.excerpt}</p>
+                </div>
+
+                <LinkButton href={`/neuigkeiten/${post.data.slug}/`} variant="outline">
+                  Beitrag lesen
+                </LinkButton>
+              </div>
+            </SurfaceCard>
+          ))
+        }
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

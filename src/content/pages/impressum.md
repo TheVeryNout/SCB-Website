@@ -1,34 +1,46 @@
 ---
 title: "Impressum"
 ---
-Dieses Impressum gilt fuer alle Angebote unter der Domain `www.skateclubbiriciana.de` inklusive aller Unterseiten.
+<p>Dieses Impressum gilt fuer alle Angebote unter der Domain <a href="http://www.skateclubbiriciana.de">www.skateclubbiriciana.de</a> inklusive aller Subdomains (Unterseiten).</p>
 
-## Soziale Medien
+<p>Soziale Medien</p>
 
-- Instagram: `https://www.instagram.com/skateclub_biriciana/`
-- YouTube: `https://www.youtube.com/@SkateClubBiriciana`
+<p>Dieses Impressum gilt auch fuer unsere Auftritte in den folgenden sozialen Medien:<br>
+<br>
+Instagram: https://www.instagram.com/skateclub_biriciana/<br>
+YouTube: https://www.youtube.com/@SkateClubBiriciana</p>
 
-## Angaben gemaess Paragraph 5 TMG
+<p>Angaben gemaess &sect; 5 TMG</p>
 
-Skate Club Biriciana e.V.  
-Noerdlinger Strasse 1  
-91781 Weissenburg
+<p>Skate Club Biriciana e.V.<br>
+Noerdlinger Strasse 1<br>
+91781 Weissenburg<br>
+Telefon: 01708303717<br>
+E-Mail: scbiriciana@gmail.com</p>
 
-Telefon: `01708303717`  
-E-Mail: `scbiriciana@gmail.com`  
-Kontakt: `https://briareos.wixsite.com/skateclubbiriciana/kontakt`  
-WhatsApp: `01708303717`
+<p><br>
+Kontakt: https://briareos.wixsite.com/skateclubbiriciana/kontakt</p>
 
-Eintragung Register: Amtsgericht Ansbach  
-Registernummer: `201141`
+<p><br>
+WhatsApp: 01708303717</p>
 
-Umsatzsteuer-Identifikationsnummer: `DE228041698`
+<p>Eintragung</p>
 
-Vertretungsberechtigte Personen:
+<p>Register: Amtsgericht Ansbach<br>
+Registernummer: 201141</p>
 
-- Christian Winkler, 1. Vorstand
-- Andreas Schmidt, 2. Vorstand
+<p>Umsatzsteuer-Identifikationsnummer</p>
 
-Zustaendige Aufsichtsbehoerde: Bayern
+<p>DE228041698</p>
 
-Gueltig ab: 28. August 2024
+<p>Vertretungsberechtigte Personen</p>
+
+<p>Christian Winkler, 1. Vorstand<br>
+Andreas Schmidt, 2. Vorstand</p>
+
+<p><br>
+Zustaendige Aufsichtsbehoerde: Bayern</p>
+
+<p>Gueltigkeit</p>
+
+<p>Dieses Impressum gilt ab dem 28. August 2024.</p>

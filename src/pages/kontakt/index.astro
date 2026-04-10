@@ -1,0 +1,205 @@
+---
+import Container from "../../components/Container.astro";
+import EditorialImage from "../../components/EditorialImage.astro";
+import LinkButton from "../../components/LinkButton.astro";
+import PageIntro from "../../components/PageIntro.astro";
+import SurfaceCard from "../../components/SurfaceCard.astro";
+import { getRequiredPageEntry, getSiteSettingsEntry } from "../../lib/content/site";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const [settings, contactPage] = await Promise.all([
+  getSiteSettingsEntry(),
+  getRequiredPageEntry("contact"),
+]);
+
+const fallbackAddress = contactPage.data.addressOverride ?? settings.data.postalAddress;
+const phoneHref = settings.data.contactPhone?.replace(/\s+/g, "");
+---
+
+<BaseLayout
+  title={`${contactPage.data.title} | ${settings.data.organizationName}`}
+  description={contactPage.data.intro}
+>
+  <section class="py-16 sm:py-20">
+    <Container class="space-y-10">
+      <PageIntro eyebrow="Kontakt" title={contactPage.data.title} intro={contactPage.data.intro}>
+        <div class="flex flex-wrap gap-3">
+          <LinkButton href={`mailto:${settings.data.contactEmail}`}>
+            E-Mail schreiben
+          </LinkButton>
+          <LinkButton href={contactPage.data.mapUrl!} variant="outline" target="_blank" rel="noreferrer">
+            Standort in Google Maps
+          </LinkButton>
+        </div>
+      </PageIntro>
+
+      <div class="grid gap-5 xl:grid-cols-[1.1fr_0.9fr]">
+        <SurfaceCard as="section" aria-labelledby="contact-form-heading">
+          <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Kontaktformular</p>
+          <h2 id="contact-form-heading" class="mt-2 text-2xl font-semibold text-slate-950">
+            Nachricht direkt an den Verein schicken
+          </h2>
+          <p class="mt-3 text-sm leading-7 text-slate-700">
+            Das Formular bleibt bewusst schlicht und landet ohne Zusatzlogik direkt bei Netlify Forms. Falls das einmal hakt, stehen rechts alle direkten Kontaktwege.
+          </p>
+
+          <form
+            name="contact"
+            method="POST"
+            action="/kontakt/danke/"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            class="mt-6 space-y-4"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <p class="hidden">
+              <label>
+                Dieses Feld bitte leer lassen
+                <input name="bot-field" />
+              </label>
+            </p>
+
+            <div class="grid gap-4 sm:grid-cols-2">
+              <label class="grid gap-2">
+                <span class="text-sm font-semibold text-slate-900">Name</span>
+                <input
+                  class="rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-amber-500"
+                  type="text"
+                  name="name"
+                  autocomplete="name"
+                  required
+                />
+              </label>
+
+              <label class="grid gap-2">
+                <span class="text-sm font-semibold text-slate-900">E-Mail</span>
+                <input
+                  class="rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-amber-500"
+                  type="email"
+                  name="email"
+                  autocomplete="email"
+                  required
+                />
+              </label>
+            </div>
+
+            <label class="grid gap-2">
+              <span class="text-sm font-semibold text-slate-900">Betreff</span>
+              <input
+                class="rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-amber-500"
+                type="text"
+                name="subject"
+                autocomplete="off"
+              />
+            </label>
+
+            <label class="grid gap-2">
+              <span class="text-sm font-semibold text-slate-900">Nachricht</span>
+              <textarea
+                class="min-h-40 rounded-[1.5rem] border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-amber-500"
+                name="message"
+                required
+              />
+            </label>
+
+            <button
+              type="submit"
+              class="inline-flex items-center justify-center rounded-full border border-slate-950 bg-slate-950 px-5 py-2.5 text-sm font-semibold text-white transition hover:border-slate-800 hover:bg-slate-800"
+            >
+              Nachricht senden
+            </button>
+          </form>
+        </SurfaceCard>
+
+        <div class="grid gap-5">
+          <SurfaceCard as="section" aria-labelledby="contact-fallback-heading">
+            <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Direkte Wege</p>
+            <h2 id="contact-fallback-heading" class="mt-2 text-2xl font-semibold text-slate-950">
+              Falls du lieber direkt Kontakt aufnimmst
+            </h2>
+            <dl class="mt-6 space-y-4">
+              <div class="rounded-[1.5rem] border border-slate-200 bg-white/75 p-4">
+                <dt class="text-xs font-semibold tracking-[0.16em] text-slate-500 uppercase">E-Mail</dt>
+                <dd class="mt-2 text-sm leading-6 text-slate-700">
+                  <a class="underline decoration-amber-500/70 underline-offset-4" href={`mailto:${settings.data.contactEmail}`}>
+                    {settings.data.contactEmail}
+                  </a>
+                </dd>
+              </div>
+
+              {
+                settings.data.contactPhone ? (
+                  <div class="rounded-[1.5rem] border border-slate-200 bg-white/75 p-4">
+                    <dt class="text-xs font-semibold tracking-[0.16em] text-slate-500 uppercase">
+                      Telefon
+                    </dt>
+                    <dd class="mt-2 text-sm leading-6 text-slate-700">
+                      <a class="underline decoration-amber-500/70 underline-offset-4" href={`tel:${phoneHref}`}>
+                        {settings.data.contactPhone}
+                      </a>
+                    </dd>
+                  </div>
+                ) : null
+              }
+
+              {
+                settings.data.whatsApp ? (
+                  <div class="rounded-[1.5rem] border border-slate-200 bg-white/75 p-4">
+                    <dt class="text-xs font-semibold tracking-[0.16em] text-slate-500 uppercase">
+                      WhatsApp
+                    </dt>
+                    <dd class="mt-2 text-sm leading-6 text-slate-700">{settings.data.whatsApp}</dd>
+                  </div>
+                ) : null
+              }
+            </dl>
+
+            <div class="mt-6 flex flex-wrap gap-3">
+              {
+                settings.data.socialLinks.map((link) => (
+                  <LinkButton href={link.url} target="_blank" rel="noreferrer" variant="outline">
+                    {link.label}
+                  </LinkButton>
+                ))
+              }
+            </div>
+          </SurfaceCard>
+
+          <SurfaceCard as="section" tone="warm" aria-labelledby="contact-location-heading">
+            <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Vor Ort</p>
+            <h2 id="contact-location-heading" class="mt-2 text-2xl font-semibold text-slate-950">
+              {contactPage.data.locationName}
+            </h2>
+
+            {
+              contactPage.data.mapImage ? (
+                <div class="mt-5">
+                  <EditorialImage
+                    src={contactPage.data.mapImage}
+                    alt={`Ansicht rund um ${contactPage.data.locationName}`}
+                    class="min-h-[14rem]"
+                    sizes="(min-width: 1280px) 26rem, 100vw"
+                  />
+                </div>
+              ) : null
+            }
+
+            <p class="mt-5 whitespace-pre-line text-sm leading-7 text-slate-700">{fallbackAddress}</p>
+
+            {
+              contactPage.data.locationNotes ? (
+                <p class="mt-4 text-sm leading-7 text-slate-700">{contactPage.data.locationNotes}</p>
+              ) : null
+            }
+
+            <div class="mt-6">
+              <LinkButton href={contactPage.data.mapUrl!} target="_blank" rel="noreferrer" variant="outline">
+                Route in Google Maps oeffnen
+              </LinkButton>
+            </div>
+          </SurfaceCard>
+        </div>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

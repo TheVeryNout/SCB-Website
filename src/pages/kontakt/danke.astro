@@ -1,0 +1,44 @@
+---
+import Container from "../../components/Container.astro";
+import LinkButton from "../../components/LinkButton.astro";
+import PageIntro from "../../components/PageIntro.astro";
+import SurfaceCard from "../../components/SurfaceCard.astro";
+import { getSiteSettingsEntry } from "../../lib/content/site";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const settings = await getSiteSettingsEntry();
+---
+
+<BaseLayout
+  title={`Kontakt bestaetigt | ${settings.data.organizationName}`}
+  description="Bestaetigungsseite nach dem Absenden des Kontaktformulars."
+>
+  <section class="py-16 sm:py-24">
+    <Container class="max-w-3xl">
+      <SurfaceCard as="section" tone="warm" class="text-center">
+        <PageIntro
+          eyebrow="Kontakt"
+          title="Nachricht gesendet"
+          intro="Danke fuer deine Nachricht. Wenn die Formularuebermittlung erfolgreich war, landet sie jetzt beim Verein."
+          align="center"
+        />
+
+        <p class="mt-6 text-sm leading-7 text-slate-700">
+          Falls du nichts weiter absenden moechtest oder spaeter direkt nachfassen willst, erreichst du den SCB auch unter
+          {" "}
+          <a class="underline decoration-amber-500/70 underline-offset-4" href={`mailto:${settings.data.contactEmail}`}>
+            {settings.data.contactEmail}
+          </a>
+          .
+        </p>
+
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          <LinkButton href="/kontakt/" variant="outline">
+            Zurueck zum Kontaktformular
+          </LinkButton>
+          <LinkButton href="/">Zur Startseite</LinkButton>
+        </div>
+      </SurfaceCard>
+    </Container>
+  </section>
+</BaseLayout>

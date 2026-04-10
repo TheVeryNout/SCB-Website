@@ -69,7 +69,7 @@ Foundation scaffolding is now in place in this repo:
 - raw downloaded Wix media archived under `docs/plans/wix-reference/asset-source-archive/`
 - Astro-facing staged Wix asset tree under `src/assets/images/wix-staging/` via `bun run stage:wix-assets`
 
-Content collections, route implementation, and migration work still remain.
+Content collections and migration work still remain.
 
 The docs are now split into:
 
@@ -80,6 +80,11 @@ The docs are now split into:
 Use [execution-plan.md](/home/nout/REPO/SCB-Website/docs/plans/execution-plan.md) as the controlling work plan once the core specs have been read.
 
 Use [status-checklist.md](/home/nout/REPO/SCB-Website/docs/plans/status-checklist.md) immediately after that so the next conversation starts from recorded state instead of inference.
+
+Current phase status from the audited ledger:
+
+- Phases 1 to 5 are cleared
+- Phase 6 content and asset migration is the active next phase
 
 ## Minimal Resume Prompt
 
