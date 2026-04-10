@@ -20,9 +20,9 @@ const navItems = [
 ];
 ---
 
-<header class="border-b border-slate-900/10 bg-white/75 backdrop-blur">
+<header class="border-b border-slate-900/10 bg-white/80 backdrop-blur">
   <Container class="py-5">
-    <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+    <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
       <div class="space-y-1">
         <a class="inline-flex items-center gap-3 text-lg font-semibold tracking-[0.16em] text-slate-950 uppercase no-underline" href="/">
           <span class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-amber-500/50 bg-amber-300/55 text-sm font-bold text-slate-950">
@@ -35,7 +35,7 @@ const navItems = [
         </p>
       </div>
 
-      <nav aria-label="Primary" class="flex flex-wrap gap-2">
+      <nav aria-label="Primary" class="hidden flex-wrap justify-end gap-2 md:flex">
         {
           navItems.map((item) => {
             const isActive = currentPath === item.href;
@@ -57,6 +57,34 @@ const navItems = [
           })
         }
       </nav>
+
+      <details class="group w-full md:hidden">
+        <summary class="flex cursor-pointer list-none items-center justify-center rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-950">
+          Navigation
+        </summary>
+        <nav aria-label="Primary mobile" class="mt-4 flex flex-col gap-2">
+          {
+            navItems.map((item) => {
+              const isActive = currentPath === item.href;
+
+              return (
+                <a
+                  href={item.href}
+                  aria-current={isActive ? "page" : undefined}
+                  class:list={[
+                    "rounded-2xl border px-4 py-3 text-sm font-medium transition",
+                    isActive
+                      ? "border-slate-950 bg-slate-950 text-white no-underline"
+                      : "border-slate-300 bg-white/90 text-slate-800 no-underline hover:border-amber-500 hover:bg-amber-100",
+                  ]}
+                >
+                  {item.label}
+                </a>
+              );
+            })
+          }
+        </nav>
+      </details>
     </div>
   </Container>
 </header>

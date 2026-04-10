@@ -1,0 +1,20 @@
+---
+import { formatGermanDate, formatGermanTimeRange } from "../../lib/events/engine";
+import type { EventOccurrence } from "../../lib/events/model";
+
+interface Props {
+  occurrence: EventOccurrence;
+  compact?: boolean;
+}
+
+const { occurrence, compact = false } = Astro.props;
+---
+
+<div class:list={["space-y-1.5", compact ? "text-xs" : "text-sm"]}>
+  <p class="font-semibold tracking-[0.18em] text-slate-500 uppercase">
+    {formatGermanDate(occurrence.occurrenceDate)}
+  </p>
+  <p class="text-slate-700">
+    {formatGermanTimeRange(occurrence.startTime, occurrence.endTime)} · {occurrence.locationName}
+  </p>
+</div>

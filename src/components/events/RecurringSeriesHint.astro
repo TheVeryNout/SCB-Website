@@ -1,0 +1,15 @@
+---
+interface Props {
+  isRecurring: boolean;
+}
+
+const { isRecurring } = Astro.props;
+---
+
+{
+  isRecurring ? (
+    <p class="text-xs font-semibold tracking-[0.16em] text-amber-700 uppercase">
+      Wiederkehrender Termin
+    </p>
+  ) : null
+}

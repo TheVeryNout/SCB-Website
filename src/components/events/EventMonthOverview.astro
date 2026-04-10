@@ -1,0 +1,53 @@
+---
+import EventEmptyState from "./EventEmptyState.astro";
+import UpcomingEventCard from "./UpcomingEventCard.astro";
+import type { EventOccurrence } from "../../lib/events/model";
+
+interface MonthGroup {
+  month: string;
+  label: string;
+  occurrences: EventOccurrence[];
+}
+
+interface Props {
+  monthGroups: MonthGroup[];
+  emptyMessage?: string;
+}
+
+const {
+  monthGroups,
+  emptyMessage = "Sobald weitere Termine veroeffentlicht sind, erscheint hier der Monatsueberblick.",
+} = Astro.props;
+---
+
+{
+  monthGroups.length > 0 ? (
+    <div class="space-y-6">
+      {
+        monthGroups.map((group) => (
+          <section class="rounded-[1.5rem] border border-slate-200 bg-white/70 p-5" aria-labelledby={`month-${group.month}`}>
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <h3 id={`month-${group.month}`} class="text-xl font-semibold text-slate-950">
+                {group.label}
+              </h3>
+              <p class="text-sm text-slate-600">
+                {group.occurrences.length} Termin{group.occurrences.length === 1 ? "" : "e"}
+              </p>
+            </div>
+            <ol class="mt-4 grid gap-3">
+              {
+                group.occurrences.map((occurrence) => (
+                  <li>
+                    <UpcomingEventCard occurrence={occurrence} showSummary={false} compact />
+                  </li>
+                ))
+              }
+            </ol>
+          </section>
+        ))
+      }
+    </div>
+  ) : (
+    <EventEmptyState title="Monatsueberblick folgt" message={emptyMessage} />
+  )
+}

@@ -1,0 +1,201 @@
+---
+import { render } from "astro:content";
+
+import Container from "../../../components/Container.astro";
+import EditorialImage from "../../../components/EditorialImage.astro";
+import LinkButton from "../../../components/LinkButton.astro";
+import PageIntro from "../../../components/PageIntro.astro";
+import RichText from "../../../components/RichText.astro";
+import SurfaceCard from "../../../components/SurfaceCard.astro";
+import EventCtaBlock from "../../../components/events/EventCtaBlock.astro";
+import EventLocationBlock from "../../../components/events/EventLocationBlock.astro";
+import EventMeta from "../../../components/events/EventMeta.astro";
+import EventStatusBadge from "../../../components/events/EventStatusBadge.astro";
+import RecurringSeriesHint from "../../../components/events/RecurringSeriesHint.astro";
+import UpcomingEventsList from "../../../components/events/UpcomingEventsList.astro";
+import {
+  getEventEntryBySlug,
+  getEventOccurrenceBySlugAndDate,
+  getEventOccurrenceRouteParams,
+  getRelatedEventOccurrences,
+  getSiteSettingsEntry,
+} from "../../../lib/content/site";
+import { formatGermanDate } from "../../../lib/events/engine";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const OCCURRENCE_PAGE_OPTIONS = {
+  horizonPastMonths: 0,
+  horizonFutureMonths: 8,
+} as const;
+
+export async function getStaticPaths() {
+  const routeOptions = {
+    horizonPastMonths: 0,
+    horizonFutureMonths: 8,
+  } as const;
+  const params = await getEventOccurrenceRouteParams(routeOptions);
+
+  return params.map((routeParams) => ({
+    params: routeParams,
+  }));
+}
+
+const { slug, date } = Astro.params;
+
+if (!slug || !date) {
+  throw new Error("The event occurrence route requires both slug and date params.");
+}
+
+const [settings, eventEntry, occurrence] = await Promise.all([
+  getSiteSettingsEntry(),
+  getEventEntryBySlug(slug),
+  getEventOccurrenceBySlugAndDate(slug, date, OCCURRENCE_PAGE_OPTIONS),
+]);
+
+if (!eventEntry || !occurrence) {
+  throw new Error(`Unable to resolve the event occurrence "${slug}" on "${date}".`);
+}
+
+const { Content } = await render(eventEntry);
+const relatedOccurrences = (await getRelatedEventOccurrences(
+  slug,
+  occurrence.occurrenceDate,
+  4,
+  OCCURRENCE_PAGE_OPTIONS,
+))
+  .filter((candidate) => candidate.occurrenceDate !== occurrence.occurrenceDate)
+  .slice(0, 3);
+const hasEventLinks = Boolean(occurrence.registrationUrl || occurrence.ctaUrl || occurrence.instagramUrl);
+const hasBody = typeof eventEntry.body === "string" && eventEntry.body.trim().length > 0;
+
+const detailFacts = [
+  occurrence.costLabel ? { label: "Kosten", value: occurrence.costLabel } : undefined,
+  occurrence.audience ? { label: "Zielgruppe", value: occurrence.audience } : undefined,
+  occurrence.equipmentInfo ? { label: "Mitbringen", value: occurrence.equipmentInfo } : undefined,
+  occurrence.lastVerifiedAt
+    ? {
+        label: "Zuletzt geprueft",
+        value: formatGermanDate(occurrence.lastVerifiedAt),
+      }
+    : undefined,
+].filter((value): value is { label: string; value: string } => Boolean(value));
+---
+
+<BaseLayout
+  title={`${occurrence.title} am ${formatGermanDate(occurrence.occurrenceDate)} | ${settings.data.organizationName}`}
+  description={occurrence.summary}
+>
+  <section class="py-16 sm:py-20">
+    <Container class="space-y-8">
+      <LinkButton href="/veranstaltungen/" variant="outline">
+        Zurueck zur Terminuebersicht
+      </LinkButton>
+
+      <div class="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
+        <SurfaceCard as="section" aria-labelledby="event-heading">
+          <PageIntro eyebrow="Termin" title={occurrence.title} intro={occurrence.summary} class="max-w-none">
+            <div class="flex flex-wrap gap-3">
+              <EventStatusBadge status={occurrence.status} />
+              <RecurringSeriesHint isRecurring={occurrence.isRecurring} />
+            </div>
+          </PageIntro>
+
+            <div class="mt-6 grid gap-4 lg:grid-cols-[1fr_0.85fr]">
+              <div class="rounded-[1.5rem] border border-slate-200 bg-white/70 p-5">
+                <EventMeta occurrence={occurrence} />
+              </div>
+              {
+                eventEntry.data.heroImage ? (
+                  <EditorialImage
+                    src={eventEntry.data.heroImage!}
+                    alt={`Bild zum Termin ${occurrence.title}`}
+                    class="min-h-[14rem]"
+                    sizes="(min-width: 1280px) 24rem, 100vw"
+                />
+              ) : null
+            }
+          </div>
+        </SurfaceCard>
+
+        <div class="grid gap-5">
+          <SurfaceCard as="section">
+            <EventLocationBlock occurrence={occurrence} />
+          </SurfaceCard>
+
+          {
+            detailFacts.length > 0 ? (
+              <SurfaceCard as="section" aria-labelledby="event-facts-heading">
+                <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Details</p>
+                <h2 id="event-facts-heading" class="mt-2 text-2xl font-semibold text-slate-950">
+                  Wichtige Infos
+                </h2>
+                <dl class="mt-5 space-y-4">
+                  {
+                    detailFacts.map((fact) => (
+                      <div class="rounded-2xl border border-slate-200 bg-white/70 p-4">
+                        <dt class="text-xs font-semibold tracking-[0.16em] text-slate-500 uppercase">
+                          {fact.label}
+                        </dt>
+                        <dd class="mt-2 text-sm leading-6 text-slate-700">{fact.value}</dd>
+                      </div>
+                    ))
+                  }
+                </dl>
+              </SurfaceCard>
+            ) : null
+          }
+
+          {
+            hasEventLinks ? (
+              <SurfaceCard as="section">
+                <EventCtaBlock occurrence={occurrence} />
+              </SurfaceCard>
+            ) : null
+          }
+        </div>
+      </div>
+
+      {
+        occurrence.weatherNote ? (
+          <SurfaceCard as="section" tone="warm">
+            <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Wetterhinweis</p>
+            <p class="mt-3 text-sm leading-7 text-slate-700">{occurrence.weatherNote}</p>
+          </SurfaceCard>
+        ) : null
+      }
+
+      {
+        hasBody ? (
+          <SurfaceCard as="section" aria-labelledby="event-body-heading">
+            <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Beschreibung</p>
+            <h2 id="event-body-heading" class="mt-2 text-2xl font-semibold text-slate-950">
+              Mehr zum Termin
+            </h2>
+            <RichText class="mt-5">
+              <Content />
+            </RichText>
+          </SurfaceCard>
+        ) : null
+      }
+
+      {
+        relatedOccurrences.length > 0 ? (
+          <SurfaceCard as="section" aria-labelledby="related-events-heading">
+            <div class="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Weitere Termine</p>
+                <h2 id="related-events-heading" class="mt-2 text-2xl font-semibold text-slate-950">
+                  Naechste Termine dieser Reihe
+                </h2>
+              </div>
+              <p class="max-w-xl text-sm leading-6 text-slate-600">
+                Wiederkehrende Serien behalten fuer jede Vorkommnis eine eigene Detailseite mit Datum im Pfad.
+              </p>
+            </div>
+            <UpcomingEventsList occurrences={relatedOccurrences} showSummary={false} compactCards />
+          </SurfaceCard>
+        ) : null
+      }
+    </Container>
+  </section>
+</BaseLayout>

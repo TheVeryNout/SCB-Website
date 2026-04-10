@@ -45,7 +45,8 @@ As of `2026-04-10`, the repository baseline has been verified to this level:
 - Playwright CLI is installed and Chromium has been installed for local capture work
 - real Astro content collections and Decap launch collections exist for homepage, pages, posts, events, media, and settings
 - the build-time event engine exists, including recurrence expansion, occurrence route-param helpers, and homepage upcoming-event derivation
-- current implemented public routes are still only the homepage and `/admin/`, with the homepage event preview now wired through shared event components
+- the shared site shell now includes reusable page-intro, rich-text, CTA, card, image, and event metadata/status patterns, with mobile-width verification recorded in the status ledger
+- current implemented public routes are `/`, `/veranstaltungen/`, `/veranstaltungen/[slug]/[date]/`, and `/admin/`
 - lightweight Wix reference metadata exists under `docs/plans/wix-reference/`, while heavy capture artifacts may remain local-only
 - a raw downloaded Wix asset archive exists under `docs/plans/wix-reference/asset-source-archive/`
 
@@ -53,8 +54,7 @@ Known not-yet-done items:
 
 - `migration/` workspace has not been created yet
 - `migration/manifest.json` does not exist yet
-- final public routes do not exist yet
-- `/veranstaltungen/` and `/veranstaltungen/[slug]/[date]/` are not implemented yet
+- several launch routes still do not exist yet, including the news, singleton content, media, and legal route set outside the homepage/events slice
 - `netlify.toml` has not been created yet
 
 Use this snapshot to avoid re-auditing the bootstrap from scratch in a later conversation.
@@ -114,7 +114,7 @@ Update these first when resuming work:
 - [x] Phase 1 complete
 - [x] Phase 2 complete
 - [x] Phase 3 complete
-- [ ] Phase 4 complete
+- [x] Phase 4 complete
 - [ ] Phase 5 complete
 - [ ] Phase 6 complete
 - [ ] Phase 7 complete
@@ -268,12 +268,12 @@ Build the reusable layout and component layer once the data contracts are stable
 
 ### Checklist
 
-- [ ] finalize global tokens and layout rhythm
-- [ ] implement shared header, footer, navigation, and container patterns
-- [ ] implement reusable page-intro, rich-text, CTA, card, and image patterns
-- [ ] keep client-side JavaScript limited to clearly useful interaction
-- [ ] confirm mobile-first layouts before desktop refinement
-- [ ] keep the visual direction intentional and cleaner than the Wix source without copying Wix chrome
+- [x] finalize global tokens and layout rhythm
+- [x] implement shared header, footer, navigation, and container patterns
+- [x] implement reusable page-intro, rich-text, CTA, card, and image patterns
+- [x] keep client-side JavaScript limited to clearly useful interaction
+- [x] confirm mobile-first layouts before desktop refinement
+- [x] keep the visual direction intentional and cleaner than the Wix source without copying Wix chrome
 
 ### Exit gate
 
@@ -295,19 +295,19 @@ Implement the entire public route set against the real content model and shared 
 
 ### Checklist
 
-- [ ] `/`
+- [x] `/`
 - [ ] `/neuigkeiten/`
 - [ ] `/neuigkeiten/[slug]/`
 - [ ] `/ueber-uns/`
 - [ ] `/pics-n-vids/`
-- [ ] `/veranstaltungen/`
-- [ ] `/veranstaltungen/[slug]/[date]/`
+- [x] `/veranstaltungen/`
+- [x] `/veranstaltungen/[slug]/[date]/`
 - [ ] `/mitgliedschaft/`
 - [ ] `/kontakt/`
 - [ ] `/kontakt/danke/`
 - [ ] `/impressum/`
 - [ ] `/datenschutz/`
-- [ ] wire latest-news and upcoming-events previews from collections, not duplicate CMS entries
+- [x] wire latest-news and upcoming-events previews from collections, not duplicate CMS entries
 - [ ] keep shared contact and social data sourced from settings where appropriate
 - [ ] keep legal and membership downloads on their owning pages instead of adding extra top-level IA
 

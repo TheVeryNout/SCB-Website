@@ -1,32 +1,33 @@
 ---
-import { formatGermanDate, formatGermanTimeRange } from "../../lib/events/engine";
+import EventMeta from "./EventMeta.astro";
+import EventStatusBadge from "./EventStatusBadge.astro";
+import RecurringSeriesHint from "./RecurringSeriesHint.astro";
 import type { EventOccurrence } from "../../lib/events/model";
 
 interface Props {
   occurrence: EventOccurrence;
   showSummary?: boolean;
+  compact?: boolean;
 }
 
-const { occurrence, showSummary = true } = Astro.props;
+const { occurrence, showSummary = true, compact = false } = Astro.props;
 ---
 
-<article class="rounded-2xl border border-slate-200 bg-white/80 p-4">
-  <p class="text-xs font-semibold tracking-[0.18em] text-slate-500 uppercase">
-    {formatGermanDate(occurrence.occurrenceDate)}
-  </p>
-  <h3 class="mt-2 text-lg font-semibold text-slate-950">
+<article class:list={["rounded-2xl border border-slate-200 bg-white/80", compact ? "p-4" : "p-5"]}>
+  <div class="flex flex-wrap items-start justify-between gap-3">
+    <EventMeta occurrence={occurrence} compact={compact} />
+    <EventStatusBadge status={occurrence.status} />
+  </div>
+  <h3 class:list={["font-semibold text-slate-950", compact ? "mt-3 text-base" : "mt-3 text-lg"]}>
     <a class="hover:text-slate-700" href={occurrence.occurrencePath}>
       {occurrence.title}
     </a>
   </h3>
-  <p class="mt-2 text-sm text-slate-700">
-    {formatGermanTimeRange(occurrence.startTime, occurrence.endTime)} · {occurrence.locationName}
-  </p>
   {
     occurrence.isRecurring ? (
-      <p class="mt-2 text-xs font-semibold tracking-[0.16em] text-amber-700 uppercase">
-        Wiederkehrender Termin
-      </p>
+      <div class="mt-3">
+        <RecurringSeriesHint isRecurring={occurrence.isRecurring} />
+      </div>
     ) : null
   }
   {

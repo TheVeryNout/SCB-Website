@@ -1,15 +1,20 @@
 ---
+import EventEmptyState from "./EventEmptyState.astro";
 import UpcomingEventCard from "./UpcomingEventCard.astro";
 import type { EventOccurrence } from "../../lib/events/model";
 
 interface Props {
   occurrences: EventOccurrence[];
   emptyMessage?: string;
+  showSummary?: boolean;
+  compactCards?: boolean;
 }
 
 const {
   occurrences,
   emptyMessage = "Aktuell sind keine oeffentlichen Termine im Voraus eingetragen.",
+  showSummary = true,
+  compactCards = false,
 } = Astro.props;
 ---
 
@@ -19,12 +24,14 @@ const {
       {
         occurrences.map((occurrence) => (
           <li>
-            <UpcomingEventCard occurrence={occurrence} />
+            <UpcomingEventCard occurrence={occurrence} showSummary={showSummary} compact={compactCards} />
           </li>
         ))
       }
     </ul>
   ) : (
-    <p class="mt-5 text-sm leading-6 text-slate-700">{emptyMessage}</p>
+    <div class="mt-5">
+      <EventEmptyState message={emptyMessage} />
+    </div>
   )
 }

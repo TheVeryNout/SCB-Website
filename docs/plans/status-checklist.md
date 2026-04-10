@@ -30,7 +30,8 @@ Audited scope:
 - Phase 1 source freeze and capture integrity
 - Phase 2 content model and CMS spine integrity
 - Phase 3 event engine integrity
-- the first non-decorative Phase 4 shared-UI slice on the homepage event preview
+- Phase 4 shared UI foundation completion
+- the initial Phase 5 homepage-and-events route slice
 
 ---
 
@@ -130,14 +131,71 @@ Audit notes:
 
 - The event engine now exposes occurrence route-param generation and direct occurrence lookup helpers for the upcoming route layer.
 - The Wix `Sunday Funday` source mismatch is now covered both in the local evidence manifest and in event-engine tests, so later migration work does not need to rediscover the rule.
-- The homepage event preview was extracted into reusable `UpcomingEventsList` and `UpcomingEventCard` components as the first narrow Phase 4 shared-UI slice. Phase 4 is started, but not close to complete.
+- The homepage event preview was extracted into reusable `UpcomingEventsList` and `UpcomingEventCard` components before the broader shared UI pass, and those event primitives now feed both the events index and the occurrence detail route.
 - Verification passed with `bun test`, `bun run check`, and `bun run build`.
+
+---
+
+## Phase 4 Audit
+
+Overall status:
+
+- [x] Phase 4 implementation exists in the repo
+- [x] Phase 4 is cleared as complete in this audit
+
+Checklist status:
+
+- [x] global tokens and layout rhythm were finalized in the shared stylesheet
+- [x] shared header, footer, navigation, and container patterns exist and are in active use
+- [x] reusable page-intro, rich-text, CTA, card, and image patterns exist and are in active use
+- [x] client-side JavaScript remained limited to clearly useful interaction
+- [x] mobile-first layouts were confirmed before desktop refinement
+- [x] the visual direction is intentionally cleaner than the Wix source without copying Wix chrome
+
+Audit notes:
+
+- The shared layer now includes `PageIntro`, `RichText`, `LinkButton`, `SurfaceCard`, and `EditorialImage`, plus reusable event status/meta/location/CTA blocks.
+- The shared header now uses a mobile-first collapsed navigation pattern without adding client-side runtime code.
+- Mobile-width verification was run locally via `bun run preview -- --host 127.0.0.1 --port 4322` and Playwright screenshots at `375x812` for `/`, `/veranstaltungen/`, and `/veranstaltungen/sunday-funday/2026-04-12/`.
+
+---
+
+## Phase 5 Audit
+
+Overall status:
+
+- [x] Phase 5 implementation has started in the repo
+- [ ] Phase 5 is not complete in this audit
+
+Checklist status:
+
+- [x] `/`
+- [ ] `/neuigkeiten/`
+- [ ] `/neuigkeiten/[slug]/`
+- [ ] `/ueber-uns/`
+- [ ] `/pics-n-vids/`
+- [x] `/veranstaltungen/`
+- [x] `/veranstaltungen/[slug]/[date]/`
+- [ ] `/mitgliedschaft/`
+- [ ] `/kontakt/`
+- [ ] `/kontakt/danke/`
+- [ ] `/impressum/`
+- [ ] `/datenschutz/`
+- [x] latest-news and upcoming-events previews are wired from canonical collections, not duplicate CMS entries
+- [ ] shared contact and social data usage is not fully audited across the remaining route set yet
+- [ ] legal and membership downloads still need their owning routes before this item can clear
+
+Audit notes:
+
+- `/veranstaltungen/` now renders from the build-time event engine with a bounded upcoming horizon and a static month overview, instead of leaving the event cards pointed at dead URLs.
+- `/veranstaltungen/[slug]/[date]/` now builds real occurrence pages with status, summary, location, optional body content, and related upcoming occurrences from the same recurring series.
+- The homepage was refactored onto the new shared primitives during this audit so Phase 4 is not represented only by unused abstractions.
 
 ---
 
 ## Findings To Carry Forward
 
-1. The control-state drift across Phases 1 to 3 has now been normalized in the committed tracking docs. Future work must continue from the updated progress snapshot instead of re-inferring phase status from repo artifacts.
+1. The control-state drift across Phases 1 to 4 has now been normalized in the committed tracking docs. Future work must continue from the updated progress snapshot with Phase 5 active, instead of re-inferring phase status from repo artifacts.
 2. Wix event slug dates remain source evidence only. They are not route truth, redirect truth, or migration truth without visible-content verification.
 3. `src/assets/images/wix-staging/` is a large tracked staging workspace at about `43M`, but current code references are not a valid basis for pruning it yet. Many staged assets may still be needed for later route build-out and migration work. Any cleanup there must wait for explicit asset curation after the relevant implementation phases are complete.
 
@@ -146,9 +204,9 @@ Audit notes:
 ## Continuation Status
 
 - continuation is allowed
-- active phase for the next resume should be Phase 4 shared UI foundation
-- exact next continuation point: extend the new shared event-preview primitives into the `/veranstaltungen/` page shell and the remaining route-facing shared layout pieces before broad content migration
-- open exceptions: Phases 4 to 7 remain incomplete, and Astro check still reports only non-blocking Zod deprecation hints from `src/content/config.ts`
+- active phase for the next resume should be Phase 5 route implementation
+- exact next continuation point: use the new shared page primitives to implement the remaining singleton-backed routes first, starting with `/ueber-uns/`, `/mitgliedschaft/`, and `/kontakt/`, before moving on to the news/media/legal route set
+- open exceptions: Phase 5 to Phase 7 remain incomplete, and Astro check still reports only non-blocking Zod deprecation hints from `src/content/config.ts`
 
 ---
 

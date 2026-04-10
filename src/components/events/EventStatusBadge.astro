@@ -1,0 +1,32 @@
+---
+import type { EventStatus } from "../../lib/events/model";
+
+interface Props {
+  status: EventStatus;
+}
+
+const { status } = Astro.props;
+
+const labels = {
+  scheduled: "Geplant",
+  cancelled: "Abgesagt",
+  postponed: "Verschoben",
+  tentative: "Vorlaeufig",
+} as const;
+
+const statusClasses = {
+  scheduled: "border-emerald-500/30 bg-emerald-100 text-emerald-900",
+  cancelled: "border-rose-500/30 bg-rose-100 text-rose-900",
+  postponed: "border-amber-500/30 bg-amber-100 text-amber-900",
+  tentative: "border-sky-500/30 bg-sky-100 text-sky-900",
+} as const;
+---
+
+<span
+  class:list={[
+    "inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold tracking-[0.16em] uppercase",
+    statusClasses[status],
+  ]}
+>
+  {labels[status]}
+</span>

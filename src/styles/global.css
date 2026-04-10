@@ -2,24 +2,30 @@
 
 :root {
   color-scheme: light;
+  --scb-bg: #f4f1e7;
+  --scb-bg-soft: #fffdf8;
+  --scb-ink: #12233a;
+  --scb-accent: #f59e0b;
+  --scb-accent-soft: rgba(245, 158, 11, 0.18);
+  --scb-surface: rgba(255, 255, 255, 0.82);
 }
 
 html {
   scroll-behavior: smooth;
-  background: #f4f1e7;
+  background: var(--scb-bg);
 }
 
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top, rgba(245, 158, 11, 0.18), transparent 30rem),
-    linear-gradient(180deg, #f4f1e7 0%, #fffdf8 100%);
-  color: #12233a;
-  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    radial-gradient(circle at top, var(--scb-accent-soft), transparent 30rem),
+    linear-gradient(180deg, var(--scb-bg) 0%, var(--scb-bg-soft) 100%);
+  color: var(--scb-ink);
+  font-family: "Trebuchet MS", "Avenir Next Condensed", "Segoe UI", sans-serif;
 }
 
 ::selection {
-  background: #f59e0b;
+  background: var(--scb-accent);
   color: #0f172a;
 }
 
@@ -28,3 +34,34 @@ a {
   text-underline-offset: 0.18em;
 }
 
+.rich-text {
+  color: #334155;
+  font-size: 0.98rem;
+  line-height: 1.8;
+}
+
+.rich-text > * + * {
+  margin-top: 1rem;
+}
+
+.rich-text :is(h2, h3, h4) {
+  color: #0f172a;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.rich-text :is(ul, ol) {
+  padding-left: 1.25rem;
+}
+
+.rich-text ul {
+  list-style: disc;
+}
+
+.rich-text ol {
+  list-style: decimal;
+}
+
+.rich-text a {
+  color: #0f172a;
+}

@@ -1,0 +1,44 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  intro?: string;
+  align?: "start" | "center";
+  class?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  intro,
+  align = "start",
+  class: className,
+} = Astro.props;
+
+const isCentered = align === "center";
+---
+
+<div
+  class:list={[
+    "space-y-4",
+    isCentered ? "mx-auto flex max-w-3xl flex-col items-center text-center" : "max-w-3xl",
+    className,
+  ]}
+>
+  {
+    eyebrow ? (
+      <p class="inline-flex rounded-full border border-amber-500/40 bg-amber-100/80 px-4 py-2 text-xs font-semibold tracking-[0.2em] text-slate-950 uppercase">
+        {eyebrow}
+      </p>
+    ) : null
+  }
+  <h1 class="text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">{title}</h1>
+  {
+    intro ? (
+      <p class="text-lg leading-8 text-slate-700">
+        {intro}
+      </p>
+    ) : null
+  }
+  {Astro.slots.has("default") ? <div class="pt-2"><slot /></div> : null}
+</div>

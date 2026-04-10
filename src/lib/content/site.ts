@@ -25,6 +25,7 @@ interface SiteContentCache {
   settings: CollectionEntry<"settings">;
   pages: Map<RequiredPageSlug, CollectionEntry<"pages">>;
   posts: CollectionEntry<"posts">[];
+  eventEntries: Map<string, CollectionEntry<"events">>;
   events: WebsiteEventRecord[];
   media: CollectionEntry<"media">[];
 }
@@ -216,6 +217,12 @@ async function loadValidatedSiteContent(): Promise<SiteContentCache> {
 
       assertUniqueSlugs("events", eventEntries);
 
+      const eventEntriesBySlug = new Map<string, CollectionEntry<"events">>();
+
+      for (const entry of eventEntries) {
+        eventEntriesBySlug.set(entry.data.slug, entry);
+      }
+
       const events = eventEntries.map(toEventRecord);
 
       for (const event of events) {
@@ -242,6 +249,7 @@ async function loadValidatedSiteContent(): Promise<SiteContentCache> {
           (left, right) =>
             new Date(right.data.publishedAt).getTime() - new Date(left.data.publishedAt).getTime(),
         ),
+        eventEntries: eventEntriesBySlug,
         events,
         media: mediaEntries.sort((left, right) => left.data.title.localeCompare(right.data.title)),
       };
@@ -277,6 +285,12 @@ export async function getAllPosts(): Promise<CollectionEntry<"posts">[]> {
 
 export async function getAllEvents(): Promise<WebsiteEventRecord[]> {
   return (await loadValidatedSiteContent()).events;
+}
+
+export async function getEventEntryBySlug(
+  slug: string,
+): Promise<CollectionEntry<"events"> | undefined> {
+  return (await loadValidatedSiteContent()).eventEntries.get(slug);
 }
 
 export async function getAllEventOccurrences(

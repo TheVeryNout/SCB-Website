@@ -1,0 +1,41 @@
+---
+interface Props {
+  as?: "article" | "div" | "section";
+  tone?: "default" | "warm" | "muted";
+  padding?: "md" | "lg";
+  class?: string;
+}
+
+const props = Astro.props as Props & Record<string, unknown>;
+
+const {
+  as: Tag = "div",
+  tone = "default",
+  padding = "lg",
+  class: className,
+  ...rest
+} = props;
+
+const toneClasses = {
+  default: "border-slate-900/10 bg-white/85 shadow-[0_18px_45px_-35px_rgba(15,23,42,0.4)]",
+  warm: "border-amber-500/20 bg-white/90 shadow-[0_18px_45px_-35px_rgba(217,119,6,0.28)]",
+  muted: "border-slate-900/10 bg-slate-950 text-slate-100 shadow-[0_18px_45px_-35px_rgba(15,23,42,0.6)]",
+} as const;
+
+const paddingClasses = {
+  md: "p-5",
+  lg: "p-6 sm:p-7",
+} as const;
+---
+
+<Tag
+  {...rest}
+  class:list={[
+    "rounded-[1.75rem] border backdrop-blur",
+    toneClasses[tone],
+    paddingClasses[padding],
+    className,
+  ]}
+>
+  <slot />
+</Tag>
