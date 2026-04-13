@@ -25,7 +25,7 @@
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script is:inline>
       const identityTokenPattern =
-        /^#(confirmation_token|invite_token|recovery_token|access_token|error)=/;
+        /^#\/?(confirmation_token|invite_token|recovery_token|email_change_token|access_token|error)=/;
       const hasIdentityToken = identityTokenPattern.test(window.location.hash);
       const statusNode = document.getElementById("cms-status");
 
@@ -50,7 +50,6 @@
             if (statusNode) {
               statusNode.textContent = "Bitte schliesse die Anmeldung ab.";
             }
-            window.netlifyIdentity.open();
             return;
           }
 
