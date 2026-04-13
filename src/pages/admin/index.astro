@@ -69,7 +69,8 @@
         window.netlifyIdentity.on("close", function () {
           if (hasIdentityToken && !window.netlifyIdentity.currentUser()) {
             if (statusNode) {
-              statusNode.textContent = "Anmeldung abgebrochen. Lade die Seite neu, um es erneut zu versuchen.";
+              statusNode.textContent =
+                "Anmeldung abgebrochen. Nutze den Link aus der Netlify-E-Mail erneut.";
             }
             return;
           }
