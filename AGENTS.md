@@ -8,12 +8,12 @@ Follow it together with the planning docs. If this file conflicts with the domai
 
 ## Scope
 
-This contract applies to any agent working on the SCB Astro rebuild in this repository.
+This contract applies to any agent working on the SCB Astro website in this repository.
 
 It is especially important for:
 
 - fresh conversations
-- resumed implementation after a previous session
+- resumed work after a previous session
 - any work that touches phases, source evidence, migration, content, or assets
 
 ---
@@ -92,7 +92,7 @@ Use this rule:
 
 Minimal prompt target:
 
-- a new conversation should usually be able to start from a short prompt such as `Resume from the current committed state and continue the next route slice recorded in status-checklist.md`
+- a new conversation should usually be able to start from a short prompt such as `Resume from the current committed state and handle the next operational follow-up recorded in status-checklist.md`
 
 The purpose of the planning stack is to reduce prompt friction, not move that burden onto the user.
 
@@ -189,9 +189,9 @@ Role:
 
 Rules:
 
-- files here may be used directly while migration is in progress
+- files here may be used directly while migration or post-launch content support is in progress
 - do not prune or reinterpret this folder only because the current code references a smaller subset
-- current references are not a valid proxy for future need while migration is incomplete
+- current references are not a valid proxy for future need until an explicit asset-curation decision is recorded
 - only make final asset-curation decisions after the relevant routes/content migration are complete and the decision is explicitly recorded
 
 Do not confuse:

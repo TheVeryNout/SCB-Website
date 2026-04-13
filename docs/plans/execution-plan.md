@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This document is the canonical delivery plan for constructing the public `SCB` Astro website from the current bootstrap and planning stack.
+This document is the canonical delivery plan and historical phase ledger for the public `SCB` Astro website.
 
 Use it to decide:
 
@@ -12,6 +12,11 @@ Use it to decide:
 - how to keep one long implementation run from drifting off spec
 
 If this document conflicts with the domain specs, the domain specs win on product, routing, content, and behavior. This document wins on sequencing, checkpoints, and progress tracking.
+
+Operational state note:
+
+- As of the user-reported state on `2026-04-13`, the implementation phases are no longer active work. Phases 1 to 7 are cleared, the site is deployed, and the CMS is running.
+- Future work should start as operational maintenance, content/CMS support, QA correction, or an explicitly requested new feature. Do not resume as though a numbered implementation phase is still underway unless a later audit reopens one.
 
 ---
 
@@ -53,12 +58,13 @@ As of `2026-04-13`, the repository baseline has been verified to this level:
 - `netlify.toml` now defines the Bun build, `dist` publish directory, baseline headers, canonical-domain redirects, and high-confidence redirects from retained Wix route evidence
 - Phase 7 verification has passed for `bun test`, `bun run check`, `bun run build`, route/download HTTP checks, phone-width Chromium screenshots, contact-form static shape, external links, `/admin/`, and the verified `Sunday Funday` occurrence route
 - a post-release-candidate design correction pass has replaced the earlier generic cream/pill/card prototype look with the retained Wix visual language: charcoal/asphalt texture, muted yellow sections, squared buttons and panels, the SCB crest, and the retained homepage hero asset from `src/assets/images/wix-staging/`
+- by user report on `2026-04-13`, the current site is deployed and the CMS is running
 
-Known not-yet-done items:
+Known follow-up and review items:
 
-- final launch signoff still requires user confirmation of the public-data conflicts recorded in `public-data-register.md`, especially canonical YouTube and donation/bank details if fundraising content stays live
+- unresolved public-data conflicts remain recorded in `public-data-register.md`, especially canonical YouTube and donation/bank details if fundraising content stays live; these are content-governance review items, not an active implementation phase
 - `parkausbesserungen` remains intentionally blocked in `migration/manifest.json` because the retained evidence is truncated
-- remaining visual QA should compare each implemented route against the retained Wix screenshots before treating the post-RC design correction as fully reviewed
+- any future visual QA should compare affected routes against the retained Wix screenshots, but this does not reopen Phase 4 or Phase 7 by default
 
 Use this snapshot to avoid re-auditing the bootstrap from scratch in a later conversation.
 
@@ -120,7 +126,8 @@ Update these first when resuming work:
 - [x] Phase 4 complete
 - [x] Phase 5 complete
 - [x] Phase 6 complete
-- [x] Phase 7 complete as a technical release-candidate pass
+- [x] Phase 7 complete
+- [x] no active implementation phase remains open as of the user-reported deployed/CMS-running state on `2026-04-13`
 
 Unchecked earlier phases are blockers.
 
@@ -381,7 +388,7 @@ Turn the built site into a deployable, reviewable release candidate.
 
 Phase 7 closeout note:
 
-- The site is now a deployable technical release candidate, but it is not final launch-signed until the public-data conflicts in `public-data-register.md` are explicitly resolved or accepted by the user.
+- The site became a deployable technical release candidate and is now reported by the user as deployed with the CMS running. Public-data conflicts in `public-data-register.md` remain explicit review items, but they are not a signal that a numbered implementation phase is still active.
 - The only event-detail redirect added maps the retained Wix `Sunday Funday` event URL to `/veranstaltungen/sunday-funday/2025-11-30/`, the visible date verified in the local evidence pack. No broad event wildcard redirect was added.
 
 ### Exit gate
@@ -436,8 +443,8 @@ Expected pattern:
 
 Good prompt shape:
 
-- `Resume from the current committed state and continue the next route slice recorded in status-checklist.md`
-- `Resume from the current committed state and resolve the launch-signoff public facts recorded in status-checklist.md`
+- `Resume from the current committed state and handle the next operational follow-up recorded in status-checklist.md`
+- `Resume from the current committed state and handle the next operational follow-up recorded in status-checklist.md`
 
 Bad prompt shape:
 
@@ -463,5 +470,6 @@ If any item above is false, the work is not finished.
 
 Current release-candidate caveat:
 
-- The implementation work is finished as a technical release candidate, but final public launch signoff still depends on user review of the unresolved public-data conflicts recorded in `public-data-register.md`.
-- A later design correction was required because the first release-candidate prototype did not respect the retained Wix layout, theme, or asset language. Continue visual review from the updated shared visual system rather than the earlier cream/pill/card styling.
+- The implementation work is finished, the site is reported deployed, and the CMS is reported running. Use this plan as historical phase evidence and as a guardrail against drift, not as proof that implementation phases remain open.
+- Public-data conflicts recorded in `public-data-register.md` remain explicit review items until confirmed or superseded.
+- A later design correction was required because the first release-candidate prototype did not respect the retained Wix layout, theme, or asset language. Continue any future visual review from the updated shared visual system rather than the earlier cream/pill/card styling.

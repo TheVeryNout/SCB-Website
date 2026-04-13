@@ -1,6 +1,6 @@
 # SCB Website Docs
 
-This repo is the documentation and implementation planning base for rebuilding the public Skate Club Biriciana e.V. website from Wix to Astro SSG.
+This repo is the documentation, implementation, and operational reference base for the public Skate Club Biriciana e.V. website rebuilt from Wix to Astro SSG.
 
 ## Read Order
 
@@ -69,7 +69,7 @@ Foundation scaffolding is now in place in this repo:
 - raw downloaded Wix media archived under `docs/plans/wix-reference/asset-source-archive/`
 - Astro-facing staged Wix asset tree under `src/assets/images/wix-staging/` via `bun run stage:wix-assets`
 
-Content collections are now real, Phase 6 migration is signoff-clean, and Phase 7 technical release-candidate hardening has been completed:
+Content collections are real, Phase 6 migration is signoff-clean, Phase 7 technical release-candidate hardening has been completed, and the site is now deployed with the CMS running according to the user-reported operational state on `2026-04-13`:
 
 - canonical `migration/manifest.json` now exists
 - retained news feed inventory has been migrated into the posts collection
@@ -79,7 +79,7 @@ Content collections are now real, Phase 6 migration is signoff-clean, and Phase 
 - `netlify.toml` now defines the Bun build, `dist` publish directory, baseline headers, canonical-domain redirects, and high-confidence legacy Wix route redirects
 - Phase 7 QA passed for build/check/test, phone-width screenshots, contact form shape, downloads, external links, `/admin/`, and the verified event occurrence route
 - A post-release-candidate design correction pass replaced the generic cream-gradient, pill-navigation, and rounded-card prototype language with the retained Wix visual direction: charcoal/asphalt texture, muted yellow sections, squared navigation/buttons/panels, the SCB crest, and the retained homepage hero image from `src/assets/images/wix-staging/`
-- final launch signoff still needs user review of the public-data conflicts recorded in `public-data-register.md`
+- public-data review items remain recorded in `public-data-register.md`; they are post-launch content-governance items unless the user explicitly reopens launch signoff
 
 The docs are now split into:
 
@@ -93,8 +93,10 @@ Use [status-checklist.md](/home/nout/REPO/SCB-Website/docs/plans/status-checklis
 
 Current phase status from the audited ledger:
 
-- Phases 1 to 7 are cleared as a technical release candidate
-- final launch signoff remains blocked on explicit public-fact confirmation, especially canonical YouTube and donation/bank details if fundraising content stays live
+- Phases 1 to 7 are cleared
+- active implementation phase: none
+- current default posture: operational maintenance, content/CMS support, QA fixes, and targeted follow-up work
+- unresolved public-data entries are review items, not a reason to resume as though a build phase is still in progress
 
 ## Minimal Resume Prompt
 
@@ -103,7 +105,7 @@ This repo is supposed to support low-friction continuation.
 Once the planning stack and `AGENTS.md` are in place, a new conversation should normally only need a short prompt such as:
 
 - `Resume from the current committed state and continue the next slice recorded in docs/plans/status-checklist.md`
-- `Resume from the current committed state and resolve the launch-signoff public facts recorded in docs/plans/status-checklist.md`
+- `Resume from the current committed state and handle the next operational follow-up recorded in docs/plans/status-checklist.md`
 
 Do not rely on the user to keep re-pasting the same startup, evidence, asset, or handoff rules if those rules are already documented in the repo.
 

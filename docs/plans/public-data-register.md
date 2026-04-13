@@ -50,11 +50,11 @@ Use only these statuses:
 - `conflict`: multiple source values exist and no canonical choice is approved
 - `superseded`: previously observed value is no longer current
 
-Launch rule:
+Publication rule:
 
 - only `confirmed` values should be treated as final truth without warning
 - `pending` values may be migrated for source parity but must remain easy to review
-- `conflict` values require explicit resolution before final launch signoff
+- `conflict` values require explicit resolution before they are treated as canonical in new content
 
 ---
 
@@ -140,14 +140,18 @@ If fee information is shown publicly, it should remain plain page/PDF content un
 
 ## Known Conflicts Requiring Explicit Resolution
 
-These items must be resolved before final launch signoff:
+These items remain explicit review items:
 
 1. canonical YouTube destination
 2. current valid donation/bank details if fundraising content stays live
 
-## Current Freeze For Implementation
+Operational note:
 
-Until the user confirms replacements, treat the unresolved items above as launch-signoff publication blockers, not as open design questions and not as core foundation blockers.
+- As of the user-reported state on `2026-04-13`, the site is deployed and the CMS is running. The unresolved items above are not evidence that an implementation phase remains open, but they still must not be silently normalized into canonical public facts.
+
+## Current Freeze For New Or Changed Public Claims
+
+Until the user confirms replacements, treat the unresolved items above as content-governance review items, not as open design questions and not as core foundation blockers.
 
 Use these safe defaults:
 

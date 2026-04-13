@@ -40,6 +40,7 @@ Audited scope:
 - the Phase 7 release-candidate pass for build/check/test, phone-width QA, baseline accessibility, forms/downloads/external links, event route behavior, Netlify config, high-confidence redirects, `/admin/`, and public-data signoff blockers
 - the post-release-candidate design correction pass that replaced the generic rounded/pill prototype language with a Wix-reference-aligned visual system using the retained local screenshots and staged Wix assets
 - the first live-deploy CMS Identity handoff issue and the resulting switch away from Netlify Identity/Git Gateway to Decap's GitHub backend
+- the `2026-04-13` user-reported operational state that the current deployed site is running well and the CMS is running
 
 ---
 
@@ -261,8 +262,9 @@ Audit notes:
 Overall status:
 
 - [x] Phase 7 implementation exists in the repo
-- [x] Phase 7 is complete as a technical release-candidate pass
-- [ ] final launch signoff is not complete until the unresolved public-data conflicts are reviewed by the user
+- [x] Phase 7 is complete
+- [x] active implementation phase is now none; by user report on `2026-04-13`, the site is deployed and the CMS is running
+- [ ] unresolved public-data conflicts remain review items until confirmed or superseded
 
 Checklist status:
 
@@ -285,7 +287,7 @@ Audit notes:
 - The only event-detail redirect added is from `/events/sunday-funday-2025-04-06-13-00` to `/veranstaltungen/sunday-funday/2025-11-30/`, because the retained local evidence verifies the visible `2025-11-30` occurrence date and explicitly warns not to trust the Wix slug date.
 - Legacy redirects were added for the retained membership source route and each known retained Wix `/post/...` URL; no broad post or event catch-all redirect was added.
 - `netlify.toml` also canonicalizes `http://skateclubbiriciana.de/*`, `http://www.skateclubbiriciana.de/*`, and `https://www.skateclubbiriciana.de/*` to `https://skateclubbiriciana.de/:splat`.
-- The public-data register still marks the canonical YouTube destination as a conflict and donation/bank details as pending. These are launch-signoff blockers if the site is published as final public truth, but they no longer block the technical deploy configuration.
+- The public-data register still marks the canonical YouTube destination as a conflict and donation/bank details as pending. Because the site is now reported deployed, treat these as explicit post-launch review/content-governance items rather than as evidence that any implementation phase remains open.
 - `parkausbesserungen` remains blocked only for fuller content recovery; the current route builds and the truncated-evidence limitation is recorded in the migration manifest.
 - During first Netlify setup, Identity invite/reset links repeatedly failed to complete the CMS password flow and left the user in an unverified-email state. Because Netlify now labels both Identity and Git Gateway as deprecated, the deployed CMS backend was switched to Decap's GitHub backend instead of continuing to harden the deprecated email-token path.
 - The public Netlify Identity widget and custom Identity token handling were removed. Deployed CMS authentication now depends on Netlify's GitHub OAuth provider and GitHub repo push access.
@@ -300,7 +302,7 @@ Audit notes:
    Verification for this correction passed with `bun run check`, `bun run build`, `bun test`, and Playwright Chromium screenshots for `/` at desktop and phone widths plus `/ueber-uns/` and `/kontakt/` at desktop width.
 1. The control-state drift across Phases 1 to 4 has now been normalized in the committed tracking docs. Future work must continue from the updated progress snapshot with Phase 7 technically complete, instead of re-inferring phase status from repo artifacts.
 2. Wix event slug dates remain source evidence only. They are not route truth, redirect truth, or migration truth without visible-content verification.
-3. `src/assets/images/wix-staging/` is a large tracked staging workspace at about `43M`, but current code references are not a valid basis for pruning it yet. Many staged assets may still be needed for later route build-out and migration work. Any cleanup there must wait for explicit asset curation after the relevant implementation phases are complete.
+3. `src/assets/images/wix-staging/` is a large tracked staging workspace at about `43M`, but current code references are not a valid basis for pruning it yet. Some staged assets may still be useful for post-launch content support or late asset recovery. Any cleanup there must wait for an explicit asset-curation decision.
 4. Stable resume rules are now explicitly owned by `AGENTS.md`, `README.md`, and the execution-plan handoff section. Future continuation prompts should be short and task-specific unless they intentionally override the repo-owned workflow.
 5. Playwright mobile presets currently default to WebKit, but the local verification environment only has Chromium installed. For phone-width QA in this repo state, use Playwright with explicit Chromium viewport sizing unless WebKit is intentionally installed again.
 6. The `datenschutz` content no longer needs to be treated as a missing-route blocker. The retained local HTML/PDF evidence was sufficient to populate the canonical page entry without reopening Wix.
@@ -310,17 +312,18 @@ Audit notes:
 10. The retained `spende-von-der-volksbank-franken-sued` evidence contains a real source contradiction between visible title/body text and source URL slug. That mismatch is preserved intentionally and should not be normalized away in later cleanup.
 11. `/pics-n-vids/` now supports both external video destinations and local photo-gallery entries, so later media migration can keep using the canonical `media` collection instead of inventing a separate gallery surface.
 12. The retained contact source provides only minimal route copy, so future copy polish on `/kontakt/` should be treated as a product-writing choice or new evidence-backed change, not retroactively claimed as existing source text.
-13. `netlify.toml` is now the deployment and redirect source of truth for the release candidate. Do not add wildcard event redirects unless future evidence verifies the target occurrence dates.
-14. Final launch signoff still needs user review of public-data conflicts, especially canonical YouTube and current donation/bank details if fundraising content remains live.
+13. `netlify.toml` is now the deployment and redirect source of truth for the deployed site. Do not add wildcard event redirects unless future evidence verifies the target occurrence dates.
+14. Public-data conflicts still need user review, especially canonical YouTube and current donation/bank details if fundraising content remains live. This is a content-governance follow-up, not an active phase gate.
 
 ---
 
 ## Continuation Status
 
 - continuation is allowed
-- active implementation phase: none; Phase 7 is complete as a technical release-candidate pass
-- exact next continuation point: publish the GitHub-backend CMS switch to the active Netlify deploy branch, configure the site GitHub OAuth provider in Netlify, test `/admin/` login with a GitHub user that has push access to `TheVeryNout/SCB-Website`, then continue visual QA from the post-RC design correction and resolve final launch-signoff public facts
-- open exceptions: final launch signoff remains blocked by unresolved public-data review; `parkausbesserungen` remains a blocked manifest record on truncated retained evidence; Astro check still reports only non-blocking Zod deprecation hints from `src/content/config.ts`
+- active implementation phase: none; Phases 1 to 7 are cleared
+- operational state: by user report on `2026-04-13`, the current deployed site is running well and the CMS is running
+- exact next continuation point: handle the next explicitly requested operational follow-up, CMS/content support task, QA correction, or new feature from the current deployed baseline
+- open exceptions: unresolved public-data review remains in `public-data-register.md`; `parkausbesserungen` remains a blocked manifest record on truncated retained evidence; Astro check still reports only non-blocking Zod deprecation hints from `src/content/config.ts`
 - prompt rule for the next resume: a short prompt should be sufficient because the stable startup and handoff rules now live in committed docs
 
 ---
