@@ -1,12 +1,12 @@
 ---
 title: "Ueber uns"
-intro: "Der Skate Club Biriciana e.V. wurde 2024 von alten und jungen Skatern aus der Weissenburger Region ins Leben gerufen."
+intro: "Der Skate Club Biriciana e.V. wurde 2024 von ein paar alten, aber auch jungen Skatern aus der Weissenburger Region ins Leben gerufen."
 heroImage: "../../assets/images/wix-staging/pages/about/dfbc4d_43bd619f89664d5d97e7053ac7e702e0~mv2.jpg"
 goals:
   - "Erhalt und Pflege des Skateparks Weissenburg."
-  - "Skateboard-Kurse fuer Einsteiger und Interessierte."
-  - "Vereinsfahrten und Road Trips zu anderen Parks und Hallen."
-  - "Veranstaltungen wie Contests und Aktionen rund um die lokale Szene."
+  - "Jugendarbeit mit Skateboard-Kursen fuer Anfaenger und Interessierte."
+  - "Vereinsfahrten und Road Trips zu anderen Parks, Hallen und Wettbewerben."
+  - "Veranstaltungen wie ein Skate Contest am Skatepark Weissenburg und der Go Skateboarding Day."
 boardMembers:
   - name: "Chris Winkler"
     role: "1. Vorstand"
@@ -18,6 +18,6 @@ boardMembers:
     role: "Schriftfuehrer"
 statutesPdf: "/media/pdfs/statutes.pdf"
 ---
-Der Verein kuemmert sich um Pflege, Erhalt und Ausbau des Skateparks in Weissenburg in Bayern. Gleichzeitig soll der Einstieg in den Sport einfacher werden, damit mehr aktive Skater in der Region zusammenfinden.
+Das Hauptziel ist, den frisch gebauten oertlichen Skatepark zu pflegen, sich fuer die Belange von Skatern einzusetzen und nicht zuletzt die Anzahl aktiver Skater in der Region zu erhoehen.
 
-Von Projekten und Arbeitskreisen bis zu Contest-Tagen und gemeinsamen Sessions soll die Website spaeter den oeffentlichen Teil dieser Arbeit abbilden, ohne interne Vereinsablaufe in das Frontend zu ziehen.
+Um von jung bis alt moeglichst viele Menschen fuer den Sport zu begeistern, wird es Projekte, Arbeitskreise und Veranstaltungen geben, die den Einstieg erleichtern, den Fortschritt foerdern und die ganze Mischpoke zusammenbringen.

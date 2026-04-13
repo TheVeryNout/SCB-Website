@@ -22,7 +22,7 @@ If a later phase has work in the repo while an earlier phase is still unchecked 
 
 Last audit date:
 
-- `2026-04-10`
+- `2026-04-13`
 
 Audited scope:
 
@@ -36,6 +36,8 @@ Audited scope:
 - the legal-route follow-up for `/impressum/` and `/datenschutz/` from the retained local HTML/PDF evidence pack
 - the final Phase 5 collection-route slice for `/neuigkeiten/`, `/neuigkeiten/[slug]/`, and `/pics-n-vids/`
 - the first substantive Phase 6 migration batch for retained-news backfill, local media galleries, the canonical migration manifest, and avoidable Wix dependency cleanup
+- the Phase 6 closeout audit for homepage/static-page source parity, manifest status normalization, and event-evidence reconciliation
+- the Phase 7 release-candidate pass for build/check/test, phone-width QA, baseline accessibility, forms/downloads/external links, event route behavior, Netlify config, high-confidence redirects, `/admin/`, and public-data signoff blockers
 
 ---
 
@@ -218,14 +220,14 @@ Audit notes:
 Overall status:
 
 - [x] Phase 6 implementation has started in the repo
-- [ ] Phase 6 is not yet signoff-clean in this audit
+- [x] Phase 6 is signoff-clean in this audit
 
 Checklist status:
 
-- [ ] homepage copy and featured sections are fully migrated
-- [ ] static-page content is fully migrated
+- [x] homepage copy and featured sections are fully migrated
+- [x] static-page content is fully migrated
 - [x] news posts and dates are migrated from retained local evidence
-- [ ] event entries are fully migrated and reconciled against retained evidence
+- [x] event entries are fully migrated and reconciled against retained evidence
 - [x] media references and curated thumbnails are migrated from retained local evidence
 - [x] localized PDFs are present and tracked through the migration manifest
 - [x] local images worth preserving are in active use through migrated posts and media entries
@@ -238,35 +240,79 @@ Audit notes:
 - `migration/manifest.json` now exists as the canonical Phase 6 tracker and records retained-evidence routes, posts, event/media items, localized PDFs, and open QA notes.
 - The posts collection now covers the full retained `blog-feed.xml` inventory: the six missing entries were migrated with preserved publication dates, local cover images, and source URLs from the retained evidence pack.
 - The retained post slug/title mismatch for `spende-von-der-volksbank-franken-sued` is now explicit in the manifest. Per user instruction, the Astro slug preserves the source URL naming while the visible title follows the retained post content.
-- `parkausbesserungen` was migrated conservatively from the retained feed sentence only. The manifest keeps that entry qa-pending because the retained evidence after the first complete sentence is truncated and was not guessed.
+- `parkausbesserungen` was migrated conservatively from the retained feed sentence only. The manifest now marks that record `blocked` because the retained evidence after the first complete sentence is truncated and was not guessed.
 - `/pics-n-vids/` now separates external video links from local photo-gallery entries, and two curated gallery entries were added from retained local post evidence plus staged local images.
 - The migrated `impressum` content no longer points users back to the Wix `/kontakt` route; it now references the local `/kontakt/` route instead of keeping that avoidable production dependency.
 - Verification passed with `bun run check`, `bun run build`, and Playwright Chromium phone-width screenshots at `390x844` for `/`, `/neuigkeiten/`, `/neuigkeiten/graffiti-workshop-ein-voller-erfolg/`, and `/pics-n-vids/` served from `bun run preview -- --host 127.0.0.1 --port 4322`.
+- The homepage hero, featured announcement, and teaser copy were reconciled against the retained home HTML instead of staying as implementation-summary text.
+- `/ueber-uns/` and `/mitgliedschaft/` now use body and supporting copy that are materially closer to the retained Wix wording instead of earlier summary paraphrases.
+- The retained contact page exposes very little copy beyond the form and approach headings, so the Astro contact page now remains a conservative local restatement anchored by the retained location/form evidence rather than invented marketing copy.
+- The retained `/veranstaltungen/` index shows `Keine Veranstaltungen` across the captured April 2026 month view, so `Sunday Funday` was reconciled to the single retained detail occurrence on `2025-11-30` instead of being treated as an evidence-backed weekly recurring series.
+- The hidden seed-only event placeholder was removed from the public content collection so the Phase 6 event set reflects real migrated evidence rather than a migration-era scaffold.
+- The occurrence route keeps a 12-month past horizon for static path generation, so the single verified `Sunday Funday` detail page still builds at `/veranstaltungen/sunday-funday/2025-11-30/` even though the current events index remains empty.
+- Manifest records were normalized from the prior blanket `qa-pending` state to concrete `migrated` or `blocked` statuses, which satisfies the Phase 6 tracking gate without pretending Phase 7 QA is already complete.
+
+---
+
+## Phase 7 Audit
+
+Overall status:
+
+- [x] Phase 7 implementation exists in the repo
+- [x] Phase 7 is complete as a technical release-candidate pass
+- [ ] final launch signoff is not complete until the unresolved public-data conflicts are reviewed by the user
+
+Checklist status:
+
+- [x] `bun test` passed
+- [x] `bun run check` passed with only the already-known Zod deprecation hints in `src/content/config.ts`
+- [x] `bun run build` passed and generated 20 static pages
+- [x] phone-width Chromium screenshots were captured at `390x844` for `/`, `/veranstaltungen/`, `/veranstaltungen/sunday-funday/2025-11-30/`, `/kontakt/`, and `/admin/`
+- [x] baseline accessibility was checked for one `h1` per public static page, image `alt` attributes, contact-form labels, and a global `:focus-visible` outline
+- [x] contact form static shape was verified with `data-netlify`, `netlify-honeypot`, hidden `form-name`, required fields, and `/kontakt/danke/` action
+- [x] internal launch routes, `/admin/`, and localized PDFs returned HTTP 200 from local preview
+- [x] external Instagram, YouTube, and Google Maps links returned HTTP 200 during the local link check
+- [x] event index and the verified `Sunday Funday` occurrence route were checked after the Phase 6 event reconciliation
+- [x] `netlify.toml` now defines the Bun build, `dist` publish directory, baseline headers, canonical-domain redirects, and retained-evidence legacy redirects
+- [x] no blind event-detail wildcard redirect was added
+- [x] `/admin/` is present and `public/admin/config.yml` still uses Netlify Identity/Git Gateway through `backend.name: git-gateway` on `master`, with local proxy config limited to localhost
+- [x] risky public facts were cross-checked against `public-data-register.md`
+
+Audit notes:
+
+- The only event-detail redirect added is from `/events/sunday-funday-2025-04-06-13-00` to `/veranstaltungen/sunday-funday/2025-11-30/`, because the retained local evidence verifies the visible `2025-11-30` occurrence date and explicitly warns not to trust the Wix slug date.
+- Legacy redirects were added for the retained membership source route and each known retained Wix `/post/...` URL; no broad post or event catch-all redirect was added.
+- `netlify.toml` also canonicalizes `http://skateclubbiriciana.de/*`, `http://www.skateclubbiriciana.de/*`, and `https://www.skateclubbiriciana.de/*` to `https://skateclubbiriciana.de/:splat`.
+- The public-data register still marks the canonical YouTube destination as a conflict and donation/bank details as pending. These are launch-signoff blockers if the site is published as final public truth, but they no longer block the technical deploy configuration.
+- `parkausbesserungen` remains blocked only for fuller content recovery; the current route builds and the truncated-evidence limitation is recorded in the migration manifest.
 
 ---
 
 ## Findings To Carry Forward
 
-1. The control-state drift across Phases 1 to 4 has now been normalized in the committed tracking docs. Future work must continue from the updated progress snapshot with Phase 5 active, instead of re-inferring phase status from repo artifacts.
+1. The control-state drift across Phases 1 to 4 has now been normalized in the committed tracking docs. Future work must continue from the updated progress snapshot with Phase 7 technically complete, instead of re-inferring phase status from repo artifacts.
 2. Wix event slug dates remain source evidence only. They are not route truth, redirect truth, or migration truth without visible-content verification.
 3. `src/assets/images/wix-staging/` is a large tracked staging workspace at about `43M`, but current code references are not a valid basis for pruning it yet. Many staged assets may still be needed for later route build-out and migration work. Any cleanup there must wait for explicit asset curation after the relevant implementation phases are complete.
 4. Stable resume rules are now explicitly owned by `AGENTS.md`, `README.md`, and the execution-plan handoff section. Future continuation prompts should be short and task-specific unless they intentionally override the repo-owned workflow.
 5. Playwright mobile presets currently default to WebKit, but the local verification environment only has Chromium installed. For phone-width QA in this repo state, use Playwright with explicit Chromium viewport sizing unless WebKit is intentionally installed again.
 6. The `datenschutz` content no longer needs to be treated as a missing-route blocker. The retained local HTML/PDF evidence was sufficient to populate the canonical page entry without reopening Wix.
 7. Phase 5 no longer has a route backlog. Future work should not reopen route implementation unless migration evidence or QA reveals a concrete bug.
-8. The news migration backlog from the retained feed is now closed, but homepage/static-page parity and the event migration pass still keep Phase 6 open.
-9. `migration/manifest.json` is now the canonical Phase 6 migration tracker. Future migration work should update it directly instead of leaving route/content state only in `status-checklist.md`.
+8. The retained events index does not justify treating `Sunday Funday` as an open-ended recurring series. Until better local evidence exists, the canonical event content should stay anchored to the single verified `2025-11-30` occurrence.
+9. `migration/manifest.json` is now the canonical Phase 6 migration tracker. Future migration or late content recovery work should update it directly instead of leaving route/content state only in `status-checklist.md`.
 10. The retained `spende-von-der-volksbank-franken-sued` evidence contains a real source contradiction between visible title/body text and source URL slug. That mismatch is preserved intentionally and should not be normalized away in later cleanup.
 11. `/pics-n-vids/` now supports both external video destinations and local photo-gallery entries, so later media migration can keep using the canonical `media` collection instead of inventing a separate gallery surface.
+12. The retained contact source provides only minimal route copy, so future copy polish on `/kontakt/` should be treated as a product-writing choice or new evidence-backed change, not retroactively claimed as existing source text.
+13. `netlify.toml` is now the deployment and redirect source of truth for the release candidate. Do not add wildcard event redirects unless future evidence verifies the target occurrence dates.
+14. Final launch signoff still needs user review of public-data conflicts, especially canonical YouTube and current donation/bank details if fundraising content remains live.
 
 ---
 
 ## Continuation Status
 
 - continuation is allowed
-- active phase for the next resume should be Phase 6 content and asset migration
-- exact next continuation point: finish the remaining Phase 6 parity pass against the retained local evidence pack by auditing homepage copy, static-page copy, and the event migration/index state, then update `migration/manifest.json` statuses from `qa-pending` toward `approved` or `blocked`
-- open exceptions: Phase 6 and Phase 7 remain incomplete; homepage and static-page source parity are still only partially audited, event migration is still partial, `parkausbesserungen` remains qa-pending on truncated retained evidence, and Astro check still reports only non-blocking Zod deprecation hints from `src/content/config.ts`
+- active implementation phase: none; Phase 7 is complete as a technical release-candidate pass
+- exact next continuation point: resolve final launch-signoff public facts by confirming the canonical YouTube destination and deciding whether the source-observed donation/bank details should remain live as-is, be replaced, or be removed before launch
+- open exceptions: final launch signoff remains blocked by unresolved public-data review; `parkausbesserungen` remains a blocked manifest record on truncated retained evidence; Astro check still reports only non-blocking Zod deprecation hints from `src/content/config.ts`
 - prompt rule for the next resume: a short prompt should be sufficient because the stable startup and handoff rules now live in committed docs
 
 ---

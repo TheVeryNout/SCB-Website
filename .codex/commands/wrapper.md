@@ -42,7 +42,7 @@ It the implementation / fix you performed was architecturally substantual enough
 
 ### 2. Changelog
 
-See instruction file /.claude/commands/changelogger.md
+See instruction file .codex/commands/changelogger.md
 
 **Follow it precisely!**
 

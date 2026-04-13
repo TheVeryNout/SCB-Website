@@ -1,0 +1,88 @@
+[build]
+command = "bun run build"
+publish = "dist"
+
+[build.environment]
+NODE_VERSION = "22"
+BUN_VERSION = "1.3.5"
+
+[[headers]]
+for = "/*"
+
+[headers.values]
+X-Content-Type-Options = "nosniff"
+Referrer-Policy = "strict-origin-when-cross-origin"
+X-Frame-Options = "SAMEORIGIN"
+
+[[redirects]]
+from = "http://skateclubbiriciana.de/*"
+to = "https://skateclubbiriciana.de/:splat"
+status = 301
+force = true
+
+[[redirects]]
+from = "http://www.skateclubbiriciana.de/*"
+to = "https://skateclubbiriciana.de/:splat"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://www.skateclubbiriciana.de/*"
+to = "https://skateclubbiriciana.de/:splat"
+status = 301
+force = true
+
+[[redirects]]
+from = "/copy-of-veranstaltungen"
+to = "/mitgliedschaft/"
+status = 301
+
+[[redirects]]
+from = "/post/spendenaufruf-der-scb-baut-ne-halle"
+to = "/neuigkeiten/spendenaufruf-der-scb-baut-ne-halle/"
+status = 301
+
+[[redirects]]
+from = "/post/goodies-4-tricks-2025"
+to = "/neuigkeiten/goodies-4-tricks-2025/"
+status = 301
+
+[[redirects]]
+from = "/post/graffiti-workshop-ein-voller-erfolg"
+to = "/neuigkeiten/graffiti-workshop-ein-voller-erfolg/"
+status = 301
+
+[[redirects]]
+from = "/post/spende-von-der-volksbank-franken-s%C3%BCd"
+to = "/neuigkeiten/spende-von-der-volksbank-franken-sued/"
+status = 301
+
+[[redirects]]
+from = "/post/spende-von-der-volksbank-franken-sued"
+to = "/neuigkeiten/spende-von-der-volksbank-franken-sued/"
+status = 301
+
+[[redirects]]
+from = "/post/der-contest-in-der-zeitung"
+to = "/neuigkeiten/der-contest-in-der-zeitung/"
+status = 301
+
+[[redirects]]
+from = "/post/goodies-4-tricks-event-trotz-regen-ein-erfolg"
+to = "/neuigkeiten/goodies-4-tricks-event-trotz-regen-ein-erfolg/"
+status = 301
+
+[[redirects]]
+from = "/post/der-skate-club-in-der-zeitung"
+to = "/neuigkeiten/der-skate-club-in-der-zeitung/"
+status = 301
+
+[[redirects]]
+from = "/post/parkausbesserungen"
+to = "/neuigkeiten/parkausbesserungen/"
+status = 301
+
+[[redirects]]
+from = "/events/sunday-funday-2025-04-06-13-00"
+to = "/veranstaltungen/sunday-funday/2025-11-30/"
+status = 301

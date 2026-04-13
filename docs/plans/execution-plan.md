@@ -37,7 +37,7 @@ Then use this file as the active work controller.
 
 ## Current Verified Repo Snapshot
 
-As of `2026-04-10`, the repository baseline has been verified to this level:
+As of `2026-04-13`, the repository baseline has been verified to this level:
 
 - `bun` is installed and the repo declares `bun@1.3.5`
 - `bun run check` passes
@@ -49,11 +49,14 @@ As of `2026-04-10`, the repository baseline has been verified to this level:
 - current implemented public routes are `/`, `/neuigkeiten/`, `/neuigkeiten/[slug]/`, `/ueber-uns/`, `/pics-n-vids/`, `/veranstaltungen/`, `/veranstaltungen/[slug]/[date]/`, `/mitgliedschaft/`, `/kontakt/`, `/kontakt/danke/`, `/impressum/`, `/datenschutz/`, and `/admin/`
 - lightweight Wix reference metadata exists under `docs/plans/wix-reference/`, while heavy capture artifacts may remain local-only
 - a raw downloaded Wix asset archive exists under `docs/plans/wix-reference/asset-source-archive/`
+- Phase 6 migration artifacts now exist for homepage, static pages, posts, media items, PDFs, and the retained representative event evidence under `migration/manifest.json`
+- `netlify.toml` now defines the Bun build, `dist` publish directory, baseline headers, canonical-domain redirects, and high-confidence redirects from retained Wix route evidence
+- Phase 7 verification has passed for `bun test`, `bun run check`, `bun run build`, route/download HTTP checks, phone-width Chromium screenshots, contact-form static shape, external links, `/admin/`, and the verified `Sunday Funday` occurrence route
 
 Known not-yet-done items:
 
-- the public route set is implemented through Phase 5 and now has a partial Phase 6 migration pass, but full migration signoff and deploy hardening still remain
-- `netlify.toml` has not been created yet
+- final launch signoff still requires user confirmation of the public-data conflicts recorded in `public-data-register.md`, especially canonical YouTube and donation/bank details if fundraising content stays live
+- `parkausbesserungen` remains intentionally blocked in `migration/manifest.json` because the retained evidence is truncated
 
 Use this snapshot to avoid re-auditing the bootstrap from scratch in a later conversation.
 
@@ -114,8 +117,8 @@ Update these first when resuming work:
 - [x] Phase 3 complete
 - [x] Phase 4 complete
 - [x] Phase 5 complete
-- [ ] Phase 6 complete
-- [ ] Phase 7 complete
+- [x] Phase 6 complete
+- [x] Phase 7 complete as a technical release-candidate pass
 
 Unchecked earlier phases are blockers.
 
@@ -330,10 +333,10 @@ Move real content, images, PDFs, and media references into the final site struct
 
 ### Checklist
 
-- [ ] migrate homepage copy and featured sections
-- [ ] migrate static-page content
+- [x] migrate homepage copy and featured sections
+- [x] migrate static-page content
 - [x] migrate news posts and dates
-- [ ] migrate event entries carefully, merging Wix recurrence artifacts where appropriate
+- [x] migrate event entries carefully, merging Wix recurrence artifacts where appropriate
 - [x] migrate media references and curated thumbnails
 - [x] download and localize PDFs
 - [x] download and localize images worth preserving
@@ -362,17 +365,22 @@ Turn the built site into a deployable, reviewable release candidate.
 
 ### Checklist
 
-- [ ] run `bun run check`
-- [ ] run `bun run build`
-- [ ] verify responsive behavior on phone-width pages
-- [ ] verify keyboard navigation and baseline accessibility
-- [ ] verify forms, thank-you flow, downloads, and external links
-- [ ] verify event occurrence pages and index pages against source evidence
-- [ ] create and verify Netlify config needed for deploy, forms, and redirects
-- [ ] add legacy redirects only where mapping confidence is high
-- [ ] verify no guessed event-detail redirect is published without evidence
-- [ ] verify `/admin/` assumptions for deployed Netlify Identity and Git Gateway
-- [ ] cross-check risky public facts one last time against [public-data-register.md](/home/nout/REPO/SCB-Website/docs/plans/public-data-register.md)
+- [x] run `bun run check`
+- [x] run `bun run build`
+- [x] verify responsive behavior on phone-width pages
+- [x] verify keyboard navigation and baseline accessibility
+- [x] verify forms, thank-you flow, downloads, and external links
+- [x] verify event occurrence pages and index pages against source evidence
+- [x] create and verify Netlify config needed for deploy, forms, and redirects
+- [x] add legacy redirects only where mapping confidence is high
+- [x] verify no guessed event-detail redirect is published without evidence
+- [x] verify `/admin/` assumptions for deployed Netlify Identity and Git Gateway
+- [x] cross-check risky public facts one last time against [public-data-register.md](/home/nout/REPO/SCB-Website/docs/plans/public-data-register.md)
+
+Phase 7 closeout note:
+
+- The site is now a deployable technical release candidate, but it is not final launch-signed until the public-data conflicts in `public-data-register.md` are explicitly resolved or accepted by the user.
+- The only event-detail redirect added maps the retained Wix `Sunday Funday` event URL to `/veranstaltungen/sunday-funday/2025-11-30/`, the visible date verified in the local evidence pack. No broad event wildcard redirect was added.
 
 ### Exit gate
 
@@ -427,7 +435,7 @@ Expected pattern:
 Good prompt shape:
 
 - `Resume from the current committed state and continue the next route slice recorded in status-checklist.md`
-- `Resume from the current committed state and continue Phase 6 migration from status-checklist.md`
+- `Resume from the current committed state and resolve the launch-signoff public facts recorded in status-checklist.md`
 
 Bad prompt shape:
 
@@ -441,12 +449,16 @@ If a short prompt is not enough, fix the docs rather than expecting the user to 
 
 The website effort is only done when all of the following are true:
 
-- [ ] every launch route in [routes-and-pages.md](/home/nout/REPO/SCB-Website/docs/plans/routes-and-pages.md) exists
-- [ ] content is driven by the canonical Astro collections and Decap config
-- [ ] the public event calendar is generated from the build-time event engine
-- [ ] migrated source content and assets are tracked through the manifest
-- [ ] the build passes cleanly
-- [ ] deployment configuration is in place
-- [ ] outstanding risky public facts are either confirmed or explicitly flagged
+- [x] every launch route in [routes-and-pages.md](/home/nout/REPO/SCB-Website/docs/plans/routes-and-pages.md) exists
+- [x] content is driven by the canonical Astro collections and Decap config
+- [x] the public event calendar is generated from the build-time event engine
+- [x] migrated source content and assets are tracked through the manifest
+- [x] the build passes cleanly
+- [x] deployment configuration is in place
+- [x] outstanding risky public facts are either confirmed or explicitly flagged
 
 If any item above is false, the work is not finished.
+
+Current release-candidate caveat:
+
+- The implementation work is finished as a technical release candidate, but final public launch signoff still depends on user review of the unresolved public-data conflicts recorded in `public-data-register.md`.

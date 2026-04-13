@@ -69,12 +69,16 @@ Foundation scaffolding is now in place in this repo:
 - raw downloaded Wix media archived under `docs/plans/wix-reference/asset-source-archive/`
 - Astro-facing staged Wix asset tree under `src/assets/images/wix-staging/` via `bun run stage:wix-assets`
 
-Content collections are now real and Phase 6 migration is in progress:
+Content collections are now real, Phase 6 migration is signoff-clean, and Phase 7 technical release-candidate hardening has been completed:
 
 - canonical `migration/manifest.json` now exists
 - retained news feed inventory has been migrated into the posts collection
 - local media gallery entries now exist alongside external video references
-- homepage and static-page parity plus fuller event migration still remain open
+- homepage and retained static-page copy have been reconciled against the local evidence pack
+- the retained event evidence has been reconciled into the canonical Astro event content without over-trusting the Wix slug or implying unsupported recurrence
+- `netlify.toml` now defines the Bun build, `dist` publish directory, baseline headers, canonical-domain redirects, and high-confidence legacy Wix route redirects
+- Phase 7 QA passed for build/check/test, phone-width screenshots, contact form shape, downloads, external links, `/admin/`, and the verified event occurrence route
+- final launch signoff still needs user review of the public-data conflicts recorded in `public-data-register.md`
 
 The docs are now split into:
 
@@ -88,8 +92,8 @@ Use [status-checklist.md](/home/nout/REPO/SCB-Website/docs/plans/status-checklis
 
 Current phase status from the audited ledger:
 
-- Phases 1 to 5 are cleared
-- Phase 6 content and asset migration is active and partially completed
+- Phases 1 to 7 are cleared as a technical release candidate
+- final launch signoff remains blocked on explicit public-fact confirmation, especially canonical YouTube and donation/bank details if fundraising content stays live
 
 ## Minimal Resume Prompt
 
@@ -98,7 +102,7 @@ This repo is supposed to support low-friction continuation.
 Once the planning stack and `AGENTS.md` are in place, a new conversation should normally only need a short prompt such as:
 
 - `Resume from the current committed state and continue the next slice recorded in docs/plans/status-checklist.md`
-- `Resume from the current committed state and implement the next Phase 5 routes`
+- `Resume from the current committed state and resolve the launch-signoff public facts recorded in docs/plans/status-checklist.md`
 
 Do not rely on the user to keep re-pasting the same startup, evidence, asset, or handoff rules if those rules are already documented in the repo.
 

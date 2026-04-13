@@ -3,7 +3,7 @@
   "lastUpdatedAt": "2026-04-10",
   "notes": [
     "This manifest tracks Phase 6 migration work from committed repo files and the retained local evidence pack under docs/plans/wix-reference/.",
-    "Statuses remain qa-pending until route-level verification and final Phase 7 checks are complete.",
+    "Manifest statuses track migration completion, while broader responsive, accessibility, and deployment verification still belongs to Phase 7.",
     "Source-observed conflicts stay explicit here instead of being normalized into silent content assumptions."
   ],
   "records": [
@@ -16,12 +16,12 @@
       "localAssetPaths": [
         "src/assets/images/wix-staging/homepage/site/13cc9c_40230571cb024f61b6936ee67952d0f3~mv2.jpg"
       ],
-      "status": "qa-pending",
-      "needsManualQa": true,
+      "status": "migrated",
+      "needsManualQa": false,
       "publicDataRisk": "none",
       "notes": [
-        "Homepage entry exists and now uses source-parity featured announcement copy from retained local evidence.",
-        "Hero and section copy still need a final route-by-route parity pass against the retained home evidence."
+        "Homepage hero copy, featured announcement, and supporting teaser copy were reconciled against the retained home HTML in the Phase 6 closeout audit.",
+        "The source homepage also teased Sunday Funday on the start page, but the retained events index shows no active April 2026 entries, so the Astro homepage keeps the canonical dynamic event surface instead of inventing a recurring teaser."
       ]
     },
     {
@@ -34,11 +34,12 @@
         "src/assets/images/wix-staging/pages/about/dfbc4d_43bd619f89664d5d97e7053ac7e702e0~mv2.jpg",
         "public/media/pdfs/statutes.pdf"
       ],
-      "status": "qa-pending",
-      "needsManualQa": true,
+      "status": "migrated",
+      "needsManualQa": false,
       "publicDataRisk": "membership",
       "notes": [
         "Route content and localized statutes PDF exist.",
+        "Intro, goals, and body copy were tightened to the retained source wording during the Phase 6 closeout audit.",
         "Board/member wording remains source-parity migration content and has not been separately reconfirmed."
       ]
     },
@@ -51,11 +52,12 @@
       "localAssetPaths": [
         "public/media/pdfs/membership-form.pdf"
       ],
-      "status": "qa-pending",
-      "needsManualQa": true,
+      "status": "migrated",
+      "needsManualQa": false,
       "publicDataRisk": "membership",
       "notes": [
         "Membership route content and localized form PDF exist.",
+        "Benefit, fee, and application copy were reconciled against the retained membership HTML during the Phase 6 closeout audit.",
         "Fee copy remains source-observed and should stay easy to review before launch signoff."
       ]
     },
@@ -66,11 +68,12 @@
       "targetRoute": "/kontakt/",
       "targetContentPath": "src/content/pages/contact.md",
       "localAssetPaths": [],
-      "status": "qa-pending",
-      "needsManualQa": true,
+      "status": "migrated",
+      "needsManualQa": false,
       "publicDataRisk": "none",
       "notes": [
-        "Route content exists and uses source-observed skatepark location details."
+        "Route content exists and uses source-observed skatepark location details.",
+        "The retained contact page exposes only minimal copy beyond the form heading and approach section, so the Astro page keeps a conservative local restatement of that source purpose plus the retained map/location details."
       ]
     },
     {
@@ -80,8 +83,8 @@
       "targetRoute": "/impressum/",
       "targetContentPath": "src/content/pages/impressum.md",
       "localAssetPaths": [],
-      "status": "qa-pending",
-      "needsManualQa": true,
+      "status": "migrated",
+      "needsManualQa": false,
       "publicDataRisk": "legal",
       "notes": [
         "Route content exists from retained local HTML/PDF evidence.",
@@ -95,8 +98,8 @@
       "targetRoute": "/datenschutz/",
       "targetContentPath": "src/content/pages/datenschutz.md",
       "localAssetPaths": [],
-      "status": "qa-pending",
-      "needsManualQa": true,
+      "status": "migrated",
+      "needsManualQa": false,
       "publicDataRisk": "legal",
       "notes": [
         "Route content exists from retained local HTML/PDF fallback evidence."
@@ -111,7 +114,7 @@
       "localAssetPaths": [
         "src/assets/images/wix-staging/posts/spendenaufruf-der-scb-baut-ne-halle/13cc9c_d2cf4f765f504960a33f56e7d9387b94~mv2.jpg"
       ],
-      "status": "qa-pending",
+      "status": "migrated",
       "needsManualQa": true,
       "publicDataRisk": "financial",
       "notes": [
@@ -128,8 +131,8 @@
       "localAssetPaths": [
         "src/assets/images/wix-staging/posts/goodies-4-tricks-2025/13cc9c_00222c64efe14f18a4f922fe5eb4bddb~mv2.jpg"
       ],
-      "status": "qa-pending",
-      "needsManualQa": true,
+      "status": "migrated",
+      "needsManualQa": false,
       "publicDataRisk": "none",
       "notes": [
         "Post entry exists and is now closer to retained source wording."
@@ -144,7 +147,7 @@
       "localAssetPaths": [
         "src/assets/images/wix-staging/homepage/site/13cc9c_40230571cb024f61b6936ee67952d0f3~mv2.jpg"
       ],
-      "status": "qa-pending",
+      "status": "migrated",
       "needsManualQa": false,
       "publicDataRisk": "none",
       "notes": [
@@ -160,7 +163,7 @@
       "localAssetPaths": [
         "src/assets/images/wix-staging/posts/spende-von-der-volksbank-franken-s%C3%BCd/dfbc4d_d71543eec4ac4f3fb7aa44a865c6d601~mv2.jpg"
       ],
-      "status": "qa-pending",
+      "status": "migrated",
       "needsManualQa": true,
       "publicDataRisk": "financial",
       "notes": [
@@ -177,7 +180,7 @@
       "localAssetPaths": [
         "src/assets/images/wix-staging/posts/der-contest-in-der-zeitung/dfbc4d_59e1e64566d44ea2b074b9cf058761e7~mv2.jpg"
       ],
-      "status": "qa-pending",
+      "status": "migrated",
       "needsManualQa": false,
       "publicDataRisk": "none",
       "notes": [
@@ -193,7 +196,7 @@
       "localAssetPaths": [
         "src/assets/images/wix-staging/posts/goodies-4-tricks-event-trotz-regen-ein-erfolg/dfbc4d_d4de6327ca7c4883bd7dbc4c3a4e0a84~mv2.jpg"
       ],
-      "status": "qa-pending",
+      "status": "migrated",
       "needsManualQa": false,
       "publicDataRisk": "none",
       "notes": [
@@ -209,7 +212,7 @@
       "localAssetPaths": [
         "src/assets/images/wix-staging/posts/der-skate-club-in-der-zeitung/dfbc4d_3825bd53a4d64365a4edd84a395cd7c9~mv2.jpg"
       ],
-      "status": "qa-pending",
+      "status": "migrated",
       "needsManualQa": false,
       "publicDataRisk": "none",
       "notes": [
@@ -225,12 +228,13 @@
       "localAssetPaths": [
         "src/assets/images/wix-staging/posts/parkausbesserungen/dfbc4d_581b537602574727b9ff441188b0817c~mv2.jpeg"
       ],
-      "status": "qa-pending",
+      "status": "blocked",
       "needsManualQa": true,
       "publicDataRisk": "none",
       "notes": [
         "The retained feed preserves one complete sentence and a truncated repair note.",
-        "The migrated body keeps only the complete source-observed statement and does not guess the truncated remainder."
+        "The migrated body keeps only the complete source-observed statement and does not guess the truncated remainder.",
+        "This record stays blocked for fuller content recovery unless better local evidence appears later."
       ]
     },
     {
@@ -242,11 +246,12 @@
       "localAssetPaths": [
         "src/assets/images/wix-staging/events/sunday-funday/13cc9c_b8c6b92af9f2429dbfcdc1bede23d1cf~mv2.webp"
       ],
-      "status": "qa-pending",
-      "needsManualQa": true,
+      "status": "migrated",
+      "needsManualQa": false,
       "publicDataRisk": "event-date",
       "notes": [
-        "The source slug date differs from the visible event date; the canonical event content follows visible retained evidence, not the Wix slug."
+        "The source slug date differs from the visible event date; the canonical event content follows visible retained evidence, not the Wix slug.",
+        "The retained events index shows no active April 2026 entries, so the Astro event was reconciled to the single verified 2025-11-30 occurrence instead of being treated as an evidence-backed recurring series."
       ]
     },
     {
@@ -258,8 +263,8 @@
       "localAssetPaths": [
         "src/assets/images/wix-staging/homepage/site/13cc9c_9b4b8f17abe74d40b3915128c22f33d5~mv2.jpg"
       ],
-      "status": "qa-pending",
-      "needsManualQa": true,
+      "status": "migrated",
+      "needsManualQa": false,
       "publicDataRisk": "social-link",
       "notes": [
         "Per the public data register, the YouTube destination remains a conflict and is preserved only as source-parity media routing."
@@ -277,7 +282,7 @@
         "src/assets/images/wix-staging/posts/graffiti-workshop-ein-voller-erfolg/13cc9c_06495e3407dc4374bb5d44d55922739c~mv2.jpg",
         "src/assets/images/wix-staging/posts/graffiti-workshop-ein-voller-erfolg/13cc9c_0c95d382c44c4d1b909ddb417e3068af~mv2.jpg"
       ],
-      "status": "qa-pending",
+      "status": "migrated",
       "needsManualQa": false,
       "publicDataRisk": "none",
       "notes": [
@@ -296,7 +301,7 @@
         "src/assets/images/wix-staging/posts/goodies-4-tricks-event-trotz-regen-ein-erfolg/dfbc4d_6d9c118eaf9e412eab343ba006b018b4~mv2.jpg",
         "src/assets/images/wix-staging/posts/goodies-4-tricks-event-trotz-regen-ein-erfolg/dfbc4d_70717f57f27c4718b159d0320729e90e~mv2.jpg"
       ],
-      "status": "qa-pending",
+      "status": "migrated",
       "needsManualQa": false,
       "publicDataRisk": "none",
       "notes": [

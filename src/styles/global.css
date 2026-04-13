@@ -34,6 +34,11 @@ a {
   text-underline-offset: 0.18em;
 }
 
+:focus-visible {
+  outline: 3px solid var(--scb-accent);
+  outline-offset: 3px;
+}
+
 .rich-text {
   color: #334155;
   font-size: 0.98rem;

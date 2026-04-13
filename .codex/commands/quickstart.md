@@ -3,8 +3,7 @@
 
 ## 1. Read README.md and AGENTS.md 
 
-**AGENTS.md is a clone of .Claude.md** - These are interchangeable. 
-
+**AGENTS.md is the agent instruction source of truth for Codex sessions.**
 
 
 

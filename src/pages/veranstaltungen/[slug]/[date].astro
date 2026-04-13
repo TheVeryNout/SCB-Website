@@ -24,13 +24,13 @@ import { formatGermanDate } from "../../../lib/events/engine";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 
 const OCCURRENCE_PAGE_OPTIONS = {
-  horizonPastMonths: 0,
+  horizonPastMonths: 12,
   horizonFutureMonths: 8,
 } as const;
 
 export async function getStaticPaths() {
   const routeOptions = {
-    horizonPastMonths: 0,
+    horizonPastMonths: 12,
     horizonFutureMonths: 8,
   } as const;
   const params = await getEventOccurrenceRouteParams(routeOptions);
