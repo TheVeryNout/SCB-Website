@@ -67,6 +67,10 @@ const relatedOccurrences = (await getRelatedEventOccurrences(
   .slice(0, 3);
 const hasEventLinks = Boolean(occurrence.registrationUrl || occurrence.ctaUrl || occurrence.instagramUrl);
 const hasBody = typeof eventEntry.body === "string" && eventEntry.body.trim().length > 0;
+const additionalInfo = occurrence.additionalInfo;
+const showAdditionalInfo = Boolean(
+  additionalInfo?.enabled && (additionalInfo.title || additionalInfo.text),
+);
 
 const detailFacts = [
   occurrence.costLabel ? { label: "Kosten", value: occurrence.costLabel } : undefined,
@@ -156,10 +160,27 @@ const detailFacts = [
       </div>
 
       {
-        occurrence.weatherNote ? (
-          <SurfaceCard as="section" tone="warm">
-            <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Wetterhinweis</p>
-            <p class="mt-3 text-sm leading-7 text-slate-700">{occurrence.weatherNote}</p>
+        showAdditionalInfo ? (
+          <SurfaceCard
+            as="section"
+            tone="warm"
+            aria-label={additionalInfo?.title ?? additionalInfo?.label ?? "Zusatzinfos"}
+          >
+            <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">
+              {additionalInfo?.label ?? "Zusatzinfos"}
+            </p>
+            {
+              additionalInfo?.title ? (
+                <h2 class="mt-2 text-2xl font-semibold text-slate-950">
+                  {additionalInfo.title}
+                </h2>
+              ) : null
+            }
+            {
+              additionalInfo?.text ? (
+                <p class="mt-3 text-sm leading-7 text-slate-700">{additionalInfo.text}</p>
+              ) : null
+            }
           </SurfaceCard>
         ) : null
       }

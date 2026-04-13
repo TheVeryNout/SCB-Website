@@ -85,6 +85,31 @@ describe("event engine", () => {
     ]);
   });
 
+  it("uses the start date weekday when weekly recurrence omits weekdays", () => {
+    const event = createEvent({
+      recurrence: {
+        type: "weekly",
+        interval: 1,
+        daysOfWeek: [],
+        exclusions: [],
+        inclusions: [],
+      },
+    });
+
+    const occurrences = expandEventOccurrences(event, {
+      referenceDateKey: "2025-12-01",
+      horizonPastMonths: 0,
+      horizonFutureMonths: 1,
+    });
+
+    expect(occurrences.map((occurrence) => occurrence.occurrenceDate)).toEqual([
+      "2025-12-07",
+      "2025-12-14",
+      "2025-12-21",
+      "2025-12-28",
+    ]);
+  });
+
   it("expands monthly same-date recurrence", () => {
     const event = createEvent({
       slug: "mitgliedertreffen",

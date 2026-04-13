@@ -22,6 +22,11 @@ const [homepage, settings, latestPosts, upcomingEvents] = await Promise.all([
   getLatestPosts(3),
   getUpcomingOccurrences(3),
 ]);
+
+const featuredAnnouncement =
+  homepage.data.featuredAnnouncement?.enabled !== false
+    ? homepage.data.featuredAnnouncement
+    : undefined;
 ---
 
 <BaseLayout
@@ -40,20 +45,20 @@ const [homepage, settings, latestPosts, upcomingEvents] = await Promise.all([
       </h1>
 
       {
-        homepage.data.featuredAnnouncement ? (
+        featuredAnnouncement ? (
           <div class="mt-24 max-w-5xl bg-white/82 px-8 py-10 text-[#414141] sm:px-12">
             <h2 class="scb-display text-5xl leading-tight sm:text-7xl">
-              {homepage.data.featuredAnnouncement.title}
+              {featuredAnnouncement.title}
             </h2>
             <p class="mt-5 text-xl leading-8">
-              {homepage.data.featuredAnnouncement.body}
+              {featuredAnnouncement.body}
             </p>
             {
-              homepage.data.featuredAnnouncement.linkUrl &&
-              homepage.data.featuredAnnouncement.linkLabel ? (
+              featuredAnnouncement.linkUrl &&
+              featuredAnnouncement.linkLabel ? (
                 <div class="mt-6">
-                  <LinkButton href={homepage.data.featuredAnnouncement.linkUrl} variant="outline">
-                    {homepage.data.featuredAnnouncement.linkLabel}
+                  <LinkButton href={featuredAnnouncement.linkUrl} variant="outline">
+                    {featuredAnnouncement.linkLabel}
                   </LinkButton>
                 </div>
               ) : null

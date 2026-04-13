@@ -261,6 +261,8 @@ Optional fields:
 - `mediaTeaserTitle`
 - `mediaTeaserText`
 
+`featuredAnnouncement` includes an editor-facing `enabled` toggle so the homepage block can be hidden without deleting its title, body, or link fields. Existing or omitted toggle values default to enabled for backward-compatible content.
+
 ### `pages`
 
 Type:
@@ -272,6 +274,7 @@ Required entries:
 - `about`
 - `membership`
 - `contact`
+- `events`
 - `impressum`
 - `datenschutz`
 
@@ -285,6 +288,22 @@ Required fields:
 - `goals`
 - `boardMembers`
 - `statutesPdf`
+
+#### `events`
+
+Required fields:
+
+- `title`
+- `intro`
+
+Optional fields:
+
+- `eyebrow`
+- `listTitle`
+- `listIntro`
+- `additionalInfo`
+
+`additionalInfo` must be editor-facing as `Zusatzinfos` and include an on/off toggle so the box can be hidden without deleting its text.
 
 Optional fields:
 
@@ -385,6 +404,8 @@ Required rule:
 
 This document must not redefine those semantics.
 
+The CMS label for the event-level optional info box is `Zusatzinfos`. It includes an on/off toggle and is intentionally not weather-specific.
+
 ### `media`
 
 Type:
@@ -473,9 +494,10 @@ Add concise help text for fields that are easy to misuse:
 
 Use safe defaults:
 
-- optional featured blocks off by default
+- optional featured block objects may keep their content while exposing an on/off toggle; existing populated featured announcement content defaults to on
 - optional media/gallery fields empty by default
 - event defaults per `calendar.md`
+- blank optional CMS fields should normalize to omitted/default values where Decap writes empty strings
 
 ### Preview complexity
 

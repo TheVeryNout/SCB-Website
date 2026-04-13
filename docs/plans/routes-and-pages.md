@@ -327,11 +327,10 @@ Required sections:
 
 - page title and short intro
 - upcoming events list
-- month overview
 
 Optional sections:
 
-- one short note about weather-sensitive events
+- one CMS-owned `Zusatzinfos` box
 - one simple CTA to membership if it materially helps visitors
 
 Preserve:
@@ -341,13 +340,14 @@ Preserve:
 
 Simplify:
 
-- upcoming list is the primary experience on mobile
-- month view is secondary
+- upcoming list is the primary event discovery experience
+- avoid duplicate calendar/list sections that repeat the same event occurrences
 
 Drop at launch:
 
 - Wix widget behavior
 - repeated marketing blocks that distract from event discovery
+- a second month overview that duplicates the upcoming-events list
 
 Calendar-specific behavior is defined in [calendar.md](/home/nout/REPO/SCB-Website/docs/plans/calendar.md).
 
@@ -557,13 +557,14 @@ Do not launch with:
 Launch with:
 
 - upcoming list
-- month overview
 - occurrence detail pages
+- optional CMS-owned `Zusatzinfos` boxes on the events index and event detail pages
 
 Do not launch with:
 
 - registration system
 - drag/drop calendar
+- duplicate month/list calendar sections
 - live sync from `SCB-Dash`
 
 ### Contact

@@ -224,6 +224,29 @@ When making implementation decisions:
 
 Do not use current implementation shape as retroactive proof that the plan must have intended it.
 
+### Dev Server Ownership
+
+The user maintains the local dev/CMS server by default.
+
+Agents may run bounded checks such as:
+
+- `bun test`
+- `bun run check`
+- `bun run build`
+- targeted `curl` or HTML inspections against an already-running server
+
+Agents must not start additional long-running dev servers unless the user explicitly asks or the task cannot be verified otherwise.
+
+If a temporary dev server is truly necessary:
+
+- first inspect existing listeners/processes for the relevant port
+- prefer using the user's existing server if it is current
+- start the temporary server on a clearly stated alternate port
+- stop it in the same turn immediately after verification
+- do not leave any `bun run dev`, `bun run dev:cms`, `astro dev`, or `decap-server` process running from the agent session unless the user explicitly asks for it
+
+Avoid getting the workspace tangled in multiple running servers. If localhost appears stale, surface that as a dev-server state issue instead of repeatedly starting new servers.
+
 ---
 
 ## Mandatory Session-End Updates

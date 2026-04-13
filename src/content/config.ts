@@ -9,6 +9,10 @@ const slugField = z
   .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Use lowercase letters, numbers, and hyphens only.");
 
 const nonEmptyString = z.string().trim().min(1);
+const optionalNonEmptyString = z.preprocess(
+  (value) => (value === "" ? undefined : value),
+  nonEmptyString.optional(),
+);
 const publicPathField = z
   .string()
   .trim()
@@ -22,6 +26,26 @@ const linkField = z
   .refine((value) => /^\/(?!\/)/.test(value) || /^https?:\/\//.test(value), {
     message: "Use either a site-relative path or an absolute http(s) URL.",
   });
+const optionalLinkField = z.preprocess(
+  (value) => (value === "" ? undefined : value),
+  linkField.optional(),
+);
+const optionalExternalUrlField = z.preprocess(
+  (value) => (value === "" ? undefined : value),
+  externalUrlField.optional(),
+);
+const positiveIntegerWithDefault = z.preprocess(
+  (value) => (value === "" ? undefined : value),
+  z.number().int().min(1).default(1),
+);
+const optionalPositiveIntegerField = z.preprocess(
+  (value) => (value === "" ? undefined : value),
+  z.number().int().min(1).optional(),
+);
+const optionalDayOfMonthField = z.preprocess(
+  (value) => (value === "" ? undefined : value),
+  z.number().int().min(1).max(31).optional(),
+);
 const isoDateField = z.preprocess(
   (value) => (value instanceof Date ? value.toISOString().slice(0, 10) : value),
   z
@@ -29,6 +53,18 @@ const isoDateField = z.preprocess(
     .trim()
     .regex(/^\d{4}-\d{2}-\d{2}$/, "Use YYYY-MM-DD."),
 );
+const optionalIsoDateField = z.preprocess(
+  (value) => (value === "" ? undefined : value),
+  isoDateField.optional(),
+);
+const additionalInfoField = z
+  .object({
+    enabled: z.boolean().default(false),
+    label: optionalNonEmptyString,
+    title: optionalNonEmptyString,
+    text: optionalNonEmptyString,
+  })
+  .optional();
 const isoTimeField = z
   .string()
   .trim()
@@ -57,10 +93,11 @@ const homepage = defineCollection({
       heroImage: image().optional(),
       featuredAnnouncement: z
         .object({
+          enabled: z.boolean().default(true),
           title: nonEmptyString,
           body: nonEmptyString,
-          linkLabel: nonEmptyString.optional(),
-          linkUrl: linkField.optional(),
+          linkLabel: optionalNonEmptyString,
+          linkUrl: optionalLinkField,
         })
         .refine(
           (value) =>
@@ -103,10 +140,14 @@ const pages = defineCollection({
       membershipFormPdf: publicPathField.optional(),
       notes: z.array(nonEmptyString).optional(),
       locationName: nonEmptyString.optional(),
-      mapUrl: externalUrlField.optional(),
-      addressOverride: nonEmptyString.optional(),
+      mapUrl: optionalExternalUrlField,
+      addressOverride: optionalNonEmptyString,
       mapImage: image().optional(),
-      locationNotes: nonEmptyString.optional(),
+      locationNotes: optionalNonEmptyString,
+      eyebrow: optionalNonEmptyString,
+      listTitle: optionalNonEmptyString,
+      listIntro: optionalNonEmptyString,
+      additionalInfo: additionalInfoField,
     }),
 });
 
@@ -142,29 +183,29 @@ const events = defineCollection({
         timezone: z.enum(["Europe/Berlin"]).default("Europe/Berlin"),
         locationName: nonEmptyString,
         summary: nonEmptyString,
-        address: nonEmptyString.optional(),
-        mapUrl: externalUrlField.optional(),
+        address: optionalNonEmptyString,
+        mapUrl: optionalExternalUrlField,
         heroImage: image().optional(),
         gallery: z.array(image()).optional(),
-        ctaLabel: nonEmptyString.optional(),
-        ctaUrl: linkField.optional(),
-        registrationUrl: externalUrlField.optional(),
-        costLabel: nonEmptyString.optional(),
-        audience: nonEmptyString.optional(),
-        equipmentInfo: nonEmptyString.optional(),
-        weatherNote: nonEmptyString.optional(),
-        instagramUrl: externalUrlField.optional(),
+        ctaLabel: optionalNonEmptyString,
+        ctaUrl: optionalLinkField,
+        registrationUrl: optionalExternalUrlField,
+        costLabel: optionalNonEmptyString,
+        audience: optionalNonEmptyString,
+        equipmentInfo: optionalNonEmptyString,
+        additionalInfo: additionalInfoField,
+        instagramUrl: optionalExternalUrlField,
         source: z.enum(["website", "imported-dash", "migrated-wix"]).default("website"),
-        sourceId: nonEmptyString.optional(),
-        lastVerifiedAt: isoDateField.optional(),
+        sourceId: optionalNonEmptyString,
+        lastVerifiedAt: optionalIsoDateField,
         recurrence: z
           .object({
             type: z.enum(["none", "daily", "weekly", "monthly"]).default("none"),
-            interval: z.number().int().min(1).default(1),
+            interval: positiveIntegerWithDefault,
             daysOfWeek: z.array(weekdayField).default([]),
-            dayOfMonth: z.number().int().min(1).max(31).optional(),
-            until: isoDateField.optional(),
-            count: z.number().int().min(1).optional(),
+            dayOfMonth: optionalDayOfMonthField,
+            until: optionalIsoDateField,
+            count: optionalPositiveIntegerField,
             exclusions: z.array(isoDateField).default([]),
             inclusions: z.array(isoDateField).default([]),
           })
@@ -184,14 +225,6 @@ const events = defineCollection({
             code: z.ZodIssueCode.custom,
             path: ["recurrence", "type"],
             message: "Daily recurrence stays reserved and is not supported at launch.",
-          });
-        }
-
-        if (recurrence.type === "weekly" && recurrence.daysOfWeek.length === 0) {
-          context.addIssue({
-            code: z.ZodIssueCode.custom,
-            path: ["recurrence", "daysOfWeek"],
-            message: "Weekly recurrence needs at least one weekday.",
           });
         }
 
@@ -235,8 +268,8 @@ const settings = defineCollection({
       organizationName: nonEmptyString,
       siteDescription: nonEmptyString,
       contactEmail: z.string().trim().email(),
-      contactPhone: nonEmptyString.optional(),
-      whatsApp: nonEmptyString.optional(),
+      contactPhone: optionalNonEmptyString,
+      whatsApp: optionalNonEmptyString,
       postalAddress: nonEmptyString,
       socialLinks: z
         .array(

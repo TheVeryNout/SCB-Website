@@ -16,7 +16,7 @@ import type {
   WebsiteEventRecord,
 } from "../events/model";
 
-const REQUIRED_PAGE_SLUGS = ["about", "membership", "contact", "impressum", "datenschutz"] as const;
+const REQUIRED_PAGE_SLUGS = ["about", "membership", "contact", "events", "impressum", "datenschutz"] as const;
 
 type RequiredPageSlug = (typeof REQUIRED_PAGE_SLUGS)[number];
 
@@ -116,6 +116,12 @@ function validatePageEntry(slug: RequiredPageSlug, entry: CollectionEntry<"pages
       }
 
       break;
+    case "events":
+      if (!entry.data.intro) {
+        throw new Error('The "events" page needs an intro.');
+      }
+
+      break;
     case "impressum":
     case "datenschutz":
       if (!hasBody(entry)) {
@@ -151,7 +157,7 @@ function toEventRecord(entry: CollectionEntry<"events">): WebsiteEventRecord {
     costLabel: entry.data.costLabel,
     audience: entry.data.audience,
     equipmentInfo: entry.data.equipmentInfo,
-    weatherNote: entry.data.weatherNote,
+    additionalInfo: entry.data.additionalInfo,
     instagramUrl: entry.data.instagramUrl,
     source: entry.data.source,
     sourceId: entry.data.sourceId,

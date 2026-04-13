@@ -56,13 +56,14 @@ collections:
           - { label: "Hero-Titel", name: "heroTitle", widget: "string" }
           - { label: "Hero-Intro", name: "heroIntro", widget: "text" }
           - { label: "Hero-Bild", name: "heroImage", widget: "image", required: false }
-          - label: "Featured Announcement"
+          - label: "Featured Announcement (Optional)"
             name: "featuredAnnouncement"
             widget: "object"
             required: false
             collapsed: true
-            hint: "Optionaler Hinweisblock für eine einzelne wichtige Meldung."
+            hint: "Optionaler Hinweisblock für eine einzelne wichtige Meldung. Mit dem Schalter kann der Block ausgeblendet werden, ohne die Felder zu löschen."
             fields:
+              - { label: "Auf Startseite anzeigen", name: "enabled", widget: "boolean", default: true, required: false }
               - { label: "Titel", name: "title", widget: "string" }
               - { label: "Text", name: "body", widget: "text" }
               - { label: "Link-Label", name: "linkLabel", widget: "string", required: false }
@@ -138,6 +139,27 @@ collections:
           - { label: "Ortshinweis", name: "locationNotes", widget: "text", required: false }
           - { label: "Body", name: "body", widget: "markdown", required: false }
 
+      - file: "src/content/pages/events.md"
+        label: "Veranstaltungen"
+        name: "events"
+        fields:
+          - { label: "Titel", name: "title", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "text" }
+          - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
+          - { label: "Terminlisten-Titel", name: "listTitle", widget: "string", required: false }
+          - { label: "Terminlisten-Intro", name: "listIntro", widget: "text", required: false }
+          - label: "Zusatzinfos"
+            name: "additionalInfo"
+            widget: "object"
+            required: false
+            collapsed: true
+            hint: "Optionaler Infokasten auf der Veranstaltungsübersicht."
+            fields:
+              - { label: "Anzeigen", name: "enabled", widget: "boolean", default: false, required: false }
+              - { label: "Label", name: "label", widget: "string", default: "Zusatzinfos", required: false }
+              - { label: "Titel", name: "title", widget: "string", required: false }
+              - { label: "Text", name: "text", widget: "text", required: false }
+
       - file: "src/content/pages/impressum.md"
         label: "Impressum"
         name: "impressum"
@@ -206,12 +228,13 @@ collections:
         hint: "Für den Start nur keine Wiederholung, wöchentlich oder gleicher Tag pro Monat."
         fields:
           - { label: "Typ", name: "type", widget: "select", default: "none", options: ["none", "weekly", "monthly"] }
-          - { label: "Intervall", name: "interval", widget: "number", default: 1, value_type: "int", min: 1, required: false }
+          - { label: "Intervall", name: "interval", widget: "number", default: 1, value_type: "int", min: 1, required: false, hint: "1 = jede Woche / jeden Monat. Leer wird wie 1 behandelt." }
           - label: "Wochentage"
             name: "daysOfWeek"
             widget: "select"
             multiple: true
             required: false
+            hint: "Nur für wöchentliche Termine. Wenn leer, wird der Wochentag aus dem Startdatum verwendet."
             options: ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
           - { label: "Tag im Monat", name: "dayOfMonth", widget: "number", required: false, value_type: "int", min: 1, max: 31 }
           - { label: "Bis einschließlich", name: "until", widget: "date", required: false, format: "YYYY-MM-DD" }
@@ -229,7 +252,17 @@ collections:
       - { label: "Ort", name: "locationName", widget: "string" }
       - { label: "Adresse", name: "address", widget: "text", required: false }
       - { label: "Kartenlink", name: "mapUrl", widget: "string", required: false }
-      - { label: "Hinweis bei Wetter", name: "weatherNote", widget: "text", required: false }
+      - label: "Zusatzinfos"
+        name: "additionalInfo"
+        widget: "object"
+        required: false
+        collapsed: true
+        hint: "Optionaler Infokasten auf der Termin-Detailseite. Nicht nur für Wetter gedacht."
+        fields:
+          - { label: "Anzeigen", name: "enabled", widget: "boolean", default: false, required: false }
+          - { label: "Label", name: "label", widget: "string", default: "Zusatzinfos", required: false }
+          - { label: "Titel", name: "title", widget: "string", required: false }
+          - { label: "Text", name: "text", widget: "text", required: false }
       - { label: "CTA Label", name: "ctaLabel", widget: "string", required: false }
       - { label: "CTA URL", name: "ctaUrl", widget: "string", required: false }
       - { label: "Anmeldung URL", name: "registrationUrl", widget: "string", required: false }
