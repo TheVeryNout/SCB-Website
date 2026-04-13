@@ -27,6 +27,18 @@ const canonicalUrl = Astro.site ? new URL(currentPath, Astro.site) : undefined;
     {canonicalUrl && <link rel="canonical" href={canonicalUrl.href} />}
   </head>
   <body class="flex min-h-screen flex-col">
+    <script is:inline>
+      const identityTokenPattern =
+        /^#(confirmation_token|invite_token|recovery_token|access_token|error)=/;
+
+      if (
+        window.location.hash &&
+        identityTokenPattern.test(window.location.hash) &&
+        !window.location.pathname.startsWith("/admin/")
+      ) {
+        window.location.replace(`/admin/${window.location.hash}`);
+      }
+    </script>
     <SiteHeader currentPath={currentPath} />
     <main class="flex-1">
       <slot />
@@ -34,4 +46,3 @@ const canonicalUrl = Astro.site ? new URL(currentPath, Astro.site) : undefined;
     <SiteFooter />
   </body>
 </html>
-

@@ -39,6 +39,7 @@ Audited scope:
 - the Phase 6 closeout audit for homepage/static-page source parity, manifest status normalization, and event-evidence reconciliation
 - the Phase 7 release-candidate pass for build/check/test, phone-width QA, baseline accessibility, forms/downloads/external links, event route behavior, Netlify config, high-confidence redirects, `/admin/`, and public-data signoff blockers
 - the post-release-candidate design correction pass that replaced the generic rounded/pill prototype language with a Wix-reference-aligned visual system using the retained local screenshots and staged Wix assets
+- the first live-deploy CMS Identity handoff issue where Netlify invite/reset links landed on public routes instead of `/admin/`
 
 ---
 
@@ -286,6 +287,8 @@ Audit notes:
 - `netlify.toml` also canonicalizes `http://skateclubbiriciana.de/*`, `http://www.skateclubbiriciana.de/*`, and `https://www.skateclubbiriciana.de/*` to `https://skateclubbiriciana.de/:splat`.
 - The public-data register still marks the canonical YouTube destination as a conflict and donation/bank details as pending. These are launch-signoff blockers if the site is published as final public truth, but they no longer block the technical deploy configuration.
 - `parkausbesserungen` remains blocked only for fuller content recovery; the current route builds and the truncated-evidence limitation is recorded in the migration manifest.
+- During first Netlify setup, Identity invite/reset links were observed landing on public routes without completing the CMS password flow. `BaseLayout` now forwards Netlify Identity token hashes (`invite_token`, `confirmation_token`, `recovery_token`, `access_token`, and `error`) from public pages to `/admin/`, where the Identity widget is loaded.
+- Verification for the Identity token redirect change passed with `bun run check` and `bun run build`; `bun run check` still reports only the known Zod deprecation hints.
 
 ---
 
@@ -314,7 +317,7 @@ Audit notes:
 
 - continuation is allowed
 - active implementation phase: none; Phase 7 is complete as a technical release-candidate pass
-- exact next continuation point: continue visual QA from the post-RC design correction by checking the remaining route screenshots against the retained Wix reference, then resolve final launch-signoff public facts by confirming the canonical YouTube destination and deciding whether the source-observed donation/bank details should remain live as-is, be replaced, or be removed before launch
+- exact next continuation point: publish the Identity token redirect fix to the active Netlify deploy branch, retry the Netlify Identity invite/reset link, then continue visual QA from the post-RC design correction and resolve final launch-signoff public facts
 - open exceptions: final launch signoff remains blocked by unresolved public-data review; `parkausbesserungen` remains a blocked manifest record on truncated retained evidence; Astro check still reports only non-blocking Zod deprecation hints from `src/content/config.ts`
 - prompt rule for the next resume: a short prompt should be sufficient because the stable startup and handoff rules now live in committed docs
 
