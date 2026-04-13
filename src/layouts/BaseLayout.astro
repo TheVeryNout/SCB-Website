@@ -27,18 +27,6 @@ const canonicalUrl = Astro.site ? new URL(currentPath, Astro.site) : undefined;
     {canonicalUrl && <link rel="canonical" href={canonicalUrl.href} />}
   </head>
   <body class="flex min-h-screen flex-col">
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <script is:inline>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", function (user) {
-          if (!user) {
-            window.netlifyIdentity.on("login", function () {
-              window.location.href = "/admin/";
-            });
-          }
-        });
-      }
-    </script>
     <SiteHeader currentPath={currentPath} />
     <main class="flex-1">
       <slot />

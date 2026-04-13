@@ -39,7 +39,7 @@ Audited scope:
 - the Phase 6 closeout audit for homepage/static-page source parity, manifest status normalization, and event-evidence reconciliation
 - the Phase 7 release-candidate pass for build/check/test, phone-width QA, baseline accessibility, forms/downloads/external links, event route behavior, Netlify config, high-confidence redirects, `/admin/`, and public-data signoff blockers
 - the post-release-candidate design correction pass that replaced the generic rounded/pill prototype language with a Wix-reference-aligned visual system using the retained local screenshots and staged Wix assets
-- the first live-deploy CMS Identity handoff issue where Netlify invite/reset links landed on public routes instead of completing the `/admin/` password flow
+- the first live-deploy CMS Identity handoff issue and the resulting switch away from Netlify Identity/Git Gateway to Decap's GitHub backend
 
 ---
 
@@ -277,7 +277,7 @@ Checklist status:
 - [x] event index and the verified `Sunday Funday` occurrence route were checked after the Phase 6 event reconciliation
 - [x] `netlify.toml` now defines the Bun build, `dist` publish directory, baseline headers, canonical-domain redirects, and retained-evidence legacy redirects
 - [x] no blind event-detail wildcard redirect was added
-- [x] `/admin/` is present and `public/admin/config.yml` still uses Netlify Identity/Git Gateway through `backend.name: git-gateway` on `master`, with local proxy config limited to localhost
+- [x] `/admin/` is present and `public/admin/config.yml` now uses Decap's GitHub backend for `TheVeryNout/SCB-Website` on `master`, with local proxy config limited to localhost
 - [x] risky public facts were cross-checked against `public-data-register.md`
 
 Audit notes:
@@ -287,9 +287,10 @@ Audit notes:
 - `netlify.toml` also canonicalizes `http://skateclubbiriciana.de/*`, `http://www.skateclubbiriciana.de/*`, and `https://www.skateclubbiriciana.de/*` to `https://skateclubbiriciana.de/:splat`.
 - The public-data register still marks the canonical YouTube destination as a conflict and donation/bank details as pending. These are launch-signoff blockers if the site is published as final public truth, but they no longer block the technical deploy configuration.
 - `parkausbesserungen` remains blocked only for fuller content recovery; the current route builds and the truncated-evidence limitation is recorded in the migration manifest.
-- During first Netlify setup, Identity invite/reset links were observed landing on public routes or `/admin/` without completing the CMS password flow. The public layout now loads the official Netlify Identity widget globally so invite/reset/confirmation tokens can be processed on the route where Netlify sends them, then redirects to `/admin/` after successful login. `/admin/` still pauses Decap loading when an Identity token is present so the Netlify Identity widget can complete the invite/reset flow first, and it lets the widget's own token router select the invite/recovery screen instead of forcing the generic login modal.
+- During first Netlify setup, Identity invite/reset links repeatedly failed to complete the CMS password flow and left the user in an unverified-email state. Because Netlify now labels both Identity and Git Gateway as deprecated, the deployed CMS backend was switched to Decap's GitHub backend instead of continuing to harden the deprecated email-token path.
+- The public Netlify Identity widget and custom Identity token handling were removed. Deployed CMS authentication now depends on Netlify's GitHub OAuth provider and GitHub repo push access.
 - The content schema now tolerates YAML-parsed Date objects for date/date-time fields and normalizes them back to strings. This protects CMS-saved unquoted ISO dates from breaking Astro content validation.
-- Verification for the Identity token and date-schema hardening passed with `bun test`, `bun run check`, and `bun run build`; `bun run check` still reports only the known Zod deprecation hints.
+- Verification for the CMS backend switch and date-schema hardening passed with `bun test`, `bun run check`, and `bun run build`; `bun run check` still reports only the known Zod deprecation hints.
 
 ---
 
@@ -318,7 +319,7 @@ Audit notes:
 
 - continuation is allowed
 - active implementation phase: none; Phase 7 is complete as a technical release-candidate pass
-- exact next continuation point: publish the Identity token redirect fix to the active Netlify deploy branch, retry the Netlify Identity invite/reset link, then continue visual QA from the post-RC design correction and resolve final launch-signoff public facts
+- exact next continuation point: publish the GitHub-backend CMS switch to the active Netlify deploy branch, configure the site GitHub OAuth provider in Netlify, test `/admin/` login with a GitHub user that has push access to `TheVeryNout/SCB-Website`, then continue visual QA from the post-RC design correction and resolve final launch-signoff public facts
 - open exceptions: final launch signoff remains blocked by unresolved public-data review; `parkausbesserungen` remains a blocked manifest record on truncated retained evidence; Astro check still reports only non-blocking Zod deprecation hints from `src/content/config.ts`
 - prompt rule for the next resume: a short prompt should be sufficient because the stable startup and handoff rules now live in committed docs
 

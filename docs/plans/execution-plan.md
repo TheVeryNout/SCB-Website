@@ -376,7 +376,7 @@ Turn the built site into a deployable, reviewable release candidate.
 - [x] create and verify Netlify config needed for deploy, forms, and redirects
 - [x] add legacy redirects only where mapping confidence is high
 - [x] verify no guessed event-detail redirect is published without evidence
-- [x] verify `/admin/` assumptions for deployed Netlify Identity and Git Gateway
+- [x] verify `/admin/` assumptions for the deployed CMS backend
 - [x] cross-check risky public facts one last time against [public-data-register.md](/home/nout/REPO/SCB-Website/docs/plans/public-data-register.md)
 
 Phase 7 closeout note:

@@ -20,66 +20,6 @@
   </head>
   <body>
     <noscript>Decap CMS requires JavaScript.</noscript>
-    <div id="cms-status" style="padding: 1rem; font-family: sans-serif;">CMS wird geladen...</div>
-
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <script is:inline>
-      const identityTokenPattern =
-        /^#\/?(confirmation_token|invite_token|recovery_token|email_change_token|access_token|error)=/;
-      const hasIdentityToken = identityTokenPattern.test(window.location.hash);
-      const statusNode = document.getElementById("cms-status");
-
-      function loadCms() {
-        if (document.querySelector("script[data-decap-cms]")) {
-          return;
-        }
-
-        if (statusNode) {
-          statusNode.textContent = "CMS wird geladen...";
-        }
-
-        const script = document.createElement("script");
-        script.src = "https://unpkg.com/decap-cms@^3.11.0/dist/decap-cms.js";
-        script.dataset.decapCms = "true";
-        document.body.appendChild(script);
-      }
-
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", function (user) {
-          if (hasIdentityToken && !user) {
-            if (statusNode) {
-              statusNode.textContent = "Bitte schliesse die Anmeldung ab.";
-            }
-            return;
-          }
-
-          if (!user) {
-            window.netlifyIdentity.on("login", function () {
-              window.location.href = "/admin/";
-            });
-          }
-
-          loadCms();
-        });
-
-        window.netlifyIdentity.on("login", function () {
-          window.location.href = "/admin/";
-        });
-
-        window.netlifyIdentity.on("close", function () {
-          if (hasIdentityToken && !window.netlifyIdentity.currentUser()) {
-            if (statusNode) {
-              statusNode.textContent =
-                "Anmeldung abgebrochen. Nutze den Link aus der Netlify-E-Mail erneut.";
-            }
-            return;
-          }
-
-          loadCms();
-        });
-      } else {
-        loadCms();
-      }
-    </script>
+    <script src="https://unpkg.com/decap-cms@^3.11.0/dist/decap-cms.js"></script>
   </body>
 </html>

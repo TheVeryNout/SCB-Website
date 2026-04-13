@@ -264,28 +264,33 @@ Unless the user later asks for a review-heavy editorial process, prefer a straig
 
 Lock launch CMS auth/backend to:
 
-- Netlify Identity + Git Gateway
+- Decap GitHub backend via Netlify OAuth provider
 
 Reason:
 
-- lowest-friction launch path for non-technical editors
+- avoids the deprecated Netlify Identity/Git Gateway invite and email-verification path
 - aligns with Netlify-first deployment
-- avoids requiring every editor to manage direct GitHub repo permissions
+- keeps deployed CMS publishing repo-backed without custom server code
+
+Operational note:
+
+- CMS users must authenticate with GitHub and need push access to `TheVeryNout/SCB-Website`
+- Netlify must have a GitHub OAuth provider configured for the site
 
 ### Local development backend
 
-For local CMS development, use a local Decap proxy backend instead of the hosted Git Gateway.
+For local CMS development, use a local Decap proxy backend instead of hosted GitHub OAuth.
 
 Implementation rule:
 
-- production continues to use Netlify Identity + Git Gateway
+- production uses the Decap GitHub backend
 - localhost development may switch to a Decap local backend proxy for repo-backed editing without Netlify auth
 - the local proxy is a development-only tool and must not be treated as a public or deployed service
 
 Reason:
 
 - allows local `/admin/` editing and save-flow testing
-- keeps the deployed backend/auth model unchanged
+- keeps local implementation work independent from hosted OAuth sessions
 - avoids coupling normal local implementation work to live Netlify services
 
 ### Preview requirements

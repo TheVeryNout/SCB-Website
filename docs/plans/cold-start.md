@@ -79,7 +79,7 @@ These are already decided and should not be reopened unless the user explicitly 
 - `bun`
 - Netlify-first deployment
 - Decap CMS
-- Decap auth/backend via Netlify Identity + Git Gateway
+- Decap deployed auth/backend via the GitHub backend and Netlify OAuth provider
 - Netlify Forms for the launch contact form
 - static-first architecture
 - no SSR for launch

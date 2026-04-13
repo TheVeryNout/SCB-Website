@@ -42,7 +42,7 @@ Locked baseline:
 - `bun`
 - Netlify-first deployment
 - Decap CMS
-- Netlify Identity + Git Gateway for Decap auth/backend
+- GitHub backend via Netlify OAuth for deployed Decap auth/backend
 - Netlify Forms for launch contact handling
 - static-first architecture
 - mobile-first public website
@@ -113,7 +113,7 @@ If a future agent feels the need to repeat stable rule boilerplate in chat, that
 
 The CMS is configured for two environments:
 
-- deployed: Decap uses Netlify Identity + Git Gateway against the `master` branch
+- deployed: Decap uses the GitHub backend against `TheVeryNout/SCB-Website` on the `master` branch
 - local: Decap switches to a local proxy backend at `http://127.0.0.1:8081/api/v1`
 
 Useful commands:
@@ -126,7 +126,7 @@ Local CMS notes:
 
 - open the `/admin/` route on whatever local Astro URL the dev server prints, usually `http://localhost:4321/admin/`
 - the proxy server is for local development only and is intentionally unauthenticated
-- `local_backend` only activates on localhost, so production still uses Git Gateway
+- `local_backend` only activates on localhost, so production still uses GitHub OAuth-backed repo publishing
 - local CMS publishing writes to your local Git repo and working tree; it does not call Netlify
 
 ## Parallel Agent Runtime Pack
