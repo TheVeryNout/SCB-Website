@@ -82,7 +82,7 @@ const [homepage, settings, latestPosts, upcomingEvents] = await Promise.all([
               <h2 class="scb-display text-5xl text-[#414141]">Neuigkeiten</h2>
             </div>
             <LinkButton href="/neuigkeiten/" variant="outline" class="px-4 py-2">
-              Alle Beitraege
+              Alle Beiträge
             </LinkButton>
           </div>
           <div class="mt-6 space-y-5">
@@ -113,7 +113,7 @@ const [homepage, settings, latestPosts, upcomingEvents] = await Promise.all([
 
         <div class="grid gap-5">
           <SurfaceCard>
-            <h2 class="scb-display text-4xl text-[#414141]">Naechste Termine</h2>
+            <h2 class="scb-display text-4xl text-[#414141]">Nächste Termine</h2>
             <p class="mt-2 text-sm font-semibold text-[#414141]">{settings.data.contactEmail}</p>
             <UpcomingEventsList occurrences={upcomingEvents} />
           </SurfaceCard>

@@ -27,7 +27,7 @@ const goals = aboutPage.data.goals ?? [];
   <section class="scb-section py-16 sm:py-20">
     <Container class="space-y-10">
       <div class="grid gap-8 xl:grid-cols-[1.05fr_0.95fr] xl:items-start">
-        <PageIntro eyebrow="Uber uns" title={aboutPage.data.title} intro={aboutPage.data.intro}>
+        <PageIntro eyebrow="Über uns" title={aboutPage.data.title} intro={aboutPage.data.intro}>
           <div class="flex flex-wrap gap-3">
             <LinkButton href={aboutPage.data.statutesPdf!} target="_blank" rel="noreferrer">
               Satzung als PDF
@@ -54,7 +54,7 @@ const goals = aboutPage.data.goals ?? [];
         <SurfaceCard as="section" tone="warm" aria-labelledby="about-goals-heading">
           <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Schwerpunkt</p>
           <h2 id="about-goals-heading" class="mt-2 text-2xl font-semibold text-slate-950">
-            Wofuer der Verein arbeitet
+            Wofür der Verein arbeitet
           </h2>
           <ul class="mt-6 grid gap-3">
             {

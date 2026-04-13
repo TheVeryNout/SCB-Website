@@ -9,14 +9,14 @@ interface Props {
 const { occurrence } = Astro.props;
 
 const primaryHref = occurrence.registrationUrl ?? occurrence.ctaUrl;
-const primaryLabel = occurrence.registrationUrl ? "Anmeldung oeffnen" : occurrence.ctaLabel;
+const primaryLabel = occurrence.registrationUrl ? "Anmeldung öffnen" : occurrence.ctaLabel;
 ---
 
 {
   primaryHref || occurrence.instagramUrl ? (
     <div class="space-y-4">
       <div>
-        <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Weiterfuehrende Links</p>
+        <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Weiterführende Links</p>
         <h2 class="mt-2 text-2xl font-semibold text-slate-950">Mehr zum Termin</h2>
       </div>
       <div class="flex flex-wrap gap-3">
@@ -30,7 +30,7 @@ const primaryLabel = occurrence.registrationUrl ? "Anmeldung oeffnen" : occurren
         {
           occurrence.instagramUrl ? (
             <LinkButton href={occurrence.instagramUrl} target="_blank" rel="noreferrer" variant="outline">
-              Instagram pruefen
+              Instagram prüfen
             </LinkButton>
           ) : null
         }

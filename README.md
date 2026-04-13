@@ -1,115 +1,95 @@
-# SCB Website Docs
+# SCB Website
 
-This repo is the documentation, implementation, and operational reference base for the public Skate Club Biriciana e.V. website rebuilt from Wix to Astro SSG.
+Public Astro website for Skate Club Biriciana e.V.
 
-## Read Order
+The rebuild from Wix is complete. The site is deployed, and the Decap CMS is running. Treat this repository as an operational website codebase by default, not as an active phase-gated implementation project.
 
-For a cold start, read in this order:
+## Start Here
 
-1. [cold-start.md](/home/nout/REPO/SCB-Website/docs/plans/cold-start.md)
-2. [website-foundation.md](/home/nout/REPO/SCB-Website/docs/plans/website-foundation.md)
-3. [wix-audit.md](/home/nout/REPO/SCB-Website/docs/plans/wix-audit.md)
-4. [routes-and-pages.md](/home/nout/REPO/SCB-Website/docs/plans/routes-and-pages.md)
-5. [calendar.md](/home/nout/REPO/SCB-Website/docs/plans/calendar.md)
-6. [content-cms.md](/home/nout/REPO/SCB-Website/docs/plans/content-cms.md)
-7. [public-data-register.md](/home/nout/REPO/SCB-Website/docs/plans/public-data-register.md)
-8. [implementation.md](/home/nout/REPO/SCB-Website/docs/plans/implementation.md)
-9. [migration.md](/home/nout/REPO/SCB-Website/docs/plans/migration.md)
-10. [execution-plan.md](/home/nout/REPO/SCB-Website/docs/plans/execution-plan.md)
-11. [status-checklist.md](/home/nout/REPO/SCB-Website/docs/plans/status-checklist.md)
-12. [parallel-agent-environment.md](/home/nout/REPO/SCB-Website/docs/plans/parallel-agent-environment.md)
+For normal maintenance, content/CMS support, QA fixes, or small follow-up work, read:
 
-## Doc Roles
+1. [docs/operational-status.md](/home/nout/REPO/SCB-Website/docs/operational-status.md)
+2. the directly relevant source files
 
-- [cold-start.md](/home/nout/REPO/SCB-Website/docs/plans/cold-start.md): cold-start index, priority framing, locked decisions, and implementation sequence
-- [website-foundation.md](/home/nout/REPO/SCB-Website/docs/plans/website-foundation.md): top-level product intent, constraints, priorities, and locked decisions
-- [wix-audit.md](/home/nout/REPO/SCB-Website/docs/plans/wix-audit.md): source-site audit, route inventory, source quirks, assets, and historical planning notes
-- [routes-and-pages.md](/home/nout/REPO/SCB-Website/docs/plans/routes-and-pages.md): final public routes, page scope, and preserve/simplify/drop decisions
-- [calendar.md](/home/nout/REPO/SCB-Website/docs/plans/calendar.md): canonical event/calendar behavior and schema semantics
-- [content-cms.md](/home/nout/REPO/SCB-Website/docs/plans/content-cms.md): content model and Decap CMS ownership rules
-- [public-data-register.md](/home/nout/REPO/SCB-Website/docs/plans/public-data-register.md): risky public facts and confirmation status
-- [implementation.md](/home/nout/REPO/SCB-Website/docs/plans/implementation.md): Astro/Netlify/Decap technical architecture
-- [migration.md](/home/nout/REPO/SCB-Website/docs/plans/migration.md): Wix-to-Astro migration workflow, manifest, and QA rules
-- [execution-plan.md](/home/nout/REPO/SCB-Website/docs/plans/execution-plan.md): phase-gated delivery plan, checklist discipline, and multi-conversation handoff rules
-- [status-checklist.md](/home/nout/REPO/SCB-Website/docs/plans/status-checklist.md): audited checklist state, open exceptions, and required next-resume starting point
-- [parallel-agent-environment.md](/home/nout/REPO/SCB-Website/docs/plans/parallel-agent-environment.md): multi-agent orchestration, concurrency safety, observability, and security guardrails
+Do not read the old phase stack at session start unless the task actually needs it.
 
-## Current Direction
+Use the older planning docs only as reference:
 
-Locked baseline:
+- [docs/plans/public-data-register.md](/home/nout/REPO/SCB-Website/docs/plans/public-data-register.md): risky public facts such as donation/bank details or canonical social links
+- [docs/plans/content-cms.md](/home/nout/REPO/SCB-Website/docs/plans/content-cms.md): CMS/content ownership and schema changes
+- [docs/plans/calendar.md](/home/nout/REPO/SCB-Website/docs/plans/calendar.md): event recurrence and calendar behavior
+- [docs/plans/implementation.md](/home/nout/REPO/SCB-Website/docs/plans/implementation.md): architecture, hosting, build, and deployment details
+- [docs/plans/migration.md](/home/nout/REPO/SCB-Website/docs/plans/migration.md) and [migration/manifest.json](/home/nout/REPO/SCB-Website/migration/manifest.json): late migration recovery or source-parity questions
+- [docs/plans/wix-reference/README.md](/home/nout/REPO/SCB-Website/docs/plans/wix-reference/README.md): local Wix evidence pack metadata
+- [docs/plans/execution-plan.md](/home/nout/REPO/SCB-Website/docs/plans/execution-plan.md) and [docs/plans/status-checklist.md](/home/nout/REPO/SCB-Website/docs/plans/status-checklist.md): historical implementation phase ledgers only
+
+## Current Baseline
 
 - Astro SSG
-- `bun`
-- Netlify-first deployment
-- Decap CMS
-- GitHub backend via Netlify OAuth for deployed Decap auth/backend
-- Netlify Forms for launch contact handling
-- static-first architecture
-- mobile-first public website
-- no launch dependency on `SCB-Dash`
-- no pricing subsystem
+- Bun
+- Netlify deployment
+- Decap CMS with GitHub backend via Netlify OAuth
+- Netlify Forms contact flow
+- Static-first public site
+- No launch dependency on `SCB-Dash`
+- No pricing subsystem
 
-## Current Status
+Implemented public routes:
 
-All active planning docs now live under `docs/plans/`.
+- `/`
+- `/neuigkeiten/`
+- `/neuigkeiten/[slug]/`
+- `/ueber-uns/`
+- `/pics-n-vids/`
+- `/veranstaltungen/`
+- `/veranstaltungen/[slug]/[date]/`
+- `/mitgliedschaft/`
+- `/kontakt/`
+- `/kontakt/danke/`
+- `/impressum/`
+- `/datenschutz/`
+- `/admin/`
 
-The documentation stack is split by responsibility so later implementation work does not need to infer architecture or scope from the source audit.
+Current operational notes:
 
-Use [cold-start.md](/home/nout/REPO/SCB-Website/docs/plans/cold-start.md) first before diving into the deeper specs.
+- public-data review remains open in `docs/plans/public-data-register.md`
+- `parkausbesserungen` remains limited by truncated retained evidence in `migration/manifest.json`
+- `bun run check` currently passes with only known non-blocking Zod deprecation hints
+- route paths and slugs intentionally stay ASCII-safe, for example `/ueber-uns/`, even when visible German copy uses `Über uns`
 
-Foundation scaffolding is now in place in this repo:
+## Commands
 
-- Astro project bootstrap
-- Tailwind 4 baseline
-- Bun-managed package/scripts setup
-- Decap CMS admin shell at `/admin/`
-- Playwright CLI available for live Wix reference capture
-- lightweight Wix reference metadata under `docs/plans/wix-reference/`, with heavy local captures kept outside normal git tracking
-- automated Wix asset downloader via `bun run capture:wix-assets`
-- raw downloaded Wix media archived under `docs/plans/wix-reference/asset-source-archive/`
-- Astro-facing staged Wix asset tree under `src/assets/images/wix-staging/` via `bun run stage:wix-assets`
+Install dependencies:
 
-Content collections are real, Phase 6 migration is signoff-clean, Phase 7 technical release-candidate hardening has been completed, and the site is now deployed with the CMS running according to the user-reported operational state on `2026-04-13`:
+```bash
+bun install
+```
 
-- canonical `migration/manifest.json` now exists
-- retained news feed inventory has been migrated into the posts collection
-- local media gallery entries now exist alongside external video references
-- homepage and retained static-page copy have been reconciled against the local evidence pack
-- the retained event evidence has been reconciled into the canonical Astro event content without over-trusting the Wix slug or implying unsupported recurrence
-- `netlify.toml` now defines the Bun build, `dist` publish directory, baseline headers, canonical-domain redirects, and high-confidence legacy Wix route redirects
-- Phase 7 QA passed for build/check/test, phone-width screenshots, contact form shape, downloads, external links, `/admin/`, and the verified event occurrence route
-- A post-release-candidate design correction pass replaced the generic cream-gradient, pill-navigation, and rounded-card prototype language with the retained Wix visual direction: charcoal/asphalt texture, muted yellow sections, squared navigation/buttons/panels, the SCB crest, and the retained homepage hero image from `src/assets/images/wix-staging/`
-- public-data review items remain recorded in `public-data-register.md`; they are post-launch content-governance items unless the user explicitly reopens launch signoff
+Run the site locally:
 
-The docs are now split into:
+```bash
+bun run dev
+```
 
-- normative specs that define what must be built
-- one execution plan that defines the order, gates, and checklists for building it cleanly across multiple conversations
-- one audited status checklist that records what has actually been checked and what is still open
+Run the local CMS proxy:
 
-Use [execution-plan.md](/home/nout/REPO/SCB-Website/docs/plans/execution-plan.md) as the controlling work plan once the core specs have been read.
+```bash
+bun run cms:proxy
+```
 
-Use [status-checklist.md](/home/nout/REPO/SCB-Website/docs/plans/status-checklist.md) immediately after that so the next conversation starts from recorded state instead of inference.
+Run Astro and the CMS proxy together:
 
-Current phase status from the audited ledger:
+```bash
+bun run dev:cms
+```
 
-- Phases 1 to 7 are cleared
-- active implementation phase: none
-- current default posture: operational maintenance, content/CMS support, QA fixes, and targeted follow-up work
-- unresolved public-data entries are review items, not a reason to resume as though a build phase is still in progress
+Verify changes:
 
-## Minimal Resume Prompt
-
-This repo is supposed to support low-friction continuation.
-
-Once the planning stack and `AGENTS.md` are in place, a new conversation should normally only need a short prompt such as:
-
-- `Resume from the current committed state and continue the next slice recorded in docs/plans/status-checklist.md`
-- `Resume from the current committed state and handle the next operational follow-up recorded in docs/plans/status-checklist.md`
-
-Do not rely on the user to keep re-pasting the same startup, evidence, asset, or handoff rules if those rules are already documented in the repo.
-
-If a future agent feels the need to repeat stable rule boilerplate in chat, that is a sign the missing rule should be added to the committed docs instead.
+```bash
+bun test
+bun run check
+bun run build
+```
 
 ## Local CMS Workflow
 
@@ -118,25 +98,15 @@ The CMS is configured for two environments:
 - deployed: Decap uses the GitHub backend against `TheVeryNout/SCB-Website` on the `master` branch
 - local: Decap switches to a local proxy backend at `http://127.0.0.1:8081/api/v1`
 
-Useful commands:
+Local notes:
 
-- `bun run dev`: Astro dev server only
-- `bun run cms:proxy`: local Decap proxy server only
-- `bun run dev:cms`: Astro dev server and Decap proxy together
-
-Local CMS notes:
-
-- open the `/admin/` route on whatever local Astro URL the dev server prints, usually `http://localhost:4321/admin/`
+- open `/admin/` on the local Astro URL, usually `http://localhost:4321/admin/`
 - the proxy server is for local development only and is intentionally unauthenticated
 - `local_backend` only activates on localhost, so production still uses GitHub OAuth-backed repo publishing
-- local CMS publishing writes to your local Git repo and working tree; it does not call Netlify
+- local CMS publishing writes to the local Git working tree; it does not call Netlify
 
-## Parallel Agent Runtime Pack
+## Legacy Reference
 
-A concrete multi-agent runtime pack now exists at `.codex/agents/` with:
+The old phase docs are retained because they still explain how the site was built, what evidence was used, and which source contradictions were intentionally preserved. They should not drive normal startup anymore.
 
-- orchestrator and specialized worker agent profiles
-- shard/task board template for parallel runs
-- explicit merge checkpoints and dependency handling
-
-Use this folder when delegating work in parallel instead of running a single monolithic agent turn.
+Use [docs/operational-status.md](/home/nout/REPO/SCB-Website/docs/operational-status.md) as the running file for ongoing work.

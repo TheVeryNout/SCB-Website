@@ -16,7 +16,7 @@ interface Props {
 
 const {
   monthGroups,
-  emptyMessage = "Sobald weitere Termine veroeffentlicht sind, erscheint hier der Monatsueberblick.",
+  emptyMessage = "Sobald weitere Termine veröffentlicht sind, erscheint hier der Monatsüberblick.",
 } = Astro.props;
 ---
 
@@ -48,6 +48,6 @@ const {
       }
     </div>
   ) : (
-    <EventEmptyState title="Monatsueberblick folgt" message={emptyMessage} />
+    <EventEmptyState title="Monatsüberblick folgt" message={emptyMessage} />
   )
 }

@@ -4,7 +4,9 @@ This repository has already suffered from phase drift, silent assumptions, and w
 
 This file exists to stop that from happening again.
 
-Follow it together with the planning docs. If this file conflicts with the domain specs, the domain specs win on product behavior and content semantics. This file wins on agent workflow, tracking discipline, and handoff behavior.
+The site is now deployed and the CMS is running. Treat implementation phases as historical unless a task explicitly reopens migration, evidence, architecture, or phase-state work.
+
+If this file conflicts with domain specs, the domain specs win on product behavior and content semantics. This file wins on agent workflow, tracking discipline, and handoff behavior.
 
 ## Scope
 
@@ -14,7 +16,8 @@ It is especially important for:
 
 - fresh conversations
 - resumed work after a previous session
-- any work that touches phases, source evidence, migration, content, or assets
+- operational maintenance and content/CMS support
+- any work that touches source evidence, migration, public facts, content, or assets
 
 ---
 
@@ -22,18 +25,19 @@ It is especially important for:
 
 Use these files for these responsibilities:
 
+- `docs/operational-status.md`
+  - current lightweight running status
+  - open operational follow-ups
+  - normal next-continuation point
 - `docs/plans/execution-plan.md`
-  - controlling execution contract
-  - phase order
-  - phase checklists
-  - exit gates
-  - conversation handoff checklist
+  - historical implementation phase ledger
+  - old phase order, checklists, and exit gates
+  - use only if a task intentionally reopens or audits phase state
 - `docs/plans/status-checklist.md`
-  - audited current state
-  - open exceptions
-  - process drift notes
-  - next-resume warnings
-- phase/domain specs
+  - historical audited phase state
+  - historical exceptions and process drift notes
+  - use only when phase history matters
+- domain/reference specs
   - `docs/plans/content-cms.md`
   - `docs/plans/implementation.md`
   - `docs/plans/routes-and-pages.md`
@@ -53,27 +57,28 @@ Do not invent alternative control documents when these already exist.
 
 ## Session Start Protocol
 
-Before substantial work, do this in order:
+For normal deployed-site maintenance, do this in order:
 
-1. read `README.md` if cold-start context is needed
-2. read `docs/plans/cold-start.md`
-3. read `docs/plans/execution-plan.md`
-   - `Current Verified Repo Snapshot`
-   - `Progress Snapshot`
-   - the checklist for the active phase
-   - `Conversation Handoff Checklist`
-4. read `docs/plans/status-checklist.md`
-5. load only the phase-specific docs required for the current task
-6. if source evidence is needed, read local reference metadata before reopening live source
+1. read `README.md` if repo orientation is needed
+2. read `docs/operational-status.md`
+3. inspect the directly relevant source files
+4. load only the domain/reference docs required for the task
 
-At the start of the session, explicitly determine and state:
+Do not read `docs/plans/cold-start.md`, `docs/plans/execution-plan.md`, or `docs/plans/status-checklist.md` by default during operational work. Those files are implementation-history references now.
 
-- active phase
-- whether all earlier phases are actually cleared
-- whether any earlier-phase exception remains open
-- whether the requested work is blocked by a phase gate
+Open the historical phase docs only when:
 
-If that is not clear from committed files, do not silently assume completion.
+- a task explicitly asks about phase state or prior implementation history
+- a task touches migration/source evidence or route/source parity
+- a task changes public-data confirmation status
+- a task changes CMS/content schema, event semantics, redirects, deployment architecture, or asset-curation policy
+- a contradiction appears that cannot be resolved from `README.md`, `docs/operational-status.md`, and the directly relevant source files
+
+At the start of substantial operational work, state only:
+
+- that the site is in operational maintenance mode
+- whether any known operational blocker from `docs/operational-status.md` affects the task
+- which specific docs, if any, had to be opened beyond the normal operational start
 
 ### Prompt Minimization Rule
 
@@ -81,30 +86,31 @@ Stable continuation workflow belongs in committed repo docs, not in repeated use
 
 Use this rule:
 
-- if a rule is repo-stable and likely to matter across more than one conversation, it should live in `AGENTS.md`, `execution-plan.md`, `status-checklist.md`, or another appropriate committed doc
+- if a rule is repo-stable and likely to matter across more than one conversation, it should live in `AGENTS.md`, `docs/operational-status.md`, or another appropriate committed doc
 - do not require the user to keep pasting the same startup, evidence, asset, or handoff rules once the repo docs already encode them
 - future continuation prompts should be short and task-specific by default
 - a continuation prompt should normally only need:
   - resume from current committed state
-  - the specific task or route slice to continue
+  - the specific operational task to continue
   - any intentional override to the normal repo rules
 - if an agent finds itself needing to restate a stable rule list in chat more than once, that is a documentation failure and the rule should be promoted into committed docs during the same session
 
 Minimal prompt target:
 
-- a new conversation should usually be able to start from a short prompt such as `Resume from the current committed state and handle the next operational follow-up recorded in status-checklist.md`
+- a new conversation should usually be able to start from a short prompt such as `Resume from the current committed state and handle the next operational follow-up recorded in docs/operational-status.md`
 
-The purpose of the planning stack is to reduce prompt friction, not move that burden onto the user.
+The purpose of the docs is to reduce prompt friction, not move that burden onto the user.
 
 ---
 
-## Non-Negotiable Phase Rules
+## Historical Phase Rules
 
-1. Do not silently skip an unchecked earlier phase.
-2. Do not treat repo artifacts as proof that a phase is complete if `execution-plan.md` and `status-checklist.md` do not say so.
-3. If a user instruction appears to jump ahead of the phase gates, flag the contradiction explicitly before proceeding.
-4. If the user intentionally overrides the normal sequence, record that override in a committed tracking file during the same session.
-5. Do not mark a phase complete only because some implementation exists. Use the checklist and exit gate.
+These apply only when a task explicitly reopens implementation history or phase state:
+
+1. Do not silently reinterpret historical phase completion.
+2. Do not treat repo artifacts as proof that a historical phase changed if the historical ledgers do not say so.
+3. If a user intentionally reopens or overrides historical phase state, record that override in the relevant committed tracking file during the same session.
+4. Do not mark a reopened phase complete only because implementation exists. Use the historical checklist and exit gate.
 
 ---
 
@@ -121,11 +127,12 @@ then do not silently resolve it unless the answer is obvious and low risk.
 
 Use this rule:
 
-- sequencing and phase-state contradictions must be surfaced
+- operational-state contradictions must be surfaced
+- historical phase-state contradictions must be surfaced only when phase history is actually in scope
 - product semantics contradictions must be resolved from the docs if possible
 - if a contradiction cannot be resolved locally without risk, ask one concise question
 
-Never bury a phase-jump assumption in implementation or in a later summary.
+Never bury a state assumption in implementation or in a later summary.
 
 ---
 
@@ -209,11 +216,11 @@ They are related, but they are not the same thing.
 
 When making implementation decisions:
 
-1. prefer the planning docs over improvisation
+1. prefer existing source patterns and the relevant maintained docs over improvisation
 2. keep shared public facts in content/settings when the docs say they belong there
 3. keep the repo buildable unless an explicit blocker makes that impossible
 4. validate substantial changes with the relevant checks
-5. do not call partial implementation “done” if the route layer, migration layer, or QA gate is still open
+5. do not call partial implementation “done” if the relevant route, content, migration, or QA concern is still open
 
 Do not use current implementation shape as retroactive proof that the plan must have intended it.
 
@@ -225,15 +232,15 @@ After every substantial session, update committed state, not just chat.
 
 Required:
 
-1. update `docs/plans/status-checklist.md`
+1. update `docs/operational-status.md`
    - what was audited
    - what changed
    - open exceptions
    - whether continuation is blocked or allowed
 2. update `docs/plans/execution-plan.md` if:
-   - checklist state changed
+   - historical phase checklist state changed
    - execution wording needs clarification
-   - a handoff requirement needs sharpening
+   - a historical handoff requirement needs sharpening
 3. update the relevant domain spec if implementation clarified a real product rule
 4. update migration tracking if migration artifacts were touched
 5. leave verification results in committed docs when they materially affect future work
@@ -246,8 +253,7 @@ Do not leave critical process state only in a final chat message.
 
 At the end of a substantial session, the final answer must include:
 
-- active phase
-- whether earlier phases are cleared, partially cleared, or still open
+- current operational mode
 - what changed
 - what was verified
 - any blocker or contradiction discovered
@@ -274,12 +280,12 @@ Do not inflate them into policy.
 
 ## Default Operating Posture
 
-The user should not have to babysit phase tracking, checklist state, or handoff integrity.
+The user should not have to babysit operational tracking, checklist state, or handoff integrity.
 
 Your job is to:
 
-- read the controlling docs
-- detect phase drift early
+- read the lightweight operational docs first
+- keep historical phase docs out of the normal startup path
 - record the real state in committed files
 - keep scope and evidence boundaries clear
 - avoid making the user re-audit your assumptions in a later conversation

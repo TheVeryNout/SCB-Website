@@ -4,7 +4,9 @@
 
 This document is the canonical delivery plan and historical phase ledger for the public `SCB` Astro website.
 
-Use it to decide:
+Use it only when historical phase state or old implementation evidence is directly relevant. Normal ongoing work starts from [operational-status.md](/home/nout/REPO/SCB-Website/docs/operational-status.md).
+
+Use this historical ledger to decide:
 
 - what to do first
 - what must be finished before the next phase starts
@@ -20,23 +22,19 @@ Operational state note:
 
 ---
 
-## Required Inputs
+## Historical Use
 
-Do not use this plan in isolation.
+Do not use this plan as the default startup path for operational maintenance.
 
-Load these docs first:
+For normal maintenance, content/CMS support, QA fixes, and small follow-up work, read [operational-status.md](/home/nout/REPO/SCB-Website/docs/operational-status.md) and the relevant source files instead.
 
-1. [cold-start.md](/home/nout/REPO/SCB-Website/docs/plans/cold-start.md)
-2. [website-foundation.md](/home/nout/REPO/SCB-Website/docs/plans/website-foundation.md)
-3. [wix-audit.md](/home/nout/REPO/SCB-Website/docs/plans/wix-audit.md)
-4. [routes-and-pages.md](/home/nout/REPO/SCB-Website/docs/plans/routes-and-pages.md)
-5. [calendar.md](/home/nout/REPO/SCB-Website/docs/plans/calendar.md)
-6. [content-cms.md](/home/nout/REPO/SCB-Website/docs/plans/content-cms.md)
-7. [public-data-register.md](/home/nout/REPO/SCB-Website/docs/plans/public-data-register.md)
-8. [implementation.md](/home/nout/REPO/SCB-Website/docs/plans/implementation.md)
-9. [migration.md](/home/nout/REPO/SCB-Website/docs/plans/migration.md)
+If a task intentionally reopens historical phase state, migration/source evidence, or prior QA signoff, then load only the relevant historical docs:
 
-Then use this file as the active work controller.
+- [status-checklist.md](/home/nout/REPO/SCB-Website/docs/plans/status-checklist.md) for historical audited state
+- [public-data-register.md](/home/nout/REPO/SCB-Website/docs/plans/public-data-register.md) for risky public facts
+- [migration.md](/home/nout/REPO/SCB-Website/docs/plans/migration.md) and `migration/manifest.json` for migration/source-parity work
+- [wix-reference/README.md](/home/nout/REPO/SCB-Website/docs/plans/wix-reference/README.md) and `wix-reference/manifest.json` only when local Wix evidence is needed
+- [content-cms.md](/home/nout/REPO/SCB-Website/docs/plans/content-cms.md), [calendar.md](/home/nout/REPO/SCB-Website/docs/plans/calendar.md), [routes-and-pages.md](/home/nout/REPO/SCB-Website/docs/plans/routes-and-pages.md), or [implementation.md](/home/nout/REPO/SCB-Website/docs/plans/implementation.md) only when their domain is in scope
 
 ---
 
@@ -70,13 +68,13 @@ Use this snapshot to avoid re-auditing the bootstrap from scratch in a later con
 
 ---
 
-## Phase-Specific Reading Mode
+## Historical Phase-Specific Reading Mode
 
-For a truly fresh conversation, do not keep all long docs equally active once the baseline is understood.
+This section is retained for historical phase work only. Do not use it for normal deployed-site maintenance.
 
-Recommended loading pattern:
+If a historical phase is explicitly reopened, recommended loading pattern:
 
-- always load [cold-start.md](/home/nout/REPO/SCB-Website/docs/plans/cold-start.md) and this file first
+- load this file and [status-checklist.md](/home/nout/REPO/SCB-Website/docs/plans/status-checklist.md)
 - then load the docs for the active phase most deeply
 - refer back to the rest only when a decision crosses domains
 
@@ -420,7 +418,9 @@ When in doubt, serialize the work instead of creating merge churn.
 
 ## Conversation Handoff Checklist
 
-Update this state after every substantial work session:
+This is now a historical phase-work checklist. For normal deployed-site maintenance, update [operational-status.md](/home/nout/REPO/SCB-Website/docs/operational-status.md) instead.
+
+When historical phase work is explicitly in scope, update this state after every substantial work session:
 
 - [ ] update [status-checklist.md](/home/nout/REPO/SCB-Website/docs/plans/status-checklist.md) with the audited current state and any exceptions
 - [ ] mark completed phase checklist items in this file
@@ -443,8 +443,8 @@ Expected pattern:
 
 Good prompt shape:
 
-- `Resume from the current committed state and handle the next operational follow-up recorded in status-checklist.md`
-- `Resume from the current committed state and handle the next operational follow-up recorded in status-checklist.md`
+- `Resume from the current committed state and handle the next operational follow-up recorded in docs/operational-status.md`
+- `Resume from the current committed state and fix the specific issue I describe`
 
 Bad prompt shape:
 

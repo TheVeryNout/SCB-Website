@@ -74,7 +74,7 @@ const detailFacts = [
   occurrence.equipmentInfo ? { label: "Mitbringen", value: occurrence.equipmentInfo } : undefined,
   occurrence.lastVerifiedAt
     ? {
-        label: "Zuletzt geprueft",
+        label: "Zuletzt geprüft",
         value: formatGermanDate(occurrence.lastVerifiedAt),
       }
     : undefined,
@@ -88,7 +88,7 @@ const detailFacts = [
   <section class="scb-section py-16 sm:py-20">
     <Container class="space-y-8">
       <LinkButton href="/veranstaltungen/" variant="outline">
-        Zurueck zur Terminuebersicht
+        Zurück zur Terminübersicht
       </LinkButton>
 
       <div class="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
@@ -185,11 +185,11 @@ const detailFacts = [
               <div>
                 <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Weitere Termine</p>
                 <h2 id="related-events-heading" class="mt-2 text-2xl font-semibold text-slate-950">
-                  Naechste Termine dieser Reihe
+                  Nächste Termine dieser Reihe
                 </h2>
               </div>
               <p class="max-w-xl text-sm leading-6 text-slate-600">
-                Wiederkehrende Serien behalten fuer jede Vorkommnis eine eigene Detailseite mit Datum im Pfad.
+                Wiederkehrende Serien behalten für jede Vorkommnis eine eigene Detailseite mit Datum im Pfad.
               </p>
             </div>
             <UpcomingEventsList occurrences={relatedOccurrences} showSummary={false} compactCards />

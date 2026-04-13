@@ -1,20 +1,20 @@
 ---
 title: "Impressum"
 ---
-<p>Dieses Impressum gilt fuer alle Angebote unter der Domain <a href="http://www.skateclubbiriciana.de">www.skateclubbiriciana.de</a> inklusive aller Subdomains (Unterseiten).</p>
+<p>Dieses Impressum gilt für alle Angebote unter der Domain <a href="http://www.skateclubbiriciana.de">www.skateclubbiriciana.de</a> inklusive aller Subdomains (Unterseiten).</p>
 
 <p>Soziale Medien</p>
 
-<p>Dieses Impressum gilt auch fuer unsere Auftritte in den folgenden sozialen Medien:<br>
+<p>Dieses Impressum gilt auch für unsere Auftritte in den folgenden sozialen Medien:<br>
 <br>
 Instagram: https://www.instagram.com/skateclub_biriciana/<br>
 YouTube: https://www.youtube.com/@SkateClubBiriciana</p>
 
-<p>Angaben gemaess &sect; 5 TMG</p>
+<p>Angaben gemäß &sect; 5 TMG</p>
 
 <p>Skate Club Biriciana e.V.<br>
-Noerdlinger Strasse 1<br>
-91781 Weissenburg<br>
+Nördlinger Straße 1<br>
+91781 Weißenburg<br>
 Telefon: 01708303717<br>
 E-Mail: scbiriciana@gmail.com</p>
 
@@ -39,8 +39,8 @@ Registernummer: 201141</p>
 Andreas Schmidt, 2. Vorstand</p>
 
 <p><br>
-Zustaendige Aufsichtsbehoerde: Bayern</p>
+Zuständige Aufsichtsbehörde: Bayern</p>
 
-<p>Gueltigkeit</p>
+<p>Gültigkeit</p>
 
 <p>Dieses Impressum gilt ab dem 28. August 2024.</p>

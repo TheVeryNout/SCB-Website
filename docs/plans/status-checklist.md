@@ -2,11 +2,13 @@
 
 ## Purpose
 
-This file is the audited state ledger for the website rebuild.
+This file is the historical audited state ledger for the website rebuild.
 
-Use it together with [execution-plan.md](/home/nout/REPO/SCB-Website/docs/plans/execution-plan.md):
+The site is now deployed and the CMS is running, so normal ongoing work should start from [operational-status.md](/home/nout/REPO/SCB-Website/docs/operational-status.md), not from this phase ledger.
 
-- `execution-plan.md` is the normative phase controller
+Use this file together with [execution-plan.md](/home/nout/REPO/SCB-Website/docs/plans/execution-plan.md) only when historical phase state, migration signoff, or prior QA evidence is directly relevant:
+
+- `execution-plan.md` is the historical phase controller
 - this file records what was actually checked, what is still open, and what must block the next phase
 
 No phase may be treated as complete unless:
@@ -41,6 +43,7 @@ Audited scope:
 - the post-release-candidate design correction pass that replaced the generic rounded/pill prototype language with a Wix-reference-aligned visual system using the retained local screenshots and staged Wix assets
 - the first live-deploy CMS Identity handoff issue and the resulting switch away from Netlify Identity/Git Gateway to Decap's GitHub backend
 - the `2026-04-13` user-reported operational state that the current deployed site is running well and the CMS is running
+- the `2026-04-13` operational German-copy cleanup that replaced public-facing ASCII transliterations such as `fuer`, `ueber`, `oeffentlich`, and `Weissenburg` with proper German characters while preserving machine-facing route paths, slugs, source URLs, and external query URLs
 
 ---
 
@@ -303,7 +306,7 @@ Audit notes:
 1. The control-state drift across Phases 1 to 4 has now been normalized in the committed tracking docs. Future work must continue from the updated progress snapshot with Phase 7 technically complete, instead of re-inferring phase status from repo artifacts.
 2. Wix event slug dates remain source evidence only. They are not route truth, redirect truth, or migration truth without visible-content verification.
 3. `src/assets/images/wix-staging/` is a large tracked staging workspace at about `43M`, but current code references are not a valid basis for pruning it yet. Some staged assets may still be useful for post-launch content support or late asset recovery. Any cleanup there must wait for an explicit asset-curation decision.
-4. Stable resume rules are now explicitly owned by `AGENTS.md`, `README.md`, and the execution-plan handoff section. Future continuation prompts should be short and task-specific unless they intentionally override the repo-owned workflow.
+4. Stable resume rules are now explicitly owned by `AGENTS.md`, `README.md`, and `docs/operational-status.md`. Future continuation prompts should be short and task-specific unless they intentionally override the repo-owned workflow.
 5. Playwright mobile presets currently default to WebKit, but the local verification environment only has Chromium installed. For phone-width QA in this repo state, use Playwright with explicit Chromium viewport sizing unless WebKit is intentionally installed again.
 6. The `datenschutz` content no longer needs to be treated as a missing-route blocker. The retained local HTML/PDF evidence was sufficient to populate the canonical page entry without reopening Wix.
 7. Phase 5 no longer has a route backlog. Future work should not reopen route implementation unless migration evidence or QA reveals a concrete bug.
@@ -314,23 +317,28 @@ Audit notes:
 12. The retained contact source provides only minimal route copy, so future copy polish on `/kontakt/` should be treated as a product-writing choice or new evidence-backed change, not retroactively claimed as existing source text.
 13. `netlify.toml` is now the deployment and redirect source of truth for the deployed site. Do not add wildcard event redirects unless future evidence verifies the target occurrence dates.
 14. Public-data conflicts still need user review, especially canonical YouTube and current donation/bank details if fundraising content remains live. This is a content-governance follow-up, not an active phase gate.
+15. The German-copy cleanup was handled as operational maintenance after deployment. It updated user-facing content, route/component literals, and Decap editor labels, but intentionally kept canonical route slugs such as `/ueber-uns/`, post slugs, file paths, source URLs, and Google Maps query URLs ASCII-safe.
+   Verification passed with `bun test`, `bun run check`, and `bun run build`; `bun run check` still reports only the known non-blocking Zod deprecation hints from `src/content/config.ts`.
 
 ---
 
-## Continuation Status
+## Historical Continuation Status
 
 - continuation is allowed
 - active implementation phase: none; Phases 1 to 7 are cleared
 - operational state: by user report on `2026-04-13`, the current deployed site is running well and the CMS is running
-- exact next continuation point: handle the next explicitly requested operational follow-up, CMS/content support task, QA correction, or new feature from the current deployed baseline
+- exact next continuation point for normal work: use [operational-status.md](/home/nout/REPO/SCB-Website/docs/operational-status.md)
+- exact next continuation point for historical phase work: review the deployed German-copy cleanup after release, or handle the next explicitly requested operational follow-up, CMS/content support task, QA correction, or new feature from the current deployed baseline
 - open exceptions: unresolved public-data review remains in `public-data-register.md`; `parkausbesserungen` remains a blocked manifest record on truncated retained evidence; Astro check still reports only non-blocking Zod deprecation hints from `src/content/config.ts`
-- prompt rule for the next resume: a short prompt should be sufficient because the stable startup and handoff rules now live in committed docs
+- prompt rule for the next resume: a short prompt should be sufficient because the stable startup and handoff rules now live in committed docs; normal startup should not reread the historical phase stack
 
 ---
 
-## Next Conversation Start Rule
+## Historical Phase Start Rule
 
-Start with:
+Use this only when a task explicitly reopens or audits historical phase state. Normal operational work starts from [operational-status.md](/home/nout/REPO/SCB-Website/docs/operational-status.md).
+
+For historical phase work, start with:
 
 1. [execution-plan.md](/home/nout/REPO/SCB-Website/docs/plans/execution-plan.md) `Progress Snapshot`, active-phase checklist, and `Conversation Handoff Checklist`
 2. this file

@@ -35,7 +35,7 @@ collections:
             name: "socialLinks"
             widget: "list"
             summary: "{{fields.label}}"
-            hint: "Wiederverwendete Social-Links fuer Footer und Kontaktflaechen."
+            hint: "Wiederverwendete Social-Links für Footer und Kontaktflächen."
             fields:
               - { label: "Label", name: "label", widget: "string" }
               - { label: "URL", name: "url", widget: "string" }
@@ -61,7 +61,7 @@ collections:
             widget: "object"
             required: false
             collapsed: true
-            hint: "Optionaler Hinweisblock fuer eine einzelne wichtige Meldung."
+            hint: "Optionaler Hinweisblock für eine einzelne wichtige Meldung."
             fields:
               - { label: "Titel", name: "title", widget: "string" }
               - { label: "Text", name: "body", widget: "text" }
@@ -81,7 +81,7 @@ collections:
       preview: false
     files:
       - file: "src/content/pages/about.md"
-        label: "Ueber uns"
+        label: "Über uns"
         name: "about"
         fields:
           - { label: "Titel", name: "title", widget: "string" }
@@ -165,7 +165,7 @@ collections:
     fields:
       - { label: "Titel", name: "title", widget: "string" }
       - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Veroeffentlicht am", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ" }
+      - { label: "Veröffentlicht am", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ" }
       - { label: "Kurztext", name: "excerpt", widget: "text" }
       - { label: "Cover-Bild", name: "coverImage", widget: "image", required: false }
       - label: "Galerie"
@@ -203,7 +203,7 @@ collections:
         name: "recurrence"
         widget: "object"
         collapsed: true
-        hint: "Fuer den Start nur keine Wiederholung, woechentlich oder gleicher Tag pro Monat."
+        hint: "Für den Start nur keine Wiederholung, wöchentlich oder gleicher Tag pro Monat."
         fields:
           - { label: "Typ", name: "type", widget: "select", default: "none", options: ["none", "weekly", "monthly"] }
           - { label: "Intervall", name: "interval", widget: "number", default: 1, value_type: "int", min: 1, required: false }
@@ -214,7 +214,7 @@ collections:
             required: false
             options: ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
           - { label: "Tag im Monat", name: "dayOfMonth", widget: "number", required: false, value_type: "int", min: 1, max: 31 }
-          - { label: "Bis einschliesslich", name: "until", widget: "date", required: false, format: "YYYY-MM-DD" }
+          - { label: "Bis einschließlich", name: "until", widget: "date", required: false, format: "YYYY-MM-DD" }
           - { label: "Maximale Anzahl", name: "count", widget: "number", required: false, value_type: "int", min: 1 }
           - label: "Ausnahmen"
             name: "exclusions"
@@ -242,7 +242,7 @@ collections:
         field: { label: "Bild", name: "image", widget: "image" }
       - { label: "Quelle", name: "source", widget: "hidden", default: "website" }
       - { label: "Quell-ID", name: "sourceId", widget: "hidden", required: false }
-      - { label: "Zuletzt geprueft", name: "lastVerifiedAt", widget: "date", required: false, format: "YYYY-MM-DD" }
+      - { label: "Zuletzt geprüft", name: "lastVerifiedAt", widget: "date", required: false, format: "YYYY-MM-DD" }
       - { label: "Body", name: "body", widget: "markdown", required: false }
 
   - name: "media"
@@ -267,4 +267,4 @@ collections:
         required: false
         field: { label: "Bild", name: "image", widget: "image" }
       - { label: "Kurztext", name: "summary", widget: "text", required: false }
-      - { label: "Veroeffentlicht am", name: "publishedAt", widget: "datetime", required: false, format: "YYYY-MM-DDTHH:mm:ssZ" }
+      - { label: "Veröffentlicht am", name: "publishedAt", widget: "datetime", required: false, format: "YYYY-MM-DDTHH:mm:ssZ" }
