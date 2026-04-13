@@ -22,18 +22,21 @@ const linkField = z
   .refine((value) => /^\/(?!\/)/.test(value) || /^https?:\/\//.test(value), {
     message: "Use either a site-relative path or an absolute http(s) URL.",
   });
-const isoDateField = z
-  .string()
-  .trim()
-  .regex(/^\d{4}-\d{2}-\d{2}$/, "Use YYYY-MM-DD.");
+const isoDateField = z.preprocess(
+  (value) => (value instanceof Date ? value.toISOString().slice(0, 10) : value),
+  z
+    .string()
+    .trim()
+    .regex(/^\d{4}-\d{2}-\d{2}$/, "Use YYYY-MM-DD."),
+);
 const isoTimeField = z
   .string()
   .trim()
   .regex(/^([01]\d|2[0-3]):[0-5]\d$/, "Use HH:MM in 24-hour time.");
-const isoDateTimeField = z
-  .string()
-  .trim()
-  .datetime({ offset: true, message: "Use an ISO datetime with timezone offset." });
+const isoDateTimeField = z.preprocess(
+  (value) => (value instanceof Date ? value.toISOString() : value),
+  z.string().trim().datetime({ offset: true, message: "Use an ISO datetime with timezone offset." }),
+);
 const weekdayField = z.enum([
   "monday",
   "tuesday",

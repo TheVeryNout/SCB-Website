@@ -39,7 +39,7 @@ Audited scope:
 - the Phase 6 closeout audit for homepage/static-page source parity, manifest status normalization, and event-evidence reconciliation
 - the Phase 7 release-candidate pass for build/check/test, phone-width QA, baseline accessibility, forms/downloads/external links, event route behavior, Netlify config, high-confidence redirects, `/admin/`, and public-data signoff blockers
 - the post-release-candidate design correction pass that replaced the generic rounded/pill prototype language with a Wix-reference-aligned visual system using the retained local screenshots and staged Wix assets
-- the first live-deploy CMS Identity handoff issue where Netlify invite/reset links landed on public routes instead of `/admin/`
+- the first live-deploy CMS Identity handoff issue where Netlify invite/reset links landed on public routes instead of completing the `/admin/` password flow
 
 ---
 
@@ -287,8 +287,9 @@ Audit notes:
 - `netlify.toml` also canonicalizes `http://skateclubbiriciana.de/*`, `http://www.skateclubbiriciana.de/*`, and `https://www.skateclubbiriciana.de/*` to `https://skateclubbiriciana.de/:splat`.
 - The public-data register still marks the canonical YouTube destination as a conflict and donation/bank details as pending. These are launch-signoff blockers if the site is published as final public truth, but they no longer block the technical deploy configuration.
 - `parkausbesserungen` remains blocked only for fuller content recovery; the current route builds and the truncated-evidence limitation is recorded in the migration manifest.
-- During first Netlify setup, Identity invite/reset links were observed landing on public routes without completing the CMS password flow. `BaseLayout` now forwards Netlify Identity token hashes (`invite_token`, `confirmation_token`, `recovery_token`, `access_token`, and `error`) from public pages to `/admin/`, where the Identity widget is loaded.
-- Verification for the Identity token redirect change passed with `bun run check` and `bun run build`; `bun run check` still reports only the known Zod deprecation hints.
+- During first Netlify setup, Identity invite/reset links were observed landing on public routes or `/admin/` without completing the CMS password flow. `BaseLayout` now forwards Netlify Identity token hashes (`invite_token`, `confirmation_token`, `recovery_token`, `access_token`, and `error`) from public pages to `/admin/`, and `/admin/` now pauses Decap loading when an Identity token is present so the Netlify Identity widget can complete the invite/reset flow first.
+- The content schema now tolerates YAML-parsed Date objects for date/date-time fields and normalizes them back to strings. This protects CMS-saved unquoted ISO dates from breaking Astro content validation.
+- Verification for the Identity token and date-schema hardening passed with `bun test`, `bun run check`, and `bun run build`; `bun run check` still reports only the known Zod deprecation hints.
 
 ---
 
