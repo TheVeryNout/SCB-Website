@@ -17,11 +17,11 @@ const {
 
 const variantClasses = {
   solid:
-    "border-slate-950 bg-slate-950 text-white hover:border-slate-800 hover:bg-slate-800",
+    "border-[#414141] bg-[#414141] text-[#ead871] hover:border-[#181818] hover:bg-[#181818] hover:text-white",
   outline:
-    "border-slate-950/20 bg-white/75 text-slate-950 hover:border-slate-950 hover:bg-slate-950 hover:text-white",
+    "border-[#414141] bg-transparent text-[#414141] hover:bg-[#414141] hover:text-[#ead871]",
   subtle:
-    "border-amber-500/30 bg-amber-100/80 text-slate-950 hover:border-amber-500 hover:bg-amber-200",
+    "border-[#ead871] bg-[#ead871] text-[#414141] hover:border-white hover:bg-white",
 } as const;
 ---
 
@@ -30,7 +30,7 @@ const variantClasses = {
   target={target}
   rel={rel}
   class:list={[
-    "inline-flex items-center justify-center rounded-full border px-5 py-2.5 text-sm font-semibold no-underline transition",
+    "inline-flex items-center justify-center border px-6 py-3 text-sm font-semibold uppercase no-underline transition",
     variantClasses[variant],
     className,
   ]}

@@ -38,7 +38,7 @@ const dateFormatter = new Intl.DateTimeFormat("de-DE", {
   title={`${post.data.title} | ${settings.data.organizationName}`}
   description={post.data.excerpt}
 >
-  <section class="py-16 sm:py-20">
+  <section class="scb-section py-16 sm:py-20">
     <Container class="max-w-5xl space-y-8">
       <LinkButton href="/neuigkeiten/" variant="outline">
         Zurueck zu den Neuigkeiten
@@ -48,12 +48,12 @@ const dateFormatter = new Intl.DateTimeFormat("de-DE", {
         <div class="space-y-6">
           <PageIntro title={post.data.title} intro={post.data.excerpt} class="max-w-none">
             <div class="flex flex-wrap gap-3">
-              <span class="rounded-full border border-slate-300 bg-white/75 px-4 py-2 text-sm text-slate-700">
+              <span class="border border-slate-300 bg-white/75 px-4 py-2 text-sm text-slate-700">
                 {dateFormatter.format(new Date(post.data.publishedAt))}
               </span>
               {
                 post.data.category ? (
-                  <span class="rounded-full border border-amber-500/35 bg-amber-100/80 px-4 py-2 text-sm font-semibold text-slate-950">
+                  <span class="border border-amber-500/35 bg-amber-100/80 px-4 py-2 text-sm font-semibold text-slate-950">
                     {post.data.category}
                   </span>
                 ) : null
@@ -92,7 +92,7 @@ const dateFormatter = new Intl.DateTimeFormat("de-DE", {
             <div class="mt-6 grid gap-4 md:grid-cols-2">
               {
                 relatedPosts.map((relatedPost) => (
-                  <article class="rounded-[1.5rem] border border-slate-200 bg-white/75 p-5">
+                  <article class="border border-slate-200 bg-white/75 p-5">
                     <p class="text-xs font-semibold tracking-[0.16em] text-slate-500 uppercase">
                       {dateFormatter.format(new Date(relatedPost.data.publishedAt))}
                     </p>

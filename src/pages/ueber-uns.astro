@@ -24,7 +24,7 @@ const goals = aboutPage.data.goals ?? [];
   title={`${aboutPage.data.title} | ${settings.data.organizationName}`}
   description={aboutPage.data.intro}
 >
-  <section class="py-16 sm:py-20">
+  <section class="scb-section py-16 sm:py-20">
     <Container class="space-y-10">
       <div class="grid gap-8 xl:grid-cols-[1.05fr_0.95fr] xl:items-start">
         <PageIntro eyebrow="Uber uns" title={aboutPage.data.title} intro={aboutPage.data.intro}>
@@ -59,7 +59,7 @@ const goals = aboutPage.data.goals ?? [];
           <ul class="mt-6 grid gap-3">
             {
               goals.map((goal) => (
-                <li class="rounded-2xl border border-amber-500/25 bg-white/80 px-4 py-4 text-sm leading-6 text-slate-700">
+                <li class="border border-amber-500/25 bg-white/80 px-4 py-4 text-sm leading-6 text-slate-700">
                   {goal}
                 </li>
               ))
@@ -75,7 +75,7 @@ const goals = aboutPage.data.goals ?? [];
           <div class="mt-6 grid gap-4 sm:grid-cols-2">
             {
               boardMembers.map((member) => (
-                <article class="rounded-[1.5rem] border border-slate-200 bg-white/75 p-5">
+                <article class="border border-slate-200 bg-white/75 p-5">
                   <p class="text-xs font-semibold tracking-[0.16em] text-slate-500 uppercase">
                     {member.role}
                   </p>

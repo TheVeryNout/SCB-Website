@@ -78,6 +78,7 @@ Content collections are now real, Phase 6 migration is signoff-clean, and Phase 
 - the retained event evidence has been reconciled into the canonical Astro event content without over-trusting the Wix slug or implying unsupported recurrence
 - `netlify.toml` now defines the Bun build, `dist` publish directory, baseline headers, canonical-domain redirects, and high-confidence legacy Wix route redirects
 - Phase 7 QA passed for build/check/test, phone-width screenshots, contact form shape, downloads, external links, `/admin/`, and the verified event occurrence route
+- A post-release-candidate design correction pass replaced the generic cream-gradient, pill-navigation, and rounded-card prototype language with the retained Wix visual direction: charcoal/asphalt texture, muted yellow sections, squared navigation/buttons/panels, the SCB crest, and the retained homepage hero image from `src/assets/images/wix-staging/`
 - final launch signoff still needs user review of the public-data conflicts recorded in `public-data-register.md`
 
 The docs are now split into:

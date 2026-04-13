@@ -1,5 +1,6 @@
 ---
 import Container from "./Container.astro";
+import crest from "../assets/images/wix-staging/shared/site/dfbc4d_0c5a0de8605c42cbbf4d5ebc30565f1e~mv2.png";
 import { getSiteSettingsEntry } from "../lib/content/site";
 
 interface Props {
@@ -20,22 +21,17 @@ const navItems = [
 ];
 ---
 
-<header class="border-b border-slate-900/10 bg-white/80 backdrop-blur">
-  <Container class="py-5">
-    <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-      <div class="space-y-1">
-        <a class="inline-flex items-center gap-3 text-lg font-semibold tracking-[0.16em] text-slate-950 uppercase no-underline" href="/">
-          <span class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-amber-500/50 bg-amber-300/55 text-sm font-bold text-slate-950">
-            SCB
-          </span>
-          {settings.data.organizationName}
+<header class="border-b border-[#181818] bg-[#333333] text-[#ead871]">
+  <Container class="py-3">
+    <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+      <div>
+        <a class="inline-flex items-center gap-4 text-lg font-semibold text-[#ead871] uppercase no-underline" href="/">
+          <img class="h-14 w-14 object-contain" src={crest.src} alt="" width="56" height="50" />
+          <span class="sr-only">{settings.data.organizationName}</span>
         </a>
-        <p class="max-w-2xl text-sm text-slate-700">
-          {settings.data.siteDescription}
-        </p>
       </div>
 
-      <nav aria-label="Primary" class="hidden flex-wrap justify-end gap-2 md:flex">
+      <nav aria-label="Primary" class="hidden flex-wrap justify-end gap-7 md:flex">
         {
           navItems.map((item) => {
             const isActive = currentPath === item.href;
@@ -45,10 +41,10 @@ const navItems = [
                 href={item.href}
                 aria-current={isActive ? "page" : undefined}
                 class:list={[
-                  "rounded-full border px-4 py-2 text-sm font-medium transition",
+                  "scb-display text-xl no-underline transition",
                   isActive
-                    ? "border-slate-950 bg-slate-950 text-white no-underline"
-                    : "border-slate-300 bg-white/80 text-slate-800 no-underline hover:border-amber-500 hover:bg-amber-100",
+                    ? "text-[#b14926]"
+                    : "text-[#ead871] hover:text-white",
                 ]}
               >
                 {item.label}
@@ -59,10 +55,10 @@ const navItems = [
       </nav>
 
       <details class="group w-full md:hidden">
-        <summary class="flex cursor-pointer list-none items-center justify-center rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-950">
+        <summary class="scb-display flex cursor-pointer list-none items-center justify-center border border-[#ead871] px-4 py-2 text-lg text-[#ead871]">
           Navigation
         </summary>
-        <nav aria-label="Primary mobile" class="mt-4 flex flex-col gap-2">
+        <nav aria-label="Primary mobile" class="mt-4 grid gap-2">
           {
             navItems.map((item) => {
               const isActive = currentPath === item.href;
@@ -72,10 +68,10 @@ const navItems = [
                   href={item.href}
                   aria-current={isActive ? "page" : undefined}
                   class:list={[
-                    "rounded-2xl border px-4 py-3 text-sm font-medium transition",
+                    "scb-display border px-4 py-3 text-lg no-underline transition",
                     isActive
-                      ? "border-slate-950 bg-slate-950 text-white no-underline"
-                      : "border-slate-300 bg-white/90 text-slate-800 no-underline hover:border-amber-500 hover:bg-amber-100",
+                      ? "border-[#b14926] text-[#b14926]"
+                      : "border-[#ead871]/35 text-[#ead871] hover:border-white hover:text-white",
                   ]}
                 >
                   {item.label}

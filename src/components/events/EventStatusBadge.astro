@@ -15,16 +15,16 @@ const labels = {
 } as const;
 
 const statusClasses = {
-  scheduled: "border-emerald-500/30 bg-emerald-100 text-emerald-900",
-  cancelled: "border-rose-500/30 bg-rose-100 text-rose-900",
-  postponed: "border-amber-500/30 bg-amber-100 text-amber-900",
-  tentative: "border-sky-500/30 bg-sky-100 text-sky-900",
+  scheduled: "border-[#414141] bg-[#ead871] text-[#414141]",
+  cancelled: "border-[#b14926] bg-white text-[#b14926]",
+  postponed: "border-[#414141] bg-[#f4eeb5] text-[#414141]",
+  tentative: "border-[#414141] bg-white text-[#414141]",
 } as const;
 ---
 
 <span
   class:list={[
-    "inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold tracking-[0.16em] uppercase",
+    "inline-flex items-center border px-3 py-1 text-xs font-semibold uppercase",
     statusClasses[status],
   ]}
 >

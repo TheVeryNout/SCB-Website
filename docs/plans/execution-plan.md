@@ -52,11 +52,13 @@ As of `2026-04-13`, the repository baseline has been verified to this level:
 - Phase 6 migration artifacts now exist for homepage, static pages, posts, media items, PDFs, and the retained representative event evidence under `migration/manifest.json`
 - `netlify.toml` now defines the Bun build, `dist` publish directory, baseline headers, canonical-domain redirects, and high-confidence redirects from retained Wix route evidence
 - Phase 7 verification has passed for `bun test`, `bun run check`, `bun run build`, route/download HTTP checks, phone-width Chromium screenshots, contact-form static shape, external links, `/admin/`, and the verified `Sunday Funday` occurrence route
+- a post-release-candidate design correction pass has replaced the earlier generic cream/pill/card prototype look with the retained Wix visual language: charcoal/asphalt texture, muted yellow sections, squared buttons and panels, the SCB crest, and the retained homepage hero asset from `src/assets/images/wix-staging/`
 
 Known not-yet-done items:
 
 - final launch signoff still requires user confirmation of the public-data conflicts recorded in `public-data-register.md`, especially canonical YouTube and donation/bank details if fundraising content stays live
 - `parkausbesserungen` remains intentionally blocked in `migration/manifest.json` because the retained evidence is truncated
+- remaining visual QA should compare each implemented route against the retained Wix screenshots before treating the post-RC design correction as fully reviewed
 
 Use this snapshot to avoid re-auditing the bootstrap from scratch in a later conversation.
 
@@ -462,3 +464,4 @@ If any item above is false, the work is not finished.
 Current release-candidate caveat:
 
 - The implementation work is finished as a technical release candidate, but final public launch signoff still depends on user review of the unresolved public-data conflicts recorded in `public-data-register.md`.
+- A later design correction was required because the first release-candidate prototype did not respect the retained Wix layout, theme, or asset language. Continue visual review from the updated shared visual system rather than the earlier cream/pill/card styling.

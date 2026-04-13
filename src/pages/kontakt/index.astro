@@ -20,7 +20,7 @@ const phoneHref = settings.data.contactPhone?.replace(/\s+/g, "");
   title={`${contactPage.data.title} | ${settings.data.organizationName}`}
   description={contactPage.data.intro}
 >
-  <section class="py-16 sm:py-20">
+  <section class="scb-section py-16 sm:py-20">
     <Container class="space-y-10">
       <PageIntro eyebrow="Kontakt" title={contactPage.data.title} intro={contactPage.data.intro}>
         <div class="flex flex-wrap gap-3">
@@ -63,7 +63,7 @@ const phoneHref = settings.data.contactPhone?.replace(/\s+/g, "");
               <label class="grid gap-2">
                 <span class="text-sm font-semibold text-slate-900">Name</span>
                 <input
-                  class="rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-amber-500"
+                  class="border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-amber-500"
                   type="text"
                   name="name"
                   autocomplete="name"
@@ -74,7 +74,7 @@ const phoneHref = settings.data.contactPhone?.replace(/\s+/g, "");
               <label class="grid gap-2">
                 <span class="text-sm font-semibold text-slate-900">E-Mail</span>
                 <input
-                  class="rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-amber-500"
+                  class="border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-amber-500"
                   type="email"
                   name="email"
                   autocomplete="email"
@@ -86,7 +86,7 @@ const phoneHref = settings.data.contactPhone?.replace(/\s+/g, "");
             <label class="grid gap-2">
               <span class="text-sm font-semibold text-slate-900">Betreff</span>
               <input
-                class="rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-amber-500"
+                class="border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-amber-500"
                 type="text"
                 name="subject"
                 autocomplete="off"
@@ -96,7 +96,7 @@ const phoneHref = settings.data.contactPhone?.replace(/\s+/g, "");
             <label class="grid gap-2">
               <span class="text-sm font-semibold text-slate-900">Nachricht</span>
               <textarea
-                class="min-h-40 rounded-[1.5rem] border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-amber-500"
+                class="min-h-40 border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-amber-500"
                 name="message"
                 required
               />
@@ -104,7 +104,7 @@ const phoneHref = settings.data.contactPhone?.replace(/\s+/g, "");
 
             <button
               type="submit"
-              class="inline-flex items-center justify-center rounded-full border border-slate-950 bg-slate-950 px-5 py-2.5 text-sm font-semibold text-white transition hover:border-slate-800 hover:bg-slate-800"
+              class="inline-flex items-center justify-center border border-slate-950 bg-slate-950 px-5 py-2.5 text-sm font-semibold text-white transition hover:border-slate-800 hover:bg-slate-800"
             >
               Nachricht senden
             </button>
@@ -118,7 +118,7 @@ const phoneHref = settings.data.contactPhone?.replace(/\s+/g, "");
               Falls du lieber direkt Kontakt aufnimmst
             </h2>
             <dl class="mt-6 space-y-4">
-              <div class="rounded-[1.5rem] border border-slate-200 bg-white/75 p-4">
+              <div class="border border-slate-200 bg-white/75 p-4">
                 <dt class="text-xs font-semibold tracking-[0.16em] text-slate-500 uppercase">E-Mail</dt>
                 <dd class="mt-2 text-sm leading-6 text-slate-700">
                   <a class="underline decoration-amber-500/70 underline-offset-4" href={`mailto:${settings.data.contactEmail}`}>
@@ -129,7 +129,7 @@ const phoneHref = settings.data.contactPhone?.replace(/\s+/g, "");
 
               {
                 settings.data.contactPhone ? (
-                  <div class="rounded-[1.5rem] border border-slate-200 bg-white/75 p-4">
+                  <div class="border border-slate-200 bg-white/75 p-4">
                     <dt class="text-xs font-semibold tracking-[0.16em] text-slate-500 uppercase">
                       Telefon
                     </dt>
@@ -144,7 +144,7 @@ const phoneHref = settings.data.contactPhone?.replace(/\s+/g, "");
 
               {
                 settings.data.whatsApp ? (
-                  <div class="rounded-[1.5rem] border border-slate-200 bg-white/75 p-4">
+                  <div class="border border-slate-200 bg-white/75 p-4">
                     <dt class="text-xs font-semibold tracking-[0.16em] text-slate-500 uppercase">
                       WhatsApp
                     </dt>

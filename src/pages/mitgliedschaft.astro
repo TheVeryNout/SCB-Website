@@ -26,7 +26,7 @@ const hasBody = typeof membershipPage.body === "string" && membershipPage.body.t
   title={`${membershipPage.data.title} | ${settings.data.organizationName}`}
   description={membershipPage.data.intro}
 >
-  <section class="py-16 sm:py-20">
+  <section class="scb-section py-16 sm:py-20">
     <Container class="space-y-10">
       <div class="grid gap-8 xl:grid-cols-[1.05fr_0.95fr] xl:items-start">
         <PageIntro
@@ -75,7 +75,7 @@ const hasBody = typeof membershipPage.body === "string" && membershipPage.body.t
           <ul class="mt-6 grid gap-3 sm:grid-cols-2">
             {
               benefits.map((benefit) => (
-                <li class="rounded-[1.5rem] border border-slate-200 bg-white/75 px-4 py-4 text-sm leading-6 text-slate-700">
+                <li class="border border-slate-200 bg-white/75 px-4 py-4 text-sm leading-6 text-slate-700">
                   {benefit}
                 </li>
               ))
@@ -92,8 +92,8 @@ const hasBody = typeof membershipPage.body === "string" && membershipPage.body.t
             <ol class="mt-6 space-y-3">
               {
                 applicationInstructions.map((instruction, index) => (
-                  <li class="flex gap-4 rounded-[1.5rem] border border-slate-200 bg-white/75 p-4">
-                    <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-amber-500/40 bg-amber-100 text-sm font-semibold text-slate-950">
+                  <li class="flex gap-4 border border-slate-200 bg-white/75 p-4">
+                    <span class="flex h-8 w-8 shrink-0 items-center justify-center border border-amber-500/40 bg-amber-100 text-sm font-semibold text-slate-950">
                       {index + 1}
                     </span>
                     <p class="pt-1 text-sm leading-6 text-slate-700">{instruction}</p>
@@ -122,7 +122,7 @@ const hasBody = typeof membershipPage.body === "string" && membershipPage.body.t
                 <ul class="mt-5 space-y-3">
                   {
                     notes.map((note) => (
-                      <li class="rounded-2xl border border-amber-500/25 bg-white/80 px-4 py-4 text-sm leading-6 text-slate-700">
+                      <li class="border border-amber-500/25 bg-white/80 px-4 py-4 text-sm leading-6 text-slate-700">
                         {note}
                       </li>
                     ))

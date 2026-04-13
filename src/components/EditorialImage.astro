@@ -17,12 +17,13 @@ const {
 } = Astro.props;
 ---
 
-<div class:list={["overflow-hidden rounded-[2rem] border border-slate-900/10 bg-white/70", className]}>
+<div class:list={["overflow-hidden border border-[#414141]/30 bg-[#414141]", className]}>
   <Image
     src={src}
     alt={alt}
     sizes={sizes}
     widths={[480, 768, 1200]}
+    loading="eager"
     class="h-full w-full object-cover"
   />
 </div>

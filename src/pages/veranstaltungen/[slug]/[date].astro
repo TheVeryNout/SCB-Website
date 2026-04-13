@@ -85,7 +85,7 @@ const detailFacts = [
   title={`${occurrence.title} am ${formatGermanDate(occurrence.occurrenceDate)} | ${settings.data.organizationName}`}
   description={occurrence.summary}
 >
-  <section class="py-16 sm:py-20">
+  <section class="scb-section py-16 sm:py-20">
     <Container class="space-y-8">
       <LinkButton href="/veranstaltungen/" variant="outline">
         Zurueck zur Terminuebersicht
@@ -101,7 +101,7 @@ const detailFacts = [
           </PageIntro>
 
             <div class="mt-6 grid gap-4 lg:grid-cols-[1fr_0.85fr]">
-              <div class="rounded-[1.5rem] border border-slate-200 bg-white/70 p-5">
+              <div class="border border-slate-200 bg-white/70 p-5">
                 <EventMeta occurrence={occurrence} />
               </div>
               {
@@ -132,7 +132,7 @@ const detailFacts = [
                 <dl class="mt-5 space-y-4">
                   {
                     detailFacts.map((fact) => (
-                      <div class="rounded-2xl border border-slate-200 bg-white/70 p-4">
+                      <div class="border border-slate-200 bg-white/70 p-4">
                         <dt class="text-xs font-semibold tracking-[0.16em] text-slate-500 uppercase">
                           {fact.label}
                         </dt>

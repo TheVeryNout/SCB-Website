@@ -23,7 +23,7 @@ const dateFormatter = new Intl.DateTimeFormat("de-DE", {
   title={`Neuigkeiten | ${settings.data.organizationName}`}
   description="Aktuelle Vereinsnachrichten, Rueckblicke und oeffentliche Updates des Skate Club Biriciana e.V."
 >
-  <section class="py-16 sm:py-20">
+  <section class="scb-section py-16 sm:py-20">
     <Container class="space-y-10">
       <PageIntro
         eyebrow="Neuigkeiten"
@@ -48,7 +48,7 @@ const dateFormatter = new Intl.DateTimeFormat("de-DE", {
                     sizes="(min-width: 1024px) 24rem, 100vw"
                   />
                 ) : (
-                  <div class="rounded-[2rem] border border-dashed border-slate-300 bg-white/60 p-6 text-sm leading-6 text-slate-600">
+                  <div class="border border-dashed border-slate-300 bg-white/60 p-6 text-sm leading-6 text-slate-600">
                     Bildmaterial wurde fuer diesen Beitrag nicht als eigenes Teaserbild gepflegt.
                   </div>
                 )
@@ -61,12 +61,12 @@ const dateFormatter = new Intl.DateTimeFormat("de-DE", {
                   </p>
                   {
                     post.data.category ? (
-                      <span class="rounded-full border border-amber-500/35 bg-amber-100/80 px-3 py-1 text-xs font-semibold tracking-[0.12em] text-slate-950 uppercase">
+                      <span class="border border-amber-500/35 bg-amber-100/80 px-3 py-1 text-xs font-semibold tracking-[0.12em] text-slate-950 uppercase">
                         {post.data.category}
                       </span>
                     ) : null
                   }
-                  <span class="rounded-full border border-slate-300 bg-white/80 px-3 py-1 text-xs text-slate-600">
+                  <span class="border border-slate-300 bg-white/80 px-3 py-1 text-xs text-slate-600">
                     Beitrag {index + 1}
                   </span>
                 </div>

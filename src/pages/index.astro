@@ -1,11 +1,10 @@
 ---
 import Container from "../components/Container.astro";
-import EditorialImage from "../components/EditorialImage.astro";
 import LinkButton from "../components/LinkButton.astro";
-import PageIntro from "../components/PageIntro.astro";
-import RichText from "../components/RichText.astro";
 import SurfaceCard from "../components/SurfaceCard.astro";
 import UpcomingEventsList from "../components/events/UpcomingEventsList.astro";
+import crest from "../assets/images/wix-staging/shared/site/dfbc4d_0c5a0de8605c42cbbf4d5ebc30565f1e~mv2.png";
+import heroSkater from "../assets/images/wix-staging/homepage/site/dfbc4d_d22c6e8ff3f54d19a657aa5fcc53cd91~mv2.png";
 import {
   getHomepageEntry,
   getLatestPosts,
@@ -29,83 +28,58 @@ const [homepage, settings, latestPosts, upcomingEvents] = await Promise.all([
   title={`${homepage.data.title} | ${settings.data.organizationName}`}
   description={settings.data.siteDescription}
 >
-  <section class="py-16 sm:py-24">
-    <Container>
-      <div class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-        <div class="space-y-6">
-          <PageIntro eyebrow="Start" title={homepage.data.heroTitle} intro={homepage.data.heroIntro}>
-            <div class="flex flex-wrap gap-3">
-              <LinkButton href="/veranstaltungen/">Zu den Terminen</LinkButton>
-              <LinkButton href="/kontakt/" variant="outline">
-                Kontakt aufnehmen
-              </LinkButton>
-            </div>
-          </PageIntro>
+  <section
+    class="relative min-h-[690px] bg-[#414141] bg-cover bg-center text-center text-[#ead871]"
+    style={`background-image: linear-gradient(rgba(0,0,0,.22), rgba(0,0,0,.36)), url(${heroSkater.src});`}
+  >
+    <div class="absolute inset-x-0 top-0 h-8 bg-[#18157c]"></div>
+    <Container class="relative flex min-h-[690px] flex-col items-center justify-center pt-12">
+      <p class="text-xl">Willkommen beim</p>
+      <h1 class="scb-display max-w-3xl text-6xl leading-none uppercase drop-shadow-[0_3px_3px_rgba(0,0,0,.45)] sm:text-8xl">
+        SKATE CLUB<br />BIRICIANA e.V.
+      </h1>
 
-          {
-            homepage.data.featuredAnnouncement ? (
-              <SurfaceCard tone="warm">
-                <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">
-                  Hinweis
-                </p>
-                <h2 class="mt-2 text-2xl font-semibold text-slate-950">
-                  {homepage.data.featuredAnnouncement.title}
-                </h2>
-                <RichText class="mt-3">
-                  <p>{homepage.data.featuredAnnouncement.body}</p>
-                </RichText>
-                {
-                  homepage.data.featuredAnnouncement.linkUrl &&
-                  homepage.data.featuredAnnouncement.linkLabel ? (
-                    <div class="mt-5">
-                      <LinkButton href={homepage.data.featuredAnnouncement.linkUrl} variant="outline">
-                        {homepage.data.featuredAnnouncement.linkLabel}
-                      </LinkButton>
-                    </div>
-                  ) : null
-                }
-              </SurfaceCard>
-            ) : null
-          }
-        </div>
-
-        <div class="grid gap-5">
-          {
-            homepage.data.heroImage ? (
-              <EditorialImage
-                src={homepage.data.heroImage}
-                alt="Eindruecke aus dem Skatepark-Weissenburg-Umfeld des SCB"
-                class="min-h-[18rem] shadow-[0_20px_60px_-30px_rgba(15,23,42,0.35)]"
-              />
-            ) : null
-          }
-          <SurfaceCard>
-            <div class="flex flex-wrap items-center justify-between gap-3">
-              <div>
-                <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">
-                  Naechste Termine
-                </p>
-                <h2 class="mt-2 text-2xl font-semibold text-slate-950">Was demnaechst ansteht</h2>
-              </div>
-              <span class="inline-flex items-center rounded-full border border-slate-300 bg-white/75 px-4 py-2 text-sm text-slate-700">
-                {settings.data.contactEmail}
-              </span>
-            </div>
-            <UpcomingEventsList occurrences={upcomingEvents} />
-          </SurfaceCard>
-        </div>
-      </div>
+      {
+        homepage.data.featuredAnnouncement ? (
+          <div class="mt-24 max-w-5xl bg-white/82 px-8 py-10 text-[#414141] sm:px-12">
+            <h2 class="scb-display text-5xl leading-tight sm:text-7xl">
+              {homepage.data.featuredAnnouncement.title}
+            </h2>
+            <p class="mt-5 text-xl leading-8">
+              {homepage.data.featuredAnnouncement.body}
+            </p>
+            {
+              homepage.data.featuredAnnouncement.linkUrl &&
+              homepage.data.featuredAnnouncement.linkLabel ? (
+                <div class="mt-6">
+                  <LinkButton href={homepage.data.featuredAnnouncement.linkUrl} variant="outline">
+                    {homepage.data.featuredAnnouncement.linkLabel}
+                  </LinkButton>
+                </div>
+              ) : null
+            }
+          </div>
+        ) : null
+      }
     </Container>
   </section>
 
-  <section class="pb-16 sm:pb-24">
-    <Container>
-      <div class="grid gap-5 md:grid-cols-[1.2fr_0.8fr]">
-        <SurfaceCard as="article">
+  <section class="scb-section-dark py-20">
+    <Container class="space-y-20">
+      <SurfaceCard tone="muted" class="mx-auto max-w-4xl px-10 py-12">
+        <h2 class="scb-display text-center text-4xl text-[#ead871]">Willkommen beim Skate Club Biriciana!</h2>
+        <p class="mt-8 text-xl leading-9 text-[#ead871]">{homepage.data.heroIntro}</p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <LinkButton href="/veranstaltungen/" variant="subtle">Zu den Terminen</LinkButton>
+          <LinkButton href="/kontakt/" variant="subtle">Kontakt aufnehmen</LinkButton>
+        </div>
+      </SurfaceCard>
+
+      <div class="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+        <SurfaceCard as="article" class="bg-[#ead871]">
           <div class="flex items-center justify-between gap-4">
             <div>
-              <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Neuigkeiten</p>
-              <h2 class="mt-2 text-2xl font-semibold text-slate-950">Aktuelle Beiträge</h2>
+              <h2 class="scb-display text-5xl text-[#414141]">Neuigkeiten</h2>
             </div>
             <LinkButton href="/neuigkeiten/" variant="outline" class="px-4 py-2">
               Alle Beitraege
@@ -114,20 +88,23 @@ const [homepage, settings, latestPosts, upcomingEvents] = await Promise.all([
           <div class="mt-6 space-y-5">
             {
               latestPosts.map((post) => (
-                <article class="rounded-2xl border border-slate-200 bg-white p-5">
-                  <p class="text-xs font-semibold tracking-[0.16em] text-slate-500 uppercase">
+                <article class="grid gap-5 bg-white p-5 md:grid-cols-[12rem_1fr]">
+                  {post.data.coverImage ? <img src={post.data.coverImage.src} alt="" class="h-40 w-full object-cover" /> : null}
+                  <div>
+                  <p class="text-xs font-semibold uppercase text-[#414141]/75">
                     {new Intl.DateTimeFormat("de-DE", {
                       day: "2-digit",
                       month: "long",
                       year: "numeric",
                     }).format(new Date(post.data.publishedAt))}
                   </p>
-                  <h3 class="mt-2 text-lg font-semibold text-slate-950">
+                  <h3 class="scb-display mt-2 text-2xl text-[#414141]">
                     <a class="no-underline hover:underline" href={`/neuigkeiten/${post.data.slug}/`}>
                       {post.data.title}
                     </a>
                   </h3>
-                  <p class="mt-3 text-sm leading-6 text-slate-700">{post.data.excerpt}</p>
+                  <p class="mt-3 text-sm leading-6 text-[#414141]">{post.data.excerpt}</p>
+                  </div>
                 </article>
               ))
             }
@@ -135,12 +112,17 @@ const [homepage, settings, latestPosts, upcomingEvents] = await Promise.all([
         </SurfaceCard>
 
         <div class="grid gap-5">
+          <SurfaceCard>
+            <h2 class="scb-display text-4xl text-[#414141]">Naechste Termine</h2>
+            <p class="mt-2 text-sm font-semibold text-[#414141]">{settings.data.contactEmail}</p>
+            <UpcomingEventsList occurrences={upcomingEvents} />
+          </SurfaceCard>
+
           <SurfaceCard as="article">
-            <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Mitgliedschaft</p>
-            <h2 class="mt-2 text-2xl font-semibold text-slate-950">
+            <h2 class="scb-display text-4xl text-[#414141]">
               {homepage.data.membershipCtaTitle ?? "Mitglied werden beim SCB"}
             </h2>
-            <p class="mt-3 text-sm leading-6 text-slate-700">
+            <p class="mt-3 text-sm leading-6 text-[#414141]">
               {homepage.data.membershipCtaText}
             </p>
             <LinkButton class="mt-5" href="/mitgliedschaft/" variant="outline">
@@ -148,17 +130,19 @@ const [homepage, settings, latestPosts, upcomingEvents] = await Promise.all([
             </LinkButton>
           </SurfaceCard>
 
-          <SurfaceCard as="article">
-            <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Medien</p>
-            <h2 class="mt-2 text-2xl font-semibold text-slate-950">
+          <SurfaceCard as="article" tone="muted" class="grid items-center gap-6 sm:grid-cols-[10rem_1fr]">
+            <img class="mx-auto h-36 w-36 object-contain" src={crest.src} alt="" width="144" height="128" />
+            <div>
+            <h2 class="scb-display text-4xl text-[#ead871]">
               {homepage.data.mediaTeaserTitle ?? "Pics n Vids"}
             </h2>
-            <p class="mt-3 text-sm leading-6 text-slate-700">
+            <p class="mt-3 text-sm leading-6 text-[#ead871]">
               {homepage.data.mediaTeaserText}
             </p>
-            <LinkButton class="mt-5" href="/pics-n-vids/" variant="outline">
+            <LinkButton class="mt-5" href="/pics-n-vids/" variant="subtle">
               Zur Medienseite
             </LinkButton>
+            </div>
           </SurfaceCard>
         </div>
       </div>

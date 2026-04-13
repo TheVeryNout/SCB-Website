@@ -2,31 +2,37 @@
 
 :root {
   color-scheme: light;
-  --scb-bg: #f4f1e7;
-  --scb-bg-soft: #fffdf8;
-  --scb-ink: #12233a;
-  --scb-accent: #f59e0b;
-  --scb-accent-soft: rgba(245, 158, 11, 0.18);
-  --scb-surface: rgba(255, 255, 255, 0.82);
+  --scb-asphalt: #252626;
+  --scb-charcoal: #414141;
+  --scb-ink: #414141;
+  --scb-ink-dark: #181818;
+  --scb-yellow: #ead871;
+  --scb-yellow-soft: #f4eeb5;
+  --scb-rust: #b14926;
+  --scb-paper: #fffdf2;
+  --scb-texture: url("../assets/images/wix-staging/shared/site/dfbc4d_5415700252604e53b99070fb0076183d~mv2.jpg");
 }
 
 html {
   scroll-behavior: smooth;
-  background: var(--scb-bg);
+  background: var(--scb-asphalt);
 }
 
 body {
   min-height: 100vh;
-  background:
-    radial-gradient(circle at top, var(--scb-accent-soft), transparent 30rem),
-    linear-gradient(180deg, var(--scb-bg) 0%, var(--scb-bg-soft) 100%);
+  background-color: var(--scb-asphalt);
+  background-image:
+    linear-gradient(rgba(37, 38, 38, 0.88), rgba(37, 38, 38, 0.88)),
+    var(--scb-texture);
+  background-repeat: repeat;
+  background-size: auto, 800px 800px;
   color: var(--scb-ink);
-  font-family: "Trebuchet MS", "Avenir Next Condensed", "Segoe UI", sans-serif;
+  font-family: "Avenir Next", "Segoe UI", Arial, sans-serif;
 }
 
 ::selection {
-  background: var(--scb-accent);
-  color: #0f172a;
+  background: var(--scb-yellow);
+  color: var(--scb-ink-dark);
 }
 
 a {
@@ -35,14 +41,14 @@ a {
 }
 
 :focus-visible {
-  outline: 3px solid var(--scb-accent);
+  outline: 3px solid var(--scb-yellow);
   outline-offset: 3px;
 }
 
 .rich-text {
-  color: #334155;
-  font-size: 0.98rem;
-  line-height: 1.8;
+  color: var(--scb-ink);
+  font-size: 1rem;
+  line-height: 1.75;
 }
 
 .rich-text > * + * {
@@ -50,7 +56,7 @@ a {
 }
 
 .rich-text :is(h2, h3, h4) {
-  color: #0f172a;
+  color: var(--scb-rust);
   font-weight: 600;
   line-height: 1.3;
 }
@@ -68,5 +74,30 @@ a {
 }
 
 .rich-text a {
-  color: #0f172a;
+  color: var(--scb-ink-dark);
+}
+
+.scb-display {
+  font-family: "Arial Narrow", "Avenir Next Condensed", Impact, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+.scb-section {
+  background-color: var(--scb-yellow);
+}
+
+.scb-section-dark {
+  background-color: var(--scb-charcoal);
+  background-image:
+    linear-gradient(rgba(65, 65, 65, 0.16), rgba(65, 65, 65, 0.16)),
+    var(--scb-texture);
+  background-size: auto, 800px 800px;
+}
+
+.scb-section-texture {
+  background-image:
+    linear-gradient(rgba(37, 38, 38, 0.72), rgba(37, 38, 38, 0.72)),
+    var(--scb-texture);
+  background-size: auto, 800px 800px;
 }

@@ -25,12 +25,12 @@ const {
     <div class="space-y-6">
       {
         monthGroups.map((group) => (
-          <section class="rounded-[1.5rem] border border-slate-200 bg-white/70 p-5" aria-labelledby={`month-${group.month}`}>
+          <section class="border border-[#414141]/25 bg-white/75 p-5" aria-labelledby={`month-${group.month}`}>
             <div class="flex flex-wrap items-center justify-between gap-3">
-              <h3 id={`month-${group.month}`} class="text-xl font-semibold text-slate-950">
+              <h3 id={`month-${group.month}`} class="scb-display text-2xl text-[#414141]">
                 {group.label}
               </h3>
-              <p class="text-sm text-slate-600">
+              <p class="text-sm text-[#414141]">
                 {group.occurrences.length} Termin{group.occurrences.length === 1 ? "" : "e"}
               </p>
             </div>

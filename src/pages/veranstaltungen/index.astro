@@ -28,7 +28,7 @@ const weatherSensitiveOccurrence = allUpcomingOccurrences.find((occurrence) => o
   title={`Veranstaltungen | ${settings.data.organizationName}`}
   description="Oeffentliche Termine des Skate Club Biriciana e.V. mit naechsten Sessions und Monatsueberblick."
 >
-  <section class="py-16 sm:py-20">
+  <section class="scb-section py-16 sm:py-20">
     <Container class="space-y-10">
       <PageIntro
         eyebrow="Veranstaltungen"
@@ -68,7 +68,7 @@ const weatherSensitiveOccurrence = allUpcomingOccurrences.find((occurrence) => o
           </p>
           {
             weatherSensitiveOccurrence?.weatherNote ? (
-              <div class="mt-5 rounded-2xl border border-amber-500/25 bg-white/75 p-4">
+              <div class="mt-5 border border-amber-500/25 bg-white/75 p-4">
                 <p class="text-xs font-semibold tracking-[0.16em] text-amber-700 uppercase">
                   Wetterabhaengig
                 </p>

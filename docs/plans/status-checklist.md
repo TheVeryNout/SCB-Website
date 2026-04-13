@@ -38,6 +38,7 @@ Audited scope:
 - the first substantive Phase 6 migration batch for retained-news backfill, local media galleries, the canonical migration manifest, and avoidable Wix dependency cleanup
 - the Phase 6 closeout audit for homepage/static-page source parity, manifest status normalization, and event-evidence reconciliation
 - the Phase 7 release-candidate pass for build/check/test, phone-width QA, baseline accessibility, forms/downloads/external links, event route behavior, Netlify config, high-confidence redirects, `/admin/`, and public-data signoff blockers
+- the post-release-candidate design correction pass that replaced the generic rounded/pill prototype language with a Wix-reference-aligned visual system using the retained local screenshots and staged Wix assets
 
 ---
 
@@ -290,6 +291,8 @@ Audit notes:
 
 ## Findings To Carry Forward
 
+0. The previous Phase 4 visual-direction note was too generous. The technical release candidate was buildable, but its cream-gradient, pill-navigation, and generic rounded-card design did not respect the retained Wix reference. A post-RC design correction pass replaced the global visual system with the source-observed charcoal/asphalt texture, muted yellow panels, squared navigation/buttons, SCB crest, and the retained Wix homepage hero asset.
+   Verification for this correction passed with `bun run check`, `bun run build`, `bun test`, and Playwright Chromium screenshots for `/` at desktop and phone widths plus `/ueber-uns/` and `/kontakt/` at desktop width.
 1. The control-state drift across Phases 1 to 4 has now been normalized in the committed tracking docs. Future work must continue from the updated progress snapshot with Phase 7 technically complete, instead of re-inferring phase status from repo artifacts.
 2. Wix event slug dates remain source evidence only. They are not route truth, redirect truth, or migration truth without visible-content verification.
 3. `src/assets/images/wix-staging/` is a large tracked staging workspace at about `43M`, but current code references are not a valid basis for pruning it yet. Many staged assets may still be needed for later route build-out and migration work. Any cleanup there must wait for explicit asset curation after the relevant implementation phases are complete.
@@ -311,7 +314,7 @@ Audit notes:
 
 - continuation is allowed
 - active implementation phase: none; Phase 7 is complete as a technical release-candidate pass
-- exact next continuation point: resolve final launch-signoff public facts by confirming the canonical YouTube destination and deciding whether the source-observed donation/bank details should remain live as-is, be replaced, or be removed before launch
+- exact next continuation point: continue visual QA from the post-RC design correction by checking the remaining route screenshots against the retained Wix reference, then resolve final launch-signoff public facts by confirming the canonical YouTube destination and deciding whether the source-observed donation/bank details should remain live as-is, be replaced, or be removed before launch
 - open exceptions: final launch signoff remains blocked by unresolved public-data review; `parkausbesserungen` remains a blocked manifest record on truncated retained evidence; Astro check still reports only non-blocking Zod deprecation hints from `src/content/config.ts`
 - prompt rule for the next resume: a short prompt should be sufficient because the stable startup and handoff rules now live in committed docs
 

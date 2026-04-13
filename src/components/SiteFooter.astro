@@ -1,24 +1,28 @@
 ---
 import Container from "./Container.astro";
+import crest from "../assets/images/wix-staging/shared/site/dfbc4d_0c5a0de8605c42cbbf4d5ebc30565f1e~mv2.png";
 import { getSiteSettingsEntry } from "../lib/content/site";
 
 const settings = await getSiteSettingsEntry();
 ---
 
-<footer class="border-t border-slate-900/10 bg-slate-950 text-slate-200">
-  <Container class="flex flex-col gap-4 py-8 text-sm md:flex-row md:items-center md:justify-between">
-    <div class="space-y-1">
-      <p class="font-semibold text-white">{settings.data.organizationName}</p>
-      <p class="max-w-xl text-slate-400">
-        {settings.data.footerNote ?? settings.data.siteDescription}
-      </p>
+<footer class="bg-[#ead871] text-[#414141]">
+  <Container class="flex flex-col items-center gap-6 py-14 text-center text-sm">
+    <div class="flex flex-wrap items-center justify-center gap-10">
+      <img class="h-24 w-24 object-contain" src={crest.src} alt="" width="96" height="85" />
+      <div class="space-y-2">
+        <p class="scb-display text-3xl">{settings.data.contactEmail}</p>
+        <p class="max-w-xl">
+          {settings.data.footerNote ?? settings.data.siteDescription}
+        </p>
+      </div>
     </div>
 
-    <div class="flex flex-wrap gap-4">
+    <div class="flex flex-wrap justify-center gap-5">
       {
         settings.data.socialLinks.map((link) => (
           <a
-            class="text-slate-200 underline decoration-amber-400/70 underline-offset-4 hover:text-white"
+            class="text-[#414141] underline underline-offset-4 hover:text-[#b14926]"
             href={link.url}
             rel="noreferrer"
             target="_blank"
@@ -28,18 +32,18 @@ const settings = await getSiteSettingsEntry();
         ))
       }
       <a
-        class="text-slate-200 underline decoration-amber-400/70 underline-offset-4 hover:text-white"
+        class="text-[#414141] underline underline-offset-4 hover:text-[#b14926]"
         href={`mailto:${settings.data.contactEmail}`}
       >
         E-Mail
       </a>
-      <a class="text-slate-200 underline decoration-amber-400/70 underline-offset-4 hover:text-white" href="/impressum/">
+      <a class="text-[#414141] underline underline-offset-4 hover:text-[#b14926]" href="/impressum/">
         Impressum
       </a>
-      <a class="text-slate-200 underline decoration-amber-400/70 underline-offset-4 hover:text-white" href="/datenschutz/">
+      <a class="text-[#414141] underline underline-offset-4 hover:text-[#b14926]" href="/datenschutz/">
         Datenschutz
       </a>
-      <a class="text-slate-200 underline decoration-amber-400/70 underline-offset-4 hover:text-white" href="/admin/">
+      <a class="text-[#414141] underline underline-offset-4 hover:text-[#b14926]" href="/admin/">
         CMS
       </a>
     </div>

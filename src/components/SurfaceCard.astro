@@ -17,21 +17,21 @@ const {
 } = props;
 
 const toneClasses = {
-  default: "border-slate-900/10 bg-white/85 shadow-[0_18px_45px_-35px_rgba(15,23,42,0.4)]",
-  warm: "border-amber-500/20 bg-white/90 shadow-[0_18px_45px_-35px_rgba(217,119,6,0.28)]",
-  muted: "border-slate-900/10 bg-slate-950 text-slate-100 shadow-[0_18px_45px_-35px_rgba(15,23,42,0.6)]",
+  default: "border-[#414141]/35 bg-[#ead871]/92",
+  warm: "border-[#414141]/35 bg-[#f4eeb5]/95",
+  muted: "border-[#ead871]/35 bg-[#414141] text-[#ead871]",
 } as const;
 
 const paddingClasses = {
-  md: "p-5",
-  lg: "p-6 sm:p-7",
+  md: "p-5 sm:p-6",
+  lg: "p-6 sm:p-8",
 } as const;
 ---
 
 <Tag
   {...rest}
   class:list={[
-    "rounded-[1.75rem] border backdrop-blur",
+    "border",
     toneClasses[tone],
     paddingClasses[padding],
     className,

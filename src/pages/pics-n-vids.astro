@@ -21,7 +21,7 @@ const featuredGallery = galleryEntries[0];
   title={`Pics n Vids | ${settings.data.organizationName}`}
   description="Einfache Medienseite mit Video-Links und kuratierten Eindruecken aus dem Vereinsumfeld."
 >
-  <section class="py-16 sm:py-20">
+  <section class="scb-section py-16 sm:py-20">
     <Container class="space-y-10">
       <PageIntro
         eyebrow="Pics n Vids"
@@ -39,7 +39,7 @@ const featuredGallery = galleryEntries[0];
           <div class="mt-6 grid gap-4">
             {
               videoEntries.map((entry) => (
-                <article class="rounded-[1.5rem] border border-slate-200 bg-white/75 p-5">
+                <article class="border border-slate-200 bg-white/75 p-5">
                   <div class="grid gap-4 sm:grid-cols-[9rem_1fr] sm:items-start">
                     {
                       entry.data.thumbnailImage ? (
@@ -115,7 +115,7 @@ const featuredGallery = galleryEntries[0];
                   <div class="grid gap-4">
                     {
                       galleryEntries.map((entry) => (
-                        <article class="rounded-[1.5rem] border border-slate-200 bg-white/75 p-5">
+                        <article class="border border-slate-200 bg-white/75 p-5">
                           <div class="grid gap-4 sm:grid-cols-[9rem_1fr] sm:items-start">
                             {
                               entry.data.thumbnailImage ? (
