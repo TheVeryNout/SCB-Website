@@ -1,10 +1,11 @@
 {
   "createdAt": "2026-04-10",
-  "lastUpdatedAt": "2026-04-10",
+  "lastUpdatedAt": "2026-07-23",
   "notes": [
     "This manifest tracks Phase 6 migration work from committed repo files and the retained local evidence pack under docs/plans/wix-reference/.",
     "Manifest statuses track migration completion, while broader responsive, accessibility, and deployment verification still belongs to Phase 7.",
-    "Source-observed conflicts stay explicit here instead of being normalized into silent content assumptions."
+    "Source-observed conflicts stay explicit here instead of being normalized into silent content assumptions.",
+    "Stage 5 of the news editorial refactor promoted the 36 curated news images into src/assets/images/uploads for Decap ownership and preview compatibility; the original Wix-staging files remain intact as provenance."
   ],
   "records": [
     {
@@ -112,14 +113,39 @@
       "targetRoute": "/neuigkeiten/spendenaufruf-der-scb-baut-ne-halle/",
       "targetContentPath": "src/content/posts/spendenaufruf-der-scb-baut-ne-halle.md",
       "localAssetPaths": [
-        "src/assets/images/wix-staging/posts/spendenaufruf-der-scb-baut-ne-halle/13cc9c_d2cf4f765f504960a33f56e7d9387b94~mv2.jpg"
+        "src/assets/images/uploads/13cc9c_26692438fbd24a45a05ab59b11794437~mv2.webp",
+        "src/assets/images/uploads/13cc9c_20a1ad333afd4c4e8cf78436236bbbad~mv2.webp",
+        "src/assets/images/uploads/13cc9c_64a5f980369046549ea203557f483ce4~mv2.webp",
+        "src/assets/images/uploads/13cc9c_77515bbb32674d24a1988a0c7519e672~mv2.webp"
       ],
       "status": "migrated",
       "needsManualQa": true,
       "publicDataRisk": "financial",
       "notes": [
-        "Post entry exists and remains tied to source-observed fundraising copy.",
-        "Bank details remain review-sensitive and stay tracked in the public data register."
+        "The complete retained public article and a curated four-image hall-build set were restored during Stage 4 of the news editorial refactor.",
+        "Bank details remain source-parity financial facts; their pending confirmation state stays authoritative in the public data register."
+      ]
+    },
+    {
+      "id": "post-goodies4tricks-2026-erstklassig-abgeraeumt",
+      "sourceUrl": "https://briareos.wixsite.com/skateclubbiriciana/post/goodies4tricks-2026-erstklassig-abger%C3%A4umt",
+      "sourceType": "post",
+      "targetRoute": "/neuigkeiten/goodies4tricks-2026-erstklassig-abgeraeumt/",
+      "targetContentPath": "src/content/posts/goodies4tricks-2026-erstklassig-abgeraeumt.md",
+      "localAssetPaths": [
+        "src/assets/images/uploads/13cc9c_4e3765894a4f4a429f16334450102115~mv2.jpeg",
+        "src/assets/images/uploads/13cc9c_5860677c133044a3a33889ea9a412a2e~mv2.jpeg",
+        "src/assets/images/uploads/13cc9c_8c291397867145d5bc203a7375f484c0~mv2.jpeg",
+        "src/assets/images/uploads/13cc9c_8d1db4dc1043432a94bcdf0ff2a9e298~mv2.jpeg",
+        "src/assets/images/uploads/13cc9c_a7b77fbd474545d58886f5f17aa8f4e7~mv2.jpeg",
+        "src/assets/images/uploads/13cc9c_f0f6c5bc8b6a483380c30ef62eb4fcae~mv2.jpeg"
+      ],
+      "status": "migrated",
+      "needsManualQa": false,
+      "publicDataRisk": "none",
+      "notes": [
+        "Imported with explicit user approval during Stage 4 of the news editorial refactor.",
+        "The verified live Wix body was restored and six of the ten recovered Tobias Uschold images were curated as cover and gallery media."
       ]
     },
     {
@@ -129,7 +155,7 @@
       "targetRoute": "/neuigkeiten/goodies-4-tricks-2025/",
       "targetContentPath": "src/content/posts/goodies-4-tricks-2025.md",
       "localAssetPaths": [
-        "src/assets/images/wix-staging/posts/goodies-4-tricks-2025/13cc9c_00222c64efe14f18a4f922fe5eb4bddb~mv2.jpg"
+        "src/assets/images/uploads/13cc9c_00222c64efe14f18a4f922fe5eb4bddb~mv2.jpg"
       ],
       "status": "migrated",
       "needsManualQa": false,
@@ -145,7 +171,7 @@
       "targetRoute": "/neuigkeiten/graffiti-workshop-ein-voller-erfolg/",
       "targetContentPath": "src/content/posts/graffiti-workshop-ein-voller-erfolg.md",
       "localAssetPaths": [
-        "src/assets/images/wix-staging/homepage/site/13cc9c_40230571cb024f61b6936ee67952d0f3~mv2.jpg"
+        "src/assets/images/uploads/13cc9c_40230571cb024f61b6936ee67952d0f3~mv2.jpg"
       ],
       "status": "migrated",
       "needsManualQa": false,
@@ -161,7 +187,7 @@
       "targetRoute": "/neuigkeiten/spende-von-der-volksbank-franken-sued/",
       "targetContentPath": "src/content/posts/spende-von-der-volksbank-franken-sued.md",
       "localAssetPaths": [
-        "src/assets/images/wix-staging/posts/spende-von-der-volksbank-franken-s%C3%BCd/dfbc4d_d71543eec4ac4f3fb7aa44a865c6d601~mv2.jpg"
+        "src/assets/images/uploads/dfbc4d_d71543eec4ac4f3fb7aa44a865c6d601~mv2.jpg"
       ],
       "status": "migrated",
       "needsManualQa": true,
@@ -178,7 +204,7 @@
       "targetRoute": "/neuigkeiten/der-contest-in-der-zeitung/",
       "targetContentPath": "src/content/posts/der-contest-in-der-zeitung.md",
       "localAssetPaths": [
-        "src/assets/images/wix-staging/posts/der-contest-in-der-zeitung/dfbc4d_59e1e64566d44ea2b074b9cf058761e7~mv2.jpg"
+        "src/assets/images/uploads/dfbc4d_59e1e64566d44ea2b074b9cf058761e7~mv2.jpg"
       ],
       "status": "migrated",
       "needsManualQa": false,
@@ -194,7 +220,7 @@
       "targetRoute": "/neuigkeiten/goodies-4-tricks-event-trotz-regen-ein-erfolg/",
       "targetContentPath": "src/content/posts/goodies-4-tricks-event-trotz-regen-ein-erfolg.md",
       "localAssetPaths": [
-        "src/assets/images/wix-staging/posts/goodies-4-tricks-event-trotz-regen-ein-erfolg/dfbc4d_d4de6327ca7c4883bd7dbc4c3a4e0a84~mv2.jpg"
+        "src/assets/images/uploads/dfbc4d_2a5a87a690e34a87a3d53c10c486be3a~mv2.jpg"
       ],
       "status": "migrated",
       "needsManualQa": false,
@@ -210,7 +236,7 @@
       "targetRoute": "/neuigkeiten/der-skate-club-in-der-zeitung/",
       "targetContentPath": "src/content/posts/der-skate-club-in-der-zeitung.md",
       "localAssetPaths": [
-        "src/assets/images/wix-staging/posts/der-skate-club-in-der-zeitung/dfbc4d_3825bd53a4d64365a4edd84a395cd7c9~mv2.jpg"
+        "src/assets/images/uploads/dfbc4d_3825bd53a4d64365a4edd84a395cd7c9~mv2.jpg"
       ],
       "status": "migrated",
       "needsManualQa": false,
@@ -226,15 +252,14 @@
       "targetRoute": "/neuigkeiten/parkausbesserungen/",
       "targetContentPath": "src/content/posts/parkausbesserungen.md",
       "localAssetPaths": [
-        "src/assets/images/wix-staging/posts/parkausbesserungen/dfbc4d_581b537602574727b9ff441188b0817c~mv2.jpeg"
+        "src/assets/images/uploads/dfbc4d_581b537602574727b9ff441188b0817c~mv2.jpeg"
       ],
-      "status": "blocked",
-      "needsManualQa": true,
+      "status": "migrated",
+      "needsManualQa": false,
       "publicDataRisk": "none",
       "notes": [
-        "The retained feed preserves one complete sentence and a truncated repair note.",
-        "The migrated body keeps only the complete source-observed statement and does not guess the truncated remainder.",
-        "This record stays blocked for fuller content recovery unless better local evidence appears later."
+        "The retained feed was truncated, but live-source inspection during the news editorial refactor recovered the complete public article body from the same Wix URL.",
+        "Stage 4 restored and built the complete copy with its portrait repair image, clearing the obsolete migration blocker."
       ]
     },
     {

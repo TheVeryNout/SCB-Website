@@ -1,0 +1,174 @@
+---
+import { getImage, Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import "photoswipe/style.css";
+
+interface GalleryItem {
+  image: ImageMetadata;
+  alt: string;
+  caption?: string;
+}
+
+interface Props {
+  items: GalleryItem[];
+}
+
+const { items } = Astro.props;
+const preparedItems = await Promise.all(
+  items.map(async (item) => {
+    const largeWidth = Math.min(item.image.width, 2000);
+    const largeImage = await getImage({
+      src: item.image,
+      width: largeWidth,
+      format: "webp",
+      quality: 86,
+    });
+
+    return {
+      ...item,
+      largeSrc: largeImage.src,
+      largeWidth: Number(largeImage.attributes.width),
+      largeHeight: Number(largeImage.attributes.height),
+    };
+  }),
+);
+---
+
+<section aria-labelledby="post-gallery-heading" class="border-t border-[#414141]/20 px-4 py-8 sm:px-8 sm:py-10">
+  <div class="mx-auto max-w-5xl">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <p class="scb-display text-sm tracking-[0.16em] text-[#b14926] uppercase">Bilderstrecke</p>
+        <h2 id="post-gallery-heading" class="mt-2 text-2xl font-semibold text-[#414141]">Eindrücke zum Beitrag</h2>
+      </div>
+      <p class="text-sm text-[#414141]/70">Bild auswählen, um die Galerie zu öffnen</p>
+    </div>
+
+    <div class="mt-6 grid auto-rows-min gap-4 sm:grid-cols-2 lg:grid-cols-3" data-pswp-gallery>
+      {
+        preparedItems.map((item, index) => (
+          <figure
+            class:list={[
+              "m-0 min-w-0 overflow-hidden border border-[#414141]/25 bg-[#414141]",
+              index === 0 && preparedItems.length > 2 ? "sm:col-span-2 lg:col-span-2" : null,
+            ]}
+          >
+            <a
+              href={item.largeSrc}
+              class="group relative block overflow-hidden no-underline focus-visible:outline-offset-[-3px]"
+              data-pswp-item
+              data-pswp-width={item.largeWidth}
+              data-pswp-height={item.largeHeight}
+              data-pswp-caption={item.caption ?? item.alt}
+              aria-label={`Bild ${index + 1} von ${preparedItems.length} in Großansicht öffnen: ${item.alt}`}
+            >
+              <Image
+                src={item.image}
+                alt={item.alt}
+                widths={[480, 768, 1200]}
+                sizes={index === 0 && preparedItems.length > 2
+                  ? "(min-width: 1024px) 45rem, (min-width: 640px) 100vw, 100vw"
+                  : "(min-width: 1024px) 22rem, (min-width: 640px) 50vw, 100vw"}
+                loading="lazy"
+                class:list={[
+                  "w-full object-cover transition duration-300 group-hover:scale-[1.025] group-focus-visible:scale-[1.025]",
+                  index === 0 && preparedItems.length > 2 ? "aspect-[16/10]" : "aspect-[4/3]",
+                ]}
+              />
+              <span class="absolute right-3 bottom-3 inline-flex h-11 w-11 items-center justify-center border border-white/60 bg-[#252626]/85 text-white transition group-hover:bg-[#b14926] group-focus-visible:bg-[#b14926]" aria-hidden="true">
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <circle cx="11" cy="11" r="6.5" />
+                  <path d="m16 16 4 4M11 8v6M8 11h6" />
+                </svg>
+              </span>
+            </a>
+            {
+              item.caption ? (
+                <figcaption class="bg-[#fffdf2] px-4 py-3 text-sm leading-6 text-[#414141]">
+                  {item.caption}
+                </figcaption>
+              ) : null
+            }
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  import PhotoSwipeLightbox from "photoswipe/lightbox";
+
+  function initializeGalleries() {
+    document.querySelectorAll<HTMLElement>("[data-pswp-gallery]").forEach((gallery) => {
+      if (gallery.dataset.pswpInitialized === "true") return;
+
+      const lightbox = new PhotoSwipeLightbox({
+        gallery,
+        children: "a[data-pswp-item]",
+        pswpModule: () => import("photoswipe"),
+        bgOpacity: 0.94,
+        showHideAnimationType: "fade",
+        closeTitle: "Galerie schließen",
+        zoomTitle: "Bild vergrößern",
+        arrowPrevTitle: "Vorheriges Bild",
+        arrowNextTitle: "Nächstes Bild",
+        indexIndicatorSep: " von ",
+        errorMsg: "Das Bild konnte nicht geladen werden.",
+      });
+
+      lightbox.on("uiRegister", () => {
+        lightbox.pswp?.ui?.registerElement({
+          name: "scb-caption",
+          order: 9,
+          isButton: false,
+          appendTo: "root",
+          html: "",
+          onInit: (element, pswp) => {
+            const updateCaption = () => {
+              const trigger = pswp.currSlide?.data.element as HTMLElement | undefined;
+              element.textContent = trigger?.dataset.pswpCaption ?? "";
+              element.hidden = !element.textContent;
+            };
+
+            pswp.on("change", updateCaption);
+            updateCaption();
+          },
+        });
+      });
+
+      lightbox.init();
+      gallery.dataset.pswpInitialized = "true";
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeGalleries, { once: true });
+  } else {
+    initializeGalleries();
+  }
+</script>
+
+<style is:global>
+  .pswp__scb-caption {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0.9rem 4.5rem 1rem;
+    background: linear-gradient(transparent, rgba(24, 24, 24, 0.92));
+    color: white;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  @media (max-width: 639px) {
+    .pswp__scb-caption {
+      padding-right: 1rem;
+      padding-left: 1rem;
+      text-align: left;
+    }
+  }
+</style>

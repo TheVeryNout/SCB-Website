@@ -24,9 +24,9 @@ This foundation document is intentionally short on source-site detail. The detai
 
 Cold-start rule:
 
-- normal repo entry starts at [README.md](/home/nout/REPO/SCB-Website/README.md), then [cold-start.md](/home/nout/REPO/SCB-Website/docs/plans/cold-start.md)
-- this file is the first normative specification to read after [cold-start.md](/home/nout/REPO/SCB-Website/docs/plans/cold-start.md)
-- after this file, continue to [wix-audit.md](/home/nout/REPO/SCB-Website/docs/plans/wix-audit.md), then follow the order listed in [cold-start.md](/home/nout/REPO/SCB-Website/docs/plans/cold-start.md)
+- normal operational repo entry starts at [README.md](/home/nout/REPO/SCB-Website/README.md), then [operational-status.md](/home/nout/REPO/SCB-Website/docs/operational-status.md)
+- this file is a retained product/reference spec, not a default startup document
+- read it when product scope, constraints, or locked decisions are directly relevant to the task
 
 ---
 

@@ -21,6 +21,15 @@ const WEEKDAY_INDEX: Record<WeekdayKey, number> = {
   saturday: 6,
   sunday: 0,
 };
+const WEEKDAY_KEYS_BY_DATE_INDEX: WeekdayKey[] = [
+  "sunday",
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+  "friday",
+  "saturday",
+];
 
 function parseDateKey(dateKey: string): Date {
   if (!ISO_DATE_PATTERN.test(dateKey)) {
@@ -213,10 +222,6 @@ export function assertValidEventRecord(event: WebsiteEventRecord): void {
     throw new Error(`Event "${event.slug}" uses daily recurrence, which is reserved at launch.`);
   }
 
-  if (event.recurrence.type === "weekly" && event.recurrence.daysOfWeek.length === 0) {
-    throw new Error(`Event "${event.slug}" needs at least one weekday for weekly recurrence.`);
-  }
-
   if (event.recurrence.type !== "weekly" && event.recurrence.daysOfWeek.length > 0) {
     throw new Error(`Event "${event.slug}" defines weekdays without weekly recurrence.`);
   }
@@ -253,7 +258,11 @@ function isDateInsideRange(dateKey: string, rangeStart: string, rangeEnd: string
 
 function matchesWeeklyPattern(event: WebsiteEventRecord, candidate: Date): boolean {
   const candidateWeekday = candidate.getUTCDay();
-  const weekdayMatch = event.recurrence.daysOfWeek.some((weekday) => WEEKDAY_INDEX[weekday] === candidateWeekday);
+  const daysOfWeek =
+    event.recurrence.daysOfWeek.length > 0
+      ? event.recurrence.daysOfWeek
+      : [WEEKDAY_KEYS_BY_DATE_INDEX[parseDateKey(event.startDate).getUTCDay()]];
+  const weekdayMatch = daysOfWeek.some((weekday) => WEEKDAY_INDEX[weekday] === candidateWeekday);
 
   if (!weekdayMatch) {
     return false;

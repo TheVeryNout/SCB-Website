@@ -1,0 +1,50 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  caption?: string;
+  mode?: "wide" | "portrait" | "contained";
+  loading?: "eager" | "lazy";
+}
+
+const {
+  src,
+  alt,
+  caption,
+  mode = "wide",
+  loading = "eager",
+} = Astro.props;
+
+const figureClasses = {
+  wide: "bg-[#414141]",
+  portrait: "bg-[#f4eeb5] px-5 py-8 sm:px-10 sm:py-10",
+  contained: "bg-[#f4eeb5] px-5 py-8 sm:px-10 sm:py-10",
+} as const;
+
+const imageClasses = {
+  wide: "aspect-[16/9] w-full object-cover",
+  portrait: "mx-auto max-h-[42rem] w-auto max-w-full border border-[#414141]/25 object-contain",
+  contained: "mx-auto max-h-[52rem] w-auto max-w-full border border-[#414141]/25 object-contain",
+} as const;
+---
+
+<figure class:list={["m-0", figureClasses[mode]]}>
+  <Image
+    src={src}
+    alt={alt}
+    widths={[480, 768, 1200, 1600]}
+    sizes="(min-width: 1024px) 70rem, 100vw"
+    loading={loading}
+    class={imageClasses[mode]}
+  />
+  {
+    caption ? (
+      <figcaption class:list={["px-4 py-3 text-sm leading-6 text-[#414141] sm:px-6", mode === "wide" ? "bg-[#fffdf2]" : "mx-auto max-w-2xl bg-transparent text-center"]}>
+        {caption}
+      </figcaption>
+    ) : null
+  }
+</figure>

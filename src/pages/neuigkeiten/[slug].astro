@@ -2,11 +2,9 @@
 import { render } from "astro:content";
 
 import Container from "../../components/Container.astro";
-import EditorialImage from "../../components/EditorialImage.astro";
-import LinkButton from "../../components/LinkButton.astro";
-import PageIntro from "../../components/PageIntro.astro";
+import PostCover from "../../components/PostCover.astro";
+import PostGallery from "../../components/PostGallery.astro";
 import RichText from "../../components/RichText.astro";
-import SurfaceCard from "../../components/SurfaceCard.astro";
 import { getAllPosts, getLatestPosts, getSiteSettingsEntry } from "../../lib/content/site";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
@@ -14,19 +12,17 @@ export async function getStaticPaths() {
   const posts = await getAllPosts();
 
   return posts.map((post) => ({
-    params: {
-      slug: post.data.slug,
-    },
-    props: {
-      post,
-    },
+    params: { slug: post.data.slug },
+    props: { post },
   }));
 }
 
 const { post } = Astro.props;
 const settings = await getSiteSettingsEntry();
 const { Content } = await render(post);
-const relatedPosts = (await getLatestPosts(3)).filter((candidate) => candidate.data.slug !== post.data.slug).slice(0, 2);
+const latestPosts = (await getLatestPosts(3))
+  .filter((candidate) => candidate.data.slug !== post.data.slug)
+  .slice(0, 2);
 const dateFormatter = new Intl.DateTimeFormat("de-DE", {
   day: "2-digit",
   month: "long",
@@ -34,79 +30,72 @@ const dateFormatter = new Intl.DateTimeFormat("de-DE", {
 });
 ---
 
-<BaseLayout
-  title={`${post.data.title} | ${settings.data.organizationName}`}
-  description={post.data.excerpt}
->
-  <section class="scb-section py-16 sm:py-20">
-    <Container class="max-w-5xl space-y-8">
-      <LinkButton href="/neuigkeiten/" variant="outline">
-        Zurueck zu den Neuigkeiten
-      </LinkButton>
+<BaseLayout title={`${post.data.title} | ${settings.data.organizationName}`} description={post.data.excerpt}>
+  <section class="scb-section py-8 sm:py-14">
+    <Container class="min-w-0 max-w-[64rem] space-y-6">
+      <a
+        href="/neuigkeiten/"
+        class="inline-flex border border-[#414141] px-4 py-3 text-sm font-semibold tracking-[0.07em] text-[#414141] no-underline uppercase transition hover:bg-[#414141] hover:text-[#ead871]"
+      >
+        ← Alle Neuigkeiten
+      </a>
 
-      <SurfaceCard as="article" aria-labelledby="post-heading">
-        <div class="space-y-6">
-          <PageIntro title={post.data.title} intro={post.data.excerpt} class="max-w-none">
-            <div class="flex flex-wrap gap-3">
-              <span class="border border-slate-300 bg-white/75 px-4 py-2 text-sm text-slate-700">
-                {dateFormatter.format(new Date(post.data.publishedAt))}
-              </span>
-              {
-                post.data.category ? (
-                  <span class="border border-amber-500/35 bg-amber-100/80 px-4 py-2 text-sm font-semibold text-slate-950">
-                    {post.data.category}
-                  </span>
-                ) : null
-              }
-            </div>
-          </PageIntro>
+      <article class="min-w-0 overflow-hidden border border-[#414141]/35 bg-[#fffdf2]" aria-labelledby="post-heading">
+        <header class="mx-auto max-w-4xl px-5 py-9 sm:px-10 sm:py-12 lg:px-12 lg:py-14">
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-semibold tracking-[0.13em] text-[#414141]/70 uppercase">
+            <time datetime={new Date(post.data.publishedAt).toISOString()}>
+              {dateFormatter.format(new Date(post.data.publishedAt))}
+            </time>
+            {post.data.category ? <span aria-hidden="true">·</span> : null}
+            {post.data.category ? <span>{post.data.category}</span> : null}
+          </div>
+          <h1 id="post-heading" class="scb-display mt-5 text-[clamp(2.5rem,6vw,4.5rem)] leading-[0.98] text-[#414141] uppercase">
+            {post.data.title}
+          </h1>
+          <p class="mt-6 max-w-2xl text-lg leading-8 text-[#414141] sm:text-xl sm:leading-9">{post.data.excerpt}</p>
+        </header>
 
-          {
-            post.data.coverImage ? (
-              <EditorialImage
-                src={post.data.coverImage}
-                alt={`Titelbild zum Beitrag ${post.data.title}`}
-                class="min-h-[18rem]"
-                sizes="(min-width: 1024px) 48rem, 100vw"
-              />
-            ) : null
-          }
+        {
+          post.data.coverImage ? (
+            <PostCover
+              src={post.data.coverImage}
+              alt={post.data.coverAlt ?? `Titelbild zum Beitrag ${post.data.title}`}
+              caption={post.data.coverCaption}
+              mode={post.data.coverMode}
+            />
+          ) : null
+        }
 
-          <RichText>
+        <div class="mx-auto max-w-3xl px-5 py-10 sm:px-8 sm:py-12">
+          <RichText class="article-rich-text">
             <Content />
           </RichText>
         </div>
-      </SurfaceCard>
+
+        {post.data.gallery?.length ? <PostGallery items={post.data.gallery} /> : null}
+      </article>
 
       {
-        relatedPosts.length > 0 ? (
-          <SurfaceCard as="section" aria-labelledby="related-posts-heading">
-            <div class="flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Weitere Beitraege</p>
-                <h2 id="related-posts-heading" class="mt-2 text-2xl font-semibold text-slate-950">
-                  Weitere aktuelle Meldungen
-                </h2>
-              </div>
-            </div>
+        latestPosts.length ? (
+          <section aria-labelledby="latest-posts-heading" class="border border-[#414141]/35 bg-[#f4eeb5] p-5 sm:p-8">
+            <p class="scb-display text-sm tracking-[0.16em] text-[#b14926] uppercase">Weiterlesen</p>
+            <h2 id="latest-posts-heading" class="mt-2 text-2xl font-semibold text-[#414141]">Neueste Meldungen</h2>
             <div class="mt-6 grid gap-4 md:grid-cols-2">
-              {
-                relatedPosts.map((relatedPost) => (
-                  <article class="border border-slate-200 bg-white/75 p-5">
-                    <p class="text-xs font-semibold tracking-[0.16em] text-slate-500 uppercase">
-                      {dateFormatter.format(new Date(relatedPost.data.publishedAt))}
-                    </p>
-                    <h3 class="mt-2 text-lg font-semibold text-slate-950">
-                      <a class="no-underline hover:underline" href={`/neuigkeiten/${relatedPost.data.slug}/`}>
-                        {relatedPost.data.title}
-                      </a>
-                    </h3>
-                    <p class="mt-3 text-sm leading-6 text-slate-700">{relatedPost.data.excerpt}</p>
-                  </article>
-                ))
-              }
+              {latestPosts.map((latestPost) => (
+                <article class="border border-[#414141]/25 bg-[#fffdf2] p-5">
+                  <time class="text-xs font-semibold tracking-[0.12em] text-[#414141]/65 uppercase" datetime={new Date(latestPost.data.publishedAt).toISOString()}>
+                    {dateFormatter.format(new Date(latestPost.data.publishedAt))}
+                  </time>
+                  <h3 class="mt-2 break-words text-xl font-semibold leading-tight text-[#414141]">
+                    <a class="no-underline hover:text-[#b14926]" href={`/neuigkeiten/${latestPost.data.slug}/`}>
+                      {latestPost.data.title}
+                    </a>
+                  </h3>
+                  <p class="mt-3 text-sm leading-6 text-[#414141]/80">{latestPost.data.excerpt}</p>
+                </article>
+              ))}
             </div>
-          </SurfaceCard>
+          </section>
         ) : null
       }
     </Container>

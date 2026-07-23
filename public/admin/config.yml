@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: TheVeryNout/SCB-Website
+  name: git-gateway
   branch: master
 
 local_backend:
@@ -35,7 +34,7 @@ collections:
             name: "socialLinks"
             widget: "list"
             summary: "{{fields.label}}"
-            hint: "Wiederverwendete Social-Links fuer Footer und Kontaktflaechen."
+            hint: "Wiederverwendete Social-Links für Footer und Kontaktflächen."
             fields:
               - { label: "Label", name: "label", widget: "string" }
               - { label: "URL", name: "url", widget: "string" }
@@ -56,13 +55,14 @@ collections:
           - { label: "Hero-Titel", name: "heroTitle", widget: "string" }
           - { label: "Hero-Intro", name: "heroIntro", widget: "text" }
           - { label: "Hero-Bild", name: "heroImage", widget: "image", required: false }
-          - label: "Featured Announcement"
+          - label: "Featured Announcement (Optional)"
             name: "featuredAnnouncement"
             widget: "object"
             required: false
             collapsed: true
-            hint: "Optionaler Hinweisblock fuer eine einzelne wichtige Meldung."
+            hint: "Optionaler Hinweisblock für eine einzelne wichtige Meldung. Mit dem Schalter kann der Block ausgeblendet werden, ohne die Felder zu löschen."
             fields:
+              - { label: "Auf Startseite anzeigen", name: "enabled", widget: "boolean", default: true, required: false }
               - { label: "Titel", name: "title", widget: "string" }
               - { label: "Text", name: "body", widget: "text" }
               - { label: "Link-Label", name: "linkLabel", widget: "string", required: false }
@@ -81,7 +81,7 @@ collections:
       preview: false
     files:
       - file: "src/content/pages/about.md"
-        label: "Ueber uns"
+        label: "Über uns"
         name: "about"
         fields:
           - { label: "Titel", name: "title", widget: "string" }
@@ -138,6 +138,27 @@ collections:
           - { label: "Ortshinweis", name: "locationNotes", widget: "text", required: false }
           - { label: "Body", name: "body", widget: "markdown", required: false }
 
+      - file: "src/content/pages/events.md"
+        label: "Veranstaltungen"
+        name: "events"
+        fields:
+          - { label: "Titel", name: "title", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "text" }
+          - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
+          - { label: "Terminlisten-Titel", name: "listTitle", widget: "string", required: false }
+          - { label: "Terminlisten-Intro", name: "listIntro", widget: "text", required: false }
+          - label: "Zusatzinfos"
+            name: "additionalInfo"
+            widget: "object"
+            required: false
+            collapsed: true
+            hint: "Optionaler Infokasten auf der Veranstaltungsübersicht."
+            fields:
+              - { label: "Anzeigen", name: "enabled", widget: "boolean", default: false, required: false }
+              - { label: "Label", name: "label", widget: "string", default: "Zusatzinfos", required: false }
+              - { label: "Titel", name: "title", widget: "string", required: false }
+              - { label: "Text", name: "text", widget: "text", required: false }
+
       - file: "src/content/pages/impressum.md"
         label: "Impressum"
         name: "impressum"
@@ -161,22 +182,38 @@ collections:
     slug: "{{fields.slug}}"
     summary: "{{fields.title}}"
     editor:
-      preview: false
+      preview: true
     fields:
       - { label: "Titel", name: "title", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Veroeffentlicht am", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ" }
+      - { label: "Slug", name: "slug", widget: "string", hint: "Nur Kleinbuchstaben, Zahlen und Bindestriche. Nach der Veröffentlichung nicht mehr ändern." }
+      - { label: "Entwurf", name: "draft", widget: "boolean", default: true, required: false, hint: "Entwürfe sind auf der Website nicht sichtbar. Bestehende Beiträge ohne dieses Feld bleiben veröffentlicht." }
+      - { label: "Veröffentlicht am", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ" }
       - { label: "Kurztext", name: "excerpt", widget: "text" }
-      - { label: "Cover-Bild", name: "coverImage", widget: "image", required: false }
+      - { label: "Cover-Bild", name: "coverImage", widget: "image", required: false, hint: "Optionales Hauptbild für Übersicht und Beitragskopf." }
+      - { label: "Cover-Alternativtext", name: "coverAlt", widget: "string", required: false, hint: "Kurze Bildbeschreibung für Screenreader. Sobald ein Cover gepflegt wird, ist dieser Text erforderlich." }
+      - { label: "Cover-Bildunterschrift", name: "coverCaption", widget: "string", required: false }
+      - label: "Cover-Darstellung"
+        name: "coverMode"
+        widget: "select"
+        default: "wide"
+        options:
+          - { label: "Breit zugeschnitten", value: "wide" }
+          - { label: "Hochformat", value: "portrait" }
+          - { label: "Vollständig / Dokument", value: "contained" }
       - label: "Galerie"
         name: "gallery"
         widget: "list"
         required: false
-        field: { label: "Bild", name: "image", widget: "image" }
+        summary: "{{fields.alt}}"
+        hint: "Die Reihenfolge hier entspricht der öffentlichen Galerie. Jedes Bild braucht einen Alternativtext."
+        fields:
+          - { label: "Bild", name: "image", widget: "image" }
+          - { label: "Alternativtext", name: "alt", widget: "string" }
+          - { label: "Bildunterschrift", name: "caption", widget: "string", required: false }
       - { label: "Kategorie", name: "category", widget: "string", required: false, hint: "Optional und bewusst einfach gehalten." }
       - { label: "Aktualisiert am", name: "updatedAt", widget: "datetime", required: false, format: "YYYY-MM-DDTHH:mm:ssZ" }
-      - { label: "Quell-URL", name: "sourceUrl", widget: "string", required: false }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Quell-URL", name: "sourceUrl", widget: "string", required: false, hint: "Interne Herkunftsangabe; wird nicht als Teil des Beitragstexts angezeigt." }
+      - { label: "Beitragstext", name: "body", widget: "markdown" }
 
   - name: "events"
     label: "Veranstaltungen"
@@ -203,18 +240,19 @@ collections:
         name: "recurrence"
         widget: "object"
         collapsed: true
-        hint: "Fuer den Start nur keine Wiederholung, woechentlich oder gleicher Tag pro Monat."
+        hint: "Für den Start nur keine Wiederholung, wöchentlich oder gleicher Tag pro Monat."
         fields:
           - { label: "Typ", name: "type", widget: "select", default: "none", options: ["none", "weekly", "monthly"] }
-          - { label: "Intervall", name: "interval", widget: "number", default: 1, value_type: "int", min: 1, required: false }
+          - { label: "Intervall", name: "interval", widget: "number", default: 1, value_type: "int", min: 1, required: false, hint: "1 = jede Woche / jeden Monat. Leer wird wie 1 behandelt." }
           - label: "Wochentage"
             name: "daysOfWeek"
             widget: "select"
             multiple: true
             required: false
+            hint: "Nur für wöchentliche Termine. Wenn leer, wird der Wochentag aus dem Startdatum verwendet."
             options: ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
           - { label: "Tag im Monat", name: "dayOfMonth", widget: "number", required: false, value_type: "int", min: 1, max: 31 }
-          - { label: "Bis einschliesslich", name: "until", widget: "date", required: false, format: "YYYY-MM-DD" }
+          - { label: "Bis einschließlich", name: "until", widget: "date", required: false, format: "YYYY-MM-DD" }
           - { label: "Maximale Anzahl", name: "count", widget: "number", required: false, value_type: "int", min: 1 }
           - label: "Ausnahmen"
             name: "exclusions"
@@ -229,7 +267,17 @@ collections:
       - { label: "Ort", name: "locationName", widget: "string" }
       - { label: "Adresse", name: "address", widget: "text", required: false }
       - { label: "Kartenlink", name: "mapUrl", widget: "string", required: false }
-      - { label: "Hinweis bei Wetter", name: "weatherNote", widget: "text", required: false }
+      - label: "Zusatzinfos"
+        name: "additionalInfo"
+        widget: "object"
+        required: false
+        collapsed: true
+        hint: "Optionaler Infokasten auf der Termin-Detailseite. Nicht nur für Wetter gedacht."
+        fields:
+          - { label: "Anzeigen", name: "enabled", widget: "boolean", default: false, required: false }
+          - { label: "Label", name: "label", widget: "string", default: "Zusatzinfos", required: false }
+          - { label: "Titel", name: "title", widget: "string", required: false }
+          - { label: "Text", name: "text", widget: "text", required: false }
       - { label: "CTA Label", name: "ctaLabel", widget: "string", required: false }
       - { label: "CTA URL", name: "ctaUrl", widget: "string", required: false }
       - { label: "Anmeldung URL", name: "registrationUrl", widget: "string", required: false }
@@ -242,7 +290,7 @@ collections:
         field: { label: "Bild", name: "image", widget: "image" }
       - { label: "Quelle", name: "source", widget: "hidden", default: "website" }
       - { label: "Quell-ID", name: "sourceId", widget: "hidden", required: false }
-      - { label: "Zuletzt geprueft", name: "lastVerifiedAt", widget: "date", required: false, format: "YYYY-MM-DD" }
+      - { label: "Zuletzt geprüft", name: "lastVerifiedAt", widget: "date", required: false, format: "YYYY-MM-DD" }
       - { label: "Body", name: "body", widget: "markdown", required: false }
 
   - name: "media"
@@ -267,4 +315,4 @@ collections:
         required: false
         field: { label: "Bild", name: "image", widget: "image" }
       - { label: "Kurztext", name: "summary", widget: "text", required: false }
-      - { label: "Veroeffentlicht am", name: "publishedAt", widget: "datetime", required: false, format: "YYYY-MM-DDTHH:mm:ssZ" }
+      - { label: "Veröffentlicht am", name: "publishedAt", widget: "datetime", required: false, format: "YYYY-MM-DDTHH:mm:ssZ" }

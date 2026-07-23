@@ -1,0 +1,137 @@
+:root {
+  color-scheme: light;
+  --scb-preview-charcoal: #414141;
+  --scb-preview-yellow: #ead871;
+  --scb-preview-paper: #fffdf2;
+  --scb-preview-rust: #b14926;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--scb-preview-yellow);
+  color: var(--scb-preview-charcoal);
+  font-family: "Avenir Next", "Segoe UI", Arial, sans-serif;
+}
+
+.scb-preview {
+  padding: clamp(1rem, 4vw, 3rem);
+}
+
+.scb-preview__article {
+  max-width: 62rem;
+  margin: 0 auto;
+  background: var(--scb-preview-paper);
+  border: 1px solid rgb(65 65 65 / 35%);
+}
+
+.scb-preview__header,
+.scb-preview__body {
+  width: min(100% - 2rem, 44rem);
+  margin-inline: auto;
+}
+
+.scb-preview__header {
+  padding-block: clamp(2rem, 6vw, 4.5rem) 2rem;
+}
+
+.scb-preview__eyebrow {
+  margin: 0 0 0.75rem;
+  color: var(--scb-preview-rust);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.scb-preview h1 {
+  margin: 0;
+  font-family: "Arial Narrow", "Avenir Next Condensed", Impact, sans-serif;
+  font-size: clamp(2.25rem, 7vw, 4.75rem);
+  font-weight: 400;
+  line-height: 0.98;
+  overflow-wrap: anywhere;
+  text-transform: uppercase;
+}
+
+.scb-preview__excerpt {
+  margin: 1.25rem 0;
+  font-size: 1.15rem;
+  line-height: 1.65;
+}
+
+.scb-preview__cover {
+  margin: 0;
+  background: var(--scb-preview-charcoal);
+}
+
+.scb-preview__cover img {
+  display: block;
+  width: 100%;
+  max-height: 38rem;
+  object-fit: cover;
+}
+
+.scb-preview__cover--portrait img,
+.scb-preview__cover--contained img {
+  width: auto;
+  max-width: 100%;
+  margin-inline: auto;
+  object-fit: contain;
+}
+
+.scb-preview figcaption {
+  padding: 0.65rem 1rem;
+  background: var(--scb-preview-paper);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.scb-preview__body {
+  padding-block: 2.5rem 4rem;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.scb-preview__body > * + * {
+  margin-top: 1.15rem;
+}
+
+.scb-preview__body :is(h2, h3, h4) {
+  margin-top: 2em;
+  color: var(--scb-preview-rust);
+  line-height: 1.25;
+}
+
+.scb-preview__body img {
+  max-width: 100%;
+  height: auto;
+}
+
+.scb-preview__body blockquote {
+  margin-inline: 0;
+  padding-left: 1.25rem;
+  border-left: 0.3rem solid var(--scb-preview-rust);
+}
+
+.scb-preview__gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+  gap: 1rem;
+  padding: 0 clamp(1rem, 4vw, 3rem) 3rem;
+}
+
+.scb-preview__gallery figure {
+  margin: 0;
+  background: var(--scb-preview-charcoal);
+}
+
+.scb-preview__gallery img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}

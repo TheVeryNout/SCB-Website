@@ -149,11 +149,11 @@ Do not introduce SSR for launch unless the user explicitly changes direction.
 
 Use client-side JavaScript only where there is clear user-facing value.
 
-Allowed likely uses:
+Allowed uses:
 
 - mobile navigation toggle
 - lightweight calendar month interaction if needed
-- optional gallery/lightbox interaction
+- the post-gallery PhotoSwipe lightbox, loaded only on pages that render a gallery and progressively enhanced from direct optimized-image links
 
 Do not use client-side code for:
 
@@ -182,11 +182,14 @@ Use `src/assets/images/` for:
 - event images
 - curated media thumbnails
 
+CMS-managed post media lives under `src/assets/images/uploads/`. Decap commits the source upload and its content reference to the repository; it does not transform the file during upload. Astro owns public delivery derivatives at build time. Post galleries generate responsive thumbnail widths and a quality-controlled WebP lightbox source capped at 2000px on the source width, while retaining the direct optimized-image link as the no-JavaScript fallback. Source-file normalization, metadata stripping, and upload-size policy remain a separate future ingestion concern rather than lightbox behavior.
+
 Reason:
 
 - Astro image optimization
 - predictable imports
 - mobile-friendly delivery
+- CMS source assets remain rebuildable without serving unbounded originals as the default gallery view
 
 ### PDFs And Raw Files
 
@@ -262,20 +265,28 @@ Unless the user later asks for a review-heavy editorial process, prefer a straig
 
 ### Backend and auth
 
-Lock launch CMS auth/backend to:
+The deployed CMS uses:
 
-- Decap GitHub backend via Netlify OAuth provider
+- individual, invite-only Netlify Identity email/password accounts
+- Decap's `git-gateway` backend on the `master` branch
 
 Reason:
 
-- avoids the deprecated Netlify Identity/Git Gateway invite and email-verification path
-- aligns with Netlify-first deployment
-- keeps deployed CMS publishing repo-backed without custom server code
+- editors do not need GitHub accounts or repository permissions
+- each coworker can be invited or removed independently
+- Git Gateway preserves the existing repository-backed publishing and Netlify rebuild flow
+- the developer's normal local Git workflow remains unchanged
 
-Operational note:
+Operational requirements:
 
-- CMS users must authenticate with GitHub and need push access to `TheVeryNout/SCB-Website`
-- Netlify must have a GitHub OAuth provider configured for the site
+- Netlify Identity is enabled and registration is set to **Invite only**
+- Git Gateway is enabled for the site's connected repository
+- each editor is invited separately from Netlify's Identity user management
+- the public layout forwards Identity invitation/recovery hashes to `/admin/`
+- `/admin/` uses `@netlify/identity` to accept invitations and password recovery, then loads Decap; ordinary CMS login remains Decap's email/password Git Gateway form
+- no GitHub OAuth provider or direct repository permission is required for CMS editors
+
+Git Gateway is currently a Netlify Beta service. This is an accepted operational dependency and should be revisited if Netlify changes its support status.
 
 ### Local development backend
 

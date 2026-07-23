@@ -77,6 +77,46 @@ a {
   color: var(--scb-ink-dark);
 }
 
+.article-rich-text {
+  font-size: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  line-height: 1.85;
+}
+
+.article-rich-text > * + * {
+  margin-top: 1.35rem;
+}
+
+.article-rich-text :is(h2, h3, h4) {
+  margin-top: 2.2em;
+  overflow-wrap: anywhere;
+}
+
+.article-rich-text h2 {
+  font-size: clamp(1.6rem, 1.35rem + 1vw, 2.25rem);
+}
+
+.article-rich-text h3 {
+  font-size: clamp(1.3rem, 1.15rem + 0.6vw, 1.75rem);
+}
+
+.article-rich-text :is(ul, ol) > li + li {
+  margin-top: 0.6rem;
+}
+
+.article-rich-text blockquote {
+  margin-inline: 0;
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  border-left: 0.3rem solid var(--scb-rust);
+  color: color-mix(in srgb, var(--scb-ink) 85%, transparent);
+  font-size: 1.08em;
+}
+
+.article-rich-text img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 .scb-display {
   font-family: "Arial Narrow", "Avenir Next Condensed", Impact, sans-serif;
   font-weight: 400;

@@ -55,7 +55,12 @@ export interface WebsiteEventRecord {
   costLabel?: string;
   audience?: string;
   equipmentInfo?: string;
-  weatherNote?: string;
+  additionalInfo?: {
+    enabled: boolean;
+    label?: string;
+    title?: string;
+    text?: string;
+  };
   instagramUrl?: string;
   source: EventSource;
   sourceId?: string;

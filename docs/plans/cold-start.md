@@ -20,6 +20,14 @@ It also does not replace the execution checklist stack; use [execution-plan.md](
 
 Build a small, robust, mobile-first public website for Skate Club Biriciana e.V. with Astro, Decap CMS, and a website-owned static event calendar.
 
+Operational state as of the user-reported update on `2026-04-13`:
+
+- the site is deployed
+- the CMS is running
+- Phases 1 to 7 in the execution plan are cleared
+- active implementation phase: none
+- future work should start from the deployed baseline unless a later audit explicitly reopens a phase
+
 ---
 
 ## Core Priorities
@@ -138,9 +146,9 @@ Use the docs in this order after finishing this file:
 
 ## Fast Resume Path
 
-For a brand-new conversation that is resuming implementation rather than redefining scope:
+For a brand-new conversation that is resuming work rather than redefining scope:
 
-1. read [execution-plan.md](/home/nout/REPO/SCB-Website/docs/plans/execution-plan.md) sections `Current Verified Repo Snapshot`, `Progress Snapshot`, and the checklist for the active phase
+1. read [execution-plan.md](/home/nout/REPO/SCB-Website/docs/plans/execution-plan.md) sections `Current Verified Repo Snapshot`, `Progress Snapshot`, and the checklist for the active phase if one has been explicitly reopened
 2. read [status-checklist.md](/home/nout/REPO/SCB-Website/docs/plans/status-checklist.md) to see what was actually audited, what is still open, and whether an earlier phase is still blocking
 3. if Wix/source evidence is needed, read [wix-reference/README.md](/home/nout/REPO/SCB-Website/docs/plans/wix-reference/README.md) and [wix-reference/manifest.json](/home/nout/REPO/SCB-Website/docs/plans/wix-reference/manifest.json)
 4. load the phase-specific docs listed in `Phase-Specific Reading Mode`
@@ -164,7 +172,7 @@ Ready now:
 - implementation-safe bootstrap
 - Playwright-based live Wix reference workflow
 
-Needs to stay explicit during implementation:
+Needs to stay explicit during future work:
 
 - keep content scope small
 - keep CMS simple for non-technical editors

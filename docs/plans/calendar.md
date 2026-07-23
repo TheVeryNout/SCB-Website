@@ -147,11 +147,20 @@ Use a single website event content type with a model designed for public communi
 - `costLabel`
 - `audience`
 - `equipmentInfo`
-- `weatherNote`
+- `additionalInfo`
 - `instagramUrl`
 - `source`
 - `sourceId`
 - `lastVerifiedAt`
+
+`additionalInfo` is an optional public info box with:
+
+- `enabled`
+- `label`
+- `title`
+- `text`
+
+It is intentionally generic and must be labeled `Zusatzinfos` in the CMS by default. Do not model it as weather-only.
 
 ### Controlled fields
 
@@ -185,6 +194,16 @@ Recurrence shape:
 - `count`: optional max occurrence count
 - `exclusions`: array of excluded dates
 - `inclusions`: array of manually added dates
+
+CMS tolerance rule:
+
+- a blank recurrence interval is treated as `1`
+- for weekly recurrence, if `daysOfWeek` is left empty, the website derives the weekday from `startDate`
+
+Reason:
+
+- Decap can save blank optional number fields as empty strings
+- non-technical editors should not have to re-enter an obvious weekday when the start date already carries it
 
 ### Admin notes policy
 
@@ -338,7 +357,6 @@ Reason:
 
 - `Upcoming Events` section
 - `All Events` page
-- `Month Grid` view
 - occurrence detail page
 - optional homepage event preview block
 
@@ -349,14 +367,13 @@ Reason:
 - optionally hide past events by default
 - allow small limit for homepage, larger limit for events page
 
-### Month Grid behavior
+### Month Overview Behavior
 
-- month navigation
-- event count per day
-- click/tap day to reveal day events
-- mobile-friendly stacked presentation
-- no drag/drop
-- no week/day scheduler views for launch
+The launch events index uses one primary upcoming-events list.
+
+Do not add a second month overview that repeats the same occurrence cards unless a future task explicitly asks for it.
+
+If a month overview returns later, it must be clearly distinct from the upcoming list and must not create a duplicate-calendar experience.
 
 ### Event detail behavior
 
@@ -367,6 +384,7 @@ Reason:
 - display CTA or registration link if present
 - display location information
 - display weather note if present
+- display the optional `Zusatzinfos` box when enabled and populated
 - display long-form body if present
 - show related upcoming occurrences for the same recurring event if useful
 
@@ -460,6 +478,8 @@ Admins should be able to edit:
 - timezone defaults to `Europe/Berlin`
 - visibility defaults to `public`
 - status defaults to `scheduled`
+- blank recurrence interval is normalized to `1`
+- weekly recurrence may leave weekdays blank to use the start date's weekday
 
 ### CMS validation expectations
 

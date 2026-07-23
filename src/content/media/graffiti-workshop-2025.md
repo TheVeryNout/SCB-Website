@@ -9,6 +9,6 @@ gallery:
   - "../../assets/images/wix-staging/posts/graffiti-workshop-ein-voller-erfolg/13cc9c_0c95d382c44c4d1b909ddb417e3068af~mv2.jpg"
   - "../../assets/images/wix-staging/posts/graffiti-workshop-ein-voller-erfolg/13cc9c_23009f2e63764e599be335498245b90b~mv2.jpg"
   - "../../assets/images/wix-staging/posts/graffiti-workshop-ein-voller-erfolg/13cc9c_23bc270df37145a88c92ca32fd9665a0~mv2.jpg"
-summary: "Lokale Bildauswahl aus dem ausgebuchten Graffiti-Workshop am Skatepark Weissenburg."
+summary: "Lokale Bildauswahl aus dem ausgebuchten Graffiti-Workshop am Skatepark Weißenburg."
 publishedAt: "2025-04-15T08:22:30Z"
 ---

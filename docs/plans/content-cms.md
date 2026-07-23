@@ -261,6 +261,8 @@ Optional fields:
 - `mediaTeaserTitle`
 - `mediaTeaserText`
 
+`featuredAnnouncement` includes an editor-facing `enabled` toggle so the homepage block can be hidden without deleting its title, body, or link fields. Existing or omitted toggle values default to enabled for backward-compatible content.
+
 ### `pages`
 
 Type:
@@ -272,6 +274,7 @@ Required entries:
 - `about`
 - `membership`
 - `contact`
+- `events`
 - `impressum`
 - `datenschutz`
 
@@ -285,6 +288,22 @@ Required fields:
 - `goals`
 - `boardMembers`
 - `statutesPdf`
+
+#### `events`
+
+Required fields:
+
+- `title`
+- `intro`
+
+Optional fields:
+
+- `eyebrow`
+- `listTitle`
+- `listIntro`
+- `additionalInfo`
+
+`additionalInfo` must be editor-facing as `Zusatzinfos` and include an on/off toggle so the box can be hidden without deleting its text.
 
 Optional fields:
 
@@ -362,14 +381,30 @@ Required fields:
 
 Optional fields:
 
+- `draft`
 - `coverImage`
+- `coverAlt`
+- `coverCaption`
+- `coverMode`
 - `gallery`
 - `category`
 - `updatedAt`
 - `sourceUrl`
 
-Launch rule:
+News publication and media rules:
 
+- newly created CMS posts default to draft
+- existing posts without a `draft` field remain published for backward compatibility
+- drafts and future-dated posts are excluded from public indexes, related lists, and static detail routes
+- published slugs are immutable by editorial policy; duplicate slugs fail validation/build
+- cover presentation is controlled by `wide | portrait | contained`
+- a maintained cover must have editor-authored alternative text; all restored news covers satisfy this rule
+- gallery entries are structured as image, required alternative text, and optional caption
+- gallery order in CMS is public display order
+- the public gallery viewer is code-owned progressive enhancement: Decap continues to own only image selection, alternative text, caption, and ordering
+- gallery thumbnails and bounded large-view WebP assets are derived by Astro at build time; the CMS upload remains the rebuildable source asset rather than the default browser-delivered lightbox file
+- curated post media must live under the configured CMS media folder (`src/assets/images/uploads`) so existing entries, media selection, and previews use the same manageable assets; retained Wix-staging originals remain provenance rather than CMS inputs
+- `sourceUrl` is internal provenance and is not rendered as article body copy
 - support at most one optional public category field
 - do not build a large taxonomy system
 
@@ -384,6 +419,8 @@ Required rule:
 - model fields, recurrence, and validation must match [calendar.md](/home/nout/REPO/SCB-Website/docs/plans/calendar.md)
 
 This document must not redefine those semantics.
+
+The CMS label for the event-level optional info box is `Zusatzinfos`. It includes an on/off toggle and is intentionally not weather-specific.
 
 ### `media`
 
@@ -473,13 +510,18 @@ Add concise help text for fields that are easy to misuse:
 
 Use safe defaults:
 
-- optional featured blocks off by default
+- optional featured block objects may keep their content while exposing an on/off toggle; existing populated featured announcement content defaults to on
+- new news posts default to draft; omitted draft values on migrated posts default to published
+- future-dated news posts remain hidden until their publication timestamp
 - optional media/gallery fields empty by default
 - event defaults per `calendar.md`
+- blank optional CMS fields should normalize to omitted/default values where Decap writes empty strings
 
 ### Preview complexity
 
-Do not require custom preview widgets for launch unless a field is unusable without one.
+The news collection has a maintained Decap preview because styled long-form authoring is a core editorial requirement. It must represent article hierarchy, cover presentation, body typography, and gallery order closely enough to catch authoring mistakes. Preview defaults must match public behavior: an existing entry without `draft` is shown as published, while a newly created CMS entry keeps its explicit default of `draft: true`.
+
+Do not add custom preview widgets to other collections unless a field is unusable without one. A misleading or unmaintained preview is worse than an explicitly disabled preview.
 
 ### Editorial workflow complexity
 

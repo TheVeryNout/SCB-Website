@@ -2,11 +2,26 @@
 title: "Der Contest in der Zeitung"
 slug: "der-contest-in-der-zeitung"
 publishedAt: "2024-10-07T09:41:52Z"
-excerpt: "Das Weissenburger Tagblatt widmete dem Event des Vereins eine ganze Seite und der Beitrag dokumentiert den Rueckblick darauf."
-coverImage: "../../assets/images/wix-staging/posts/der-contest-in-der-zeitung/dfbc4d_59e1e64566d44ea2b074b9cf058761e7~mv2.jpg"
+excerpt: "Das Weißenburger Tagblatt widmete dem Goodies-for-Tricks-Contest eine ganze Seite."
+coverImage: "../../assets/images/uploads/dfbc4d_59e1e64566d44ea2b074b9cf058761e7~mv2.jpg"
+coverAlt: "Ganzseitiger Zeitungsbericht über den Goodies-for-Tricks-Skatecontest"
+coverCaption: "Der Contest im Weißenburger Tagblatt"
+coverMode: "contained"
+gallery:
+  - image: "../../assets/images/uploads/dfbc4d_a4b7ccd507724b948671fb09a70afe94~mv2.jpg"
+    alt: "Zweite Aufnahme des ganzseitigen Zeitungsberichts über den Skatecontest"
+    caption: "Der Bericht in lesbarer Ganzseitenansicht"
 category: "Presse"
 sourceUrl: "https://briareos.wixsite.com/skateclubbiriciana/post/der-contest-in-der-zeitung"
 ---
-Das Weissenburger Tagblatt widmete dem Event des Vereins am vergangenen Wochenende eine ganze Seite. Der Beitrag bedankt sich dafuer und dokumentiert den Presseabdruck als Rueckblick.
+Das Weißenburger Tagblatt widmete unserem Event am vergangenen Wochenende eine ganze Seite – wie dufte ist das denn! Der Skate Club freut und bedankt sich!
 
-Im sichtbaren retained local HTML beginnt der abgetippte Artikel mit einem Bericht ueber den Wettbewerb an der Anlage in der Rezataue. Dort wird beschrieben, wie der Park vor dem Contest nach Regen erst getrocknet werden musste und wie Kinder, Jugendliche und junge Erwachsene den Tag mit Tricks und Goodies nutzten.
+## Der Text des Artikels
+
+> **Skate-Contest:** Der Skateclub Biriciana veranstaltete am Samstag in der Anlage an der Rezataue einen Wettbewerb.
+>
+> Der Regen am Samstagvormittag hatte auch den Zeitplan des Skateclubs Biriciana etwas durcheinandergebracht, und so konnte der bereits zweite „Goodies for Tricks Skatecontest“ mit etwas zeitlicher Verzögerung stattfinden, weil die Anlage in der Rezataue erst einmal mit Gummilippen und Föhns getrocknet werden musste. Schon während dieser Zeit war das, was von den Kids, Teenagern und jungen Erwachsenen gezeigt wurde, aber spektakulär: Es wurde gesprungen, gegrindet und geslidet, was das Zeug hielt.
+>
+> Natürlich durften auch die Kleinen, die mit Mama oder Papa kamen, den Skatepark ausgiebig testen. Jedes Kind bekam für seinen Einsatz ein Goodie vom Verein: von Brettspielen, bedruckten Turnbeuteln und T-Shirts bis hin zu Helmen, Schonern, Achsen und hochwertigem Skate-Equipment. Danach wurde der ganze Park genutzt, um mit spektakulären Tricks weitere Preise abzuräumen. Die Skaterinnen und Skater kamen bis aus Eichstätt, Nürnberg oder Erlangen angereist und das Feedback war durchweg positiv, freut sich der Verein.
+
+Unseren eigenen Rückblick findet ihr im Beitrag [„Goodies 4 Tricks-Event trotz Regen ein Erfolg“](/neuigkeiten/goodies-4-tricks-event-trotz-regen-ein-erfolg/).

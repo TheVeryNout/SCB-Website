@@ -1,9 +1,7 @@
 ---
 import Container from "../../components/Container.astro";
 import EditorialImage from "../../components/EditorialImage.astro";
-import LinkButton from "../../components/LinkButton.astro";
 import PageIntro from "../../components/PageIntro.astro";
-import SurfaceCard from "../../components/SurfaceCard.astro";
 import { getAllPosts, getSiteSettingsEntry } from "../../lib/content/site";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
@@ -12,6 +10,7 @@ const [settings, posts] = await Promise.all([
   getAllPosts(),
 ]);
 
+const [leadPost, ...archivePosts] = posts;
 const dateFormatter = new Intl.DateTimeFormat("de-DE", {
   day: "2-digit",
   month: "long",
@@ -21,73 +20,116 @@ const dateFormatter = new Intl.DateTimeFormat("de-DE", {
 
 <BaseLayout
   title={`Neuigkeiten | ${settings.data.organizationName}`}
-  description="Aktuelle Vereinsnachrichten, Rueckblicke und oeffentliche Updates des Skate Club Biriciana e.V."
+  description="Aktuelle Vereinsnachrichten, Rückblicke und öffentliche Updates des Skate Club Biriciana e.V."
 >
-  <section class="scb-section py-16 sm:py-20">
-    <Container class="space-y-10">
+  <section class="scb-section py-14 sm:py-20">
+    <Container class="min-w-0 space-y-10 sm:space-y-14">
       <PageIntro
         eyebrow="Neuigkeiten"
-        title="Aktuelle Meldungen aus Verein, Szene und Projekten"
-        intro="Die Beitraege bleiben bewusst schlicht: chronologisch, mobil gut lesbar und ohne ueberladene Blog-Funktionen."
+        title="Geschichten aus Verein, Szene und Skatepark"
+        intro="Aktuelle Meldungen, Veranstaltungsrückblicke und Einblicke in die Projekte des Skate Club Biriciana."
+        class="[&_h1]:break-words [&_h1]:text-[clamp(2.5rem,10vw,4.5rem)] [&_h1]:leading-[0.95]"
       />
 
-      <div class="grid gap-5">
-        {
-          posts.map((post, index) => (
-            <SurfaceCard
-              as="article"
-              aria-labelledby={`post-${post.data.slug}-heading`}
-              class="grid gap-5 lg:grid-cols-[0.9fr_1.1fr]"
-            >
+      {
+        leadPost ? (
+          <div class="space-y-10">
+            <article class="grid min-w-0 overflow-hidden border border-[#414141]/40 bg-[#fffdf2] lg:grid-cols-[minmax(0,1.05fr)_minmax(22rem,0.95fr)]">
               {
-                post.data.coverImage ? (
-                  <EditorialImage
-                    src={post.data.coverImage}
-                    alt={`Titelbild zum Beitrag ${post.data.title}`}
-                    class="min-h-[14rem]"
-                    sizes="(min-width: 1024px) 24rem, 100vw"
-                  />
+                leadPost.data.coverImage ? (
+                  <a href={`/neuigkeiten/${leadPost.data.slug}/`} class="relative block aspect-[4/3] no-underline lg:aspect-auto lg:min-h-[32rem]">
+                    <EditorialImage
+                      src={leadPost.data.coverImage}
+                      alt={leadPost.data.coverAlt ?? `Titelbild zum Beitrag ${leadPost.data.title}`}
+                      class="absolute inset-0 h-full border-0"
+                      sizes="(min-width: 1024px) 42rem, 100vw"
+                      loading="eager"
+                    />
+                  </a>
                 ) : (
-                  <div class="border border-dashed border-slate-300 bg-white/60 p-6 text-sm leading-6 text-slate-600">
-                    Bildmaterial wurde fuer diesen Beitrag nicht als eigenes Teaserbild gepflegt.
-                  </div>
+                  <div class="min-h-[16rem] bg-[#414141]" aria-hidden="true" />
                 )
               }
 
-              <div class="space-y-4">
-                <div class="flex flex-wrap items-center gap-3">
-                  <p class="text-xs font-semibold tracking-[0.16em] text-slate-500 uppercase">
-                    {dateFormatter.format(new Date(post.data.publishedAt))}
-                  </p>
-                  {
-                    post.data.category ? (
-                      <span class="border border-amber-500/35 bg-amber-100/80 px-3 py-1 text-xs font-semibold tracking-[0.12em] text-slate-950 uppercase">
-                        {post.data.category}
-                      </span>
-                    ) : null
-                  }
-                  <span class="border border-slate-300 bg-white/80 px-3 py-1 text-xs text-slate-600">
-                    Beitrag {index + 1}
-                  </span>
+              <div class="flex min-w-0 flex-col justify-center p-6 sm:p-9 lg:p-10 xl:p-12">
+                <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-semibold tracking-[0.13em] text-[#414141]/75 uppercase">
+                  <time datetime={new Date(leadPost.data.publishedAt).toISOString()}>
+                    {dateFormatter.format(new Date(leadPost.data.publishedAt))}
+                  </time>
+                  {leadPost.data.category ? <span aria-hidden="true">·</span> : null}
+                  {leadPost.data.category ? <span>{leadPost.data.category}</span> : null}
                 </div>
-
-                <div>
-                  <h2 id={`post-${post.data.slug}-heading`} class="text-2xl font-semibold text-slate-950">
-                    <a class="no-underline hover:underline" href={`/neuigkeiten/${post.data.slug}/`}>
-                      {post.data.title}
-                    </a>
-                  </h2>
-                  <p class="mt-3 text-sm leading-7 text-slate-700">{post.data.excerpt}</p>
-                </div>
-
-                <LinkButton href={`/neuigkeiten/${post.data.slug}/`} variant="outline">
+                <h2 class="scb-display mt-5 break-words text-[clamp(2.25rem,4vw,3.25rem)] leading-[1.02] text-[#414141] uppercase">
+                  <a class="no-underline hover:text-[#b14926]" href={`/neuigkeiten/${leadPost.data.slug}/`}>
+                    {leadPost.data.title}
+                  </a>
+                </h2>
+                <p class="mt-5 text-base leading-7 text-[#414141] sm:text-lg">{leadPost.data.excerpt}</p>
+                <a
+                  href={`/neuigkeiten/${leadPost.data.slug}/`}
+                  class="mt-7 inline-flex w-fit border border-[#414141] px-5 py-3 text-sm font-semibold tracking-[0.08em] text-[#414141] no-underline uppercase transition hover:bg-[#414141] hover:text-[#ead871]"
+                >
                   Beitrag lesen
-                </LinkButton>
+                </a>
               </div>
-            </SurfaceCard>
-          ))
-        }
-      </div>
+            </article>
+
+            {
+              archivePosts.length ? (
+                <div>
+                  <div class="mb-6 flex items-end justify-between gap-4 border-b border-[#414141]/35 pb-4">
+                    <h2 class="scb-display text-3xl text-[#414141] uppercase sm:text-4xl">Weitere Meldungen</h2>
+                    <p class="hidden text-sm text-[#414141]/70 sm:block">Chronologisch sortiert</p>
+                  </div>
+                  <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+                    {archivePosts.map((post) => (
+                      <article class="flex min-w-0 flex-col overflow-hidden border border-[#414141]/35 bg-[#fffdf2]">
+                        {
+                          post.data.coverImage ? (
+                            <a href={`/neuigkeiten/${post.data.slug}/`} class="block no-underline">
+                              <EditorialImage
+                                src={post.data.coverImage}
+                                alt={post.data.coverAlt ?? `Titelbild zum Beitrag ${post.data.title}`}
+                                class="aspect-[4/3] border-0"
+                                sizes="(min-width: 1280px) 22rem, (min-width: 768px) 50vw, 100vw"
+                                loading="lazy"
+                              />
+                            </a>
+                          ) : (
+                            <div class="aspect-[4/3] bg-[#414141]" aria-hidden="true" />
+                          )
+                        }
+                        <div class="flex flex-1 flex-col p-5 sm:p-6">
+                          <div class="flex flex-wrap gap-x-2 text-xs font-semibold tracking-[0.12em] text-[#414141]/70 uppercase">
+                            <time datetime={new Date(post.data.publishedAt).toISOString()}>
+                              {dateFormatter.format(new Date(post.data.publishedAt))}
+                            </time>
+                            {post.data.category ? <span>· {post.data.category}</span> : null}
+                          </div>
+                          <h3 class="mt-3 break-words text-2xl font-semibold leading-tight text-[#414141]">
+                            <a class="no-underline hover:text-[#b14926]" href={`/neuigkeiten/${post.data.slug}/`}>
+                              {post.data.title}
+                            </a>
+                          </h3>
+                          <p class="mt-3 flex-1 text-sm leading-6 text-[#414141]/85">{post.data.excerpt}</p>
+                          <a class="mt-5 w-fit font-semibold text-[#414141]" href={`/neuigkeiten/${post.data.slug}/`}>
+                            Weiterlesen
+                          </a>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              ) : null
+            }
+          </div>
+        ) : (
+          <div class="border border-[#414141]/35 bg-[#fffdf2] p-8 sm:p-10">
+            <h2 class="text-2xl font-semibold text-[#414141]">Noch keine Meldungen</h2>
+            <p class="mt-3 leading-7 text-[#414141]">Sobald es Neuigkeiten gibt, erscheinen sie an dieser Stelle.</p>
+          </div>
+        )
+      }
     </Container>
   </section>
 </BaseLayout>
