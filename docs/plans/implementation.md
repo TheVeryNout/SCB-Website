@@ -149,11 +149,11 @@ Do not introduce SSR for launch unless the user explicitly changes direction.
 
 Use client-side JavaScript only where there is clear user-facing value.
 
-Allowed likely uses:
+Allowed uses:
 
 - mobile navigation toggle
 - lightweight calendar month interaction if needed
-- optional gallery/lightbox interaction
+- the post-gallery PhotoSwipe lightbox, loaded only on pages that render a gallery and progressively enhanced from direct optimized-image links
 
 Do not use client-side code for:
 
@@ -182,11 +182,14 @@ Use `src/assets/images/` for:
 - event images
 - curated media thumbnails
 
+CMS-managed post media lives under `src/assets/images/uploads/`. Decap commits the source upload and its content reference to the repository; it does not transform the file during upload. Astro owns public delivery derivatives at build time. Post galleries generate responsive thumbnail widths and a quality-controlled WebP lightbox source capped at 2000px on the source width, while retaining the direct optimized-image link as the no-JavaScript fallback. Source-file normalization, metadata stripping, and upload-size policy remain a separate future ingestion concern rather than lightbox behavior.
+
 Reason:
 
 - Astro image optimization
 - predictable imports
 - mobile-friendly delivery
+- CMS source assets remain rebuildable without serving unbounded originals as the default gallery view
 
 ### PDFs And Raw Files
 

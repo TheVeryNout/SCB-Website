@@ -401,6 +401,8 @@ News publication and media rules:
 - a maintained cover must have editor-authored alternative text; all restored news covers satisfy this rule
 - gallery entries are structured as image, required alternative text, and optional caption
 - gallery order in CMS is public display order
+- the public gallery viewer is code-owned progressive enhancement: Decap continues to own only image selection, alternative text, caption, and ordering
+- gallery thumbnails and bounded large-view WebP assets are derived by Astro at build time; the CMS upload remains the rebuildable source asset rather than the default browser-delivered lightbox file
 - curated post media must live under the configured CMS media folder (`src/assets/images/uploads`) so existing entries, media selection, and previews use the same manageable assets; retained Wix-staging originals remain provenance rather than CMS inputs
 - `sourceUrl` is internal provenance and is not rendered as article body copy
 - support at most one optional public category field

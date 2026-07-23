@@ -26,5 +26,8 @@
     "decap-server": "^3.6.0",
     "tailwindcss": "^4.2.2",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "photoswipe": "5.4.4"
   }
 }
