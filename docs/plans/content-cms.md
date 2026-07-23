@@ -381,14 +381,27 @@ Required fields:
 
 Optional fields:
 
+- `draft`
 - `coverImage`
+- `coverAlt`
+- `coverCaption`
+- `coverMode`
 - `gallery`
 - `category`
 - `updatedAt`
 - `sourceUrl`
 
-Launch rule:
+News publication and media rules:
 
+- newly created CMS posts default to draft
+- existing posts without a `draft` field remain published for backward compatibility
+- drafts and future-dated posts are excluded from public indexes, related lists, and static detail routes
+- published slugs are immutable by editorial policy; duplicate slugs fail validation/build
+- cover presentation is controlled by `wide | portrait | contained`
+- a maintained cover must have editor-authored alternative text; migrated covers remain temporarily compatible until their Stage 4 metadata pass
+- gallery entries are structured as image, required alternative text, and optional caption
+- gallery order in CMS is public display order
+- `sourceUrl` is internal provenance and is not rendered as article body copy
 - support at most one optional public category field
 - do not build a large taxonomy system
 
@@ -495,13 +508,17 @@ Add concise help text for fields that are easy to misuse:
 Use safe defaults:
 
 - optional featured block objects may keep their content while exposing an on/off toggle; existing populated featured announcement content defaults to on
+- new news posts default to draft; omitted draft values on migrated posts default to published
+- future-dated news posts remain hidden until their publication timestamp
 - optional media/gallery fields empty by default
 - event defaults per `calendar.md`
 - blank optional CMS fields should normalize to omitted/default values where Decap writes empty strings
 
 ### Preview complexity
 
-Do not require custom preview widgets for launch unless a field is unusable without one.
+The news collection has a maintained Decap preview because styled long-form authoring is a core editorial requirement. It must represent article hierarchy, cover presentation, body typography, and gallery order closely enough to catch authoring mistakes.
+
+Do not add custom preview widgets to other collections unless a field is unusable without one. A misleading or unmaintained preview is worse than an explicitly disabled preview.
 
 ### Editorial workflow complexity
 

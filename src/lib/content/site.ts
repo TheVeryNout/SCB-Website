@@ -15,6 +15,7 @@ import type {
   OccurrenceExpansionOptions,
   WebsiteEventRecord,
 } from "../events/model";
+import { assertUniquePostSlugs, getPublicPosts } from "./posts";
 
 const REQUIRED_PAGE_SLUGS = ["about", "membership", "contact", "events", "impressum", "datenschutz"] as const;
 
@@ -213,7 +214,7 @@ async function loadValidatedSiteContent(): Promise<SiteContentCache> {
         }
       }
 
-      assertUniqueSlugs("posts", postEntries);
+      assertUniquePostSlugs(postEntries);
 
       for (const entry of postEntries) {
         if (!hasBody(entry)) {
@@ -251,7 +252,7 @@ async function loadValidatedSiteContent(): Promise<SiteContentCache> {
         homepage,
         settings,
         pages,
-        posts: postEntries.sort(
+        posts: getPublicPosts(postEntries).sort(
           (left, right) =>
             new Date(right.data.publishedAt).getTime() - new Date(left.data.publishedAt).getTime(),
         ),

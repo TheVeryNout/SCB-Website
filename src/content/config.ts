@@ -34,6 +34,11 @@ const optionalExternalUrlField = z.preprocess(
   (value) => (value === "" ? undefined : value),
   externalUrlField.optional(),
 );
+const optionalBooleanField = (defaultValue: boolean) =>
+  z.preprocess(
+    (value) => (value === "" || value === undefined || value === null ? undefined : value),
+    z.boolean().default(defaultValue),
+  );
 const positiveIntegerWithDefault = z.preprocess(
   (value) => (value === "" ? undefined : value),
   z.number().int().min(1).default(1),
@@ -159,11 +164,32 @@ const posts = defineCollection({
       slug: slugField,
       publishedAt: isoDateTimeField,
       excerpt: nonEmptyString,
-      coverImage: image().optional(),
-      gallery: z.array(image()).optional(),
-      category: nonEmptyString.optional(),
-      updatedAt: isoDateTimeField.optional(),
-      sourceUrl: externalUrlField.optional(),
+      draft: optionalBooleanField(false),
+      coverImage: z.preprocess(
+        (value) => (value === "" || value === null ? undefined : value),
+        image().optional(),
+      ),
+      coverAlt: optionalNonEmptyString,
+      coverCaption: optionalNonEmptyString,
+      coverMode: z.enum(["wide", "portrait", "contained"]).default("wide"),
+      gallery: z.preprocess(
+        (value) => (value === "" || value === null || (Array.isArray(value) && value.length === 0) ? undefined : value),
+        z
+          .array(
+            z.object({
+              image: image(),
+              alt: nonEmptyString,
+              caption: optionalNonEmptyString,
+            }),
+          )
+          .optional(),
+      ),
+      category: optionalNonEmptyString,
+      updatedAt: z.preprocess(
+        (value) => (value === "" || value === null ? undefined : value),
+        isoDateTimeField.optional(),
+      ),
+      sourceUrl: optionalExternalUrlField,
     }),
 });
 

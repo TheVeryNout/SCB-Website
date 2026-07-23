@@ -183,22 +183,38 @@ collections:
     slug: "{{fields.slug}}"
     summary: "{{fields.title}}"
     editor:
-      preview: false
+      preview: true
     fields:
       - { label: "Titel", name: "title", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string", hint: "Nur Kleinbuchstaben, Zahlen und Bindestriche. Nach der Veröffentlichung nicht mehr ändern." }
+      - { label: "Entwurf", name: "draft", widget: "boolean", default: true, required: false, hint: "Entwürfe sind auf der Website nicht sichtbar. Bestehende Beiträge ohne dieses Feld bleiben veröffentlicht." }
       - { label: "Veröffentlicht am", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ" }
       - { label: "Kurztext", name: "excerpt", widget: "text" }
-      - { label: "Cover-Bild", name: "coverImage", widget: "image", required: false }
+      - { label: "Cover-Bild", name: "coverImage", widget: "image", required: false, hint: "Optionales Hauptbild für Übersicht und Beitragskopf." }
+      - { label: "Cover-Alternativtext", name: "coverAlt", widget: "string", required: false, hint: "Kurze Bildbeschreibung für Screenreader. Bei gepflegtem Cover erforderlich; bestehende importierte Beiträge werden in der Inhaltsmigration ergänzt." }
+      - { label: "Cover-Bildunterschrift", name: "coverCaption", widget: "string", required: false }
+      - label: "Cover-Darstellung"
+        name: "coverMode"
+        widget: "select"
+        default: "wide"
+        options:
+          - { label: "Breit zugeschnitten", value: "wide" }
+          - { label: "Hochformat", value: "portrait" }
+          - { label: "Vollständig / Dokument", value: "contained" }
       - label: "Galerie"
         name: "gallery"
         widget: "list"
         required: false
-        field: { label: "Bild", name: "image", widget: "image" }
+        summary: "{{fields.alt}}"
+        hint: "Die Reihenfolge hier entspricht der öffentlichen Galerie. Jedes Bild braucht einen Alternativtext."
+        fields:
+          - { label: "Bild", name: "image", widget: "image" }
+          - { label: "Alternativtext", name: "alt", widget: "string" }
+          - { label: "Bildunterschrift", name: "caption", widget: "string", required: false }
       - { label: "Kategorie", name: "category", widget: "string", required: false, hint: "Optional und bewusst einfach gehalten." }
       - { label: "Aktualisiert am", name: "updatedAt", widget: "datetime", required: false, format: "YYYY-MM-DDTHH:mm:ssZ" }
-      - { label: "Quell-URL", name: "sourceUrl", widget: "string", required: false }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Quell-URL", name: "sourceUrl", widget: "string", required: false, hint: "Interne Herkunftsangabe; wird nicht als Teil des Beitragstexts angezeigt." }
+      - { label: "Beitragstext", name: "body", widget: "markdown" }
 
   - name: "events"
     label: "Veranstaltungen"

@@ -232,9 +232,9 @@
       "needsManualQa": true,
       "publicDataRisk": "none",
       "notes": [
-        "The retained feed preserves one complete sentence and a truncated repair note.",
-        "The migrated body keeps only the complete source-observed statement and does not guess the truncated remainder.",
-        "This record stays blocked for fuller content recovery unless better local evidence appears later."
+        "The retained feed preserves one complete sentence and a truncated repair note, which originally limited this migration.",
+        "A live-source inspection during the news editorial refactor on 2026-04-13 recovered the complete public article body from the same Wix URL.",
+        "The local body has not yet been restored, so this record remains blocked until Stage 4 of docs/plans/news-editorial-refactor.md applies and verifies the recovered copy."
       ]
     },
     {

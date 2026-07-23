@@ -1,0 +1,44 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  caption?: string;
+  mode?: "wide" | "portrait" | "contained";
+  loading?: "eager" | "lazy";
+}
+
+const {
+  src,
+  alt,
+  caption,
+  mode = "wide",
+  loading = "eager",
+} = Astro.props;
+
+const imageClasses = {
+  wide: "aspect-[16/9] w-full object-cover",
+  portrait: "mx-auto max-h-[48rem] w-auto max-w-full object-contain",
+  contained: "mx-auto max-h-[64rem] w-auto max-w-full object-contain",
+} as const;
+---
+
+<figure class="m-0 bg-[#414141]">
+  <Image
+    src={src}
+    alt={alt}
+    widths={[480, 768, 1200, 1600]}
+    sizes="(min-width: 1024px) 70rem, 100vw"
+    loading={loading}
+    class={imageClasses[mode]}
+  />
+  {
+    caption ? (
+      <figcaption class="bg-[#fffdf2] px-4 py-3 text-sm leading-6 text-[#414141] sm:px-6">
+        {caption}
+      </figcaption>
+    ) : null
+  }
+</figure>
