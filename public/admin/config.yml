@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: TheVeryNout/SCB-Website
+  name: git-gateway
   branch: master
 
 local_backend:

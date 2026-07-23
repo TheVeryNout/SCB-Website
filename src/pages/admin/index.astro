@@ -8,19 +8,229 @@
     <style>
       :root {
         color-scheme: light;
+        font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
       }
 
       body {
         margin: 0;
         min-height: 100vh;
         background: linear-gradient(180deg, #f8f5ec 0%, #fffdf8 100%);
-        font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      }
+
+      .auth-status,
+      .auth-action {
+        box-sizing: border-box;
+        width: min(30rem, calc(100% - 2rem));
+        margin: 12vh auto 0;
+        padding: 1.5rem;
+        border: 1px solid #d8d2c3;
+        border-radius: 0.75rem;
+        background: #fffdf8;
+        color: #24322a;
+        box-shadow: 0 1rem 2.5rem rgb(36 50 42 / 10%);
+      }
+
+      .auth-action h1 {
+        margin: 0 0 0.75rem;
+        font-size: 1.75rem;
+      }
+
+      .auth-action p {
+        line-height: 1.5;
+      }
+
+      .auth-action label {
+        display: grid;
+        gap: 0.4rem;
+        margin-top: 1rem;
+        font-weight: 600;
+      }
+
+      .auth-action input,
+      .auth-action button {
+        box-sizing: border-box;
+        width: 100%;
+        min-height: 2.75rem;
+        border-radius: 0.35rem;
+        font: inherit;
+      }
+
+      .auth-action input {
+        border: 1px solid #8b928d;
+        padding: 0.65rem 0.75rem;
+      }
+
+      .auth-action button {
+        margin-top: 1.25rem;
+        border: 0;
+        padding: 0.7rem 1rem;
+        background: #275d3b;
+        color: white;
+        cursor: pointer;
+        font-weight: 700;
+      }
+
+      .auth-action button:disabled {
+        cursor: wait;
+        opacity: 0.7;
+      }
+
+      .auth-error {
+        color: #9d241c;
+        font-weight: 600;
       }
     </style>
   </head>
   <body>
-    <noscript>Decap CMS requires JavaScript.</noscript>
-    <script is:inline src="https://unpkg.com/decap-cms@^3.11.0/dist/decap-cms.js"></script>
-    <script is:inline src="/admin/preview.js"></script>
+    <noscript>Das SCB CMS benötigt JavaScript.</noscript>
+    <p id="cms-auth-status" class="auth-status" aria-live="polite">CMS wird geladen …</p>
+
+    <main id="cms-auth-action" class="auth-action" hidden>
+      <h1 id="cms-auth-title">CMS-Zugang einrichten</h1>
+      <p id="cms-auth-copy"></p>
+      <form id="cms-auth-form">
+        <label>
+          Neues Passwort
+          <input id="cms-auth-password" type="password" minlength="8" autocomplete="new-password" required />
+        </label>
+        <label>
+          Passwort wiederholen
+          <input id="cms-auth-password-confirm" type="password" minlength="8" autocomplete="new-password" required />
+        </label>
+        <button type="submit">Passwort speichern</button>
+        <p id="cms-auth-error" class="auth-error" role="alert" hidden></p>
+      </form>
+    </main>
+
+    <script>
+      import { acceptInvite, handleAuthCallback, updateUser } from "@netlify/identity";
+
+      const authHashPattern =
+        /^#\/?(confirmation_token|invite_token|recovery_token|email_change_token|access_token|error)=/;
+      const status = document.querySelector<HTMLElement>("#cms-auth-status");
+      const action = document.querySelector<HTMLElement>("#cms-auth-action");
+      const title = document.querySelector<HTMLElement>("#cms-auth-title");
+      const copy = document.querySelector<HTMLElement>("#cms-auth-copy");
+      const form = document.querySelector<HTMLFormElement>("#cms-auth-form");
+      const password = document.querySelector<HTMLInputElement>("#cms-auth-password");
+      const passwordConfirm = document.querySelector<HTMLInputElement>("#cms-auth-password-confirm");
+      const error = document.querySelector<HTMLElement>("#cms-auth-error");
+      const submit = form?.querySelector<HTMLButtonElement>("button[type='submit']");
+
+      function setStatus(message: string) {
+        if (status) status.textContent = message;
+      }
+
+      function showError(message: string) {
+        if (!error) return;
+        error.textContent = message;
+        error.hidden = false;
+      }
+
+      function loadScript(src: string) {
+        return new Promise<void>((resolve, reject) => {
+          const script = document.createElement("script");
+          script.src = src;
+          script.onload = () => resolve();
+          script.onerror = reject;
+          document.body.appendChild(script);
+        });
+      }
+
+      async function loadCms() {
+        setStatus("CMS wird geladen …");
+
+        try {
+          await loadScript("https://unpkg.com/decap-cms@3.11.0/dist/decap-cms.js");
+          await loadScript("/admin/preview.js");
+          if (status) status.hidden = true;
+        } catch {
+          setStatus("Das CMS konnte nicht geladen werden. Bitte lade die Seite erneut.");
+        }
+      }
+
+      function showPasswordForm(mode: "invite" | "recovery", token?: string) {
+        if (!action || !form || !password || !passwordConfirm || !submit) return;
+
+        if (status) status.hidden = true;
+        action.hidden = false;
+
+        if (mode === "invite") {
+          if (title) title.textContent = "CMS-Zugang einrichten";
+          if (copy) copy.textContent = "Lege ein Passwort für deinen persönlichen SCB-CMS-Zugang fest.";
+        } else {
+          if (title) title.textContent = "Neues Passwort festlegen";
+          if (copy) copy.textContent = "Lege ein neues Passwort für deinen SCB-CMS-Zugang fest.";
+        }
+
+        form.addEventListener(
+          "submit",
+          async (event) => {
+            event.preventDefault();
+            if (error) error.hidden = true;
+
+            if (password.value.length < 8) {
+              showError("Das Passwort muss mindestens acht Zeichen lang sein.");
+              return;
+            }
+
+            if (password.value !== passwordConfirm.value) {
+              showError("Die beiden Passwörter stimmen nicht überein.");
+              return;
+            }
+
+            submit.disabled = true;
+            submit.textContent = "Wird gespeichert …";
+
+            try {
+              if (mode === "invite" && token) {
+                await acceptInvite(token, password.value);
+              } else {
+                await updateUser({ password: password.value });
+              }
+
+              window.location.replace("/admin/");
+            } catch (caught) {
+              submit.disabled = false;
+              submit.textContent = "Passwort speichern";
+              showError(caught instanceof Error ? caught.message : "Das Passwort konnte nicht gespeichert werden.");
+            }
+          },
+        );
+      }
+
+      async function initialize() {
+        if (!authHashPattern.test(window.location.hash)) {
+          await loadCms();
+          return;
+        }
+
+        setStatus("Zugang wird geprüft …");
+
+        try {
+          const result = await handleAuthCallback();
+
+          if (result?.type === "invite" && result.token) {
+            showPasswordForm("invite", result.token);
+            return;
+          }
+
+          if (result?.type === "recovery") {
+            showPasswordForm("recovery");
+            return;
+          }
+
+          window.location.replace("/admin/");
+        } catch (caught) {
+          setStatus(
+            caught instanceof Error
+              ? `Der Zugangslink konnte nicht verarbeitet werden: ${caught.message}`
+              : "Der Zugangslink konnte nicht verarbeitet werden. Bitte fordere einen neuen Link an.",
+          );
+        }
+      }
+
+      void initialize();
+    </script>
   </body>
 </html>

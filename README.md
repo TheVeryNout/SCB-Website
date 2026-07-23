@@ -28,7 +28,7 @@ Use the older planning docs only as reference:
 - Astro SSG
 - Bun
 - Netlify deployment
-- Decap CMS with GitHub backend via Netlify OAuth
+- Decap CMS with invite-only Netlify Identity accounts and Git Gateway
 - Netlify Forms contact flow
 - Static-first public site
 - No launch dependency on `SCB-Dash`
@@ -95,14 +95,23 @@ bun run build
 
 The CMS is configured for two environments:
 
-- deployed: Decap uses the GitHub backend against `TheVeryNout/SCB-Website` on the `master` branch
+- deployed: editors use individual, invite-only Netlify Identity email/password accounts; Git Gateway commits their changes to the connected repository's `master` branch
 - local: Decap switches to a local proxy backend at `http://127.0.0.1:8081/api/v1`
+
+Deployed setup requirements:
+
+- enable Netlify Identity for the site
+- set Identity registration to **Invite only**
+- enable Git Gateway and leave its Roles restriction empty unless an editor role policy is introduced deliberately
+- invite each editor from the Netlify Identity user-management screen
+- invitation and password-recovery links are routed to `/admin/`, where the current Identity callback handler provides the German password form
 
 Local notes:
 
 - open `/admin/` on the local Astro URL, usually `http://localhost:4321/admin/`
+- run `bun run dev:cms`, or run `bun run cms:proxy` alongside an existing Astro server; Astro alone is insufficient for local CMS access
 - the proxy server is for local development only and is intentionally unauthenticated
-- `local_backend` only activates on localhost, so production still uses GitHub OAuth-backed repo publishing
+- `local_backend` only activates on localhost when the proxy is reachable; production continues to publish through Identity and Git Gateway
 - local CMS publishing writes to the local Git working tree; it does not call Netlify
 
 ## Legacy Reference

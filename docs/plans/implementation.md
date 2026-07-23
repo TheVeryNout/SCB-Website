@@ -265,20 +265,28 @@ Unless the user later asks for a review-heavy editorial process, prefer a straig
 
 ### Backend and auth
 
-Lock launch CMS auth/backend to:
+The deployed CMS uses:
 
-- Decap GitHub backend via Netlify OAuth provider
+- individual, invite-only Netlify Identity email/password accounts
+- Decap's `git-gateway` backend on the `master` branch
 
 Reason:
 
-- avoids the deprecated Netlify Identity/Git Gateway invite and email-verification path
-- aligns with Netlify-first deployment
-- keeps deployed CMS publishing repo-backed without custom server code
+- editors do not need GitHub accounts or repository permissions
+- each coworker can be invited or removed independently
+- Git Gateway preserves the existing repository-backed publishing and Netlify rebuild flow
+- the developer's normal local Git workflow remains unchanged
 
-Operational note:
+Operational requirements:
 
-- CMS users must authenticate with GitHub and need push access to `TheVeryNout/SCB-Website`
-- Netlify must have a GitHub OAuth provider configured for the site
+- Netlify Identity is enabled and registration is set to **Invite only**
+- Git Gateway is enabled for the site's connected repository
+- each editor is invited separately from Netlify's Identity user management
+- the public layout forwards Identity invitation/recovery hashes to `/admin/`
+- `/admin/` uses `@netlify/identity` to accept invitations and password recovery, then loads Decap; ordinary CMS login remains Decap's email/password Git Gateway form
+- no GitHub OAuth provider or direct repository permission is required for CMS editors
+
+Git Gateway is currently a Netlify Beta service. This is an accepted operational dependency and should be revisited if Netlify changes its support status.
 
 ### Local development backend
 
