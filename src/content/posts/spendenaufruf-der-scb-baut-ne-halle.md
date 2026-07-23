@@ -1,21 +1,23 @@
 ---
 title: "Spendenaufruf: Der Skate Club baut 'ne Halle!"
-slug: "spendenaufruf-der-scb-baut-ne-halle"
-publishedAt: "2026-02-07T09:36:58Z"
-excerpt: "Der Skate Club baut gemeinsam mit dem RC Germania eine Halle für seine Mitglieder auf und bittet um Unterstützung."
-coverImage: "../../assets/images/uploads/13cc9c_26692438fbd24a45a05ab59b11794437~mv2.webp"
-coverAlt: "Arbeiten am neuen Boden der künftigen Skate-Halle"
-coverCaption: "Der Innenraum der gemeinsamen Halle im Aufbau"
-coverMode: "wide"
+slug: spendenaufruf-der-scb-baut-ne-halle
+draft: true
+publishedAt: 2026-02-07T09:36:58Z
+excerpt: Der Skate Club baut gemeinsam mit dem RC Germania eine Halle für seine
+  Mitglieder auf und bittet um Unterstützung.
+coverImage: ../../assets/images/uploads/13cc9c_26692438fbd24a45a05ab59b11794437~mv2.webp
+coverAlt: Arbeiten am neuen Boden der künftigen Skate-Halle
+coverCaption: Der Innenraum der gemeinsamen Halle im Aufbau
+coverMode: wide
 gallery:
-  - image: "../../assets/images/uploads/13cc9c_20a1ad333afd4c4e8cf78436236bbbad~mv2.webp"
-    alt: "Helfer beim Bau einer hölzernen Rampenkonstruktion"
-  - image: "../../assets/images/uploads/13cc9c_64a5f980369046549ea203557f483ce4~mv2.webp"
-    alt: "Vorbereiteter Hallenboden mit ausgelegten Holzplatten"
-  - image: "../../assets/images/uploads/13cc9c_77515bbb32674d24a1988a0c7519e672~mv2.webp"
-    alt: "Begonnener Rampenbau in der Skate-Halle"
-category: "Verein"
-sourceUrl: "https://briareos.wixsite.com/skateclubbiriciana/post/spendenaufruf-der-scb-baut-ne-halle"
+  - image: ../../assets/images/uploads/13cc9c_20a1ad333afd4c4e8cf78436236bbbad~mv2.webp
+    alt: Helfer beim Bau einer hölzernen Rampenkonstruktion
+  - image: ../../assets/images/uploads/13cc9c_64a5f980369046549ea203557f483ce4~mv2.webp
+    alt: Vorbereiteter Hallenboden mit ausgelegten Holzplatten
+  - image: ../../assets/images/uploads/13cc9c_77515bbb32674d24a1988a0c7519e672~mv2.webp
+    alt: Begonnener Rampenbau in der Skate-Halle
+category: Verein
+sourceUrl: https://briareos.wixsite.com/skateclubbiriciana/post/spendenaufruf-der-scb-baut-ne-halle
 ---
 Über die Wintermonate hat es der Skate Club geschafft, zusammen mit dem **RC Germania** gemeinsame Sache zu machen – und eine Halle für unsere Mitglieder zu bauen!
 
