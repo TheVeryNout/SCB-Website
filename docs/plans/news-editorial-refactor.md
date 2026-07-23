@@ -125,14 +125,15 @@ Status vocabulary for this ledger:
 
 | Local post | Local body | Staged post assets | Groundwork status | Required follow-up |
 | --- | ---: | ---: | --- | --- |
-| `goodies-4-tricks-2025` | 3 paragraphs | 13 | full-source-available, summary-import, visual-media | Restore verified Wix article; curate cover/gallery; remove migration language |
-| `graffiti-workshop-ein-voller-erfolg` | 2 paragraphs | 20 plus current homepage asset | full-source-available, summary-import, visual-media | Restore verified Wix copy; curate square-image gallery; fix `Aussenwand` |
-| `goodies-4-tricks-event-trotz-regen-ein-erfolg` | 2 paragraphs | 23 | full-source-available, summary-import, visual-media | Restore verified Wix copy; curate predominantly portrait gallery |
-| `spendenaufruf-der-scb-baut-ne-halle` | 4 paragraphs | 8 | retained-source, sensitive-review, visual-media | Remove public QA note; restore only from retained evidence; do not confirm bank data silently |
-| `der-contest-in-der-zeitung` | 2 paragraphs | 2 | full-source-available, summary-import, document-media | Restore verified Wix copy; use contained treatment for portrait newspaper scans |
-| `der-skate-club-in-der-zeitung` | 2 paragraphs | 2 | full-source-available, summary-import, document-media | Restore verified Wix copy; use contained treatment for portrait newspaper scan |
-| `spende-von-der-volksbank-franken-sued` | 2 paragraphs | 1 | full-source-available, summary-import, sensitive-review | Preserve recorded title/slug contradiction; restore verified copy without normalizing financial claims |
-| `parkausbesserungen` | 2 paragraphs | 1 | full-source-available | Restore the complete currently readable Wix body and remove the obsolete truncation note/blocker |
+| `goodies-4-tricks-2025` | 9 paragraphs | 13 | restored, curated cover plus 6 gallery images | Stage 4 complete |
+| `graffiti-workshop-ein-voller-erfolg` | 3 paragraphs | 20 plus current homepage asset | restored, curated cover plus 6 gallery images | Stage 4 complete |
+| `goodies-4-tricks-event-trotz-regen-ein-erfolg` | 15 paragraphs | 23 | restored, curated cover plus 5 gallery images | Stage 4 complete |
+| `spendenaufruf-der-scb-baut-ne-halle` | 14 body blocks | 8 | retained source restored, curated cover plus 3 gallery images, sensitive-review | Stage 4 complete; bank facts remain pending in public-data register |
+| `der-contest-in-der-zeitung` | intro, quoted article, local related link | 2 | restored, contained cover plus 1 document image | Stage 4 complete |
+| `der-skate-club-in-der-zeitung` | 3 paragraphs | 2 | restored, contained cover plus 1 document image | Stage 4 complete |
+| `spende-von-der-volksbank-franken-sued` | 4 paragraphs | 1 | restored, title/slug contradiction preserved, sensitive-review | Stage 4 complete; financial facts remain source-parity claims |
+| `parkausbesserungen` | 4 paragraphs | 1 | restored, portrait cover | Stage 4 complete; obsolete migration blocker cleared |
+| `goodies4tricks-2026-erstklassig-abgeraeumt` | 14 body blocks | 10 recovered | imported, curated cover plus 5 gallery images | Stage 4 complete |
 
 Asset counts are file counts in each `src/assets/images/wix-staging/posts/<slug>/` directory. They are not yet a gallery-curation decision.
 
@@ -263,13 +264,13 @@ Exit gate:
 
 ### Stage 4 — Content restoration
 
-- [ ] Restore full verified public copy where source evidence is available.
-- [ ] Remove all public migration/QA narration.
-- [ ] Curate cover/gallery media rather than importing every staged file blindly.
-- [ ] Add accurate alt text and captions.
-- [ ] Restore `parkausbesserungen` from the now-readable complete live source and clear its obsolete migration blocker.
-- [ ] Keep financial/public-fact uncertainty in the canonical internal registers.
-- [ ] Import the explicitly approved 2026 Wix post and its media.
+- [x] Restore full verified public copy where source evidence is available.
+- [x] Remove all public migration/QA narration.
+- [x] Curate cover/gallery media rather than importing every staged file blindly.
+- [x] Add accurate alt text and captions.
+- [x] Restore `parkausbesserungen` from the now-readable complete live source and clear its obsolete migration blocker.
+- [x] Keep financial/public-fact uncertainty in the canonical internal registers.
+- [x] Import the explicitly approved 2026 Wix post and its media.
 
 Exit gate:
 
@@ -346,3 +347,4 @@ The user explicitly approved importing `Goodies4Tricks 2026 - Erstklassig abger�
 - `2026-04-13`: Completed live source inspection for all eight local posts plus the current Wix-only 2026 post. Captured and visually inspected matching 390 × 844 phone references. The live source now provides the complete `parkausbesserungen` body, removing its earlier recovery blocker. Resolved lead-story, preview, document-image, draft, future-date, duplicate-slug, and slug-mutation policies.
 - `2026-04-13`: User explicitly included the Wix-only 2026 post and media in Stage 4, closing Stage 1. Stage 2 then added backward-compatible post draft/cover/gallery metadata, blank optional-value normalization, public filtering for drafts and future timestamps, deterministic duplicate-slug validation, German Decap guidance, and a registered styled post preview. Verification passed with 23 tests, `astro check` with only the six known Zod hints, a full build, browser confirmation that Decap registered the post preview stylesheet/template, and a temporary CMS-shaped blank-optionals fixture that built without generating its future route.
 - `2026-04-13`: Stage 3 replaced the uniform prototype cards with an automatic lead story and quieter archive grid, moved detail pages to a dedicated editorial header/reading surface, added article typography, responsive cover modes, ordered captioned galleries, an empty state, and contextual eager/lazy image loading. Desktop and corrected CDP-emulated 390px screenshots were inspected; local pages report no horizontal overflow. A temporary post fixture verified cover metadata, headings, blockquote/list typography, gallery order, alt text, captions, and lazy loading in generated HTML. The clean build was restored after removing the fixture.
+- `2026-07-23`: Stage 4 restored reviewed public copy for all eight migrated posts, removed migration/QA narration, supplied explicit cover/gallery alt text and captions, and curated media according to each article form. Newspaper scans now use contained covers, `parkausbesserungen` has its complete live-source body and no migration blocker, and fundraising/bank claims remain source-parity facts governed by `public-data-register.md`. The explicitly approved `Goodies4Tricks 2026` post was imported from its live Wix source with ten recovered Tobias Uschold photos, six of which are used as cover/gallery media. Verification passed with 23 tests, `astro check` with only six known Zod hints, a clean build of all nine post routes, generated-alt inspection, and a scan confirming no internal migration/QA vocabulary under `dist/neuigkeiten/`. Stage 5 QA and operational handoff are next.
