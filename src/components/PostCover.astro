@@ -18,14 +18,20 @@ const {
   loading = "eager",
 } = Astro.props;
 
+const figureClasses = {
+  wide: "bg-[#414141]",
+  portrait: "bg-[#f4eeb5] px-5 py-8 sm:px-10 sm:py-10",
+  contained: "bg-[#f4eeb5] px-5 py-8 sm:px-10 sm:py-10",
+} as const;
+
 const imageClasses = {
   wide: "aspect-[16/9] w-full object-cover",
-  portrait: "mx-auto max-h-[48rem] w-auto max-w-full object-contain",
-  contained: "mx-auto max-h-[64rem] w-auto max-w-full object-contain",
+  portrait: "mx-auto max-h-[42rem] w-auto max-w-full border border-[#414141]/25 object-contain",
+  contained: "mx-auto max-h-[52rem] w-auto max-w-full border border-[#414141]/25 object-contain",
 } as const;
 ---
 
-<figure class="m-0 bg-[#414141]">
+<figure class:list={["m-0", figureClasses[mode]]}>
   <Image
     src={src}
     alt={alt}
@@ -36,7 +42,7 @@ const imageClasses = {
   />
   {
     caption ? (
-      <figcaption class="bg-[#fffdf2] px-4 py-3 text-sm leading-6 text-[#414141] sm:px-6">
+      <figcaption class:list={["px-4 py-3 text-sm leading-6 text-[#414141] sm:px-6", mode === "wide" ? "bg-[#fffdf2]" : "mx-auto max-w-2xl bg-transparent text-center"]}>
         {caption}
       </figcaption>
     ) : null

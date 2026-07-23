@@ -31,8 +31,8 @@ const dateFormatter = new Intl.DateTimeFormat("de-DE", {
 ---
 
 <BaseLayout title={`${post.data.title} | ${settings.data.organizationName}`} description={post.data.excerpt}>
-  <section class="scb-section py-10 sm:py-16">
-    <Container class="min-w-0 space-y-6">
+  <section class="scb-section py-8 sm:py-14">
+    <Container class="min-w-0 max-w-[64rem] space-y-6">
       <a
         href="/neuigkeiten/"
         class="inline-flex border border-[#414141] px-4 py-3 text-sm font-semibold tracking-[0.07em] text-[#414141] no-underline uppercase transition hover:bg-[#414141] hover:text-[#ead871]"
@@ -41,7 +41,7 @@ const dateFormatter = new Intl.DateTimeFormat("de-DE", {
       </a>
 
       <article class="min-w-0 overflow-hidden border border-[#414141]/35 bg-[#fffdf2]" aria-labelledby="post-heading">
-        <header class="mx-auto max-w-3xl px-5 py-10 sm:px-8 sm:py-14 lg:py-16">
+        <header class="mx-auto max-w-4xl px-5 py-9 sm:px-10 sm:py-12 lg:px-12 lg:py-14">
           <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-semibold tracking-[0.13em] text-[#414141]/70 uppercase">
             <time datetime={new Date(post.data.publishedAt).toISOString()}>
               {dateFormatter.format(new Date(post.data.publishedAt))}
@@ -49,10 +49,10 @@ const dateFormatter = new Intl.DateTimeFormat("de-DE", {
             {post.data.category ? <span aria-hidden="true">·</span> : null}
             {post.data.category ? <span>{post.data.category}</span> : null}
           </div>
-          <h1 id="post-heading" class="scb-display mt-5 break-words text-[clamp(2.65rem,9vw,5.75rem)] leading-[0.95] text-[#414141] uppercase">
+          <h1 id="post-heading" class="scb-display mt-5 text-[clamp(2.5rem,6vw,4.5rem)] leading-[0.98] text-[#414141] uppercase">
             {post.data.title}
           </h1>
-          <p class="mt-6 text-lg leading-8 text-[#414141] sm:text-xl sm:leading-9">{post.data.excerpt}</p>
+          <p class="mt-6 max-w-2xl text-lg leading-8 text-[#414141] sm:text-xl sm:leading-9">{post.data.excerpt}</p>
         </header>
 
         {
@@ -66,7 +66,7 @@ const dateFormatter = new Intl.DateTimeFormat("de-DE", {
           ) : null
         }
 
-        <div class="mx-auto max-w-3xl px-5 py-10 sm:px-8 sm:py-14">
+        <div class="mx-auto max-w-3xl px-5 py-10 sm:px-8 sm:py-12">
           <RichText class="article-rich-text">
             <Content />
           </RichText>

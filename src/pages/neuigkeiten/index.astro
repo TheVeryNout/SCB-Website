@@ -34,14 +34,14 @@ const dateFormatter = new Intl.DateTimeFormat("de-DE", {
       {
         leadPost ? (
           <div class="space-y-10">
-            <article class="grid min-w-0 overflow-hidden border border-[#414141]/40 bg-[#fffdf2] lg:grid-cols-[1.2fr_0.8fr]">
+            <article class="grid min-w-0 overflow-hidden border border-[#414141]/40 bg-[#fffdf2] lg:grid-cols-[minmax(0,1.05fr)_minmax(22rem,0.95fr)]">
               {
                 leadPost.data.coverImage ? (
-                  <a href={`/neuigkeiten/${leadPost.data.slug}/`} class="block min-h-[16rem] no-underline lg:min-h-[28rem]">
+                  <a href={`/neuigkeiten/${leadPost.data.slug}/`} class="relative block aspect-[4/3] no-underline lg:aspect-auto lg:min-h-[32rem]">
                     <EditorialImage
                       src={leadPost.data.coverImage}
                       alt={leadPost.data.coverAlt ?? `Titelbild zum Beitrag ${leadPost.data.title}`}
-                      class="h-full min-h-[16rem] border-0 lg:min-h-[28rem]"
+                      class="absolute inset-0 h-full border-0"
                       sizes="(min-width: 1024px) 42rem, 100vw"
                       loading="eager"
                     />
@@ -51,7 +51,7 @@ const dateFormatter = new Intl.DateTimeFormat("de-DE", {
                 )
               }
 
-              <div class="flex min-w-0 flex-col justify-center p-6 sm:p-9 lg:p-10">
+              <div class="flex min-w-0 flex-col justify-center p-6 sm:p-9 lg:p-10 xl:p-12">
                 <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-semibold tracking-[0.13em] text-[#414141]/75 uppercase">
                   <time datetime={new Date(leadPost.data.publishedAt).toISOString()}>
                     {dateFormatter.format(new Date(leadPost.data.publishedAt))}
@@ -59,7 +59,7 @@ const dateFormatter = new Intl.DateTimeFormat("de-DE", {
                   {leadPost.data.category ? <span aria-hidden="true">·</span> : null}
                   {leadPost.data.category ? <span>{leadPost.data.category}</span> : null}
                 </div>
-                <h2 class="scb-display mt-5 break-words text-[clamp(2.25rem,6vw,4.25rem)] leading-[0.98] text-[#414141] uppercase">
+                <h2 class="scb-display mt-5 break-words text-[clamp(2.25rem,4vw,3.25rem)] leading-[1.02] text-[#414141] uppercase">
                   <a class="no-underline hover:text-[#b14926]" href={`/neuigkeiten/${leadPost.data.slug}/`}>
                     {leadPost.data.title}
                   </a>
