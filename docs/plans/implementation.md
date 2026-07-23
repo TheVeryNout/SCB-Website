@@ -294,7 +294,7 @@ For local CMS development, use a local Decap proxy backend instead of hosted Git
 
 Implementation rule:
 
-- production uses the Decap GitHub backend
+- production uses the Decap `git-gateway` backend with Netlify Identity
 - localhost development may switch to a Decap local backend proxy for repo-backed editing without Netlify auth
 - the local proxy is a development-only tool and must not be treated as a public or deployed service
 

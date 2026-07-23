@@ -106,6 +106,13 @@ Deployed setup requirements:
 - invite each editor from the Netlify Identity user-management screen
 - invitation and password-recovery links are routed to `/admin/`, where the current Identity callback handler provides the German password form
 
+Account distinction:
+
+- a Netlify team/platform account manages deployments and settings; signing into that dashboard with Google does not create or verify a CMS editor account
+- a CMS editor is a separate, site-scoped Netlify Identity user and logs into `/admin/` with the email address and password established through the invitation flow
+- editors should not reuse or enter their Google account password as the CMS password
+- if an old Identity user is stuck as unverified, resend its invitation when available; otherwise remove that stale Identity record and invite the address again before any editorial work is tied to it
+
 Local notes:
 
 - open `/admin/` on the local Astro URL, usually `http://localhost:4321/admin/`
