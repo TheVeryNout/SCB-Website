@@ -21,7 +21,7 @@
     const coverCaption = value(entry, "coverCaption");
     const coverMode = value(entry, "coverMode", "wide");
     const publishedAt = value(entry, "publishedAt");
-    const draft = value(entry, "draft", true);
+    const draft = value(entry, "draft", false);
     const gallery = entry.getIn(["data", "gallery"]);
     const galleryItems = gallery && typeof gallery.toJS === "function" ? gallery.toJS() : [];
 

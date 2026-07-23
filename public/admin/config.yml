@@ -191,7 +191,7 @@ collections:
       - { label: "Veröffentlicht am", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ" }
       - { label: "Kurztext", name: "excerpt", widget: "text" }
       - { label: "Cover-Bild", name: "coverImage", widget: "image", required: false, hint: "Optionales Hauptbild für Übersicht und Beitragskopf." }
-      - { label: "Cover-Alternativtext", name: "coverAlt", widget: "string", required: false, hint: "Kurze Bildbeschreibung für Screenreader. Bei gepflegtem Cover erforderlich; bestehende importierte Beiträge werden in der Inhaltsmigration ergänzt." }
+      - { label: "Cover-Alternativtext", name: "coverAlt", widget: "string", required: false, hint: "Kurze Bildbeschreibung für Screenreader. Sobald ein Cover gepflegt wird, ist dieser Text erforderlich." }
       - { label: "Cover-Bildunterschrift", name: "coverCaption", widget: "string", required: false }
       - label: "Cover-Darstellung"
         name: "coverMode"

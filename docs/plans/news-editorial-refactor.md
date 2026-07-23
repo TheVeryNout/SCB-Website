@@ -111,6 +111,15 @@ Stage 3 comparison captures:
 - `docs/plans/wix-reference/screenshots/news-editorial-refactor/local-stage3-news-index-phone.png`
 - `docs/plans/wix-reference/screenshots/news-editorial-refactor/local-stage3-goodies-4-tricks-2025-phone.png`
 
+Stage 5 final captures:
+
+- `docs/plans/wix-reference/screenshots/news-editorial-refactor/local-stage5-news-index.png`
+- `docs/plans/wix-reference/screenshots/news-editorial-refactor/local-stage5-goodies4tricks-2026.png`
+- `docs/plans/wix-reference/screenshots/news-editorial-refactor/local-stage5-news-index-phone.png`
+- `docs/plans/wix-reference/screenshots/news-editorial-refactor/local-stage5-goodies4tricks-2026-phone.png`
+
+The final 390px captures use CDP device emulation and report matching `innerWidth`, `clientWidth`, and `scrollWidth`, with no horizontal overflow. Desktop captures use a 1440 × 1000 viewport. The automatic lead story, long title, portrait cover, article header, and phone navigation were inspected visually.
+
 These captures are intentionally not tracked by Git, following the repository policy for heavy Wix-reference captures.
 
 ## Content Inventory
@@ -278,19 +287,24 @@ Exit gate:
 
 ### Stage 5 — QA and operational handoff
 
-- [ ] Exercise local Decap editing for an existing and a new representative post.
-- [ ] Verify generated index/detail pages and image output.
-- [ ] Perform keyboard, semantics, image-alt, heading-order, and phone-width checks.
-- [ ] Run `bun test`.
-- [ ] Run `bun run check`.
-- [ ] Run `bun run build`.
-- [ ] Record final screenshots and residual exceptions.
-- [ ] Update `docs/plans/content-cms.md` with durable product rules clarified by implementation.
-- [ ] Update `docs/operational-status.md` with final state and continuation point.
+- [x] Exercise local Decap editing for an existing and a new representative post.
+- [x] Verify generated index/detail pages and image output.
+- [x] Perform keyboard, semantics, image-alt, heading-order, and phone-width checks.
+- [x] Run `bun test`.
+- [x] Run `bun run check`.
+- [x] Run `bun run build`.
+- [x] Record final screenshots and residual exceptions.
+- [x] Update `docs/plans/content-cms.md` with durable product rules clarified by implementation.
+- [x] Update `docs/operational-status.md` with final state and continuation point.
 
 Exit gate:
 
 - the CMS workflow, public rendering, responsive presentation, and repository checks are verified and documented
+
+Current gate status:
+
+- technical and CMS QA are complete, but visual acceptance remains open after the user's `2026-07-23` assessment that the current layout still needs further refinement
+- the next continuation must revisit the news index/detail composition and visual polish without discarding the verified content, CMS, accessibility, or publication contracts
 
 ## Acceptance Criteria
 
@@ -348,3 +362,4 @@ The user explicitly approved importing `Goodies4Tricks 2026 - Erstklassig abger�
 - `2026-04-13`: User explicitly included the Wix-only 2026 post and media in Stage 4, closing Stage 1. Stage 2 then added backward-compatible post draft/cover/gallery metadata, blank optional-value normalization, public filtering for drafts and future timestamps, deterministic duplicate-slug validation, German Decap guidance, and a registered styled post preview. Verification passed with 23 tests, `astro check` with only the six known Zod hints, a full build, browser confirmation that Decap registered the post preview stylesheet/template, and a temporary CMS-shaped blank-optionals fixture that built without generating its future route.
 - `2026-04-13`: Stage 3 replaced the uniform prototype cards with an automatic lead story and quieter archive grid, moved detail pages to a dedicated editorial header/reading surface, added article typography, responsive cover modes, ordered captioned galleries, an empty state, and contextual eager/lazy image loading. Desktop and corrected CDP-emulated 390px screenshots were inspected; local pages report no horizontal overflow. A temporary post fixture verified cover metadata, headings, blockquote/list typography, gallery order, alt text, captions, and lazy loading in generated HTML. The clean build was restored after removing the fixture.
 - `2026-07-23`: Stage 4 restored reviewed public copy for all eight migrated posts, removed migration/QA narration, supplied explicit cover/gallery alt text and captions, and curated media according to each article form. Newspaper scans now use contained covers, `parkausbesserungen` has its complete live-source body and no migration blocker, and fundraising/bank claims remain source-parity facts governed by `public-data-register.md`. The explicitly approved `Goodies4Tricks 2026` post was imported from its live Wix source with ten recovered Tobias Uschold photos, six of which are used as cover/gallery media. Verification passed with 23 tests, `astro check` with only six known Zod hints, a clean build of all nine post routes, generated-alt inspection, and a scan confirming no internal migration/QA vocabulary under `dist/neuigkeiten/`. Stage 5 QA and operational handoff are next.
+- `2026-07-23`: Stage 5 completed the technical QA checkpoint. Local Decap editing was exercised for the restored 2026 entry and a new unsaved representative entry; title, slug, draft default, date, excerpt, category, provenance, rich-text controls, and live preview behavior were checked. QA exposed two preview defects: imported media lived outside Decap's configured media folder, and omitted legacy `draft` values were mislabeled as drafts in preview. The 36 curated post images were promoted as optimized CMS-manageable copies under `src/assets/images/uploads` while Wix-staging originals remained intact, all news paths and manifest references were updated, and the preview fallback now matches public publication behavior. A post-fix browser audit confirmed the existing 2026 preview loads its portrait cover, five gallery images, alt text, captions, stylesheet, and published category without media errors. Generated index/detail audits found one `h1`, ordered headings, no missing image alt attributes or output files, no nested interactive links, visible keyboard focus, and no 390px overflow. Final desktop/phone screenshots were inspected. Verification passed with 23 tests, `astro check` with only six known Zod hints, and a clean 89-page build after clearing stale Astro content caches. Residual exceptions are the existing Zod hints, the separately governed public-data review, and the user's explicit assessment that the current layout still needs further visual refinement; the user's already-running dev server also needs a normal restart before it reflects the final content cache. Stage 5 therefore closes the technical QA checkpoint but not final visual acceptance.

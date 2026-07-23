@@ -398,9 +398,10 @@ News publication and media rules:
 - drafts and future-dated posts are excluded from public indexes, related lists, and static detail routes
 - published slugs are immutable by editorial policy; duplicate slugs fail validation/build
 - cover presentation is controlled by `wide | portrait | contained`
-- a maintained cover must have editor-authored alternative text; migrated covers remain temporarily compatible until their Stage 4 metadata pass
+- a maintained cover must have editor-authored alternative text; all restored news covers satisfy this rule
 - gallery entries are structured as image, required alternative text, and optional caption
 - gallery order in CMS is public display order
+- curated post media must live under the configured CMS media folder (`src/assets/images/uploads`) so existing entries, media selection, and previews use the same manageable assets; retained Wix-staging originals remain provenance rather than CMS inputs
 - `sourceUrl` is internal provenance and is not rendered as article body copy
 - support at most one optional public category field
 - do not build a large taxonomy system
@@ -516,7 +517,7 @@ Use safe defaults:
 
 ### Preview complexity
 
-The news collection has a maintained Decap preview because styled long-form authoring is a core editorial requirement. It must represent article hierarchy, cover presentation, body typography, and gallery order closely enough to catch authoring mistakes.
+The news collection has a maintained Decap preview because styled long-form authoring is a core editorial requirement. It must represent article hierarchy, cover presentation, body typography, and gallery order closely enough to catch authoring mistakes. Preview defaults must match public behavior: an existing entry without `draft` is shown as published, while a newly created CMS entry keeps its explicit default of `draft: true`.
 
 Do not add custom preview widgets to other collections unless a field is unusable without one. A misleading or unmaintained preview is worse than an explicitly disabled preview.
 
