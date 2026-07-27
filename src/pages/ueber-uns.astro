@@ -50,7 +50,7 @@ const goals = aboutPage.data.goals ?? [];
         }
       </div>
 
-      <div class="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
+      <div class="grid items-start gap-6 lg:grid-cols-[0.95fr_1.05fr]">
         <SurfaceCard as="section" tone="warm" aria-labelledby="about-goals-heading">
           <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Schwerpunkt</p>
           <h2 id="about-goals-heading" class="mt-2 text-2xl font-semibold text-slate-950">
@@ -59,7 +59,7 @@ const goals = aboutPage.data.goals ?? [];
           <ul class="mt-6 grid gap-3">
             {
               goals.map((goal) => (
-                <li class="border border-amber-500/25 bg-white/80 px-4 py-4 text-sm leading-6 text-slate-700">
+                <li class="rounded-sm border border-amber-700/15 bg-white/70 px-5 py-4 text-sm leading-6 text-slate-700">
                   {goal}
                 </li>
               ))
@@ -75,7 +75,7 @@ const goals = aboutPage.data.goals ?? [];
           <div class="mt-6 grid gap-4 sm:grid-cols-2">
             {
               boardMembers.map((member) => (
-                <article class="border border-slate-200 bg-white/75 p-5">
+                <article class="rounded-sm border border-[#414141]/12 bg-white/75 p-5 shadow-[0_12px_28px_-26px_rgba(24,24,24,0.75)]">
                   <p class="text-xs font-semibold tracking-[0.16em] text-slate-500 uppercase">
                     {member.role}
                   </p>

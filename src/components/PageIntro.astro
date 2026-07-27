@@ -20,22 +20,22 @@ const isCentered = align === "center";
 
 <div
   class:list={[
-    "space-y-4",
-    isCentered ? "mx-auto flex max-w-3xl flex-col items-center text-center" : "max-w-3xl",
+    "space-y-5",
+    isCentered ? "mx-auto flex max-w-3xl flex-col items-center text-center" : "max-w-5xl",
     className,
   ]}
 >
   {
     eyebrow ? (
-      <p class="scb-display inline-flex border-b-4 border-[#414141] text-xl text-[#414141] uppercase">
+      <p class="inline-flex border-b-2 border-[#b14926] pb-1 text-sm font-bold tracking-[0.18em] text-[#414141] uppercase">
         {eyebrow}
       </p>
     ) : null
   }
-  <h1 class="scb-display text-5xl text-[#414141] uppercase sm:text-7xl">{title}</h1>
+  <h1 class="scb-display max-w-5xl text-[clamp(2.75rem,5vw,4.5rem)] leading-none text-[#353636] uppercase text-balance">{title}</h1>
   {
     intro ? (
-      <p class="text-lg leading-8 text-[#414141]">
+      <p class="max-w-2xl text-lg leading-8 text-[#414141]">
         {intro}
       </p>
     ) : null

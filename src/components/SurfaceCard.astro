@@ -17,9 +17,9 @@ const {
 } = props;
 
 const toneClasses = {
-  default: "border-[#414141]/35 bg-[#ead871]/92",
-  warm: "border-[#414141]/35 bg-[#f4eeb5]/95",
-  muted: "border-[#ead871]/35 bg-[#414141] text-[#ead871]",
+  default: "border-[#414141]/20 bg-[#fffdf2]/95",
+  warm: "border-[#8c7226]/25 bg-[#f4eeb5]/95",
+  muted: "border-[#ead871]/30 bg-[#414141] text-[#ead871]",
 } as const;
 
 const paddingClasses = {
@@ -31,7 +31,7 @@ const paddingClasses = {
 <Tag
   {...rest}
   class:list={[
-    "border",
+    "rounded-sm border shadow-[var(--scb-shadow)]",
     toneClasses[tone],
     paddingClasses[padding],
     className,

@@ -29,7 +29,7 @@ const featuredGallery = galleryEntries[0];
         intro="Die Medienseite bleibt bewusst leichtgewichtig: sichtbare Titel, klare externe Ziele und nur so viel Bildmaterial, wie für den öffentlichen Vereinsauftritt sinnvoll ist."
       />
 
-      <div class="grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
+      <div class="grid items-start gap-6 lg:grid-cols-[1.05fr_0.95fr]">
         <SurfaceCard as="section" aria-labelledby="media-videos-heading">
           <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Videos</p>
           <h2 id="media-videos-heading" class="mt-2 text-2xl font-semibold text-slate-950">
@@ -39,7 +39,7 @@ const featuredGallery = galleryEntries[0];
           <div class="mt-6 grid gap-4">
             {
               videoEntries.map((entry) => (
-                <article class="border border-slate-200 bg-white/75 p-5">
+                <article class="rounded-sm border border-[#414141]/12 bg-white/75 p-5 shadow-[0_12px_28px_-26px_rgba(24,24,24,0.75)]">
                   <div class="grid gap-4 sm:grid-cols-[9rem_1fr] sm:items-start">
                     {
                       entry.data.thumbnailImage ? (
@@ -115,7 +115,7 @@ const featuredGallery = galleryEntries[0];
                   <div class="grid gap-4">
                     {
                       galleryEntries.map((entry) => (
-                        <article class="border border-slate-200 bg-white/75 p-5">
+                        <article class="rounded-sm border border-[#414141]/12 bg-white/75 p-5 shadow-[0_12px_28px_-26px_rgba(24,24,24,0.75)]">
                           <div class="grid gap-4 sm:grid-cols-[9rem_1fr] sm:items-start">
                             {
                               entry.data.thumbnailImage ? (

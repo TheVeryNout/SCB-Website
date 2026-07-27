@@ -21,17 +21,15 @@ const navItems = [
 ];
 ---
 
-<header class="border-b border-[#181818] bg-[#333333] text-[#ead871]">
+<header class="relative z-50 border-b border-[#181818] bg-[#303131] text-[#ead871] shadow-[0_8px_24px_-20px_rgba(0,0,0,0.9)]">
   <Container class="py-3">
-    <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-      <div>
-        <a class="inline-flex items-center gap-4 text-lg font-semibold text-[#ead871] uppercase no-underline" href="/">
-          <img class="h-14 w-14 object-contain" src={crest.src} alt="" width="56" height="50" />
-          <span class="sr-only">{settings.data.organizationName}</span>
-        </a>
-      </div>
+    <div class="flex items-center justify-between gap-5">
+      <a class="inline-flex shrink-0 items-center text-[#ead871] no-underline" href="/">
+        <img class="h-12 w-12 object-contain" src={crest.src} alt="" width="48" height="43" />
+        <span class="sr-only">{settings.data.organizationName}</span>
+      </a>
 
-      <nav aria-label="Primary" class="hidden flex-wrap justify-end gap-7 md:flex">
+      <nav aria-label="Primary" class="hidden items-center justify-end gap-1 xl:flex">
         {
           navItems.map((item) => {
             const isActive = currentPath === item.href;
@@ -41,10 +39,10 @@ const navItems = [
                 href={item.href}
                 aria-current={isActive ? "page" : undefined}
                 class:list={[
-                  "scb-display text-xl no-underline transition",
+                  "rounded-sm px-3 py-2 text-sm font-semibold tracking-[0.04em] uppercase no-underline transition",
                   isActive
-                    ? "text-[#b14926]"
-                    : "text-[#ead871] hover:text-white",
+                    ? "bg-[#ead871] text-[#252626]"
+                    : "text-[#f4eeb5] hover:bg-white/10 hover:text-white",
                 ]}
               >
                 {item.label}
@@ -54,11 +52,15 @@ const navItems = [
         }
       </nav>
 
-      <details class="group w-full md:hidden">
-        <summary class="scb-display flex cursor-pointer list-none items-center justify-center border border-[#ead871] px-4 py-2 text-lg text-[#ead871]">
-          Navigation
+      <details class="group relative ml-auto xl:hidden">
+        <summary class="flex cursor-pointer list-none items-center gap-2 rounded-sm border border-[#ead871]/60 px-4 py-2 text-sm font-semibold tracking-[0.06em] text-[#f4eeb5] uppercase transition hover:border-[#ead871] hover:bg-white/5 group-open:bg-white/5">
+          <span aria-hidden="true" class="text-lg leading-none">☰</span>
+          Menü
         </summary>
-        <nav aria-label="Primary mobile" class="mt-4 grid gap-2">
+        <nav
+          aria-label="Primary mobile"
+          class="absolute top-full right-0 mt-3 grid w-[min(20rem,calc(100vw-2rem))] gap-1 rounded-sm border border-[#ead871]/25 bg-[#292a2a] p-3 shadow-[0_22px_50px_-24px_rgba(0,0,0,0.95)]"
+        >
           {
             navItems.map((item) => {
               const isActive = currentPath === item.href;
@@ -68,10 +70,10 @@ const navItems = [
                   href={item.href}
                   aria-current={isActive ? "page" : undefined}
                   class:list={[
-                    "scb-display border px-4 py-3 text-lg no-underline transition",
+                    "rounded-sm border-l-2 px-4 py-3 text-base font-semibold no-underline transition",
                     isActive
-                      ? "border-[#b14926] text-[#b14926]"
-                      : "border-[#ead871]/35 text-[#ead871] hover:border-white hover:text-white",
+                      ? "border-[#b14926] bg-[#ead871] text-[#252626]"
+                      : "border-transparent text-[#f4eeb5] hover:border-[#ead871] hover:bg-white/5 hover:text-white",
                   ]}
                 >
                   {item.label}
