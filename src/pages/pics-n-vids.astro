@@ -1,9 +1,8 @@
 ---
 import Container from "../components/Container.astro";
-import EditorialImage from "../components/EditorialImage.astro";
 import LinkButton from "../components/LinkButton.astro";
 import PageIntro from "../components/PageIntro.astro";
-import SurfaceCard from "../components/SurfaceCard.astro";
+import PostGallery from "../components/PostGallery.astro";
 import { getAllMedia, getSiteSettingsEntry } from "../lib/content/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
@@ -14,152 +13,88 @@ const [settings, mediaEntries] = await Promise.all([
 
 const videoEntries = mediaEntries.filter((entry) => entry.data.youtubeUrl);
 const galleryEntries = mediaEntries.filter((entry) => entry.data.gallery?.length);
-const featuredGallery = galleryEntries[0];
+const playlistUrl = videoEntries[0]?.data.youtubeUrl ?? "https://www.youtube.com/playlist?list=PLJocepDDFrV1xCZixVgDhPBlJ4p10dGUz";
+const playlistId = new URL(playlistUrl).searchParams.get("list") ?? "PLJocepDDFrV1xCZixVgDhPBlJ4p10dGUz";
 ---
 
 <BaseLayout
   title={`Pics n Vids | ${settings.data.organizationName}`}
-  description="Einfache Medienseite mit Video-Links und kuratierten Eindrücken aus dem Vereinsumfeld."
+  description="Videos und Fotogalerien aus dem Skatepark und dem Vereinsleben des Skate Club Biriciana."
 >
-  <section class="scb-section py-16 sm:py-20">
-    <Container class="space-y-10">
+  <section class="scb-section py-14 sm:py-20">
+    <Container class="space-y-12 sm:space-y-16">
       <PageIntro
         eyebrow="Pics n Vids"
-        title="Clips, Rückblicke und kuratierte Medien"
-        intro="Die Medienseite bleibt bewusst leichtgewichtig: sichtbare Titel, klare externe Ziele und nur so viel Bildmaterial, wie für den öffentlichen Vereinsauftritt sinnvoll ist."
+        title="Action aus dem Skatepark"
+        intro="Clips, Contests, Workshops und Augenblicke aus unserem Vereinsleben – zum Anschauen, Wiedererleben und Weiterteilen."
       />
 
-      <div class="grid items-start gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-        <SurfaceCard as="section" aria-labelledby="media-videos-heading">
-          <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Videos</p>
-          <h2 id="media-videos-heading" class="mt-2 text-2xl font-semibold text-slate-950">
-            Öffentliche Videoziele
-          </h2>
-
-          <div class="mt-6 grid gap-4">
-            {
-              videoEntries.map((entry) => (
-                <article class="rounded-sm border border-[#414141]/12 bg-white/75 p-5 shadow-[0_12px_28px_-26px_rgba(24,24,24,0.75)]">
-                  <div class="grid gap-4 sm:grid-cols-[9rem_1fr] sm:items-start">
-                    {
-                      entry.data.thumbnailImage ? (
-                        <EditorialImage
-                          src={entry.data.thumbnailImage}
-                          alt={`Vorschaubild für ${entry.data.title}`}
-                          class="min-h-[8rem]"
-                          sizes="9rem"
-                        />
-                      ) : null
-                    }
-
-                    <div class="space-y-3">
-                      <div>
-                        <p class="text-xs font-semibold tracking-[0.16em] text-slate-500 uppercase">
-                          {entry.data.type === "youtube" ? "YouTube" : "Medieneintrag"}
-                        </p>
-                        <h3 class="mt-2 text-lg font-semibold text-slate-950">{entry.data.title}</h3>
-                        {
-                          entry.data.summary ? (
-                            <p class="mt-3 text-sm leading-6 text-slate-700">{entry.data.summary}</p>
-                          ) : null
-                        }
-                      </div>
-
-                      {
-                        entry.data.youtubeUrl ? (
-                          <LinkButton href={entry.data.youtubeUrl} target="_blank" rel="noreferrer" variant="outline">
-                            Ziel öffnen
-                          </LinkButton>
-                        ) : null
-                      }
-                    </div>
-                  </div>
-                </article>
-              ))
-            }
+      <section aria-labelledby="media-videos-heading" class="overflow-hidden rounded-sm border border-[#414141]/25 bg-[#252626] text-white shadow-[var(--scb-shadow)]">
+        <div class="grid lg:grid-cols-[minmax(0,1.55fr)_minmax(18rem,0.65fr)]">
+          <div class="relative aspect-video min-h-[15rem] bg-black">
+            <iframe
+              class="absolute inset-0 h-full w-full"
+              src={`https://www.youtube-nocookie.com/embed/videoseries?list=${playlistId}`}
+              title="YouTube-Playlist des Skate Club Biriciana"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
           </div>
-        </SurfaceCard>
-
-        <div class="grid gap-5">
-          <SurfaceCard as="section" tone="warm" aria-labelledby="media-note-heading">
-            <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Hinweis</p>
-            <h2 id="media-note-heading" class="mt-2 text-2xl font-semibold text-slate-950">
-              Keine schwere Galerieplattform
-            </h2>
-            <p class="mt-3 text-sm leading-7 text-slate-700">
-              Für den Launch bleibt die Medienseite editorial und statisch. Sichtbare Titel und kuratierte Bilder reichen hier aus, statt ein komplexes Video- oder Galerie-System nachzubauen.
+          <div class="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+            <p class="scb-display text-sm tracking-[0.18em] text-[#ead871] uppercase">Videos</p>
+            <h2 id="media-videos-heading" class="mt-3 text-3xl font-semibold text-white">SkateClub Biriciana</h2>
+            <p class="mt-4 leading-7 text-white/75">
+              Unsere Playlist mit Sessions, Veranstaltungen und Clips aus dem Skatepark Weißenburg.
             </p>
-          </SurfaceCard>
-
-          {
-            galleryEntries.length > 0 ? (
-              <SurfaceCard as="section" aria-labelledby="media-gallery-heading">
-                <p class="text-sm font-semibold tracking-[0.18em] text-slate-500 uppercase">Bilder</p>
-                <h2 id="media-gallery-heading" class="mt-2 text-2xl font-semibold text-slate-950">
-                  Kuratierte Eindrücke
-                </h2>
-                <div class="mt-6 grid gap-5">
-                  <div class="grid gap-4 sm:grid-cols-2">
-                    {
-                      featuredGallery?.data.gallery?.slice(0, 4).map((image, index) => (
-                        <EditorialImage
-                          src={image}
-                          alt={`Medienbild ${index + 1} aus dem Umfeld von ${settings.data.organizationName}`}
-                          class="min-h-[10rem]"
-                          sizes="(min-width: 640px) 14rem, 100vw"
-                        />
-                      ))
-                    }
-                  </div>
-
-                  <div class="grid gap-4">
-                    {
-                      galleryEntries.map((entry) => (
-                        <article class="rounded-sm border border-[#414141]/12 bg-white/75 p-5 shadow-[0_12px_28px_-26px_rgba(24,24,24,0.75)]">
-                          <div class="grid gap-4 sm:grid-cols-[9rem_1fr] sm:items-start">
-                            {
-                              entry.data.thumbnailImage ? (
-                                <EditorialImage
-                                  src={entry.data.thumbnailImage}
-                                  alt={`Vorschaubild für ${entry.data.title}`}
-                                  class="min-h-[8rem]"
-                                  sizes="9rem"
-                                />
-                              ) : null
-                            }
-
-                            <div class="space-y-3">
-                              <div>
-                                <p class="text-xs font-semibold tracking-[0.16em] text-slate-500 uppercase">
-                                  Fotogalerie
-                                </p>
-                                <h3 class="mt-2 text-lg font-semibold text-slate-950">{entry.data.title}</h3>
-                                {
-                                  entry.data.summary ? (
-                                    <p class="mt-3 text-sm leading-6 text-slate-700">{entry.data.summary}</p>
-                                  ) : null
-                                }
-                              </div>
-
-                              {
-                                entry.data.gallery?.length ? (
-                                  <p class="text-xs font-medium tracking-[0.14em] text-slate-500 uppercase">
-                                    {entry.data.gallery.length} lokale Bilder migriert
-                                  </p>
-                                ) : null
-                              }
-                            </div>
-                          </div>
-                        </article>
-                      ))
-                    }
-                  </div>
-                </div>
-              </SurfaceCard>
-            ) : null
-          }
+            <div class="mt-6">
+              <LinkButton href={playlistUrl} target="_blank" rel="noreferrer" variant="subtle">
+                Playlist auf YouTube
+              </LinkButton>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
+
+      {
+        galleryEntries.length > 0 ? (
+          <section aria-labelledby="media-gallery-heading" class="space-y-7">
+            <div class="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <p class="text-sm font-bold tracking-[0.18em] text-[#b14926] uppercase">Fotogalerien</p>
+                <h2 id="media-gallery-heading" class="scb-display mt-2 text-4xl text-[#353636] uppercase sm:text-5xl">
+                  Mittendrin statt nur dabei
+                </h2>
+              </div>
+              <p class="max-w-md text-sm leading-6 text-[#414141]/75">
+                Jede Aufnahme lässt sich öffnen, vergrößern und als zusammenhängende Bilderstrecke durchsehen.
+              </p>
+            </div>
+
+            <div class="grid gap-8">
+              {galleryEntries.map((entry) => (
+                <article class="overflow-hidden rounded-sm border border-[#414141]/20 bg-[#fffdf2]/95 shadow-[var(--scb-shadow)]">
+                  <div class="px-4 pt-7 sm:px-8 sm:pt-9">
+                    {entry.data.summary ? <p class="max-w-2xl leading-7 text-[#414141]/80">{entry.data.summary}</p> : null}
+                  </div>
+                  <PostGallery
+                    items={entry.data.gallery!.map((image, index) => ({
+                      image,
+                      alt: `Bild ${index + 1} aus der Galerie ${entry.data.title}`,
+                    }))}
+                    headingId={`gallery-${entry.data.slug}`}
+                    eyebrow={`${entry.data.gallery!.length} Bilder`}
+                    title={entry.data.title}
+                    description="Bild öffnen und durch die Galerie blättern"
+                    class="mt-5"
+                  />
+                </article>
+              ))}
+            </div>
+          </section>
+        ) : null
+      }
     </Container>
   </section>
 </BaseLayout>

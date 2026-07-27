@@ -11,9 +11,21 @@ interface GalleryItem {
 
 interface Props {
   items: GalleryItem[];
+  headingId?: string;
+  eyebrow?: string;
+  title?: string;
+  description?: string;
+  class?: string;
 }
 
-const { items } = Astro.props;
+const {
+  items,
+  headingId = "post-gallery-heading",
+  eyebrow = "Bilderstrecke",
+  title = "Eindrücke zum Beitrag",
+  description = "Bild auswählen, um die Galerie zu öffnen",
+  class: className,
+} = Astro.props;
 const preparedItems = await Promise.all(
   items.map(async (item) => {
     const largeWidth = Math.min(item.image.width, 2000);
@@ -34,14 +46,14 @@ const preparedItems = await Promise.all(
 );
 ---
 
-<section aria-labelledby="post-gallery-heading" class="border-t border-[#414141]/20 px-4 py-8 sm:px-8 sm:py-10">
+<section aria-labelledby={headingId} class:list={["border-t border-[#414141]/20 px-4 py-8 sm:px-8 sm:py-10", className]}>
   <div class="mx-auto max-w-5xl">
     <div class="flex flex-wrap items-end justify-between gap-3">
       <div>
-        <p class="scb-display text-sm tracking-[0.16em] text-[#b14926] uppercase">Bilderstrecke</p>
-        <h2 id="post-gallery-heading" class="mt-2 text-2xl font-semibold text-[#414141]">Eindrücke zum Beitrag</h2>
+        <p class="scb-display text-sm tracking-[0.16em] text-[#b14926] uppercase">{eyebrow}</p>
+        <h2 id={headingId} class="mt-2 text-2xl font-semibold text-[#414141]">{title}</h2>
       </div>
-      <p class="text-sm text-[#414141]/70">Bild auswählen, um die Galerie zu öffnen</p>
+      <p class="text-sm text-[#414141]/70">{description}</p>
     </div>
 
     <div class="mt-6 grid auto-rows-min gap-4 sm:grid-cols-2 lg:grid-cols-3" data-pswp-gallery>
