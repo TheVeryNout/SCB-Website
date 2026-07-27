@@ -12,6 +12,7 @@ import {
   getWixSlugDateMismatchQaFinding,
   getAllOccurrences,
   getRelatedOccurrences,
+  getUpcomingEventGroups,
   getUpcomingOccurrences,
   formatGermanDate,
   formatGermanMonthLabel,
@@ -81,6 +82,34 @@ describe("event engine", () => {
       "2025-12-07",
       "2025-12-14",
       "2025-12-21",
+      "2025-12-28",
+    ]);
+  });
+
+  it("supports multiple selected weekdays on every-N-week intervals", () => {
+    const event = createEvent({
+      startDate: "2025-11-30",
+      endDate: "2025-11-30",
+      recurrence: {
+        type: "weekly",
+        interval: 2,
+        daysOfWeek: ["wednesday", "sunday"],
+        exclusions: [],
+        inclusions: [],
+      },
+    });
+
+    const occurrences = expandEventOccurrences(event, {
+      referenceDateKey: "2025-11-30",
+      horizonPastMonths: 0,
+      horizonFutureMonths: 1,
+    });
+
+    expect(occurrences.map((occurrence) => occurrence.occurrenceDate)).toEqual([
+      "2025-11-30",
+      "2025-12-10",
+      "2025-12-14",
+      "2025-12-24",
       "2025-12-28",
     ]);
   });
@@ -216,6 +245,40 @@ describe("event engine", () => {
     });
 
     expect(occurrences.map((occurrence) => occurrence.slug)).toEqual(["sooner-session", "later-session"]);
+  });
+
+  it("groups upcoming occurrences by logical event without letting a recurring series fill the list", () => {
+    const weekly = createEvent({
+      recurrence: {
+        type: "weekly",
+        interval: 1,
+        daysOfWeek: ["sunday"],
+        exclusions: [],
+        inclusions: [],
+      },
+    });
+    const workshop = createEvent({
+      id: "workshop",
+      slug: "workshop",
+      title: "Workshop",
+      startDate: "2025-12-10",
+      endDate: "2025-12-10",
+    });
+
+    const groups = getUpcomingEventGroups([weekly, workshop], 2, {
+      referenceDateKey: "2025-11-30",
+      referenceDateTimeKey: "2025-11-30T00:00",
+      horizonPastMonths: 0,
+      horizonFutureMonths: 1,
+    });
+
+    expect(groups.map((group) => group.nextOccurrence.slug)).toEqual(["sunday-funday", "workshop"]);
+    expect(groups[0]?.occurrences.slice(0, 3).map((occurrence) => occurrence.occurrenceDate)).toEqual([
+      "2025-11-30",
+      "2025-12-07",
+      "2025-12-14",
+    ]);
+    expect(groups[1]?.occurrences).toHaveLength(1);
   });
 
   it("groups occurrences by month", () => {

@@ -1,0 +1,33 @@
+---
+import EventEmptyState from "./EventEmptyState.astro";
+import UpcomingEventGroupCard from "./UpcomingEventGroupCard.astro";
+import type { UpcomingEventGroup } from "../../lib/events/model";
+
+interface Props {
+  groups: UpcomingEventGroup[];
+  emptyMessage?: string;
+  compactCards?: boolean;
+}
+
+const {
+  groups,
+  emptyMessage = "Aktuell sind keine öffentlichen Termine im Voraus eingetragen.",
+  compactCards = false,
+} = Astro.props;
+---
+
+{
+  groups.length > 0 ? (
+    <ul class="mt-5 space-y-4">
+      {groups.map((group) => (
+        <li>
+          <UpcomingEventGroupCard group={group} compact={compactCards} />
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <div class="mt-5">
+      <EventEmptyState message={emptyMessage} />
+    </div>
+  )
+}

@@ -362,10 +362,14 @@ Reason:
 
 ### Upcoming Events behavior
 
-- sort by start datetime ascending
+- group generated occurrences by logical event before rendering overview lists
+- show one card per one-off event or recurring series
+- sort cards by each event's next occurrence
+- show the next occurrence prominently and only a small set of compact linked future dates for recurring series
 - show only `public` and non-hidden occurrences
 - optionally hide past events by default
-- allow small limit for homepage, larger limit for events page
+- allow a small logical-event limit for the homepage and a larger limit for the events page
+- keep concrete dated occurrence pages even when overview cards are grouped
 
 ### Month Overview Behavior
 
@@ -390,7 +394,8 @@ If a month overview returns later, it must be clearly distinct from the upcoming
 
 ### Homepage integration
 
-- show next 3 to 5 upcoming public events
+- show the next 3 to 5 distinct public events or recurring series
+- never let multiple generated occurrences from one series fill the homepage preview
 - if no upcoming events, show a friendly fallback message
 - optionally pin one recurring highlight like `Sunday Funday`
 
@@ -644,7 +649,8 @@ The calendar should feel like part of a simple club website, not enterprise sche
 - make upcoming events the primary experience
 - month grid is secondary
 - avoid over-dense interfaces
-- use obvious labels for recurring events
+- use a concrete cadence label such as `Jeden Sonntag` or `Alle 2 Wochen: Mittwoch und Sonntag`
+- do not repeat full cards for every generated occurrence of a recurring series on overview pages
 - use strong date hierarchy
 - prioritize readability on mobile
 

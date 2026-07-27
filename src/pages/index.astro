@@ -2,25 +2,25 @@
 import Container from "../components/Container.astro";
 import LinkButton from "../components/LinkButton.astro";
 import SurfaceCard from "../components/SurfaceCard.astro";
-import UpcomingEventsList from "../components/events/UpcomingEventsList.astro";
+import UpcomingEventGroupsList from "../components/events/UpcomingEventGroupsList.astro";
 import crest from "../assets/images/wix-staging/shared/site/dfbc4d_0c5a0de8605c42cbbf4d5ebc30565f1e~mv2.png";
 import heroSkater from "../assets/images/wix-staging/homepage/site/dfbc4d_d22c6e8ff3f54d19a657aa5fcc53cd91~mv2.png";
 import {
   getHomepageEntry,
   getLatestPosts,
   getSiteSettingsEntry,
-  getUpcomingOccurrences,
+  getUpcomingEventGroups,
   validateSiteContent,
 } from "../lib/content/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 await validateSiteContent();
 
-const [homepage, settings, latestPosts, upcomingEvents] = await Promise.all([
+const [homepage, settings, latestPosts, upcomingEventGroups] = await Promise.all([
   getHomepageEntry(),
   getSiteSettingsEntry(),
   getLatestPosts(3),
-  getUpcomingOccurrences(3),
+  getUpcomingEventGroups(3),
 ]);
 
 const featuredAnnouncement =
@@ -119,7 +119,7 @@ const featuredAnnouncement =
           <SurfaceCard>
             <h2 class="scb-display text-4xl text-[#414141]">Nächste Termine</h2>
             <p class="mt-2 text-sm font-semibold text-[#414141]">{settings.data.contactEmail}</p>
-            <UpcomingEventsList occurrences={upcomingEvents} />
+            <UpcomingEventGroupsList groups={upcomingEventGroups} compactCards />
           </SurfaceCard>
 
           <SurfaceCard as="article">

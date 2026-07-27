@@ -6,6 +6,7 @@ import {
   getOccurrenceBySlugAndDate as getOccurrenceBySlugAndDateFromEvents,
   getOccurrenceRouteParams as getOccurrenceRouteParamsFromEvents,
   getRelatedOccurrences as getRelatedOccurrencesFromEvents,
+  getUpcomingEventGroups as getUpcomingEventGroupsFromEvents,
   getUpcomingOccurrences as getUpcomingOccurrencesFromEvents,
   groupOccurrencesByMonth as groupOccurrencesByMonthFromEvents,
 } from "../events/engine";
@@ -13,6 +14,7 @@ import type {
   EventOccurrence,
   EventOccurrenceRouteParams,
   OccurrenceExpansionOptions,
+  UpcomingEventGroup,
   WebsiteEventRecord,
 } from "../events/model";
 import { assertUniquePostSlugs, getPublicPosts } from "./posts";
@@ -311,6 +313,13 @@ export async function getUpcomingOccurrences(
   options: OccurrenceExpansionOptions = {},
 ): Promise<EventOccurrence[]> {
   return getUpcomingOccurrencesFromEvents((await loadValidatedSiteContent()).events, limit, options);
+}
+
+export async function getUpcomingEventGroups(
+  limit?: number,
+  options: OccurrenceExpansionOptions = {},
+): Promise<UpcomingEventGroup[]> {
+  return getUpcomingEventGroupsFromEvents((await loadValidatedSiteContent()).events, limit, options);
 }
 
 export async function getEventOccurrenceRouteParams(

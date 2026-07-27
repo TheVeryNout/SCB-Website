@@ -2,6 +2,7 @@ import type {
   EventOccurrence,
   EventOccurrenceRouteParams,
   OccurrenceExpansionOptions,
+  UpcomingEventGroup,
   WebsiteEventRecord,
   WeekdayKey,
   WixEventMigrationQaFinding,
@@ -398,6 +399,30 @@ export function getUpcomingOccurrences(
   const upcoming = getAllOccurrences(events, options).filter((occurrence) => occurrence.sortKey >= nowKey);
 
   return typeof limit === "number" ? upcoming.slice(0, limit) : upcoming;
+}
+
+export function getUpcomingEventGroups(
+  events: WebsiteEventRecord[],
+  limit?: number,
+  options: OccurrenceExpansionOptions = {},
+): UpcomingEventGroup[] {
+  const groupsBySlug = new Map<string, UpcomingEventGroup>();
+
+  for (const occurrence of getUpcomingOccurrences(events, undefined, options)) {
+    const existingGroup = groupsBySlug.get(occurrence.slug);
+
+    if (existingGroup) {
+      existingGroup.occurrences.push(occurrence);
+    } else {
+      groupsBySlug.set(occurrence.slug, {
+        nextOccurrence: occurrence,
+        occurrences: [occurrence],
+      });
+    }
+  }
+
+  const groups = Array.from(groupsBySlug.values());
+  return typeof limit === "number" ? groups.slice(0, limit) : groups;
 }
 
 export function getOccurrenceRouteParams(

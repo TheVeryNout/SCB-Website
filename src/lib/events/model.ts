@@ -75,6 +75,11 @@ export interface EventOccurrence extends WebsiteEventRecord {
   isRecurring: boolean;
 }
 
+export interface UpcomingEventGroup {
+  nextOccurrence: EventOccurrence;
+  occurrences: EventOccurrence[];
+}
+
 export interface EventOccurrenceRouteParams {
   slug: string;
   date: string;

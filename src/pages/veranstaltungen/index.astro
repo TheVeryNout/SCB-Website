@@ -3,8 +3,8 @@ import Container from "../../components/Container.astro";
 import LinkButton from "../../components/LinkButton.astro";
 import PageIntro from "../../components/PageIntro.astro";
 import SurfaceCard from "../../components/SurfaceCard.astro";
-import UpcomingEventsList from "../../components/events/UpcomingEventsList.astro";
-import { getRequiredPageEntry, getUpcomingOccurrences, getSiteSettingsEntry } from "../../lib/content/site";
+import UpcomingEventGroupsList from "../../components/events/UpcomingEventGroupsList.astro";
+import { getRequiredPageEntry, getUpcomingEventGroups, getSiteSettingsEntry } from "../../lib/content/site";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const EVENT_PAGE_OPTIONS = {
@@ -12,13 +12,13 @@ const EVENT_PAGE_OPTIONS = {
   horizonFutureMonths: 4,
 } as const;
 
-const [settings, eventsPage, allUpcomingOccurrences] = await Promise.all([
+const [settings, eventsPage, allUpcomingEventGroups] = await Promise.all([
   getSiteSettingsEntry(),
   getRequiredPageEntry("events"),
-  getUpcomingOccurrences(undefined, EVENT_PAGE_OPTIONS),
+  getUpcomingEventGroups(undefined, EVENT_PAGE_OPTIONS),
 ]);
 
-const upcomingOccurrences = allUpcomingOccurrences.slice(0, 6);
+const upcomingEventGroups = allUpcomingEventGroups.slice(0, 6);
 const additionalInfo = eventsPage.data.additionalInfo;
 const showAdditionalInfo = Boolean(
   additionalInfo?.enabled && (additionalInfo.title || additionalInfo.text),
@@ -60,10 +60,10 @@ const showAdditionalInfo = Boolean(
               }
             </div>
             <p class="text-sm text-slate-600">
-              {allUpcomingOccurrences.length} öffentliche Termin{allUpcomingOccurrences.length === 1 ? "" : "e"} im sichtbaren Zeitraum
+              {allUpcomingEventGroups.length} öffentliche Veranstaltung{allUpcomingEventGroups.length === 1 ? "" : "en"} im sichtbaren Zeitraum
             </p>
           </div>
-          <UpcomingEventsList occurrences={upcomingOccurrences} />
+          <UpcomingEventGroupsList groups={upcomingEventGroups} />
         </SurfaceCard>
 
         {showAdditionalInfo ? (
