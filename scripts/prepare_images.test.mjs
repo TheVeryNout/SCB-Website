@@ -23,22 +23,22 @@ afterEach(async () => {
 });
 
 describe("prepareImages", () => {
-  test("converts inputs in deterministic path order and writes a hashed manifest", async () => {
+  test("converts practical numbered batches in deterministic path order and writes a hashed manifest", async () => {
     const { input, output } = await createWorkspace();
     await sharp({
       create: { width: 3000, height: 1500, channels: 3, background: "#d34d2f" },
     })
       .jpeg({ quality: 92 })
-      .toFile(join(input, "b-action.jpg"));
+      .toFile(join(input, "image-10.jpg"));
     await sharp({
       create: { width: 120, height: 200, channels: 4, background: { r: 10, g: 20, b: 30, alpha: 0.4 } },
     })
       .png()
-      .toFile(join(input, "a-portrait.png"));
+      .toFile(join(input, "image-2.png"));
 
     const manifest = await prepareImages({ input, output, slug: "test-gallery", maxEdge: 1000, quality: 87 });
 
-    expect(manifest.entries.map((entry) => entry.input.path)).toEqual(["a-portrait.png", "b-action.jpg"]);
+    expect(manifest.entries.map((entry) => entry.input.path)).toEqual(["image-2.png", "image-10.jpg"]);
     expect(manifest.entries.map((entry) => [entry.output.width, entry.output.height])).toEqual([
       [120, 200],
       [1000, 500],
@@ -49,6 +49,17 @@ describe("prepareImages", () => {
     const savedManifest = JSON.parse(await readFile(join(output, "image-prepare-manifest.json"), "utf8"));
     expect(savedManifest).toEqual(manifest);
     expect((await sharp(join(output, manifest.entries[0].output.path)).metadata()).format).toBe("webp");
+  });
+
+  test("records the default quality of 80 in the manifest", async () => {
+    const { input, output } = await createWorkspace();
+    await sharp({ create: { width: 40, height: 40, channels: 3, background: "#336699" } })
+      .jpeg()
+      .toFile(join(input, "image.jpg"));
+
+    const manifest = await prepareImages({ input, output, slug: "default-quality" });
+
+    expect(manifest.settings).toMatchObject({ quality: 80, effort: 5 });
   });
 
   test("auto-orients images and strips orientation metadata", async () => {

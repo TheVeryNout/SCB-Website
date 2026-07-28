@@ -1,11 +1,9 @@
 {
   "createdAt": "2026-04-10",
   "lastUpdatedAt": "2026-07-27",
-  "galleryInventoryPath": "migration/gallery-inventory.json",
   "notes": [
     "This manifest tracks Phase 6 migration work from committed repo files and the retained local evidence pack under docs/plans/wix-reference/.",
-    "Ordered historical gallery counts, evidence mappings, and publication-completeness findings are tracked in migration/gallery-inventory.json.",
-    "Manifest statuses track migration completion, while broader responsive, accessibility, and deployment verification still belongs to Phase 7.",
+    "Manifest statuses describe content migration state; they do not claim that local feature-branch changes are deployed.",
     "Source-observed conflicts stay explicit here instead of being normalized into silent content assumptions.",
     "Stage 5 of the news editorial refactor promoted the 36 curated news images into src/assets/images/uploads for Decap ownership and preview compatibility; the original Wix-staging files remain intact as provenance."
   ],
@@ -177,7 +175,8 @@
       "publicDataRisk": "none",
       "notes": [
         "The retained Wix gallery contains 14 locally available images in verified source order.",
-        "All 14 were converted to publication WebP, restored to the canonical post gallery in source order, and indexed on /pics-n-vids/ through a media entry that references the post; see migration/gallery-inventory.json."
+        "All 14 are prepared as publication WebPs and restored to the canonical post gallery in source order; the /pics-n-vids/ media entry references that post without duplicating gallery metadata.",
+        "This gallery restoration is local to feature/media-page-refresh and has not been deployed."
       ]
     },
     {

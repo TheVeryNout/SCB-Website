@@ -55,4 +55,9 @@ describe("media gallery ownership", () => {
     };
     validateMediaEntries([entry], [publicPost]);
   });
+
+  it("rejects a YouTube entry without a URL", () => {
+    const entry = { data: { slug: "videos", type: "youtube" as const } };
+    expect(() => validateMediaEntries([entry], [publicPost])).toThrow("needs a YouTube URL");
+  });
 });

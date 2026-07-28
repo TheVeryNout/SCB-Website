@@ -53,7 +53,7 @@ Implemented public routes:
 Current operational notes:
 
 - public-data review remains open in `docs/plans/public-data-register.md`
-- `parkausbesserungen` remains limited by truncated retained evidence in `migration/manifest.json`
+- `parkausbesserungen` is fully restored from the recovered live Wix body; `migration/manifest.json` records the cleared blocker
 - `bun run check` currently passes with only known non-blocking Zod deprecation hints
 - route paths and slugs intentionally stay ASCII-safe, for example `/ueber-uns/`, even when visible German copy uses `Über uns`
 

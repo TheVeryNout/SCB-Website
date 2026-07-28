@@ -481,7 +481,7 @@ Examples:
 
 Images must be selected through file/image fields, not pasted as raw paths in freeform markdown.
 
-New routine JPEG/PNG batches must be prepared through the repository-owned two-step WebP workflow before CMS selection. Only the reviewed WebP publication files belong in `src/assets/images/uploads/`; temporary new ingest originals are discarded only after conversion, content validation, and publication checks succeed. Retained Wix evidence is not part of that discard policy.
+New temporary JPEG/PNG/WebP inputs must use the repository-owned two-step workflow before CMS selection: run `bun run images:prepare` with a `2560px` maximum edge, WebP quality `80`, and the converter's fixed effort `5`; then review the outputs and copy only selected WebP publication assets into `src/assets/images/uploads/`. Keep each new source input until conversion and content validation succeed. Retained raw Wix evidence and `src/assets/images/wix-staging/` are preservation inputs outside any deletion policy.
 
 ### Dates
 

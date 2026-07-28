@@ -8,7 +8,9 @@ import sharp from "sharp";
 const SUPPORTED_FORMATS = new Set(["jpeg", "png", "webp"]);
 const MANIFEST_NAME = "image-prepare-manifest.json";
 const DEFAULT_MAX_EDGE = 2560;
-const DEFAULT_QUALITY = 88;
+const DEFAULT_QUALITY = 80;
+const WEBP_EFFORT = 5;
+const PATH_COLLATOR = new Intl.Collator("en", { numeric: true });
 
 function assertPositiveInteger(value, name) {
   if (!Number.isInteger(value) || value < 1) {
@@ -66,7 +68,11 @@ async function listInputFiles(root) {
   }
 
   await visit(root);
-  return files.sort((left, right) => relative(root, left).localeCompare(relative(root, right), "en"));
+  return files.sort((left, right) => {
+    const leftPath = relative(root, left);
+    const rightPath = relative(root, right);
+    return PATH_COLLATOR.compare(leftPath, rightPath) || leftPath.localeCompare(rightPath, "en");
+  });
 }
 
 function sha256(buffer) {
@@ -172,7 +178,7 @@ export async function prepareImages(options) {
             fit: "inside",
             withoutEnlargement: true,
           })
-          .webp({ quality: settings.quality, effort: 5 })
+          .webp({ quality: settings.quality, effort: WEBP_EFFORT })
           .toFile(temporaryPath);
 
         await rename(temporaryPath, outputPath);
@@ -210,6 +216,7 @@ export async function prepareImages(options) {
         slug: settings.slug,
         maxEdge: settings.maxEdge,
         quality: settings.quality,
+        effort: WEBP_EFFORT,
         format: "webp",
         sharpVersion: sharp.versions.sharp,
       },
@@ -277,6 +284,8 @@ Options:
   --max-edge <pixels>  Longest output edge (default: ${DEFAULT_MAX_EDGE})
   --quality <1-100>    WebP quality (default: ${DEFAULT_QUALITY})
   --help               Show this help
+
+WebP encoding effort is fixed at ${WEBP_EFFORT}.
 
 The command never deletes input files and refuses to overwrite outputs.`);
 }

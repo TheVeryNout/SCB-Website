@@ -182,9 +182,9 @@ Use `src/assets/images/` for:
 - event images
 - curated media thumbnails
 
-CMS-managed post and standalone-gallery media lives under `src/assets/images/uploads/`. Decap commits the selected asset and its content reference to the repository; its standard image widget does not transform JPEG/PNG uploads before commit. New routine batches therefore use the repository-owned `bun run images:prepare` step before CMS selection: the command auto-orients JPEG/PNG/WebP inputs, bounds the longest edge to `2560px`, encodes WebP at quality `88`, strips unnecessary source metadata, uses deterministic collision-safe names, and writes a hash-bearing review manifest without deleting or overwriting inputs. Only reviewed WebP outputs are copied into `uploads`; existing Wix evidence remains preserved.
+CMS-managed post and standalone-gallery media lives under `src/assets/images/uploads/`. Decap commits the selected asset and its content reference to the repository; its standard image widget does not transform uploads before commit. New temporary JPEG/PNG/WebP inputs therefore use the repository-owned `bun run images:prepare` step with a `2560px` maximum edge, WebP quality `80`, and fixed effort `5`. Review the generated manifest and images, then copy only selected WebP publication assets into `uploads`; retain each new source input until conversion and content validation succeed. Raw Wix evidence and every file under `src/assets/images/wix-staging/` remain preserved outside this workflow's deletion scope.
 
-Astro still owns public delivery derivatives at build time. Post galleries generate responsive thumbnail widths and a quality-controlled WebP lightbox source capped at 2000px on the source width, while retaining the direct optimized-image link as the no-JavaScript fallback. The `2560px`/quality-`88` stored-source defaults were selected from representative portrait, detailed landscape, action, low-light, compressed-JPEG, and transparent-PNG comparisons that included Astro-equivalent 2000px/quality-86 second-generation output.
+Astro still owns public delivery derivatives at build time. Post galleries generate responsive thumbnail widths and a quality-controlled WebP lightbox source capped at 2000px on the source width, while retaining the direct optimized-image link as the no-JavaScript fallback.
 
 Reason:
 

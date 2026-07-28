@@ -189,7 +189,7 @@ collections:
       - { label: "Entwurf", name: "draft", widget: "boolean", default: true, required: false, hint: "Entwürfe sind auf der Website nicht sichtbar. Bestehende Beiträge ohne dieses Feld bleiben veröffentlicht." }
       - { label: "Veröffentlicht am", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ" }
       - { label: "Kurztext", name: "excerpt", widget: "text" }
-      - { label: "Cover-Bild", name: "coverImage", widget: "image", required: false, hint: "Optionales Hauptbild für Übersicht und Beitragskopf. Neue JPEG/PNG-Dateien vor dem Hochladen mit dem WebP-Vorbereitungsschritt umwandeln." }
+      - { label: "Cover-Bild", name: "coverImage", widget: "image", required: false, hint: "Optionales Hauptbild für Übersicht und Beitragskopf. Für neue Uploads nur vorbereitete WebP-Dateien auswählen." }
       - { label: "Cover-Alternativtext", name: "coverAlt", widget: "string", required: false, hint: "Kurze Bildbeschreibung für Screenreader. Sobald ein Cover gepflegt wird, ist dieser Text erforderlich." }
       - { label: "Cover-Bildunterschrift", name: "coverCaption", widget: "string", required: false }
       - label: "Cover-Darstellung"
