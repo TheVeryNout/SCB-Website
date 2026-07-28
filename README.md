@@ -96,7 +96,7 @@ bun run build
 The CMS is configured for two environments:
 
 - deployed: editors use individual, invite-only Netlify Identity email/password accounts; Git Gateway commits their changes to the connected repository's `master` branch
-- local: Decap switches to a local proxy backend at `http://127.0.0.1:8081/api/v1`
+- local: Decap switches to a local proxy backend at `http://127.0.0.1:4325/api/v1`
 
 Deployed setup requirements:
 
@@ -116,7 +116,7 @@ Account distinction:
 Local notes:
 
 - open `/admin/` on the local Astro URL, usually `http://localhost:4321/admin/`
-- run `bun run dev:cms`, or run `bun run cms:proxy` alongside an existing Astro server; Astro alone is insufficient for local CMS access
+- run `bun run dev:cms`, or run `bun run cms:proxy` alongside an existing Astro server; both commands start the local CMS proxy on port `4325`, and Astro alone is insufficient for local CMS access
 - the proxy server is for local development only and is intentionally unauthenticated
 - `local_backend` only activates on localhost when the proxy is reachable; production continues to publish through Identity and Git Gateway
 - local CMS publishing writes to the local Git working tree; it does not call Netlify
