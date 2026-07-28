@@ -12,9 +12,10 @@ Normal running status remains in `docs/operational-status.md`. Durable CMS/conte
 
 - Branch: `feature/media-page-refresh`
 - Baseline: local `HEAD` was `2345da3` when the ledger was opened; CMS-02 began from clean `e4bba38`
+- Current local `HEAD`: `4bd456d` (`feat: complete media CMS cleanup`)
 - Started: `2026-07-28`
 - Mode: operational maintenance; no historical implementation phase is reopened
-- Current publication state: four local commits plus the uncommitted CMS-02 worktree ahead of `nas/feature/media-page-refresh`; not deployed
+- Current publication state: clean local branch five commits ahead of `nas/feature/media-page-refresh`; no publication is authorized by the current work package
 - Writer policy: one writer only in the active worktree
 - Review policy: advisory subagents, if separately disclosed and approved, are read-only and use fresh context unless inherited session history is materially required
 - Decision authority: the parent agent verifies evidence and owns synthesis; product decisions requiring preference or approval remain with the user
@@ -32,6 +33,12 @@ A non-technical club colleague must be able to create and publish either a stand
 - Astro or Decap implementation details
 
 Technical work that does not advance or protect this editor journey cannot substitute for core completion.
+
+### Approved interim boundary
+
+On `2026-07-28`, the user approved deferring custom Decap batch-widget development. The immediate target is an acceptable, clearly labelled stock-Decap gallery workflow that adds images one at a time while preserving the structured `{ image, alt, caption }[]` contract. This interim workflow may be accepted on its own terms but must not be described as batch upload.
+
+A later, separately approved package may design a repository-owned batch workaround that prepares assets and structured gallery data for Decap to reopen. That future design must address accessible descriptions, safe content merging, publication ownership, and the fact that a local script does not itself provide a deployed non-technical CMS upload journey.
 
 ## Target Editor Journeys
 
@@ -127,10 +134,9 @@ The `2026-07-28` read-only audit verified:
 - a standalone Pics n Vids gallery is canonically owned by the standalone gallery collection
 - `/pics-n-vids/` aggregates both sources without a separate media record or copied slug for post galleries
 - separation of video/playlist settings from photo galleries
-- batch upload interaction
-- automatic image preparation path
-- error, duplicate-name, ordering, and retry behavior
-- CMS labels, defaults, grouping, and optional-caption disclosure
+- immediate stock-Decap labels, defaults, grouping, ordering guidance, and optional-caption disclosure
+- later batch-workaround design and automatic image preparation path
+- later error, duplicate-name, ordering, retry, accessibility-entry, and publication behavior
 
 ## Work Packages
 
@@ -153,8 +159,9 @@ Use only:
 | CMS-00 | Baseline and control ledger | `technically-verified` | Preserve the current baseline and lock scope, principles, gates, and evidence requirements |
 | CMS-01 | Editor journey and content-model decision | `user-accepted` | User approves one coherent ownership and navigation model before implementation |
 | CMS-02 | Immediate CMS cleanup | `technically-verified` | Dead and developer-facing controls are removed without breaking retained public galleries |
-| CMS-03 | Batch-gallery proof | `proposed` | A bounded prototype accepts multiple ordinary images and produces stable structured gallery data |
-| CMS-04 | Production integration | `proposed` | Upload, preparation, ordering, errors, persistence, and publishing work in the real CMS path |
+| CMS-03A | Interim stock-gallery UX groundwork | `approved` | Both gallery locations provide the clearest practical one-image-at-a-time Decap workflow without implying batch support |
+| CMS-03 | Batch-workaround design and proof | `deferred` | A later bounded design tests a repository-owned batch preparation path without pretending it is native Decap batch upload |
+| CMS-04 | Batch-workaround production integration | `deferred` | Only an approved CMS-03 design may define production preparation, errors, persistence, and publication behavior |
 | CMS-05 | Existing-content migration | `proposed` | Existing galleries retain assets, order, accessibility text, captions, and public rendering under the approved model |
 | CMS-06 | Non-technical usability acceptance | `proposed` | A representative non-technical editor completes the workflow without developer intervention |
 | CMS-07 | Publication and deployed verification | `proposed` | Approved work is committed, intentionally published, and verified in the deployed CMS/site |
@@ -192,7 +199,7 @@ Approved model:
 - Only public, eligible posts with non-empty galleries may appear on `/pics-n-vids/`.
 - Standalone galleries are created directly under a dedicated Pics n Vids photo-gallery collection.
 - `/pics-n-vids/` aggregates opted-in post galleries and standalone galleries, then sorts them by publication date.
-- Both ownership paths must use the same batch-gallery interaction and structured image data.
+- Both ownership paths use the same structured gallery data and must expose the same editor interaction; the approved interim interaction is one image at a time, while batch preparation is deferred.
 
 Rejected alternatives:
 
@@ -201,11 +208,11 @@ Rejected alternatives:
 - **Free-text `postSlug` media records:** rejected because they expose machine identifiers and require duplicate editorial steps.
 - **Automatically publish every post gallery:** rejected because editors need an explicit choice about media-page inclusion.
 
-Still open for later packages:
+Settled or deferred for later packages:
 
-- whether video management becomes a singleton playlist setting or separate collection
-- whether the custom Decap gallery widget is viable
-- the exact automatic preparation, progress, error, and retry implementation
+- video management is a singleton playlist setting
+- custom Decap widget development is deferred rather than assumed viable
+- automatic batch preparation, progress, error, accessibility-entry, and retry behavior belong to deferred CMS-03 design
 
 Exit gate:
 
@@ -215,7 +222,7 @@ Exit gate:
 
 ### CMS-02 — Immediate CMS cleanup
 
-Approved ownership cleanup scope; exact implementation still requires authorization:
+Approved and technically verified ownership-cleanup scope:
 
 - remove the unused thumbnail field and stale data
 - remove `featured-media` unless approved with a concrete public behavior
@@ -248,42 +255,72 @@ Technical evidence recorded on `2026-07-28`:
 - the fresh-context validator found that playlist summary/date controls had no public effect; those controls and stale values were removed rather than given invented behavior
 - this is technical verification only; no CMS-02 user acceptance or CMS-03 batch-upload completion is claimed
 
-### CMS-03 — Batch-gallery proof
+### CMS-03A — Interim stock-gallery UX groundwork
 
-Preferred first candidate:
+Approved immediate scope:
 
-- one custom Decap gallery widget preserving the current structured gallery data shape
+- retain Decap's structured list of `{ image, alt, caption }` records for both Neuigkeiten and standalone galleries
+- make the gallery purpose and one-image-at-a-time interaction explicit in concise German
+- provide a clear singular add-image label
+- keep one image per record and disable misleading nested multi-selection where supported
+- keep required alternative text adjacent to its image and describe its accessibility purpose plainly
+- keep the optional caption visibly secondary
+- make ordering, removal, and save/reopen behavior understandable without repository knowledge
+- verify both editor paths locally with representative records
 
-Minimum prototype capabilities:
+Non-goals:
 
-- select at least 10 JPEG files in one action
-- show a thumbnail for every selected file
-- preserve initial order
-- support visual reordering
-- collect required alternative text per image
-- preserve data through CMS save/reload
-- report unsupported or failed files clearly
-
-Deferred from the first proof unless essential:
-
-- polished browser conversion
-- advanced retry/cancellation
-- captions beyond a minimal optional control
-- external asset vendors
-- replacement of Decap CMS
-
-Reopening rule for external media services:
-
-Open a bounded Uploadcare/Cloudinary-style comparison only if the custom proof demonstrates a concrete blocker in browser reliability, Git Gateway integration, maintainability, or acceptable batch performance. Do not conduct a broad widget survey speculatively.
+- custom Decap widgets or undocumented Decap APIs
+- batch selection or batch-upload claims
+- browser conversion
+- importer/script development
+- dependencies, commits, or publication without separate authorization
 
 Exit gate:
 
-- the prototype demonstrates the core interaction with representative files
-- findings state whether custom Decap integration is viable
-- production implementation scope and unresolved risks are explicit
-- no prototype is called production-ready
+- a new editor can identify how to add, describe, order, remove, save, and reopen gallery images
+- Neuigkeiten and standalone galleries expose the same understandable interaction
+- existing gallery data remains unchanged and public rendering still validates
+- the user may accept the interim workflow while CMS-03 remains deferred
 
-### CMS-04 — Production integration
+### CMS-03 — Batch-workaround design and proof
+
+Status: deferred until separately reopened by the user.
+
+Preferred later candidate:
+
+- a repository-owned batch importer that reuses the existing Sharp preparation engine, accepts an image directory or archive, writes safe publication assets, and produces or merges the structured `{ image, alt, caption }[]` data that Decap can reopen
+
+Design questions that must be resolved before implementation:
+
+- how editors provide required accessible image descriptions without filename-derived or empty placeholders
+- whether the tool is developer-operated, locally wrapped for non-technical use, or exposed through another approved interface
+- how it selects the target Neuigkeiten or standalone entry without unsafe identifiers
+- safe duplicate-name, ordering, partial-failure, retry, and rollback behavior
+- who owns Git commits/publication and how deployed editors receive the result
+- whether the workaround remains acceptable once its operational handoffs are counted
+
+Evidence already established:
+
+- Decap `3.11.0` with the default media library rendered `media_library.config.multiple: true` and explicit `allow_multiple: true` with a native file input whose `multiple` property remained `false`
+- forcing ten valid JPEG files through one change event admitted only the first file
+- repeated one-at-a-time selection produced a list of paths that survived CMS save/reload
+- configuration alone therefore does not provide the locked batch journey
+
+Reopening rule for custom widgets or external media services:
+
+Compare a custom widget, maintained third-party widget, Uploadcare/Cloudinary-style service, or broader architecture only if the later importer design exposes a concrete blocker or the user intentionally reopens native batch upload. Do not conduct a broad ecosystem survey speculatively.
+
+Exit gate:
+
+- the design demonstrates a representative batch entering stable structured gallery data
+- required accessibility input and publication ownership are explicit
+- production scope and unresolved risks are explicit
+- no script or prototype is called a native Decap batch workflow
+
+### CMS-04 — Batch-workaround production integration
+
+Status: deferred. Its exact scope must be rewritten from an approved CMS-03 design before implementation; the requirements below remain provisional safeguards rather than active authorization.
 
 Required capabilities:
 
@@ -438,10 +475,10 @@ Rules:
 
 ### D-003 — No broad media-widget survey initially
 
-- Decision: prefer a bounded custom Decap gallery-widget proof; compare external services only after concrete prototype evidence justifies it
-- Status: proposed pending CMS-03 authorization and proof
-- Reason: a broad ecosystem survey would add cost before the primary local path is tested
-- Reopen only if: official Decap constraints or the prototype show a material blocker
+- Decision: do not start a custom Decap widget or broad external-service survey; the stock configuration probe has already established that native batch selection is unavailable in the current default media library
+- Status: superseded by D-005 on `2026-07-28`
+- Reason: the custom interaction is substantial feature development and is not justified for the accepted interim workflow
+- Reopen only if: a later importer design exposes a concrete blocker or the user intentionally reopens native batch upload
 
 ### D-004 — Natural gallery ownership with explicit Neuigkeiten inclusion
 
@@ -449,6 +486,14 @@ Rules:
 - Status: approved by the user on `2026-07-28`
 - Reason: this preserves the ordinary blog-post workflow, supports intentional media-page featuring, avoids duplicate metadata, and removes copied slugs or relation hunting
 - Reopen only if: implementation evidence proves that Decap cannot preserve this interaction without materially worse editor friction
+
+### D-005 — Accept interim stock UX and defer batch-workaround design
+
+- Decision: improve and assess the stock structured-list gallery workflow first; defer custom-widget development and later design a repository-owned batch workaround around Decap's persisted data shape
+- Status: approved by the user on `2026-07-28`
+- Reason: the configuration probe ruled out native one-action batch selection, while a custom Decap upload interaction would be a substantial maintained feature in its own right
+- Constraint: the interim workflow must be labelled and accepted as one-image-at-a-time; a script cannot be presented as a deployed non-technical CMS journey unless an approved interface genuinely provides that outcome
+- Reopen only if: the interim workflow is unacceptable or later batch-workaround requirements justify another architecture
 
 ## Findings Ledger
 
@@ -459,7 +504,8 @@ Rules:
 | F-003 | the mixed media form exposes irrelevant fields without conditional guidance | `verified` | `public/admin/config.yml` |
 | F-004 | the requested practical batch uploader was not delivered | `verified` | Current config plus the deleted plan's unmet non-technical/batch exit evidence |
 | F-005 | the Sharp converter and public gallery implementation remain technically salvageable | `verified` | Converter, tests, `PostGallery.astro`, and current content audit |
-| F-006 | Decap's stock list/image UI is insufficient for the locked target journey | `verified` | Current rendered CMS UI and official Decap widget behavior reviewed on `2026-07-28` |
+| F-006 | Decap's stock list/image UI is insufficient for the original native batch target journey | `verified` | Current rendered CMS UI and official Decap widget behavior reviewed on `2026-07-28`; the user approved a narrower interim UX target |
+| F-007 | `multiple: true` does not enable one-action batch upload in the current default media library | `verified` | Disposable local Decap `3.11.0` probe: file input remained single-select, a forced ten-JPEG change admitted one asset, and iterative selections persisted as a path list through save/reload; all fixtures were removed |
 
 ## Evidence Requirements
 
@@ -480,12 +526,15 @@ A package may not cite an earlier agent summary as sole proof when the underlyin
 - Completed control package: `CMS-00` is `technically-verified`
 - Completed decision package: `CMS-01` is `user-accepted`
 - Completed cleanup package: `CMS-02` is `technically-verified`, not user-accepted
-- Next package: `CMS-03` remains `proposed`; no batch-widget prototype, dependency, commit, or publication is authorized
-- Subagent execution: the approved fresh-context medium-thinking pre-review and post-implementation validator both completed read-only; the validator's one exit-gate finding was corrected by removing unused playlist metadata controls and values
-- Exact next continuation point: disclose CMS-03 separately before any batch-widget prototype, dependency, or further subagent work
+- Active next package: `CMS-03A` is approved as interim stock-gallery UX groundwork; implementation is not yet recorded or technically verified
+- Deferred package: `CMS-03` owns later batch-workaround design; no script, custom widget, dependency, vendor, or batch implementation is authorized
+- Downstream `CMS-04` is deferred and must be rescoped from an approved CMS-03 design before implementation
+- Subagent execution: no further subagent work is authorized
+- Exact next continuation point: inspect and implement only the bounded CMS-03A stock-Decap labels, controls, and save/reopen UX, then obtain technical and user acceptance without claiming batch completion
 
 ## Change Log
 
 - `2026-07-28`: Created the overhaul ledger after the user approved a persistent repository control system. Recorded the verified baseline, locked editor journey, salvage/remove/rewrite inventory, numbered work packages, acceptance gates, decision and findings ledgers, single-writer orchestration rules, and the distinction between technical verification and user acceptance. No CMS implementation, dependency, content, image, Git, or deployment state was changed.
 - `2026-07-28`: Clarified and user-approved both editor journeys. Neuigkeiten posts retain canonical ownership of their galleries and gain one explicit `Pics n Vids` inclusion control; standalone galleries remain owned by a dedicated Pics n Vids gallery collection; `/pics-n-vids/` aggregates both without copied slugs, relation hunting, duplicate media records, or duplicate gallery metadata. Marked CMS-00 technically verified and CMS-01 user-accepted. No implementation or publication state changed.
-- `2026-07-28`: Implemented and technically verified CMS-02 after the user approved one fresh-context read-only pre-reviewer, one parent writer, and one fresh-context read-only validator at medium thinking. Separated standalone galleries from the playlist singleton, added the Neuigkeiten inclusion control, replaced `postSlug` index records with direct public-post aggregation, removed dead/developer-facing fields and hints, derived safe filenames from visible titles while preserving existing post URLs, retained all three public galleries and the playlist, and passed the recorded focused/full checks and generated-output inspection. The validator identified unused playlist summary/date controls; those controls and stale values were removed before closure. CMS-02 is not user-accepted; CMS-03 remains unapproved and proposed.
+- `2026-07-28`: Implemented and technically verified CMS-02 after the user approved one fresh-context read-only pre-reviewer, one parent writer, and one fresh-context read-only validator at medium thinking. Separated standalone galleries from the playlist singleton, added the Neuigkeiten inclusion control, replaced `postSlug` index records with direct public-post aggregation, removed dead/developer-facing fields and hints, derived safe filenames from visible titles while preserving existing post URLs, retained all three public galleries and the playlist, and passed the recorded focused/full checks and generated-output inspection. The validator identified unused playlist summary/date controls; those controls and stale values were removed before closure. CMS-02 is not user-accepted.
+- `2026-07-28`: Ran and fully cleaned a disposable local Decap `3.11.0` configuration probe. `media_library.config.multiple: true`, with and without explicit `allow_multiple: true`, retained a single-select native file input; forcing ten valid JPEG files through one event admitted only the first, while repeated individual selections produced a path list that survived save/reload. The user then approved CMS-03A as bounded stock-gallery UX groundwork and deferred CMS-03 batch-workaround design. The preferred later direction is a repository-owned importer reusing the Sharp engine, subject to explicit accessibility, target-entry, failure-recovery, operational-ownership, and publication decisions. No probe fixtures remain, and no CMS implementation, dependency, commit, or publication was authorized by this decision update.
