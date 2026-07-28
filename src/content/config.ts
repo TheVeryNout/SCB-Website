@@ -167,7 +167,7 @@ const posts = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: nonEmptyString,
-      slug: slugField,
+      slug: slugField.optional(),
       publishedAt: isoDateTimeField,
       excerpt: nonEmptyString,
       draft: optionalBooleanField(false),
@@ -182,6 +182,7 @@ const posts = defineCollection({
         (value) => (value === "" || value === null || (Array.isArray(value) && value.length === 0) ? undefined : value),
         z.array(createGalleryItemField(image)).optional(),
       ),
+      showGalleryOnMediaPage: optionalBooleanField(false),
       category: optionalNonEmptyString,
       updatedAt: z.preprocess(
         (value) => (value === "" || value === null ? undefined : value),
@@ -276,11 +277,8 @@ const media = defineCollection({
     z
       .object({
         title: nonEmptyString,
-        slug: slugField,
-        type: z.enum(["youtube", "photo-gallery", "featured-media"]),
+        type: z.enum(["youtube", "photo-gallery"]),
         youtubeUrl: externalUrlField.optional(),
-        thumbnailImage: image().optional(),
-        postSlug: optionalNonEmptyString,
         gallery: z.preprocess(
           (value) =>
             value === "" || value === null || (Array.isArray(value) && value.length === 0)
@@ -292,15 +290,19 @@ const media = defineCollection({
         publishedAt: isoDateTimeField.optional(),
       })
       .superRefine((value, context) => {
-        if (value.type !== "photo-gallery") {
-          return;
+        if (value.type === "youtube" && !value.youtubeUrl) {
+          context.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: ["youtubeUrl"],
+            message: "A YouTube entry needs a playlist URL.",
+          });
         }
 
-        if (Boolean(value.postSlug) === Boolean(value.gallery?.length)) {
+        if (value.type === "photo-gallery" && !value.gallery?.length) {
           context.addIssue({
             code: z.ZodIssueCode.custom,
             path: ["gallery"],
-            message: "Provide exactly one photo source: either postSlug or a local gallery.",
+            message: "A standalone photo gallery needs at least one image.",
           });
         }
       }),

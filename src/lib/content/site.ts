@@ -18,8 +18,8 @@ import type {
   UpcomingEventGroup,
   WebsiteEventRecord,
 } from "../events/model";
-import { resolveMediaEntries, type ResolvedMediaEntry, validateMediaEntries } from "./media";
-import { assertUniquePostSlugs, getPublicPosts } from "./posts";
+import { resolveMediaPageContent, type MediaPageContent, validateMediaEntries } from "./media";
+import { assertUniquePostSlugs, getPublicPosts, normalizePostSlugs } from "./posts";
 
 const REQUIRED_PAGE_SLUGS = ["about", "membership", "contact", "events", "impressum", "datenschutz"] as const;
 
@@ -219,8 +219,9 @@ async function loadValidatedSiteContent(): Promise<SiteContentCache> {
       }
 
       assertUniquePostSlugs(postEntries);
+      const normalizedPostEntries = normalizePostSlugs(postEntries);
 
-      for (const entry of postEntries) {
+      for (const entry of normalizedPostEntries) {
         if (!hasBody(entry)) {
           throw new Error(`Post "${entry.data.slug}" needs body content.`);
         }
@@ -240,13 +241,12 @@ async function loadValidatedSiteContent(): Promise<SiteContentCache> {
         assertValidEventRecord(event);
       }
 
-      const publicPosts = getPublicPosts(postEntries).sort(
+      const publicPosts = getPublicPosts(normalizedPostEntries).sort(
         (left, right) =>
           new Date(right.data.publishedAt).getTime() - new Date(left.data.publishedAt).getTime(),
       );
 
-      assertUniqueSlugs("media", mediaEntries);
-      validateMediaEntries(mediaEntries, publicPosts);
+      validateMediaEntries(mediaEntries);
 
       return {
         homepage,
@@ -255,7 +255,7 @@ async function loadValidatedSiteContent(): Promise<SiteContentCache> {
         posts: publicPosts,
         eventEntries: eventEntriesBySlug,
         events,
-        media: mediaEntries.sort((left, right) => left.data.title.localeCompare(right.data.title)),
+        media: mediaEntries,
       };
     })();
   }
@@ -350,9 +350,7 @@ export async function getAllMedia(): Promise<CollectionEntry<"media">[]> {
   return (await loadValidatedSiteContent()).media;
 }
 
-export async function getAllResolvedMedia() {
+export async function getMediaPageContent() {
   const content = await loadValidatedSiteContent();
-  return resolveMediaEntries(content.media, content.posts) as Array<
-    ResolvedMediaEntry<CollectionEntry<"media">, ImageMetadata>
-  >;
+  return resolveMediaPageContent(content.media, content.posts) as MediaPageContent<ImageMetadata>;
 }

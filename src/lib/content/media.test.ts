@@ -1,63 +1,99 @@
 import { describe, expect, it } from "bun:test";
 
-import { resolveMediaEntries, validateMediaEntries } from "./media";
+import { resolveMediaPageContent, validateMediaEntries } from "./media";
 
 const image = { image: "example.webp", alt: "A skater on a ramp" };
-const publicPost = { data: { slug: "post-with-gallery", gallery: [image] } };
 
-function media(data: Record<string, unknown>) {
-  return { data: { slug: "media-entry", type: "photo-gallery" as const, ...data } };
+function gallery(id: string, data: Record<string, unknown> = {}) {
+  return {
+    id: `${id}.md`,
+    data: {
+      title: id,
+      type: "photo-gallery" as const,
+      gallery: [image],
+      publishedAt: "2025-01-01T00:00:00Z",
+      ...data,
+    },
+  };
 }
 
-describe("media gallery ownership", () => {
-  it("accepts and resolves a standalone structured gallery", () => {
-    const entry = media({ gallery: [image] });
-    validateMediaEntries([entry], [publicPost]);
-    expect(resolveMediaEntries([entry], [publicPost])[0].gallery).toEqual([image]);
-  });
+function post(data: Record<string, unknown> = {}) {
+  return {
+    id: "post.md",
+    data: {
+      title: "Post gallery",
+      slug: "post-gallery",
+      publishedAt: "2026-01-01T00:00:00Z",
+      gallery: [image],
+      ...data,
+    },
+  };
+}
 
-  it("accepts and resolves a referenced public post gallery", () => {
-    const entry = media({ postSlug: "post-with-gallery" });
-    validateMediaEntries([entry], [publicPost]);
-    expect(resolveMediaEntries([entry], [publicPost])[0].gallery).toEqual([image]);
-  });
-
-  it("rejects a missing referenced post", () => {
-    expect(() => validateMediaEntries([media({ postSlug: "missing" })], [publicPost])).toThrow(
-      'references missing or non-public post "missing"',
+describe("media page content", () => {
+  it("combines opted-in post galleries with standalone galleries in descending date order", () => {
+    const result = resolveMediaPageContent(
+      [gallery("standalone")],
+      [post({ showGalleryOnMediaPage: true })],
     );
+
+    expect(result.galleries.map(({ key }) => key)).toEqual(["post-gallery", "standalone"]);
   });
 
-  it("rejects a referenced post without a gallery", () => {
-    const post = { data: { slug: "empty-post", gallery: undefined } };
-    expect(() => validateMediaEntries([media({ postSlug: "empty-post" })], [post])).toThrow(
-      'references post "empty-post" without a gallery',
+  it("excludes opted-out and empty post galleries", () => {
+    const result = resolveMediaPageContent(
+      [gallery("standalone")],
+      [post(), post({ slug: "empty", showGalleryOnMediaPage: true, gallery: undefined })],
     );
+
+    expect(result.galleries.map(({ key }) => key)).toEqual(["standalone"]);
   });
 
-  it("rejects simultaneous post and local gallery ownership", () => {
-    expect(() =>
-      validateMediaEntries([media({ postSlug: "post-with-gallery", gallery: [image] })], [publicPost]),
-    ).toThrow("needs exactly one source");
+  it("uses a deterministic key tie-breaker", () => {
+    const result = resolveMediaPageContent(
+      [gallery("z-gallery"), gallery("a-gallery")],
+      [],
+    );
+
+    expect(result.galleries.map(({ key }) => key)).toEqual(["a-gallery", "z-gallery"]);
   });
 
-  it("rejects a photo gallery without either source", () => {
-    expect(() => validateMediaEntries([media({})], [publicPost])).toThrow("needs exactly one source");
-  });
-
-  it("keeps YouTube entries valid when they have a URL", () => {
-    const entry = {
+  it("preserves the configured playlist URL", () => {
+    const playlist = {
+      id: "playlist.md",
       data: {
-        slug: "videos",
+        title: "Playlist",
         type: "youtube" as const,
         youtubeUrl: "https://www.youtube.com/playlist?list=example",
       },
     };
-    validateMediaEntries([entry], [publicPost]);
+
+    expect(resolveMediaPageContent([playlist], []).playlistUrl).toBe(playlist.data.youtubeUrl);
+  });
+
+  it("rejects a standalone gallery without images", () => {
+    expect(() => validateMediaEntries([gallery("empty", { gallery: undefined })])).toThrow(
+      "needs at least one image",
+    );
   });
 
   it("rejects a YouTube entry without a URL", () => {
-    const entry = { data: { slug: "videos", type: "youtube" as const } };
-    expect(() => validateMediaEntries([entry], [publicPost])).toThrow("needs a YouTube URL");
+    const entry = { id: "videos.md", data: { title: "Videos", type: "youtube" as const } };
+    expect(() => validateMediaEntries([entry])).toThrow("needs a YouTube URL");
+  });
+
+  it("rejects multiple playlist entries", () => {
+    const playlist = (id: string) => ({
+      id,
+      data: {
+        title: id,
+        type: "youtube" as const,
+        youtubeUrl: "https://www.youtube.com/playlist?list=example",
+      },
+    });
+
+    expect(() => validateMediaEntries([playlist("one"), playlist("two")])).toThrow(
+      "supports one YouTube playlist",
+    );
   });
 });

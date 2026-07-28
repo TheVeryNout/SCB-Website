@@ -5,83 +5,102 @@ interface GalleryItem<TImage = unknown> {
 }
 
 interface MediaData<TImage = unknown> {
-  slug: string;
-  type: "youtube" | "photo-gallery" | "featured-media";
+  title: string;
+  type: "youtube" | "photo-gallery";
   youtubeUrl?: string;
-  postSlug?: string;
   gallery?: GalleryItem<TImage>[];
+  summary?: string;
+  publishedAt?: string | Date;
 }
 
 interface PostData<TImage = unknown> {
-  slug: string;
+  title: string;
+  slug?: string;
+  publishedAt: string | Date;
+  excerpt?: string;
+  showGalleryOnMediaPage?: boolean;
   gallery?: GalleryItem<TImage>[];
 }
 
 interface ContentEntry<TData> {
+  id: string;
   data: TData;
 }
 
-export interface ResolvedMediaEntry<TMediaEntry, TImage = unknown> {
-  entry: TMediaEntry;
-  gallery?: GalleryItem<TImage>[];
+export interface MediaGallery<TImage = unknown> {
+  key: string;
+  title: string;
+  summary?: string;
+  publishedAt?: string | Date;
+  gallery: GalleryItem<TImage>[];
 }
 
-export function validateMediaEntries<
-  TImage,
-  TMediaEntry extends ContentEntry<MediaData<TImage>>,
-  TPostEntry extends ContentEntry<PostData<TImage>>,
->(mediaEntries: TMediaEntry[], publicPosts: TPostEntry[]): void {
-  const postsBySlug = new Map(publicPosts.map((entry) => [entry.data.slug, entry]));
+export interface MediaPageContent<TImage = unknown> {
+  playlistUrl?: string;
+  galleries: MediaGallery<TImage>[];
+}
+
+function mediaKey(entry: { id: string }): string {
+  return entry.id.replace(/\.[^.]+$/, "").split("/").at(-1)!;
+}
+
+function publishedTime(value?: string | Date): number {
+  return value ? new Date(value).getTime() : 0;
+}
+
+export function validateMediaEntries<TImage, TEntry extends ContentEntry<MediaData<TImage>>>(
+  mediaEntries: TEntry[],
+): void {
+  const playlistEntries = mediaEntries.filter(({ data }) => data.type === "youtube");
+
+  if (playlistEntries.length > 1) {
+    throw new Error(`The media collection supports one YouTube playlist, found ${playlistEntries.length}.`);
+  }
 
   for (const entry of mediaEntries) {
-    const { gallery, postSlug, slug, type, youtubeUrl } = entry.data;
-
-    if (type === "youtube" && !youtubeUrl) {
-      throw new Error(`Media entry "${slug}" needs a YouTube URL.`);
+    if (entry.data.type === "youtube" && !entry.data.youtubeUrl) {
+      throw new Error(`Media entry "${mediaKey(entry)}" needs a YouTube URL.`);
     }
 
-    if (type !== "photo-gallery") {
-      continue;
-    }
-
-    const hasLocalGallery = Boolean(gallery?.length);
-    const hasPostReference = Boolean(postSlug);
-
-    if (hasLocalGallery === hasPostReference) {
-      throw new Error(
-        `Photo gallery "${slug}" needs exactly one source: either postSlug or a local gallery.`,
-      );
-    }
-
-    if (postSlug) {
-      const post = postsBySlug.get(postSlug);
-
-      if (!post) {
-        throw new Error(`Photo gallery "${slug}" references missing or non-public post "${postSlug}".`);
-      }
-
-      if (!post.data.gallery?.length) {
-        throw new Error(`Photo gallery "${slug}" references post "${postSlug}" without a gallery.`);
-      }
+    if (entry.data.type === "photo-gallery" && !entry.data.gallery?.length) {
+      throw new Error(`Standalone gallery "${mediaKey(entry)}" needs at least one image.`);
     }
   }
 }
 
-export function resolveMediaEntries<
+export function resolveMediaPageContent<
   TImage,
   TMediaEntry extends ContentEntry<MediaData<TImage>>,
   TPostEntry extends ContentEntry<PostData<TImage>>,
->(mediaEntries: TMediaEntry[], publicPosts: TPostEntry[]): Array<ResolvedMediaEntry<TMediaEntry, TImage>> {
-  validateMediaEntries(mediaEntries, publicPosts);
-  const postsBySlug = new Map(publicPosts.map((entry) => [entry.data.slug, entry]));
+>(mediaEntries: TMediaEntry[], publicPosts: TPostEntry[]): MediaPageContent<TImage> {
+  validateMediaEntries(mediaEntries);
 
-  return mediaEntries.map((entry) => ({
-    entry,
-    gallery:
-      entry.data.type === "photo-gallery"
-        ? entry.data.postSlug
-          ? postsBySlug.get(entry.data.postSlug)!.data.gallery
-          : entry.data.gallery
-        : undefined,
-  }));
+  const standaloneGalleries = mediaEntries
+    .filter((entry) => entry.data.type === "photo-gallery" && entry.data.gallery?.length)
+    .map((entry) => ({
+      key: mediaKey(entry),
+      title: entry.data.title,
+      summary: entry.data.summary,
+      publishedAt: entry.data.publishedAt,
+      gallery: entry.data.gallery!,
+    }));
+
+  const postGalleries = publicPosts
+    .filter((entry) => entry.data.showGalleryOnMediaPage && entry.data.gallery?.length)
+    .map((entry) => ({
+      key: entry.data.slug ?? mediaKey(entry),
+      title: entry.data.title,
+      summary: entry.data.excerpt,
+      publishedAt: entry.data.publishedAt,
+      gallery: entry.data.gallery!,
+    }));
+
+  return {
+    playlistUrl: mediaEntries.find(({ data }) => data.type === "youtube")?.data.youtubeUrl,
+    galleries: [...standaloneGalleries, ...postGalleries].sort(
+      (left, right) =>
+        publishedTime(right.publishedAt) - publishedTime(left.publishedAt) ||
+        left.key.localeCompare(right.key),
+    ),
+  };
 }

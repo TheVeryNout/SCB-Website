@@ -11,10 +11,10 @@ Normal running status remains in `docs/operational-status.md`. Durable CMS/conte
 ## Working State
 
 - Branch: `feature/media-page-refresh`
-- Baseline: local `HEAD` at `2345da3`
+- Baseline: local `HEAD` was `2345da3` when the ledger was opened; CMS-02 began from clean `e4bba38`
 - Started: `2026-07-28`
 - Mode: operational maintenance; no historical implementation phase is reopened
-- Current publication state: three local commits ahead of `nas/feature/media-page-refresh`; not deployed
+- Current publication state: four local commits plus the uncommitted CMS-02 worktree ahead of `nas/feature/media-page-refresh`; not deployed
 - Writer policy: one writer only in the active worktree
 - Review policy: advisory subagents, if separately disclosed and approved, are read-only and use fresh context unless inherited session history is materially required
 - Decision authority: the parent agent verifies evidence and owns synthesis; product decisions requiring preference or approval remain with the user
@@ -152,7 +152,7 @@ Use only:
 | --- | --- | --- | --- |
 | CMS-00 | Baseline and control ledger | `technically-verified` | Preserve the current baseline and lock scope, principles, gates, and evidence requirements |
 | CMS-01 | Editor journey and content-model decision | `user-accepted` | User approves one coherent ownership and navigation model before implementation |
-| CMS-02 | Immediate CMS cleanup | `proposed` | Dead and developer-facing controls are removed without breaking retained public galleries |
+| CMS-02 | Immediate CMS cleanup | `technically-verified` | Dead and developer-facing controls are removed without breaking retained public galleries |
 | CMS-03 | Batch-gallery proof | `proposed` | A bounded prototype accepts multiple ordinary images and produces stable structured gallery data |
 | CMS-04 | Production integration | `proposed` | Upload, preparation, ordering, errors, persistence, and publishing work in the real CMS path |
 | CMS-05 | Existing-content migration | `proposed` | Existing galleries retain assets, order, accessibility text, captions, and public rendering under the approved model |
@@ -234,6 +234,19 @@ Exit gate:
 - a new editor can identify how to create a gallery without understanding the schema
 - retained public galleries build and render
 - no batch-upload completion is claimed yet
+
+Technical evidence recorded on `2026-07-28`:
+
+- the mixed media collection became a dedicated standalone `Pics n Vids` gallery collection plus one file-backed `Videos` playlist setting
+- `thumbnailImage`, `featured-media`, free-text `postSlug`, the redundant Goodies 2025 media record, mixed irrelevant controls, and editor-facing WebP preparation hints were removed
+- Neuigkeiten gained `showGalleryOnMediaPage`; Goodies 2025 is opted in and remains the sole owner of its complete 14-image gallery
+- post and standalone gallery filenames are derived from visible titles; all ten existing post filename/frontmatter-slug pairs were verified equal before optional-slug fallback was introduced, preserving current URLs
+- `/pics-n-vids/` now aggregates eligible opted-in public post galleries with standalone galleries and sorts descending by publication date with a deterministic key tie-breaker
+- the two standalone records moved under `src/content/media/galleries/` with corrected relative asset paths; no source assets were deleted
+- PyYAML parsed all CMS collections; focused media/post tests passed; the full 39-test suite passed; `bun run check` passed with only eight known Zod deprecation hints; a 90-page build passed
+- generated output contained the unchanged playlist ID, three galleries in descending date order, three initialized PhotoSwipe galleries, and 14 Goodies 2025 items on the Neuigkeiten detail route
+- the fresh-context validator found that playlist summary/date controls had no public effect; those controls and stale values were removed rather than given invented behavior
+- this is technical verification only; no CMS-02 user acceptance or CMS-03 batch-upload completion is claimed
 
 ### CMS-03 — Batch-gallery proof
 
@@ -466,11 +479,13 @@ A package may not cite an earlier agent summary as sole proof when the underlyin
 
 - Completed control package: `CMS-00` is `technically-verified`
 - Completed decision package: `CMS-01` is `user-accepted`
-- Next package: `CMS-02` remains `proposed`; no implementation mutation is authorized by this clarification pass
-- Subagent execution: not yet disclosed or approved
-- Exact next continuation point: define and disclose the bounded CMS-02 review/implementation workflow against the approved ownership model before changing source or CMS configuration
+- Completed cleanup package: `CMS-02` is `technically-verified`, not user-accepted
+- Next package: `CMS-03` remains `proposed`; no batch-widget prototype, dependency, commit, or publication is authorized
+- Subagent execution: the approved fresh-context medium-thinking pre-review and post-implementation validator both completed read-only; the validator's one exit-gate finding was corrected by removing unused playlist metadata controls and values
+- Exact next continuation point: disclose CMS-03 separately before any batch-widget prototype, dependency, or further subagent work
 
 ## Change Log
 
 - `2026-07-28`: Created the overhaul ledger after the user approved a persistent repository control system. Recorded the verified baseline, locked editor journey, salvage/remove/rewrite inventory, numbered work packages, acceptance gates, decision and findings ledgers, single-writer orchestration rules, and the distinction between technical verification and user acceptance. No CMS implementation, dependency, content, image, Git, or deployment state was changed.
 - `2026-07-28`: Clarified and user-approved both editor journeys. Neuigkeiten posts retain canonical ownership of their galleries and gain one explicit `Pics n Vids` inclusion control; standalone galleries remain owned by a dedicated Pics n Vids gallery collection; `/pics-n-vids/` aggregates both without copied slugs, relation hunting, duplicate media records, or duplicate gallery metadata. Marked CMS-00 technically verified and CMS-01 user-accepted. No implementation or publication state changed.
+- `2026-07-28`: Implemented and technically verified CMS-02 after the user approved one fresh-context read-only pre-reviewer, one parent writer, and one fresh-context read-only validator at medium thinking. Separated standalone galleries from the playlist singleton, added the Neuigkeiten inclusion control, replaced `postSlug` index records with direct public-post aggregation, removed dead/developer-facing fields and hints, derived safe filenames from visible titles while preserving existing post URLs, retained all three public galleries and the playlist, and passed the recorded focused/full checks and generated-output inspection. The validator identified unused playlist summary/date controls; those controls and stale values were removed before closure. CMS-02 is not user-accepted; CMS-03 remains unapproved and proposed.

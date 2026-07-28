@@ -7,6 +7,7 @@ coverImage: "../../assets/images/uploads/goodies-4-tricks-2025-11-926e2f7e9c.web
 coverAlt: "Zwei Teilnehmerinnen präsentieren ein Skateboard und einen Preis"
 coverCaption: "Goodies 4 Tricks 2025 am Skatepark Weißenburg"
 coverMode: "portrait"
+showGalleryOnMediaPage: true
 gallery:
   - image: "../../assets/images/uploads/goodies-4-tricks-2025-01-4a5cec31f2.webp"
     alt: "Drei Helfer des Skatecontests stehen gemeinsam unter einem Pavillon"

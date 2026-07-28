@@ -1,6 +1,6 @@
 import { describe, expect, it } from "bun:test";
 
-import { assertUniquePostSlugs, getPublicPosts, isPostPublic } from "./posts";
+import { assertUniquePostSlugs, getPublicPosts, isPostPublic, normalizePostSlugs } from "./posts";
 
 const NOW = new Date("2026-07-23T12:00:00Z");
 
@@ -32,12 +32,18 @@ describe("post publication policy", () => {
 
   it("rejects duplicate post slugs deterministically", () => {
     const entries = [
-      { data: { slug: "duplicate" } },
-      { data: { slug: "duplicate" } },
+      { id: "one.md", data: { slug: "duplicate" } },
+      { id: "two.md", data: { slug: "duplicate" } },
     ];
 
     expect(() => assertUniquePostSlugs(entries)).toThrow(
       'Collection "posts" contains the duplicate slug "duplicate".',
     );
+  });
+
+  it("derives a missing post slug from its stable content filename", () => {
+    const [entry] = normalizePostSlugs([{ id: "derived-post.md", data: { title: "Derived post" } }]);
+
+    expect(entry.data.slug).toBe("derived-post");
   });
 });

@@ -179,17 +179,17 @@ collections:
     create: true
     extension: "md"
     format: "frontmatter"
-    slug: "{{fields.slug}}"
+    slug: "{{slug}}"
+    identifier_field: "title"
     summary: "{{fields.title}}"
     editor:
       preview: true
     fields:
       - { label: "Titel", name: "title", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string", hint: "Nur Kleinbuchstaben, Zahlen und Bindestriche. Nach der Veröffentlichung nicht mehr ändern." }
       - { label: "Entwurf", name: "draft", widget: "boolean", default: true, required: false, hint: "Entwürfe sind auf der Website nicht sichtbar. Bestehende Beiträge ohne dieses Feld bleiben veröffentlicht." }
       - { label: "Veröffentlicht am", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ" }
       - { label: "Kurztext", name: "excerpt", widget: "text" }
-      - { label: "Cover-Bild", name: "coverImage", widget: "image", required: false, hint: "Optionales Hauptbild für Übersicht und Beitragskopf. Für neue Uploads nur vorbereitete WebP-Dateien auswählen." }
+      - { label: "Cover-Bild", name: "coverImage", widget: "image", required: false, hint: "Optionales Hauptbild für Übersicht und Beitragskopf." }
       - { label: "Cover-Alternativtext", name: "coverAlt", widget: "string", required: false, hint: "Kurze Bildbeschreibung für Screenreader. Sobald ein Cover gepflegt wird, ist dieser Text erforderlich." }
       - { label: "Cover-Bildunterschrift", name: "coverCaption", widget: "string", required: false }
       - label: "Cover-Darstellung"
@@ -205,11 +205,12 @@ collections:
         widget: "list"
         required: false
         summary: "{{fields.alt}}"
-        hint: "Die Reihenfolge hier entspricht der öffentlichen Galerie. Jedes Bild braucht einen Alternativtext. Für neue Uploads nur vorbereitete WebP-Dateien auswählen."
+        hint: "Die Reihenfolge hier entspricht der öffentlichen Galerie. Jedes Bild braucht einen Alternativtext."
         fields:
           - { label: "Bild", name: "image", widget: "image" }
           - { label: "Alternativtext", name: "alt", widget: "string" }
           - { label: "Bildunterschrift", name: "caption", widget: "string", required: false }
+      - { label: "Diese Bilder auch unter „Pics n Vids“ anzeigen", name: "showGalleryOnMediaPage", widget: "boolean", default: false, required: false, hint: "Nur veröffentlichte Beiträge mit Bildern erscheinen zusätzlich auf der Seite Pics n Vids." }
       - { label: "Kategorie", name: "category", widget: "string", required: false, hint: "Optional und bewusst einfach gehalten." }
       - { label: "Aktualisiert am", name: "updatedAt", widget: "datetime", required: false, format: "YYYY-MM-DDTHH:mm:ssZ" }
       - { label: "Quell-URL", name: "sourceUrl", widget: "string", required: false, hint: "Interne Herkunftsangabe; wird nicht als Teil des Beitragstexts angezeigt." }
@@ -293,32 +294,43 @@ collections:
       - { label: "Zuletzt geprüft", name: "lastVerifiedAt", widget: "date", required: false, format: "YYYY-MM-DD" }
       - { label: "Body", name: "body", widget: "markdown", required: false }
 
-  - name: "media"
+  - name: "media-galleries"
     label: "Pics n Vids"
-    folder: "src/content/media"
+    label_singular: "Fotogalerie"
+    folder: "src/content/media/galleries"
     create: true
     extension: "md"
     format: "frontmatter"
-    slug: "{{fields.slug}}"
+    slug: "{{slug}}"
+    identifier_field: "title"
     summary: "{{fields.title}}"
     editor:
       preview: false
     fields:
       - { label: "Titel", name: "title", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Typ", name: "type", widget: "select", options: ["youtube", "photo-gallery", "featured-media"] }
-      - { label: "YouTube URL", name: "youtubeUrl", widget: "string", required: false }
-      - { label: "Thumbnail", name: "thumbnailImage", widget: "image", required: false, hint: "Für neue Uploads nur vorbereitete WebP-Dateien auswählen." }
-      - { label: "Verknüpfter Neuigkeiten-Slug", name: "postSlug", widget: "string", required: false, hint: "Nur für eine Galerie, die vollständig von einem Neuigkeiten-Beitrag übernommen wird. Entweder diesen Slug oder die lokale Galerie ausfüllen, niemals beides." }
-      - label: "Lokale Galerie"
+      - { label: "Typ", name: "type", widget: "hidden", default: "photo-gallery" }
+      - label: "Bilder"
         name: "gallery"
         widget: "list"
-        required: false
         summary: "{{fields.alt}}"
-        hint: "Nur für eigenständige Galerien ohne verknüpften Beitrag. Die Reihenfolge entspricht der öffentlichen Galerie; jedes Bild braucht einen Alternativtext. Für neue Uploads nur vorbereitete WebP-Dateien auswählen."
+        hint: "Die Reihenfolge hier entspricht der öffentlichen Galerie. Jedes Bild braucht einen Alternativtext."
         fields:
           - { label: "Bild", name: "image", widget: "image" }
           - { label: "Alternativtext", name: "alt", widget: "string" }
           - { label: "Bildunterschrift", name: "caption", widget: "string", required: false }
       - { label: "Kurztext", name: "summary", widget: "text", required: false }
       - { label: "Veröffentlicht am", name: "publishedAt", widget: "datetime", required: false, format: "YYYY-MM-DDTHH:mm:ssZ" }
+
+  - name: "media-videos"
+    label: "Videos"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: "src/content/media/skateclub-biriciana-videos.md"
+        label: "YouTube-Playlist"
+        name: "youtube_playlist"
+        fields:
+          - { label: "Titel", name: "title", widget: "hidden", default: "SkateClub Biriciana" }
+          - { label: "Typ", name: "type", widget: "hidden", default: "youtube" }
+          - { label: "YouTube-Playlist-URL", name: "youtubeUrl", widget: "string", hint: "Vollständige URL der Playlist, die auf Pics n Vids eingebettet wird." }
