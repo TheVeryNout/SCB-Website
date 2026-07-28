@@ -477,7 +477,7 @@ Examples:
 
 Images must be selected through file/image fields, not pasted as raw paths in freeform markdown.
 
-The repository-owned `bun run images:prepare` converter remains migration and developer-maintenance tooling with a `2560px` maximum edge, WebP quality `80`, and fixed effort `5`; it is not a routine editor prerequisite and is not mentioned in CMS forms. Retained raw Wix evidence and `src/assets/images/wix-staging/` remain preservation inputs outside any deletion policy. The ordinary multi-file editor workflow is owned by CMS-03/CMS-04 in `media-cms-overhaul.md` and is not claimed complete by the CMS-02 cleanup.
+The repository-owned `bun run images:prepare` converter remains migration and developer-maintenance tooling with a `2560px` maximum edge, WebP quality `80`, and fixed effort `5`; it is not a routine editor prerequisite and is not mentioned in CMS forms. Retained raw Wix evidence and `src/assets/images/wix-staging/` remain preservation inputs outside any deletion policy. The technically verified CMS-03A interim workflow uses the same structured `{ image, alt, caption }[]` list for Neuigkeiten and standalone galleries, adds images one at a time, requires a plain-language image description, keeps the public caption optional, and exposes stock Decap ordering and persistence without claiming batch support. Multi-file preparation is deferred to CMS-03/CMS-04 in `media-cms-overhaul.md`, where a later repository-owned workaround may be designed separately.
 
 ### Dates
 

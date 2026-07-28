@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
+    "@playwright/test": "^1.62.0",
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.1.5",
     "concurrently": "^9.2.1",

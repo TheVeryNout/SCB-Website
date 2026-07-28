@@ -12,10 +12,10 @@ Normal running status remains in `docs/operational-status.md`. Durable CMS/conte
 
 - Branch: `feature/media-page-refresh`
 - Baseline: local `HEAD` was `2345da3` when the ledger was opened; CMS-02 began from clean `e4bba38`
-- Current local `HEAD`: `4bd456d` (`feat: complete media CMS cleanup`)
+- Current accepted checkpoint: `feat: complete accepted interim gallery CMS UX` (task-scoped local commit; see Git history for the immutable revision)
 - Started: `2026-07-28`
 - Mode: operational maintenance; no historical implementation phase is reopened
-- Current publication state: clean local branch five commits ahead of `nas/feature/media-page-refresh`; no publication is authorized by the current work package
+- Current publication state: clean local branch seven commits ahead of `nas/feature/media-page-refresh` after the task-scoped CMS-03A acceptance commit; not published
 - Writer policy: one writer only in the active worktree
 - Review policy: advisory subagents, if separately disclosed and approved, are read-only and use fresh context unless inherited session history is materially required
 - Decision authority: the parent agent verifies evidence and owns synthesis; product decisions requiring preference or approval remain with the user
@@ -159,7 +159,7 @@ Use only:
 | CMS-00 | Baseline and control ledger | `technically-verified` | Preserve the current baseline and lock scope, principles, gates, and evidence requirements |
 | CMS-01 | Editor journey and content-model decision | `user-accepted` | User approves one coherent ownership and navigation model before implementation |
 | CMS-02 | Immediate CMS cleanup | `technically-verified` | Dead and developer-facing controls are removed without breaking retained public galleries |
-| CMS-03A | Interim stock-gallery UX groundwork | `approved` | Both gallery locations provide the clearest practical one-image-at-a-time Decap workflow without implying batch support |
+| CMS-03A | Interim stock-gallery UX groundwork | `user-accepted` | Both gallery locations provide the clearest practical one-image-at-a-time Decap workflow without implying batch support |
 | CMS-03 | Batch-workaround design and proof | `deferred` | A later bounded design tests a repository-owned batch preparation path without pretending it is native Decap batch upload |
 | CMS-04 | Batch-workaround production integration | `deferred` | Only an approved CMS-03 design may define production preparation, errors, persistence, and publication behavior |
 | CMS-05 | Existing-content migration | `proposed` | Existing galleries retain assets, order, accessibility text, captions, and public rendering under the approved model |
@@ -282,6 +282,17 @@ Exit gate:
 - Neuigkeiten and standalone galleries expose the same understandable interaction
 - existing gallery data remains unchanged and public rendering still validates
 - the user may accept the interim workflow while CMS-03 remains deferred
+
+Technical evidence recorded on `2026-07-28`:
+
+- both gallery fields are labelled `Galeriebilder`, use the singular add label `Bild`, collapse existing entries to their alternative-text summaries, and explicitly explain one-at-a-time addition plus drag ordering
+- each expanded record presents `Foto auswählen`, required `Bildbeschreibung`, and secondary `Sichtbare Bildunterschrift` controls with plain German purpose text; direct-URL insertion is removed from gallery image records
+- Neuigkeiten and standalone galleries use the same stock Decap configuration and retain the existing `{ image, alt, caption }[]` content shape
+- the user-installed project-local `@playwright/test` `1.62.0` CLI successfully used system Chromium rather than Steel for local CMS verification
+- disposable Playwright scenarios created representative standalone and Neuigkeiten records, added real JPEG uploads, entered alternative text and captions, reordered a standalone image by drag handle, published through the local proxy, reopened both entries, and verified persisted paths and metadata; the final two-scenario run passed
+- all disposable entries, uploaded assets, Playwright specs, screenshots/results, and earlier Steel probe fixtures were removed; real content remained unchanged
+- PyYAML configuration assertions passed; all 39 Bun tests passed; `bun run check` passed with only eight known Zod deprecation hints; the 90-page production build passed
+- after checking both backend and frontend, the user accepted this package as complete on `2026-07-28`, pending any later concrete scrutiny; it does not provide or claim batch upload
 
 ### CMS-03 — Batch-workaround design and proof
 
@@ -526,11 +537,11 @@ A package may not cite an earlier agent summary as sole proof when the underlyin
 - Completed control package: `CMS-00` is `technically-verified`
 - Completed decision package: `CMS-01` is `user-accepted`
 - Completed cleanup package: `CMS-02` is `technically-verified`, not user-accepted
-- Active next package: `CMS-03A` is approved as interim stock-gallery UX groundwork; implementation is not yet recorded or technically verified
+- Completed interim package: `CMS-03A` is `user-accepted`
 - Deferred package: `CMS-03` owns later batch-workaround design; no script, custom widget, dependency, vendor, or batch implementation is authorized
 - Downstream `CMS-04` is deferred and must be rescoped from an approved CMS-03 design before implementation
 - Subagent execution: no further subagent work is authorized
-- Exact next continuation point: inspect and implement only the bounded CMS-03A stock-Decap labels, controls, and save/reopen UX, then obtain technical and user acceptance without claiming batch completion
+- Exact next continuation point: no immediate media package is active; retain CMS-03 batch-workaround design and CMS-04 integration as deferred until the user explicitly reopens them or later concrete scrutiny exposes CMS-03A friction
 
 ## Change Log
 
@@ -538,3 +549,4 @@ A package may not cite an earlier agent summary as sole proof when the underlyin
 - `2026-07-28`: Clarified and user-approved both editor journeys. Neuigkeiten posts retain canonical ownership of their galleries and gain one explicit `Pics n Vids` inclusion control; standalone galleries remain owned by a dedicated Pics n Vids gallery collection; `/pics-n-vids/` aggregates both without copied slugs, relation hunting, duplicate media records, or duplicate gallery metadata. Marked CMS-00 technically verified and CMS-01 user-accepted. No implementation or publication state changed.
 - `2026-07-28`: Implemented and technically verified CMS-02 after the user approved one fresh-context read-only pre-reviewer, one parent writer, and one fresh-context read-only validator at medium thinking. Separated standalone galleries from the playlist singleton, added the Neuigkeiten inclusion control, replaced `postSlug` index records with direct public-post aggregation, removed dead/developer-facing fields and hints, derived safe filenames from visible titles while preserving existing post URLs, retained all three public galleries and the playlist, and passed the recorded focused/full checks and generated-output inspection. The validator identified unused playlist summary/date controls; those controls and stale values were removed before closure. CMS-02 is not user-accepted.
 - `2026-07-28`: Ran and fully cleaned a disposable local Decap `3.11.0` configuration probe. `media_library.config.multiple: true`, with and without explicit `allow_multiple: true`, retained a single-select native file input; forcing ten valid JPEG files through one event admitted only the first, while repeated individual selections produced a path list that survived save/reload. The user then approved CMS-03A as bounded stock-gallery UX groundwork and deferred CMS-03 batch-workaround design. The preferred later direction is a repository-owned importer reusing the Sharp engine, subject to explicit accessibility, target-entry, failure-recovery, operational-ownership, and publication decisions. No probe fixtures remain, and no CMS implementation, dependency, commit, or publication was authorized by this decision update.
+- `2026-07-28`: Implemented and technically verified CMS-03A. Both gallery-owning editor paths now use the same concise one-image-at-a-time Decap list UX with singular add wording, alternative-text summaries, explicit drag-order guidance, plain required image-description help, secondary public-caption help, and no direct-URL control inside gallery image records. After Steel proved unacceptably slow and its session timed out, the user installed `@playwright/test` `1.62.0`; its CLI with system Chromium proved suitable and replaced Steel for the remaining CMS QA. A final disposable two-scenario Playwright run passed real JPEG add, description, caption, standalone drag reorder, local publish, persisted file/frontmatter inspection, and reload for both standalone and Neuigkeiten entries. All fixtures and test artifacts were removed. PyYAML assertions, 39 Bun tests, Astro check with eight known Zod hints, and a 90-page build passed. After checking both backend and frontend, the user accepted CMS-03A as complete pending later scrutiny and authorized its task-scoped commit. CMS-03 batch-workaround design remains deferred and publication remains unauthorized.

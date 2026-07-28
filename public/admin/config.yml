@@ -200,16 +200,18 @@ collections:
           - { label: "Breit zugeschnitten", value: "wide" }
           - { label: "Hochformat", value: "portrait" }
           - { label: "Vollständig / Dokument", value: "contained" }
-      - label: "Galerie"
+      - label: "Galeriebilder"
         name: "gallery"
         widget: "list"
         required: false
+        label_singular: "Bild"
+        collapsed: true
         summary: "{{fields.alt}}"
-        hint: "Die Reihenfolge hier entspricht der öffentlichen Galerie. Jedes Bild braucht einen Alternativtext."
+        hint: "Bilder werden einzeln hinzugefügt. Ziehe die Einträge am Griff, um ihre Reihenfolge zu ändern. Öffne einen Eintrag, um seine Beschreibung oder Bildunterschrift zu bearbeiten."
         fields:
-          - { label: "Bild", name: "image", widget: "image" }
-          - { label: "Alternativtext", name: "alt", widget: "string" }
-          - { label: "Bildunterschrift", name: "caption", widget: "string", required: false }
+          - { label: "Foto auswählen", name: "image", widget: "image", choose_url: false }
+          - { label: "Bildbeschreibung", name: "alt", widget: "string", hint: "Pflichtfeld: Beschreibe kurz, was auf dem Bild zu sehen ist. Dieser Text hilft Menschen, die das Bild nicht sehen können." }
+          - { label: "Sichtbare Bildunterschrift", name: "caption", widget: "string", required: false, hint: "Optional: Dieser Text wird öffentlich unter dem Bild angezeigt." }
       - { label: "Diese Bilder auch unter „Pics n Vids“ anzeigen", name: "showGalleryOnMediaPage", widget: "boolean", default: false, required: false, hint: "Nur veröffentlichte Beiträge mit Bildern erscheinen zusätzlich auf der Seite Pics n Vids." }
       - { label: "Kategorie", name: "category", widget: "string", required: false, hint: "Optional und bewusst einfach gehalten." }
       - { label: "Aktualisiert am", name: "updatedAt", widget: "datetime", required: false, format: "YYYY-MM-DDTHH:mm:ssZ" }
@@ -309,15 +311,17 @@ collections:
     fields:
       - { label: "Titel", name: "title", widget: "string" }
       - { label: "Typ", name: "type", widget: "hidden", default: "photo-gallery" }
-      - label: "Bilder"
+      - label: "Galeriebilder"
         name: "gallery"
         widget: "list"
+        label_singular: "Bild"
+        collapsed: true
         summary: "{{fields.alt}}"
-        hint: "Die Reihenfolge hier entspricht der öffentlichen Galerie. Jedes Bild braucht einen Alternativtext."
+        hint: "Bilder werden einzeln hinzugefügt. Ziehe die Einträge am Griff, um ihre Reihenfolge zu ändern. Öffne einen Eintrag, um seine Beschreibung oder Bildunterschrift zu bearbeiten."
         fields:
-          - { label: "Bild", name: "image", widget: "image" }
-          - { label: "Alternativtext", name: "alt", widget: "string" }
-          - { label: "Bildunterschrift", name: "caption", widget: "string", required: false }
+          - { label: "Foto auswählen", name: "image", widget: "image", choose_url: false }
+          - { label: "Bildbeschreibung", name: "alt", widget: "string", hint: "Pflichtfeld: Beschreibe kurz, was auf dem Bild zu sehen ist. Dieser Text hilft Menschen, die das Bild nicht sehen können." }
+          - { label: "Sichtbare Bildunterschrift", name: "caption", widget: "string", required: false, hint: "Optional: Dieser Text wird öffentlich unter dem Bild angezeigt." }
       - { label: "Kurztext", name: "summary", widget: "text", required: false }
       - { label: "Veröffentlicht am", name: "publishedAt", widget: "datetime", required: false, format: "YYYY-MM-DDTHH:mm:ssZ" }
 
