@@ -182,7 +182,9 @@ Use `src/assets/images/` for:
 - event images
 - curated media thumbnails
 
-CMS-managed post media lives under `src/assets/images/uploads/`. Decap commits the source upload and its content reference to the repository; it does not transform the file during upload. Astro owns public delivery derivatives at build time. Post galleries generate responsive thumbnail widths and a quality-controlled WebP lightbox source capped at 2000px on the source width, while retaining the direct optimized-image link as the no-JavaScript fallback. Source-file normalization, metadata stripping, and upload-size policy remain a separate future ingestion concern rather than lightbox behavior.
+CMS-managed post and standalone-gallery media lives under `src/assets/images/uploads/`. Decap commits the selected asset and its content reference to the repository; its standard image widget does not transform JPEG/PNG uploads before commit. New routine batches therefore use the repository-owned `bun run images:prepare` step before CMS selection: the command auto-orients JPEG/PNG/WebP inputs, bounds the longest edge to `2560px`, encodes WebP at quality `88`, strips unnecessary source metadata, uses deterministic collision-safe names, and writes a hash-bearing review manifest without deleting or overwriting inputs. Only reviewed WebP outputs are copied into `uploads`; existing Wix evidence remains preserved.
+
+Astro still owns public delivery derivatives at build time. Post galleries generate responsive thumbnail widths and a quality-controlled WebP lightbox source capped at 2000px on the source width, while retaining the direct optimized-image link as the no-JavaScript fallback. The `2560px`/quality-`88` stored-source defaults were selected from representative portrait, detailed landscape, action, low-light, compressed-JPEG, and transparent-PNG comparisons that included Astro-equivalent 2000px/quality-86 second-generation output.
 
 Reason:
 

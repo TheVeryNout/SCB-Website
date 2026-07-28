@@ -3,17 +3,17 @@ import Container from "../components/Container.astro";
 import LinkButton from "../components/LinkButton.astro";
 import PageIntro from "../components/PageIntro.astro";
 import PostGallery from "../components/PostGallery.astro";
-import { getAllMedia, getSiteSettingsEntry } from "../lib/content/site";
+import { getAllResolvedMedia, getSiteSettingsEntry } from "../lib/content/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const [settings, mediaEntries] = await Promise.all([
   getSiteSettingsEntry(),
-  getAllMedia(),
+  getAllResolvedMedia(),
 ]);
 
-const videoEntries = mediaEntries.filter((entry) => entry.data.youtubeUrl);
-const galleryEntries = mediaEntries.filter((entry) => entry.data.gallery?.length);
-const playlistUrl = videoEntries[0]?.data.youtubeUrl ?? "https://www.youtube.com/playlist?list=PLJocepDDFrV1xCZixVgDhPBlJ4p10dGUz";
+const videoEntries = mediaEntries.filter(({ entry }) => entry.data.youtubeUrl);
+const galleryEntries = mediaEntries.filter(({ gallery }) => gallery?.length);
+const playlistUrl = videoEntries[0]?.entry.data.youtubeUrl ?? "https://www.youtube.com/playlist?list=PLJocepDDFrV1xCZixVgDhPBlJ4p10dGUz";
 const playlistId = new URL(playlistUrl).searchParams.get("list") ?? "PLJocepDDFrV1xCZixVgDhPBlJ4p10dGUz";
 ---
 
@@ -73,18 +73,15 @@ const playlistId = new URL(playlistUrl).searchParams.get("list") ?? "PLJocepDDFr
             </div>
 
             <div class="grid gap-8">
-              {galleryEntries.map((entry) => (
+              {galleryEntries.map(({ entry, gallery }) => (
                 <article class="overflow-hidden rounded-sm border border-[#414141]/20 bg-[#fffdf2]/95 shadow-[var(--scb-shadow)]">
                   <div class="px-4 pt-7 sm:px-8 sm:pt-9">
                     {entry.data.summary ? <p class="max-w-2xl leading-7 text-[#414141]/80">{entry.data.summary}</p> : null}
                   </div>
                   <PostGallery
-                    items={entry.data.gallery!.map((image, index) => ({
-                      image,
-                      alt: `Bild ${index + 1} aus der Galerie ${entry.data.title}`,
-                    }))}
+                    items={gallery!}
                     headingId={`gallery-${entry.data.slug}`}
-                    eyebrow={`${entry.data.gallery!.length} Bilder`}
+                    eyebrow={`${gallery!.length} Bilder`}
                     title={entry.data.title}
                     description="Bild öffnen und durch die Galerie blättern"
                     class="mt-5"

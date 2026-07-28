@@ -1,8 +1,10 @@
 {
   "createdAt": "2026-04-10",
-  "lastUpdatedAt": "2026-07-23",
+  "lastUpdatedAt": "2026-07-27",
+  "galleryInventoryPath": "migration/gallery-inventory.json",
   "notes": [
     "This manifest tracks Phase 6 migration work from committed repo files and the retained local evidence pack under docs/plans/wix-reference/.",
+    "Ordered historical gallery counts, evidence mappings, and publication-completeness findings are tracked in migration/gallery-inventory.json.",
     "Manifest statuses track migration completion, while broader responsive, accessibility, and deployment verification still belongs to Phase 7.",
     "Source-observed conflicts stay explicit here instead of being normalized into silent content assumptions.",
     "Stage 5 of the news editorial refactor promoted the 36 curated news images into src/assets/images/uploads for Decap ownership and preview compatibility; the original Wix-staging files remain intact as provenance."
@@ -155,13 +157,27 @@
       "targetRoute": "/neuigkeiten/goodies-4-tricks-2025/",
       "targetContentPath": "src/content/posts/goodies-4-tricks-2025.md",
       "localAssetPaths": [
-        "src/assets/images/uploads/13cc9c_00222c64efe14f18a4f922fe5eb4bddb~mv2.jpg"
+        "src/assets/images/uploads/goodies-4-tricks-2025-01-4a5cec31f2.webp",
+        "src/assets/images/uploads/goodies-4-tricks-2025-02-6be9ee5df4.webp",
+        "src/assets/images/uploads/goodies-4-tricks-2025-03-a34b5bc58b.webp",
+        "src/assets/images/uploads/goodies-4-tricks-2025-04-9286adc6ca.webp",
+        "src/assets/images/uploads/goodies-4-tricks-2025-05-b2b3f265b3.webp",
+        "src/assets/images/uploads/goodies-4-tricks-2025-06-392d935994.webp",
+        "src/assets/images/uploads/goodies-4-tricks-2025-07-b26b2046cd.webp",
+        "src/assets/images/uploads/goodies-4-tricks-2025-08-8e73631d13.webp",
+        "src/assets/images/uploads/goodies-4-tricks-2025-09-180ac4a012.webp",
+        "src/assets/images/uploads/goodies-4-tricks-2025-10-b47f37e1fe.webp",
+        "src/assets/images/uploads/goodies-4-tricks-2025-11-926e2f7e9c.webp",
+        "src/assets/images/uploads/goodies-4-tricks-2025-12-aa5019cb21.webp",
+        "src/assets/images/uploads/goodies-4-tricks-2025-13-25b5b28334.webp",
+        "src/assets/images/uploads/goodies-4-tricks-2025-14-7539b25afc.webp"
       ],
       "status": "migrated",
       "needsManualQa": false,
       "publicDataRisk": "none",
       "notes": [
-        "Post entry exists and is now closer to retained source wording."
+        "The retained Wix gallery contains 14 locally available images in verified source order.",
+        "All 14 were converted to publication WebP, restored to the canonical post gallery in source order, and indexed on /pics-n-vids/ through a media entry that references the post; see migration/gallery-inventory.json."
       ]
     },
     {

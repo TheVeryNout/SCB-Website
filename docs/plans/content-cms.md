@@ -438,6 +438,7 @@ Optional fields by type:
 
 - `youtubeUrl`
 - `thumbnailImage`
+- `postSlug`
 - `gallery`
 - `summary`
 - `publishedAt`
@@ -445,6 +446,15 @@ Optional fields by type:
 Controlled values:
 
 - `type`: `youtube | photo-gallery | featured-media`
+
+Photo-gallery ownership rules:
+
+- the media collection remains the explicit inclusion index for `/pics-n-vids/`
+- a photo gallery supplies exactly one source: `postSlug` or a local `gallery`
+- `postSlug` must resolve to a public news post with a non-empty gallery
+- a referenced post remains the sole owner of image selection, order, alternative text, and captions
+- standalone gallery items use the same structured `image`, required `alt`, and optional `caption` model as post galleries
+- unresolved, non-public, or gallery-less post references fail validation/build
 
 Launch rule:
 
@@ -470,6 +480,8 @@ Examples:
 ### Images
 
 Images must be selected through file/image fields, not pasted as raw paths in freeform markdown.
+
+New routine JPEG/PNG batches must be prepared through the repository-owned two-step WebP workflow before CMS selection. Only the reviewed WebP publication files belong in `src/assets/images/uploads/`; temporary new ingest originals are discarded only after conversion, content validation, and publication checks succeed. Retained Wix evidence is not part of that discard policy.
 
 ### Dates
 

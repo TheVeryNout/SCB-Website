@@ -189,7 +189,7 @@ collections:
       - { label: "Entwurf", name: "draft", widget: "boolean", default: true, required: false, hint: "Entwürfe sind auf der Website nicht sichtbar. Bestehende Beiträge ohne dieses Feld bleiben veröffentlicht." }
       - { label: "Veröffentlicht am", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ" }
       - { label: "Kurztext", name: "excerpt", widget: "text" }
-      - { label: "Cover-Bild", name: "coverImage", widget: "image", required: false, hint: "Optionales Hauptbild für Übersicht und Beitragskopf." }
+      - { label: "Cover-Bild", name: "coverImage", widget: "image", required: false, hint: "Optionales Hauptbild für Übersicht und Beitragskopf. Neue JPEG/PNG-Dateien vor dem Hochladen mit dem WebP-Vorbereitungsschritt umwandeln." }
       - { label: "Cover-Alternativtext", name: "coverAlt", widget: "string", required: false, hint: "Kurze Bildbeschreibung für Screenreader. Sobald ein Cover gepflegt wird, ist dieser Text erforderlich." }
       - { label: "Cover-Bildunterschrift", name: "coverCaption", widget: "string", required: false }
       - label: "Cover-Darstellung"
@@ -205,7 +205,7 @@ collections:
         widget: "list"
         required: false
         summary: "{{fields.alt}}"
-        hint: "Die Reihenfolge hier entspricht der öffentlichen Galerie. Jedes Bild braucht einen Alternativtext."
+        hint: "Die Reihenfolge hier entspricht der öffentlichen Galerie. Jedes Bild braucht einen Alternativtext. Für neue Uploads nur vorbereitete WebP-Dateien auswählen."
         fields:
           - { label: "Bild", name: "image", widget: "image" }
           - { label: "Alternativtext", name: "alt", widget: "string" }
@@ -308,11 +308,17 @@ collections:
       - { label: "Slug", name: "slug", widget: "string" }
       - { label: "Typ", name: "type", widget: "select", options: ["youtube", "photo-gallery", "featured-media"] }
       - { label: "YouTube URL", name: "youtubeUrl", widget: "string", required: false }
-      - { label: "Thumbnail", name: "thumbnailImage", widget: "image", required: false }
-      - label: "Galerie"
+      - { label: "Thumbnail", name: "thumbnailImage", widget: "image", required: false, hint: "Für neue Uploads nur vorbereitete WebP-Dateien auswählen." }
+      - { label: "Verknüpfter Neuigkeiten-Slug", name: "postSlug", widget: "string", required: false, hint: "Nur für eine Galerie, die vollständig von einem Neuigkeiten-Beitrag übernommen wird. Entweder diesen Slug oder die lokale Galerie ausfüllen, niemals beides." }
+      - label: "Lokale Galerie"
         name: "gallery"
         widget: "list"
         required: false
-        field: { label: "Bild", name: "image", widget: "image" }
+        summary: "{{fields.alt}}"
+        hint: "Nur für eigenständige Galerien ohne verknüpften Beitrag. Die Reihenfolge entspricht der öffentlichen Galerie; jedes Bild braucht einen Alternativtext. Für neue Uploads nur vorbereitete WebP-Dateien auswählen."
+        fields:
+          - { label: "Bild", name: "image", widget: "image" }
+          - { label: "Alternativtext", name: "alt", widget: "string" }
+          - { label: "Bildunterschrift", name: "caption", widget: "string", required: false }
       - { label: "Kurztext", name: "summary", widget: "text", required: false }
       - { label: "Veröffentlicht am", name: "publishedAt", widget: "datetime", required: false, format: "YYYY-MM-DDTHH:mm:ssZ" }

@@ -78,6 +78,12 @@ const isoDateTimeField = z.preprocess(
   (value) => (value instanceof Date ? value.toISOString() : value),
   z.string().trim().datetime({ offset: true, message: "Use an ISO datetime with timezone offset." }),
 );
+const createGalleryItemField = <TImage extends z.ZodType>(image: () => TImage) =>
+  z.object({
+    image: image(),
+    alt: nonEmptyString,
+    caption: optionalNonEmptyString,
+  });
 const weekdayField = z.enum([
   "monday",
   "tuesday",
@@ -174,15 +180,7 @@ const posts = defineCollection({
       coverMode: z.enum(["wide", "portrait", "contained"]).default("wide"),
       gallery: z.preprocess(
         (value) => (value === "" || value === null || (Array.isArray(value) && value.length === 0) ? undefined : value),
-        z
-          .array(
-            z.object({
-              image: image(),
-              alt: nonEmptyString,
-              caption: optionalNonEmptyString,
-            }),
-          )
-          .optional(),
+        z.array(createGalleryItemField(image)).optional(),
       ),
       category: optionalNonEmptyString,
       updatedAt: z.preprocess(
@@ -275,16 +273,37 @@ const events = defineCollection({
 const media = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/media" }),
   schema: ({ image }) =>
-    z.object({
-      title: nonEmptyString,
-      slug: slugField,
-      type: z.enum(["youtube", "photo-gallery", "featured-media"]),
-      youtubeUrl: externalUrlField.optional(),
-      thumbnailImage: image().optional(),
-      gallery: z.array(image()).optional(),
-      summary: nonEmptyString.optional(),
-      publishedAt: isoDateTimeField.optional(),
-    }),
+    z
+      .object({
+        title: nonEmptyString,
+        slug: slugField,
+        type: z.enum(["youtube", "photo-gallery", "featured-media"]),
+        youtubeUrl: externalUrlField.optional(),
+        thumbnailImage: image().optional(),
+        postSlug: optionalNonEmptyString,
+        gallery: z.preprocess(
+          (value) =>
+            value === "" || value === null || (Array.isArray(value) && value.length === 0)
+              ? undefined
+              : value,
+          z.array(createGalleryItemField(image)).optional(),
+        ),
+        summary: nonEmptyString.optional(),
+        publishedAt: isoDateTimeField.optional(),
+      })
+      .superRefine((value, context) => {
+        if (value.type !== "photo-gallery") {
+          return;
+        }
+
+        if (Boolean(value.postSlug) === Boolean(value.gallery?.length)) {
+          context.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: ["gallery"],
+            message: "Provide exactly one photo source: either postSlug or a local gallery.",
+          });
+        }
+      }),
 });
 
 const settings = defineCollection({

@@ -1,3 +1,4 @@
+import type { ImageMetadata } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 
 import {
@@ -17,6 +18,7 @@ import type {
   UpcomingEventGroup,
   WebsiteEventRecord,
 } from "../events/model";
+import { resolveMediaEntries, type ResolvedMediaEntry, validateMediaEntries } from "./media";
 import { assertUniquePostSlugs, getPublicPosts } from "./posts";
 
 const REQUIRED_PAGE_SLUGS = ["about", "membership", "contact", "events", "impressum", "datenschutz"] as const;
@@ -238,26 +240,19 @@ async function loadValidatedSiteContent(): Promise<SiteContentCache> {
         assertValidEventRecord(event);
       }
 
+      const publicPosts = getPublicPosts(postEntries).sort(
+        (left, right) =>
+          new Date(right.data.publishedAt).getTime() - new Date(left.data.publishedAt).getTime(),
+      );
+
       assertUniqueSlugs("media", mediaEntries);
-
-      for (const entry of mediaEntries) {
-        if (entry.data.type === "youtube" && !entry.data.youtubeUrl) {
-          throw new Error(`Media entry "${entry.data.slug}" needs a YouTube URL.`);
-        }
-
-        if (entry.data.type === "photo-gallery" && !entry.data.gallery?.length) {
-          throw new Error(`Media entry "${entry.data.slug}" needs at least one gallery image.`);
-        }
-      }
+      validateMediaEntries(mediaEntries, publicPosts);
 
       return {
         homepage,
         settings,
         pages,
-        posts: getPublicPosts(postEntries).sort(
-          (left, right) =>
-            new Date(right.data.publishedAt).getTime() - new Date(left.data.publishedAt).getTime(),
-        ),
+        posts: publicPosts,
         eventEntries: eventEntriesBySlug,
         events,
         media: mediaEntries.sort((left, right) => left.data.title.localeCompare(right.data.title)),
@@ -353,4 +348,11 @@ export async function getEventOccurrencesGroupedByMonth(
 
 export async function getAllMedia(): Promise<CollectionEntry<"media">[]> {
   return (await loadValidatedSiteContent()).media;
+}
+
+export async function getAllResolvedMedia() {
+  const content = await loadValidatedSiteContent();
+  return resolveMediaEntries(content.media, content.posts) as Array<
+    ResolvedMediaEntry<CollectionEntry<"media">, ImageMetadata>
+  >;
 }
