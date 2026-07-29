@@ -59,16 +59,11 @@ const playlistId = new URL(playlistUrl).searchParams.get("list") ?? "PLJocepDDFr
       {
         galleryEntries.length > 0 ? (
           <section aria-labelledby="media-gallery-heading" class="space-y-7">
-            <div class="flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <p class="text-sm font-bold tracking-[0.18em] text-[#b14926] uppercase">Fotogalerien</p>
-                <h2 id="media-gallery-heading" class="scb-display mt-2 text-4xl text-[#353636] uppercase sm:text-5xl">
-                  Mittendrin statt nur dabei
-                </h2>
-              </div>
-              <p class="max-w-md text-sm leading-6 text-[#414141]/75">
-                Jede Aufnahme lässt sich öffnen, vergrößern und als zusammenhängende Bilderstrecke durchsehen.
-              </p>
+            <div>
+              <p class="text-sm font-bold tracking-[0.18em] text-[#b14926] uppercase">Fotogalerien</p>
+              <h2 id="media-gallery-heading" class="scb-display mt-2 text-4xl text-[#353636] uppercase sm:text-5xl">
+                Mittendrin statt nur dabei
+              </h2>
             </div>
 
             <div class="grid gap-8">
@@ -82,7 +77,6 @@ const playlistId = new URL(playlistUrl).searchParams.get("list") ?? "PLJocepDDFr
                     headingId={`gallery-${key}`}
                     eyebrow={`${gallery.length} Bilder`}
                     title={title}
-                    description="Bild öffnen und durch die Galerie blättern"
                     class="mt-5"
                   />
                 </article>

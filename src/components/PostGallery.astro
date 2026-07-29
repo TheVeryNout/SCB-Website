@@ -14,7 +14,6 @@ interface Props {
   headingId?: string;
   eyebrow?: string;
   title?: string;
-  description?: string;
   class?: string;
 }
 
@@ -23,7 +22,6 @@ const {
   headingId = "post-gallery-heading",
   eyebrow = "Bilderstrecke",
   title = "Eindrücke zum Beitrag",
-  description = "Bild auswählen, um die Galerie zu öffnen",
   class: className,
 } = Astro.props;
 const preparedItems = await Promise.all(
@@ -48,12 +46,9 @@ const preparedItems = await Promise.all(
 
 <section aria-labelledby={headingId} class:list={["border-t border-[#414141]/20 px-4 py-8 sm:px-8 sm:py-10", className]}>
   <div class="mx-auto max-w-5xl">
-    <div class="flex flex-wrap items-end justify-between gap-3">
-      <div>
-        <p class="scb-display text-sm tracking-[0.16em] text-[#b14926] uppercase">{eyebrow}</p>
-        <h2 id={headingId} class="mt-2 text-2xl font-semibold text-[#414141]">{title}</h2>
-      </div>
-      <p class="text-sm text-[#414141]/70">{description}</p>
+    <div>
+      <p class="scb-display text-sm tracking-[0.16em] text-[#b14926] uppercase">{eyebrow}</p>
+      <h2 id={headingId} class="mt-2 text-2xl font-semibold text-[#414141]">{title}</h2>
     </div>
 
     <div class="mt-6 grid auto-rows-min gap-4 sm:grid-cols-2 lg:grid-cols-3" data-pswp-gallery>
@@ -67,7 +62,7 @@ const preparedItems = await Promise.all(
           >
             <a
               href={item.largeSrc}
-              class="group relative block overflow-hidden no-underline focus-visible:outline-offset-[-3px]"
+              class="group relative block h-full overflow-hidden no-underline focus-visible:outline-offset-[-3px]"
               data-pswp-item
               data-pswp-width={item.largeWidth}
               data-pswp-height={item.largeHeight}
@@ -83,7 +78,7 @@ const preparedItems = await Promise.all(
                   : "(min-width: 1024px) 22rem, (min-width: 640px) 50vw, 100vw"}
                 loading="lazy"
                 class:list={[
-                  "w-full object-cover transition duration-300 group-hover:scale-[1.025] group-focus-visible:scale-[1.025]",
+                  "h-full w-full object-cover transition duration-300 group-hover:scale-[1.025] group-focus-visible:scale-[1.025]",
                   index === 0 && preparedItems.length > 2 ? "aspect-[16/10]" : "aspect-[4/3]",
                 ]}
               />
