@@ -211,7 +211,10 @@ const events = defineCollection({
         address: optionalNonEmptyString,
         mapUrl: optionalExternalUrlField,
         heroImage: image().optional(),
-        gallery: z.array(image()).optional(),
+        gallery: z.preprocess(
+          (value) => (value === "" || value === null || (Array.isArray(value) && value.length === 0) ? undefined : value),
+          z.array(createGalleryItemField(image)).optional(),
+        ),
         ctaLabel: optionalNonEmptyString,
         ctaUrl: optionalLinkField,
         registrationUrl: optionalExternalUrlField,

@@ -286,11 +286,18 @@ collections:
       - { label: "Anmeldung URL", name: "registrationUrl", widget: "string", required: false }
       - { label: "Instagram URL", name: "instagramUrl", widget: "string", required: false }
       - { label: "Bild", name: "heroImage", widget: "image", required: false }
-      - label: "Galerie"
+      - label: "Galeriebilder"
         name: "gallery"
         widget: "list"
         required: false
-        field: { label: "Bild", name: "image", widget: "image" }
+        label_singular: "Bild"
+        collapsed: true
+        summary: "{{fields.alt}}"
+        hint: "Bilder werden einzeln hinzugefügt. Ziehe die Einträge am Griff, um ihre Reihenfolge zu ändern."
+        fields:
+          - { label: "Foto auswählen", name: "image", widget: "image", choose_url: false }
+          - { label: "Bildbeschreibung", name: "alt", widget: "string", hint: "Pflichtfeld: Beschreibe kurz, was auf dem Bild zu sehen ist." }
+          - { label: "Sichtbare Bildunterschrift", name: "caption", widget: "string", required: false }
       - { label: "Quelle", name: "source", widget: "hidden", default: "website" }
       - { label: "Quell-ID", name: "sourceId", widget: "hidden", required: false }
       - { label: "Zuletzt geprüft", name: "lastVerifiedAt", widget: "date", required: false, format: "YYYY-MM-DD" }

@@ -5,6 +5,23 @@ status: tentative
 visibility: public
 locationName: Weißenburg in Bayern
 heroImage: ../../assets/images/wix-staging/events/sunday-funday/13cc9c_b8c6b92af9f2429dbfcdc1bede23d1cf~mv2.webp
+gallery:
+  - image: ../../assets/images/uploads/sunday-funday-2026-08-01-d8c6921966.webp
+    alt: Kinder und Erwachsene mit Skateboards und Rollern an einer Rampe im Skatepark
+  - image: ../../assets/images/uploads/sunday-funday-2026-08-02-07c5a50105.webp
+    alt: Große Gruppe beim gemeinsamen Aufwärmen auf der Fläche des Skateparks
+  - image: ../../assets/images/uploads/sunday-funday-2026-08-03-b0cc65ef2c.webp
+    alt: Teilnehmende verteilen sich mit Boards und Rollern im sonnigen Skatepark
+  - image: ../../assets/images/uploads/sunday-funday-2026-08-04-75832f2a01.webp
+    alt: Kinder und Erwachsene machen gemeinsam Dehnübungen zwischen den Rampen
+  - image: ../../assets/images/uploads/sunday-funday-2026-08-05-ab9347ccb4.webp
+    alt: Große Sunday-Funday-Gruppe beim Aufwärmen vor einem Baum im Skatepark
+  - image: ../../assets/images/uploads/sunday-funday-2026-08-06-4963bedb0c.webp
+    alt: Junge Skaterinnen und Skater üben zwischen Rampen, Rails und einer Box
+  - image: ../../assets/images/uploads/sunday-funday-2026-08-07-fc3f9ce479.webp
+    alt: Skater fährt mit ausgestreckten Armen über die Kante einer Rampe
+  - image: ../../assets/images/uploads/sunday-funday-2026-08-08-32a6431bb5.webp
+    alt: Drei Kinder mit Helmen und Rollern stehen am Rand einer Rampe
 audience: Einsteiger und Interessierte
 summary: Offen für alle Einsteiger - und kostet nix!
 startDate: 2025-11-30
