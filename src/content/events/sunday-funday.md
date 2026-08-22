@@ -24,10 +24,11 @@ mapUrl: https://www.google.com/maps/search/?api=1&query=Gunzenhausener+Str.+45,+
 additionalInfo:
   enabled: true
   label: Zusatzinfos
-  title: hello world
-  text: "Obacht: Es kann nicht zu 100 Prozent garantiert werden, dass an jedem
-    sonnigen Sonntag Vereinsmitglieder am Park sind. Für aktuelle Ankündigungen
-    hilft ein Blick auf Instagram."
+  title: Obacht!
+  text: Es kann nicht zu 100 Prozent garantiert werden, dass an jedem sonnigen
+    Sonntag Vereinsmitglieder am Park sind bzw. der Funday wirklich stattfindet.
+    Um sicher zu gehen, besucht unseren Instakanal! Dort geben wir rechtzeitig
+    Bescheid ob ein Funday wirklich stattfindet!
 instagramUrl: https://www.instagram.com/skateclub_biriciana/
 source: migrated-wix
 lastVerifiedAt: 2026-04-10
