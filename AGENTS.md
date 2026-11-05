@@ -9,7 +9,7 @@ What the project is and how to run it: [README.md](README.md).
 
 ## Checks before calling work done
 - `bun test`
-- `bun run check`: 0 errors expected; the 8 Zod deprecation hints in `src/content/config.ts` are known (inbox ticket 05)
+- `bun run check`: 0 errors, 0 warnings and 0 hints expected
 - `bun run build`
 - UI changes: check in the browser at desktop (about 1440px) and phone width (390px), with no horizontal overflow. Gallery or lightbox changes: also open the PhotoSwipe viewer.
 - CMS changes (`public/admin/`, `src/content/config.ts`): also open the local Decap editor through the proxy on port 4335 and save/reopen an entry.
