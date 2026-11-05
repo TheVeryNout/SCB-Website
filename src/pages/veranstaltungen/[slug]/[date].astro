@@ -5,6 +5,7 @@ import Container from "../../../components/Container.astro";
 import EditorialImage from "../../../components/EditorialImage.astro";
 import LinkButton from "../../../components/LinkButton.astro";
 import PageIntro from "../../../components/PageIntro.astro";
+import PostGallery from "../../../components/PostGallery.astro";
 import RichText from "../../../components/RichText.astro";
 import SurfaceCard from "../../../components/SurfaceCard.astro";
 import EventCtaBlock from "../../../components/events/EventCtaBlock.astro";
@@ -195,6 +196,19 @@ const detailFacts = [
             <RichText class="mt-5">
               <Content />
             </RichText>
+          </SurfaceCard>
+        ) : null
+      }
+
+      {
+        eventEntry.data.gallery?.length ? (
+          <SurfaceCard as="section">
+            <PostGallery
+              items={eventEntry.data.gallery}
+              eyebrow={`${eventEntry.data.gallery.length} Bilder`}
+              title="Sunday Funday in Bildern"
+              headingId="event-gallery-heading"
+            />
           </SurfaceCard>
         ) : null
       }

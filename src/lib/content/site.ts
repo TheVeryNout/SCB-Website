@@ -1,3 +1,4 @@
+import type { ImageMetadata } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 
 import {
@@ -17,7 +18,8 @@ import type {
   UpcomingEventGroup,
   WebsiteEventRecord,
 } from "../events/model";
-import { assertUniquePostSlugs, getPublicPosts } from "./posts";
+import { resolveMediaPageContent, type MediaPageContent, validateMediaEntries } from "./media";
+import { assertUniquePostSlugs, getPublicPosts, normalizePostSlugs } from "./posts";
 
 const REQUIRED_PAGE_SLUGS = ["about", "membership", "contact", "events", "impressum", "datenschutz"] as const;
 
@@ -217,8 +219,9 @@ async function loadValidatedSiteContent(): Promise<SiteContentCache> {
       }
 
       assertUniquePostSlugs(postEntries);
+      const normalizedPostEntries = normalizePostSlugs(postEntries);
 
-      for (const entry of postEntries) {
+      for (const entry of normalizedPostEntries) {
         if (!hasBody(entry)) {
           throw new Error(`Post "${entry.data.slug}" needs body content.`);
         }
@@ -238,29 +241,21 @@ async function loadValidatedSiteContent(): Promise<SiteContentCache> {
         assertValidEventRecord(event);
       }
 
-      assertUniqueSlugs("media", mediaEntries);
+      const publicPosts = getPublicPosts(normalizedPostEntries).sort(
+        (left, right) =>
+          new Date(right.data.publishedAt).getTime() - new Date(left.data.publishedAt).getTime(),
+      );
 
-      for (const entry of mediaEntries) {
-        if (entry.data.type === "youtube" && !entry.data.youtubeUrl) {
-          throw new Error(`Media entry "${entry.data.slug}" needs a YouTube URL.`);
-        }
-
-        if (entry.data.type === "photo-gallery" && !entry.data.gallery?.length) {
-          throw new Error(`Media entry "${entry.data.slug}" needs at least one gallery image.`);
-        }
-      }
+      validateMediaEntries(mediaEntries);
 
       return {
         homepage,
         settings,
         pages,
-        posts: getPublicPosts(postEntries).sort(
-          (left, right) =>
-            new Date(right.data.publishedAt).getTime() - new Date(left.data.publishedAt).getTime(),
-        ),
+        posts: publicPosts,
         eventEntries: eventEntriesBySlug,
         events,
-        media: mediaEntries.sort((left, right) => left.data.title.localeCompare(right.data.title)),
+        media: mediaEntries,
       };
     })();
   }
@@ -353,4 +348,9 @@ export async function getEventOccurrencesGroupedByMonth(
 
 export async function getAllMedia(): Promise<CollectionEntry<"media">[]> {
   return (await loadValidatedSiteContent()).media;
+}
+
+export async function getMediaPageContent() {
+  const content = await loadValidatedSiteContent();
+  return resolveMediaPageContent(content.media, content.posts) as MediaPageContent<ImageMetadata>;
 }

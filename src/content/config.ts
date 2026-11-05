@@ -78,6 +78,12 @@ const isoDateTimeField = z.preprocess(
   (value) => (value instanceof Date ? value.toISOString() : value),
   z.string().trim().datetime({ offset: true, message: "Use an ISO datetime with timezone offset." }),
 );
+const createGalleryItemField = <TImage extends z.ZodType>(image: () => TImage) =>
+  z.object({
+    image: image(),
+    alt: nonEmptyString,
+    caption: optionalNonEmptyString,
+  });
 const weekdayField = z.enum([
   "monday",
   "tuesday",
@@ -161,7 +167,7 @@ const posts = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: nonEmptyString,
-      slug: slugField,
+      slug: slugField.optional(),
       publishedAt: isoDateTimeField,
       excerpt: nonEmptyString,
       draft: optionalBooleanField(false),
@@ -174,16 +180,9 @@ const posts = defineCollection({
       coverMode: z.enum(["wide", "portrait", "contained"]).default("wide"),
       gallery: z.preprocess(
         (value) => (value === "" || value === null || (Array.isArray(value) && value.length === 0) ? undefined : value),
-        z
-          .array(
-            z.object({
-              image: image(),
-              alt: nonEmptyString,
-              caption: optionalNonEmptyString,
-            }),
-          )
-          .optional(),
+        z.array(createGalleryItemField(image)).optional(),
       ),
+      showGalleryOnMediaPage: optionalBooleanField(false),
       category: optionalNonEmptyString,
       updatedAt: z.preprocess(
         (value) => (value === "" || value === null ? undefined : value),
@@ -212,7 +211,10 @@ const events = defineCollection({
         address: optionalNonEmptyString,
         mapUrl: optionalExternalUrlField,
         heroImage: image().optional(),
-        gallery: z.array(image()).optional(),
+        gallery: z.preprocess(
+          (value) => (value === "" || value === null || (Array.isArray(value) && value.length === 0) ? undefined : value),
+          z.array(createGalleryItemField(image)).optional(),
+        ),
         ctaLabel: optionalNonEmptyString,
         ctaUrl: optionalLinkField,
         registrationUrl: optionalExternalUrlField,
@@ -275,16 +277,38 @@ const events = defineCollection({
 const media = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/media" }),
   schema: ({ image }) =>
-    z.object({
-      title: nonEmptyString,
-      slug: slugField,
-      type: z.enum(["youtube", "photo-gallery", "featured-media"]),
-      youtubeUrl: externalUrlField.optional(),
-      thumbnailImage: image().optional(),
-      gallery: z.array(image()).optional(),
-      summary: nonEmptyString.optional(),
-      publishedAt: isoDateTimeField.optional(),
-    }),
+    z
+      .object({
+        title: nonEmptyString,
+        type: z.enum(["youtube", "photo-gallery"]),
+        youtubeUrl: externalUrlField.optional(),
+        gallery: z.preprocess(
+          (value) =>
+            value === "" || value === null || (Array.isArray(value) && value.length === 0)
+              ? undefined
+              : value,
+          z.array(createGalleryItemField(image)).optional(),
+        ),
+        summary: nonEmptyString.optional(),
+        publishedAt: isoDateTimeField.optional(),
+      })
+      .superRefine((value, context) => {
+        if (value.type === "youtube" && !value.youtubeUrl) {
+          context.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: ["youtubeUrl"],
+            message: "A YouTube entry needs a playlist URL.",
+          });
+        }
+
+        if (value.type === "photo-gallery" && !value.gallery?.length) {
+          context.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: ["gallery"],
+            message: "A standalone photo gallery needs at least one image.",
+          });
+        }
+      }),
 });
 
 const settings = defineCollection({

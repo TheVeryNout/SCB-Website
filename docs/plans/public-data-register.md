@@ -75,8 +75,9 @@ Last cold-read audit source date:
 | Key | Current value | Source | Status | Publication rule |
 | --- | --- | --- | --- | --- |
 | instagram | `https://www.instagram.com/skateclub_biriciana/` | footer and impressum audit | pending | can be migrated, should still be reconfirmed |
-| youtubePrimary | `https://www.youtube.com/@SkateClubBiriciana` | impressum audit | conflict | do not treat as canonical until user resolves |
-| youtubeFooter | `https://www.youtube.com/@rollkindvideo/videos` | footer/media audit | conflict | do not treat as canonical until user resolves |
+| youtubePlaylist | `https://www.youtube.com/playlist?list=PLJocepDDFrV1xCZixVgDhPBlJ4p10dGUz` | user confirmation `2026-07-27` | confirmed | use for media-page video URLs |
+| youtubePrimary | `https://www.youtube.com/@SkateClubBiriciana` | impressum audit | pending | channel identity remains unconfirmed; do not substitute for the confirmed playlist URL |
+| youtubeFooter | `https://www.youtube.com/@rollkindvideo/videos` | footer/media audit | superseded | do not use for new media-page video links |
 
 ### Legal And Contact Data
 
@@ -142,8 +143,7 @@ If fee information is shown publicly, it should remain plain page/PDF content un
 
 These items remain explicit review items:
 
-1. canonical YouTube destination
-2. current valid donation/bank details if fundraising content stays live
+1. current valid donation/bank details if fundraising content stays live
 
 Operational note:
 

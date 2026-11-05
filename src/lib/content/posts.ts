@@ -3,15 +3,33 @@ export interface PostPublicationData {
   publishedAt: string | Date;
 }
 
-export function assertUniquePostSlugs<TEntry extends { data: { slug: string } }>(entries: TEntry[]): void {
+function slugFromId(id: string): string {
+  return id.replace(/\.[^.]+$/, "").split("/").at(-1)!;
+}
+
+export function normalizePostSlugs<
+  TEntry extends { id: string; data: { slug?: string; [key: string]: unknown } },
+>(entries: TEntry[]): Array<Omit<TEntry, "data"> & { data: TEntry["data"] & { slug: string } }> {
+  return entries.map((entry) => ({
+    ...entry,
+    data: {
+      ...entry.data,
+      slug: entry.data.slug ?? slugFromId(entry.id),
+    },
+  }));
+}
+
+export function assertUniquePostSlugs<TEntry extends { id: string; data: { slug?: string } }>(entries: TEntry[]): void {
   const seen = new Set<string>();
 
   for (const entry of entries) {
-    if (seen.has(entry.data.slug)) {
-      throw new Error(`Collection "posts" contains the duplicate slug "${entry.data.slug}".`);
+    const slug = entry.data.slug ?? slugFromId(entry.id);
+
+    if (seen.has(slug)) {
+      throw new Error(`Collection "posts" contains the duplicate slug "${slug}".`);
     }
 
-    seen.add(entry.data.slug);
+    seen.add(slug);
   }
 }
 

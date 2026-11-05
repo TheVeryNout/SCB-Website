@@ -9,21 +9,24 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "dev:cms": "concurrently -k -n site,cms -c cyan,yellow \"astro dev\" \"decap-server\"",
+    "dev:cms": "concurrently -k -n site,cms -c cyan,yellow \"astro dev\" \"PORT=4325 decap-server\"",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
     "test": "bun test",
-    "cms:proxy": "decap-server",
+    "cms:proxy": "PORT=4325 decap-server",
+    "images:prepare": "bun scripts/prepare_images.mjs",
     "capture:wix-assets": "python scripts/download_wix_assets.py",
     "stage:wix-assets": "python scripts/stage_wix_assets.py"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
+    "@playwright/test": "^1.62.0",
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.1.5",
     "concurrently": "^9.2.1",
     "decap-server": "^3.6.0",
+    "sharp": "0.34.5",
     "tailwindcss": "^4.2.2",
     "typescript": "^5.9.3"
   },

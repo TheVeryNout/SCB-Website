@@ -374,13 +374,13 @@ Type:
 Required fields:
 
 - `title`
-- `slug`
 - `publishedAt`
 - `excerpt`
 - `body`
 
-Optional fields:
+Optional/backward-compatible fields:
 
+- `slug`
 - `draft`
 - `coverImage`
 - `coverAlt`
@@ -396,7 +396,10 @@ News publication and media rules:
 - newly created CMS posts default to draft
 - existing posts without a `draft` field remain published for backward compatibility
 - drafts and future-dated posts are excluded from public indexes, related lists, and static detail routes
-- published slugs are immutable by editorial policy; duplicate slugs fail validation/build
+- Decap derives new post filenames from the title and does not expose a machine slug to editors
+- existing frontmatter slugs remain supported; when absent, the stable content filename supplies the public slug
+- all migrated filename/slug pairs were verified equal before this fallback was enabled; duplicate resolved slugs fail validation/build
+- `showGalleryOnMediaPage` is one editor-facing boolean; only eligible public posts with non-empty galleries are aggregated onto `/pics-n-vids/`
 - cover presentation is controlled by `wide | portrait | contained`
 - a maintained cover must have editor-authored alternative text; all restored news covers satisfy this rule
 - gallery entries are structured as image, required alternative text, and optional caption
@@ -424,27 +427,30 @@ The CMS label for the event-level optional info box is `Zusatzinfos`. It include
 
 ### `media`
 
-Type:
+CMS surfaces:
 
-- repeatable collection
+- `Pics n Vids`: repeatable standalone photo galleries under `src/content/media/galleries/`
+- `Videos`: one file-backed YouTube playlist setting at `src/content/media/skateclub-biriciana-videos.md`
 
-Required fields:
+Standalone gallery fields:
 
-- `title`
-- `slug`
-- `type`
+- required: `title`, hidden `type: photo-gallery`, non-empty structured `gallery`
+- optional: `summary`, `publishedAt`
+- Decap derives the content filename from the visible title; no slug field is exposed
 
-Optional fields by type:
+Playlist fields:
 
-- `youtubeUrl`
-- `thumbnailImage`
-- `gallery`
-- `summary`
-- `publishedAt`
+- required: hidden `title`, hidden `type: youtube`, `youtubeUrl`
+- no unused playlist metadata is exposed; the public playlist title and supporting copy remain code-owned
 
-Controlled values:
+Photo-gallery ownership rules:
 
-- `type`: `youtube | photo-gallery | featured-media`
+- standalone gallery records own only their own image selection, order, alternative text, and captions
+- Neuigkeiten posts own their own galleries and opt into `/pics-n-vids/` through `showGalleryOnMediaPage`; no second media record or cross-collection identifier exists
+- `/pics-n-vids/` combines standalone galleries with eligible opted-in public post galleries and sorts them by descending publication date with a deterministic key tie-breaker
+- draft, future-dated, opted-out, empty-gallery posts are excluded before aggregation
+- standalone gallery items use the same structured `image`, required `alt`, and optional `caption` model as post galleries
+- the obsolete `thumbnailImage`, `postSlug`, and `featured-media` fields/types are not part of the maintained model
 
 Launch rule:
 
@@ -470,6 +476,8 @@ Examples:
 ### Images
 
 Images must be selected through file/image fields, not pasted as raw paths in freeform markdown.
+
+The repository-owned `bun run images:prepare` converter remains migration and developer-maintenance tooling with a `2560px` maximum edge, WebP quality `80`, and fixed effort `5`; it is not a routine editor prerequisite and is not mentioned in CMS forms. Retained raw Wix evidence and `src/assets/images/wix-staging/` remain preservation inputs outside any deletion policy. The technically verified CMS-03A interim workflow uses the same structured `{ image, alt, caption }[]` list for Neuigkeiten and standalone galleries, adds images one at a time, requires a plain-language image description, keeps the public caption optional, and exposes stock Decap ordering and persistence without claiming batch support. Multi-file preparation is deferred to CMS-03/CMS-04 in `media-cms-overhaul.md`, where a later repository-owned workaround may be designed separately.
 
 ### Dates
 
