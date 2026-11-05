@@ -28,7 +28,7 @@ Use the older planning docs only as reference:
 - Bun
 - Netlify deployment
 - Decap CMS with invite-only Netlify Identity accounts and Git Gateway
-- Netlify Forms contact flow
+- Contact form by email: a Netlify Function sends messages through the club mailbox (`docs/plans/implementation.md`)
 - Static-first public site
 - No launch dependency on `SCB-Dash`
 - No pricing subsystem

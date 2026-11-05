@@ -1,7 +1,7 @@
 # 03: A real mail reaches the Gmail inbox
 
 Category: task
-Status: ready-for-agent
+Status: ready-for-human
 Blocked by: 01, 02
 Created: 2026-11-05
 
@@ -11,5 +11,7 @@ Created: 2026-11-05
 - [ ] Owner adds an SPF record for `skateclubbiriciana.de` (DKIM and DMARC already exist)
 - [ ] The Netlify build bundles the function and `/api/contact` answers
 - [ ] One real test message from `https://scbiriciana.netlify.app/kontakt/` reaches `scbiriciana@gmail.com`; Reply-To, subject and spam folder checked
-- [ ] The launch rule in `docs/plans/implementation.md` and every doc that describes the form are updated; the "Netlify Forms" wording on `/kontakt/` no longer appears
+- [x] The launch rule in `docs/plans/implementation.md` and the README line are updated; the "Netlify Forms" wording on `/kontakt/` is gone. Phase-history docs (`cold-start`, `wix-audit`, `status-checklist`) are marked history and keep their old wording on purpose.
 - [ ] Deploying to GitHub `master` is a separate step that needs the owner to name GitHub
+
+Remaining steps are the owner's (Netlify variables, SPF record, merge and deploy) plus one real test mail. State: waiting for the owner.

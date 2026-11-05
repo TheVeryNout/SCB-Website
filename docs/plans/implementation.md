@@ -334,20 +334,20 @@ Generate a static Astro build compatible with Netlify static hosting.
 
 Keep required environment variables minimal.
 
-Do not create launch-critical secrets unless required by the chosen contact form backend.
+The only launch-critical secret is the mailbox password for the contact form (see the contact form rule).
 
 ### Contact form rule
 
-Use Netlify Forms for the launch contact form.
+The contact form sends its messages by email through a Netlify Function and the club's own mail server. Netlify Forms is not used: its email notifications only reach team members of the Netlify account, and the owner will not upgrade the plan. Decision record: `.scratch/contact-mail/spec.md`.
 
 Implementation requirements:
 
-- use a plain HTML form that Netlify can process without custom server code
-- no SSR, serverless function, or third-party form SaaS for launch
-- required launch fields are `name`, `email`, and `message`, with optional `subject`
-- include Netlify form naming and a low-friction honeypot field
-- successful submissions redirect to `/kontakt/danke/`
-- fallback email/contact details remain visible on `/kontakt/` even if form handling fails later
+- the form posts to `/api/contact`; the function validates the input and sends one mail over SMTP (`nodemailer`) from the club mailbox to the recipient address, with the visitor as Reply-To
+- required fields are `name`, `email`, and `message`, with optional `subject`; a hidden honeypot field `bot-field` sends nothing when filled
+- mail settings live only in Netlify environment variables: `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE` (optional, default on), `SMTP_USER` (also the sender), `SMTP_PASS` (secret), `CONTACT_TO`; never in the repo
+- successful submissions end on `/kontakt/danke/`; a failed send or invalid input shows an error note on `/kontakt/` (with JavaScript the typed text stays; without it the note shows through the URL fragment and the text is lost)
+- fallback email/contact details remain visible on `/kontakt/` even if sending fails
+- the function logic lives in `src/lib/contact/handle-contact.ts` and is tested with a fake mail sender; `netlify/functions/contact.ts` only connects it to `nodemailer`
 
 ---
 
