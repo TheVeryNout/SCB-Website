@@ -28,7 +28,7 @@ Use the older planning docs only as reference:
 - Bun
 - Netlify deployment
 - Decap CMS with invite-only Netlify Identity accounts and Git Gateway
-- Netlify Forms contact flow
+- Contact form by email: a Netlify Function sends messages through the club mailbox (`docs/plans/implementation.md`)
 - Static-first public site
 - No launch dependency on `SCB-Dash`
 - No pricing subsystem
@@ -69,6 +69,8 @@ Run the site locally:
 ```bash
 bun run dev
 ```
+
+The contact form posts to `/api/contact`, a Netlify Function that `bun run dev` does not serve: locally the form shows the send error. Test the mail path with `bun test` (fake mail sender) and on the Netlify address with the real settings.
 
 Run the local CMS proxy:
 

@@ -34,6 +34,7 @@ A change here counts as big:
 - calendar recurrence logic in `src/lib/events/` (rules in `docs/plans/calendar.md`)
 - `netlify.toml` (redirects, headers, build)
 - shared layout, navigation and gallery components used by several routes
+- the contact form mail path: `netlify/functions/` and `src/lib/contact/` (sends real email with the club mailbox password from Netlify settings; never put credentials in the repo)
 
 ## Where the docs are
 | Before / when | Read |
