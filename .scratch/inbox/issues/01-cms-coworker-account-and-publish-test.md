@@ -10,3 +10,4 @@ The deployed CMS uses invite-only Netlify Identity accounts through Git Gateway.
 Needs the owner: Netlify Identity invites and a real editor login.
 
 Also covers (folded in from inbox/07, CMS-06): the coworker does one real post with one image through the one-image-at-a-time flow. Check that the upload is converted to WebP and named after the post title, and that the image shows on the live site.
+Also check the new batch button ([gallery-batch-upload](../../gallery-batch-upload/spec.md)): add 3 to 5 phone photos to a post gallery at once on the live CMS, fill the descriptions, publish, and confirm the images show on the live site.

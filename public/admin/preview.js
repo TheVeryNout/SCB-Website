@@ -199,3 +199,119 @@
     true,
   );
 })();
+
+// Gallery batch add: the stock list widget plus one button that adds several photos at once.
+// Each chosen file is converted and named by convertAndRenameUploads above (its capture-phase
+// listener re-dispatches the change event with the converted files), persisted through Decap's
+// own media action, and appended as an empty { image, alt, caption } entry. The required
+// description stays empty, so Decap blocks saving until the editor has filled it in.
+// Spec: .scratch/gallery-batch-upload/spec.md
+(function registerGalleryBatchWidget() {
+  const CMS = window.CMS;
+  const h = window.h;
+  const stock = CMS?.getWidget?.("list");
+  if (!CMS || !h || !stock) return;
+
+  const PUBLIC_FOLDER = "/src/assets/images/uploads";
+
+  // Decap lowercases and cleans file names when it saves them. Converted uploads already have
+  // such names; a file that failed conversion is renamed here so the stored path stays correct.
+  function safeName(file) {
+    const clean = file.name.toLowerCase().replace(/[^a-z0-9._-]+/g, "-");
+    return clean === file.name ? file : new File([file], clean, { type: file.type });
+  }
+
+  // A file the browser cannot decode would be stored as a broken image and fail the site build.
+  async function isImage(file) {
+    try {
+      (await createImageBitmap(file)).close();
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  // Decap tracks unsaved uploads by a hash of their content, so two identical photos collapse into
+  // one file and the other gallery entry would point at nothing. Identical photos are skipped.
+  const addedHashes = new Set();
+  window.addEventListener("hashchange", () => addedHashes.clear());
+
+  async function contentHash(file) {
+    const digest = await crypto.subtle.digest("SHA-256", await file.arrayBuffer());
+    return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
+  }
+
+  function GalleryBatchControl(props) {
+    function addPhotos() {
+      const input = document.createElement("input");
+      input.type = "file";
+      input.multiple = true;
+      input.accept = "image/jpeg,image/png,image/webp";
+      input.hidden = true;
+      // Attached to the page so the conversion listener on `document` sees its change event.
+      document.body.append(input);
+      input.addEventListener("change", async () => {
+        input.remove();
+        const files = [...input.files].map(safeName);
+        if (!files.length) return;
+        const status = document.querySelector(`[data-scb-batch-status="${props.forID}"]`);
+        const say = (text) => status && (status.textContent = text);
+
+        const data = props.entry.get("data");
+        const MapOf = data.constructor;
+        let list = props.value ?? data.toList().clear();
+        const failed = [];
+        const duplicates = [];
+
+        for (const [index, file] of files.entries()) {
+          say(`Bild ${index + 1} von ${files.length} wird hochgeladen …`);
+          try {
+            if (!(await isImage(file))) throw new Error("not a readable image");
+            const hash = await contentHash(file);
+            if (addedHashes.has(hash)) {
+              duplicates.push(file.name);
+              continue;
+            }
+            addedHashes.add(hash);
+            await props.onPersistMedia(file, { field: props.field.get("fields").first() });
+            list = list.push(MapOf({ image: `${PUBLIC_FOLDER}/${file.name}`, alt: "", caption: "" }));
+            props.onChange(list);
+          } catch (error) {
+            console.error("SCB batch skipped", file.name, error);
+            failed.push(file.name);
+          }
+        }
+
+        const added = files.length - failed.length - duplicates.length;
+        const notes = [
+          failed.length ? `Nicht lesbar, übersprungen: ${failed.join(", ")}.` : "",
+          duplicates.length ? `Schon vorhanden, übersprungen: ${duplicates.join(", ")}.` : "",
+        ].filter(Boolean);
+        say(
+          [`${added} von ${files.length} Bildern hinzugefügt.`, ...notes, added ? "Bitte zu jedem Bild die Bildbeschreibung ausfüllen." : ""]
+            .filter(Boolean)
+            .join(" "),
+        );
+      });
+      input.click();
+    }
+
+    return h(
+      "div",
+      null,
+      h(
+        "div",
+        { style: { margin: "0 0 12px" } },
+        h(
+          "button",
+          { type: "button", className: "scb-batch-add", onClick: addPhotos },
+          "Mehrere Bilder auf einmal hinzufügen",
+        ),
+        h("p", { "data-scb-batch-status": props.forID, "aria-live": "polite", style: { margin: "6px 0 0", fontSize: "13px" } }),
+      ),
+      h(stock.control, props),
+    );
+  }
+
+  CMS.registerWidget("gallery-batch", GalleryBatchControl, stock.preview, stock.schema);
+})();
