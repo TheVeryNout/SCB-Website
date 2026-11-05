@@ -6,10 +6,9 @@ The rebuild from Wix is complete. The site is deployed, and the Decap CMS is run
 
 ## Start Here
 
-For normal maintenance, content/CMS support, QA fixes, or small follow-up work, read:
+Agents: start with [AGENTS.md](AGENTS.md). Open work is tracked as tickets under `.scratch/` (see [docs/agents/issue-tracker.md](docs/agents/issue-tracker.md)); unsorted items are in `.scratch/inbox/issues/`.
 
-1. [docs/operational-status.md](/home/nout/REPO/SCB-Website/docs/operational-status.md)
-2. the directly relevant source files
+For normal maintenance, content/CMS support, QA fixes, or small follow-up work, read the relevant ticket and the directly relevant source files.
 
 Do not read the old phase stack at session start unless the task actually needs it.
 
@@ -52,7 +51,7 @@ Implemented public routes:
 
 Current operational notes:
 
-- public-data review remains open in `docs/plans/public-data-register.md`
+- public-data review remains open in `docs/plans/public-data-register.md` (ticket `.scratch/inbox/issues/03-public-data-review.md`)
 - `parkausbesserungen` is fully restored from the recovered live Wix body; `migration/manifest.json` records the cleared blocker
 - `bun run check` currently passes with only known non-blocking Zod deprecation hints
 - route paths and slugs intentionally stay ASCII-safe, for example `/ueber-uns/`, even when visible German copy uses `Über uns`
@@ -125,4 +124,4 @@ Local notes:
 
 The old phase docs are retained because they still explain how the site was built, what evidence was used, and which source contradictions were intentionally preserved. They should not drive normal startup anymore.
 
-Use [docs/operational-status.md](/home/nout/REPO/SCB-Website/docs/operational-status.md) as the running file for ongoing work.
+[docs/operational-status.md](/home/nout/REPO/SCB-Website/docs/operational-status.md) was the running file until 2026-11-05; it is now history. Ongoing work lives in `.scratch/` tickets.

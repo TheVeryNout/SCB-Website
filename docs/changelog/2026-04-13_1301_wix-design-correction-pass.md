@@ -1,3 +1,5 @@
+History — not a work queue.
+
 # 2026-04-13 13:01 CEST - Wix Design Correction Pass
 
 Agent: Codex GPT-5

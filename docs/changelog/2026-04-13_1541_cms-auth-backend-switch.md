@@ -1,3 +1,5 @@
+History — not a work queue.
+
 # CMS Auth Backend Switch
 
 Author: Codex GPT-5

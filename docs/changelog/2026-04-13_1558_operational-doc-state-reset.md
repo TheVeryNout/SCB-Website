@@ -1,3 +1,5 @@
+History — not a work queue.
+
 # 2026-04-13 1558 Operational Doc State Reset
 
 Agent: Codex GPT-5

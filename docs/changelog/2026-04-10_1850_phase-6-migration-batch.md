@@ -1,3 +1,5 @@
+History — not a work queue.
+
 # 2026-04-10 1850 phase 6 migration batch
 
 ## Scope

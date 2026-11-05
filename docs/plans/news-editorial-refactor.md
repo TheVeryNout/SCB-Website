@@ -1,3 +1,5 @@
+History — not a work queue.
+
 # News Editorial Refactor Ledger
 
 ## Purpose

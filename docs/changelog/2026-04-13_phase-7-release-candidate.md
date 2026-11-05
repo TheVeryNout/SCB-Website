@@ -1,3 +1,5 @@
+History — not a work queue.
+
 # 2026-04-13 phase 7 release candidate
 
 ## Scope

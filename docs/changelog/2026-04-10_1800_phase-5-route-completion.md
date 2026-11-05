@@ -1,3 +1,5 @@
+History — not a work queue.
+
 # 2026-04-10 1800 phase 5 route completion
 
 ## Scope
