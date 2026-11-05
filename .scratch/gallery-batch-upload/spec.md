@@ -15,12 +15,13 @@ An editor adds many photos to a gallery in one step instead of one by one. Appli
 - Each photo goes through the existing upload hook (`convertAndRenameUploads` in `public/admin/preview.js`): WebP, max 1600 px, named `<post title>-NN.webp`. No second conversion path.
 - Each photo is saved through Decap's own media action and appended as `{ image, alt: "", caption: "" }`.
 - The description (`alt`) starts empty. It is already a required field, so Decap blocks saving until every image has one. No placeholder text.
-- A photo that fails is reported by name; the others still go in. Unreadable files and exact duplicates (same content) are skipped and named.
+- A photo that fails is reported by name; the others still go in. Unreadable files are skipped and named. Identical photos each become their own file (the hook re-encodes a byte-identical result at slightly lower quality).
 
 ## Known limits
 
 - Photos added but not yet saved show as broken thumbnails in the editor and preview. The stock single-image picker does the same (root-based `public_folder`, see quick-fixes/03). After saving they display.
 - Only JPEG, PNG and WebP can be chosen.
+- Batch-added items are appended outside the stock list's own bookkeeping, so their open/closed state can look different from items added with the stock button.
 - Checked on the local proxy only. Not checked on Git Gateway (live); added to inbox/01.
 - No progress bar beyond the status line "Bild n von m wird hochgeladen".
 
