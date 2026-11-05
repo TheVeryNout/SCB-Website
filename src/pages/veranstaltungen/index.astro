@@ -1,6 +1,5 @@
 ---
 import Container from "../../components/Container.astro";
-import LinkButton from "../../components/LinkButton.astro";
 import PageIntro from "../../components/PageIntro.astro";
 import SurfaceCard from "../../components/SurfaceCard.astro";
 import UpcomingEventGroupsList from "../../components/events/UpcomingEventGroupsList.astro";
@@ -35,13 +34,7 @@ const showAdditionalInfo = Boolean(
         eyebrow={eventsPage.data.eyebrow ?? "Veranstaltungen"}
         title={eventsPage.data.title}
         intro={eventsPage.data.intro}
-      >
-        <div class="flex flex-wrap gap-3">
-          <LinkButton href={`mailto:${settings.data.contactEmail}`} variant="outline">
-            Frage zum Termin stellen
-          </LinkButton>
-        </div>
-      </PageIntro>
+      />
 
       <div class="grid items-start gap-6 lg:grid-cols-[minmax(0,1.25fr)_minmax(18rem,0.75fr)]">
         <SurfaceCard as="section" aria-labelledby="upcoming-events-heading">
