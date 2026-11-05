@@ -27,4 +27,4 @@ Not checked: Netlify's deploy source (taken from README and PR #2), and how an a
 
 ## Next step
 
-Merge `chore/repo-standard` into `master` after the owner's yes.
+None. Merged into `master` (`05769af`) and pushed to the NAS on 2026-11-05; GitHub publication is not part of this ticket.
