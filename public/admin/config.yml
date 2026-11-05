@@ -202,12 +202,12 @@ collections:
           - { label: "Vollständig / Dokument", value: "contained" }
       - label: "Galeriebilder"
         name: "gallery"
-        widget: "list"
+        widget: "gallery-batch"
         required: false
         label_singular: "Bild"
         collapsed: true
         summary: "{{fields.alt}}"
-        hint: "Bilder werden einzeln hinzugefügt. Ziehe die Einträge am Griff, um ihre Reihenfolge zu ändern. Öffne einen Eintrag, um seine Beschreibung oder Bildunterschrift zu bearbeiten."
+        hint: "Mit „Mehrere Bilder auf einmal hinzufügen“ wählst du viele Fotos in einem Schritt, mit „Bild hinzufügen“ eins. Ziehe die Einträge am Griff, um ihre Reihenfolge zu ändern. Zu jedem Bild ist eine Bildbeschreibung Pflicht: Öffne den Eintrag und fülle sie aus."
         fields:
           - { label: "Foto auswählen", name: "image", widget: "image", choose_url: false }
           - { label: "Bildbeschreibung", name: "alt", widget: "string", hint: "Pflichtfeld: Beschreibe kurz, was auf dem Bild zu sehen ist. Dieser Text hilft Menschen, die das Bild nicht sehen können." }
@@ -289,12 +289,12 @@ collections:
       - { label: "Bild", name: "heroImage", widget: "image", required: false }
       - label: "Galeriebilder"
         name: "gallery"
-        widget: "list"
+        widget: "gallery-batch"
         required: false
         label_singular: "Bild"
         collapsed: true
         summary: "{{fields.alt}}"
-        hint: "Bilder werden einzeln hinzugefügt. Ziehe die Einträge am Griff, um ihre Reihenfolge zu ändern."
+        hint: "Mit „Mehrere Bilder auf einmal hinzufügen“ wählst du viele Fotos in einem Schritt, mit „Bild hinzufügen“ eins. Ziehe die Einträge am Griff, um ihre Reihenfolge zu ändern."
         fields:
           - { label: "Foto auswählen", name: "image", widget: "image", choose_url: false }
           - { label: "Bildbeschreibung", name: "alt", widget: "string", hint: "Pflichtfeld: Beschreibe kurz, was auf dem Bild zu sehen ist." }
@@ -321,11 +321,11 @@ collections:
       - { label: "Typ", name: "type", widget: "hidden", default: "photo-gallery" }
       - label: "Galeriebilder"
         name: "gallery"
-        widget: "list"
+        widget: "gallery-batch"
         label_singular: "Bild"
         collapsed: true
         summary: "{{fields.alt}}"
-        hint: "Bilder werden einzeln hinzugefügt. Ziehe die Einträge am Griff, um ihre Reihenfolge zu ändern. Öffne einen Eintrag, um seine Beschreibung oder Bildunterschrift zu bearbeiten."
+        hint: "Mit „Mehrere Bilder auf einmal hinzufügen“ wählst du viele Fotos in einem Schritt, mit „Bild hinzufügen“ eins. Ziehe die Einträge am Griff, um ihre Reihenfolge zu ändern. Zu jedem Bild ist eine Bildbeschreibung Pflicht: Öffne den Eintrag und fülle sie aus."
         fields:
           - { label: "Foto auswählen", name: "image", widget: "image", choose_url: false }
           - { label: "Bildbeschreibung", name: "alt", widget: "string", hint: "Pflichtfeld: Beschreibe kurz, was auf dem Bild zu sehen ist. Dieser Text hilft Menschen, die das Bild nicht sehen können." }

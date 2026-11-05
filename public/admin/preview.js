@@ -145,6 +145,16 @@
     return { number: highest + 1, suffix: listingSeen ? "" : `-${Math.random().toString(36).slice(2, 6)}` };
   }
 
+  // Decap keeps unsaved uploads in a store keyed by file content, so two byte-identical files
+  // would collapse into one and the second name would point at nothing. A photo that encodes to
+  // bytes already produced in this session is encoded again at a slightly lower quality.
+  const producedHashes = new Set();
+
+  async function sha256(blob) {
+    const digest = await crypto.subtle.digest("SHA-256", await blob.arrayBuffer());
+    return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
+  }
+
   async function convert(file) {
     const bitmap = await createImageBitmap(file, { imageOrientation: "from-image" });
     const scale = Math.min(1, MAX_EDGE / Math.max(bitmap.width, bitmap.height));
@@ -155,7 +165,16 @@
     bitmap.close();
 
     const toBlob = (type, quality) => new Promise((resolve) => canvas.toBlob(resolve, type, quality));
-    const webp = await toBlob("image/webp", 0.7);
+    let webp = null;
+    for (let quality = 0.7; quality > 0.6; quality -= 0.01) {
+      webp = await toBlob("image/webp", quality);
+      if (!webp || webp.type !== "image/webp") break;
+      const hash = await sha256(webp);
+      if (!producedHashes.has(hash)) {
+        producedHashes.add(hash);
+        return { blob: webp, extension: "webp" };
+      }
+    }
     if (webp && webp.type === "image/webp") return { blob: webp, extension: "webp" };
     return { blob: await toBlob("image/jpeg", 0.8), extension: "jpg" };
   }
@@ -198,4 +217,141 @@
     },
     true,
   );
+})();
+
+// Gallery batch add: the stock list widget plus one button that adds several photos at once.
+// Each chosen file is converted and named by convertAndRenameUploads above (its capture-phase
+// listener re-dispatches the change event with the converted files), persisted through Decap's
+// own media action, and appended as an empty { image, alt, caption } entry. The required
+// description stays empty, so Decap blocks saving until the editor has filled it in.
+// Spec: .scratch/gallery-batch-upload/spec.md
+(function registerGalleryBatchWidget() {
+  const CMS = window.CMS;
+  const h = window.h;
+  const stock = CMS?.getWidget?.("list");
+  if (!CMS || !h || !stock) return;
+
+  const PUBLIC_FOLDER = "/src/assets/images/uploads";
+
+  // Decap lowercases and cleans file names when it saves them. Converted uploads already have
+  // such names (`<slug>-NN.webp`); any other file is renamed here, with a short random part so it
+  // cannot clash with an existing file, so the stored path stays correct.
+  function safeName(file) {
+    if (/-\d{2,}(?:-[a-z0-9]{4})?\.(?:webp|jpg)$/.test(file.name)) return file;
+    const dot = file.name.lastIndexOf(".");
+    const stem = (dot > 0 ? file.name.slice(0, dot) : file.name).toLowerCase().replace(/[^a-z0-9_-]+/g, "-");
+    const extension = dot > 0 ? file.name.slice(dot).toLowerCase().replace(/[^a-z0-9.]/g, "") : "";
+    return new File([file], `${stem}-${Math.random().toString(36).slice(2, 6)}${extension}`, { type: file.type });
+  }
+
+  // A file the browser cannot decode would be stored as a broken image and fail the site build.
+  async function isImage(file) {
+    try {
+      (await createImageBitmap(file)).close();
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  const pause = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  // The newest props of each gallery field: a batch takes seconds, and the editor may keep typing.
+  const latestProps = new Map();
+  const running = new Set();
+
+  function GalleryBatchControl(props) {
+    const id = props.forID;
+    latestProps.set(id, props);
+
+    function addPhotos(event) {
+      if (running.has(id)) return;
+      const button = event.currentTarget;
+      const input = document.createElement("input");
+      input.type = "file";
+      input.multiple = true;
+      input.accept = "image/jpeg,image/png,image/webp";
+      input.hidden = true;
+      // Attached to the page so the conversion listener on `document` sees its change event.
+      document.body.append(input);
+      input.addEventListener("cancel", () => {
+        window.removeEventListener("change", onPicked, true);
+        input.remove();
+      });
+
+      const statusLine = () => document.querySelector(`[data-scb-batch-status="${id}"]`);
+      const say = (text) => {
+        const line = statusLine();
+        if (line) line.textContent = text;
+      };
+
+      // Converting many photos takes a moment before the upload hook hands them back.
+      function onPicked(changeEvent) {
+        if (changeEvent.target !== input || input.dataset.scbConverted) return;
+        window.removeEventListener("change", onPicked, true);
+        running.add(id);
+        button.disabled = true;
+        say("Fotos werden vorbereitet …");
+      }
+      window.addEventListener("change", onPicked, true);
+
+      input.addEventListener("change", async () => {
+        input.remove();
+        const files = [...input.files].map(safeName);
+        const failed = [];
+        let added = 0;
+
+        for (const [index, file] of files.entries()) {
+          say(`Bild ${index + 1} von ${files.length} wird hochgeladen …`);
+          try {
+            if (!(await isImage(file))) throw new Error("not a readable image");
+            // Decap's media action returns nothing when it declines the file (name clash).
+            const result = await props.onPersistMedia(file, { field: props.field.get("fields").first() });
+            if (result === undefined) throw new Error("file name already in use");
+
+            // Rebuild from the newest props, so edits made meanwhile are kept.
+            const current = latestProps.get(id);
+            const MapOf = current.entry.get("data").constructor;
+            const list = current.value ?? current.entry.get("data").toList().clear();
+            current.onChange(list.push(MapOf({ image: `${PUBLIC_FOLDER}/${file.name}`, alt: "", caption: "" })));
+            added += 1;
+            await pause(40);
+          } catch (error) {
+            console.error("SCB batch skipped", file.name, error);
+            failed.push(file.name);
+          }
+        }
+
+        running.delete(id);
+        button.disabled = false;
+        say(
+          [
+            `${added} von ${files.length} Bildern hinzugefügt.`,
+            failed.length ? `Übersprungen (nicht lesbar oder Name schon vergeben): ${failed.join(", ")}.` : "",
+            added ? "Bitte zu jedem Bild die Bildbeschreibung ausfüllen." : "",
+          ]
+            .filter(Boolean)
+            .join(" "),
+        );
+      });
+      input.click();
+    }
+
+    return h(
+      "div",
+      null,
+      h(
+        "div",
+        { style: { margin: "0 0 12px" } },
+        h(
+          "button",
+          { type: "button", className: "scb-batch-add", onClick: addPhotos },
+          "Mehrere Bilder auf einmal hinzufügen",
+        ),
+        h("p", { "data-scb-batch-status": id, "aria-live": "polite", style: { margin: "6px 0 0", fontSize: "13px" } }),
+      ),
+      h(stock.control, props),
+    );
+  }
+
+  CMS.registerWidget("gallery-batch", GalleryBatchControl, stock.preview, stock.schema);
 })();
