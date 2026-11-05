@@ -6,12 +6,12 @@ Blocked by: None
 Created: 2026-11-05
 Source: [docs/plans/media-cms-overhaul.md](../../../docs/plans/media-cms-overhaul.md), Package summary
 
-The media CMS ledger was merged to `master` on 2026-11-05 (not yet pushed or deployed). Open per its package table:
+The media CMS ledger was merged to `master` on 2026-11-05 and is deployed. Package table:
 
-- CMS-02 (immediate CMS cleanup): technically verified, not yet accepted by the owner
-- CMS-05 existing-content migration: proposed
-- CMS-06 non-technical usability acceptance: proposed
-- CMS-07 publication and deployed verification: proposed
+- CMS-02 (immediate CMS cleanup): technically verified, not yet accepted by the owner (the only open item)
+- CMS-05 existing-content migration: done inside CMS-02 (closed 2026-11-05)
+- CMS-06 non-technical usability acceptance: folded into inbox/01 (2026-11-05)
+- CMS-07 publication and deployed verification: done (pushed to GitHub, deployed, inbox/09)
 
 Likely becomes a spec `.scratch/media-cms-overhaul/` when picked up.
 
