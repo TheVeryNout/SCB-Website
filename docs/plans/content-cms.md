@@ -406,6 +406,7 @@ News publication and media rules:
 - gallery order in CMS is public display order
 - the public gallery viewer is code-owned progressive enhancement: Decap continues to own only image selection, alternative text, caption, and ordering
 - the gallery list is the stock Decap list plus one code-owned button (`gallery-batch` in `public/admin/preview.js`) that adds several photos at once; each photo is converted, named and persisted like a single upload and starts with an empty required description
+- image paths: the editor holds `src/assets/...` and `public/admin/preview.js` writes `/src/assets/...` into the content file (and strips it again on load), because Decap cannot show an unsaved upload under a path that starts with `/`
 - gallery thumbnails and bounded large-view WebP assets are derived by Astro at build time; the CMS upload remains the rebuildable source asset rather than the default browser-delivered lightbox file
 - curated post media must live under the configured CMS media folder (`src/assets/images/uploads`) so existing entries, media selection, and previews use the same manageable assets; retained Wix-staging originals remain provenance rather than CMS inputs
 - `sourceUrl` is internal provenance and is not rendered as article body copy
