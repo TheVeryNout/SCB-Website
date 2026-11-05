@@ -231,7 +231,7 @@
   const stock = CMS?.getWidget?.("list");
   if (!CMS || !h || !stock) return;
 
-  const PUBLIC_FOLDER = "/src/assets/images/uploads";
+  const PUBLIC_FOLDER = "src/assets/images/uploads";
 
   // Decap lowercases and cleans file names when it saves them. Converted uploads already have
   // such names (`<slug>-NN.webp`); any other file is renamed here, with a short random part so it
@@ -354,4 +354,13 @@
   }
 
   CMS.registerWidget("gallery-batch", GalleryBatchControl, stock.preview, stock.schema);
+})();
+
+// Image paths: the editor holds `src/assets/...` (Decap can then show a photo that is not saved yet),
+// the content files keep the root path `/src/assets/...` that Astro resolves. Other paths pass through.
+(function convertImagePathsOnSaveAndLoad() {
+  window.CMS?.registerWidgetValueSerializer?.("image", {
+    serialize: (value) => (typeof value === "string" && value.startsWith("src/assets/") ? `/${value}` : value),
+    deserialize: (value) => (typeof value === "string" && value.startsWith("/src/assets/") ? value.slice(1) : value),
+  });
 })();

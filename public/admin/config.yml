@@ -10,7 +10,9 @@ local_backend:
 
 locale: de
 media_folder: "src/assets/images/uploads"
-public_folder: "/src/assets/images/uploads"
+# No leading slash: Decap treats a path starting with "/" as a finished URL and never finds the
+# unsaved upload. public/admin/preview.js adds the slash when an entry is saved (and removes it on load).
+public_folder: "src/assets/images/uploads"
 
 collections:
   - name: "site-settings"
