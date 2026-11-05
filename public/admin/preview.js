@@ -7,6 +7,12 @@
     return;
   }
 
+  // Decap's German "Neue(r/s) …" button cannot know the noun's gender.
+  const germanPhrases = CMS.getLocale("de");
+  if (germanPhrases?.collection?.collectionTop) {
+    germanPhrases.collection.collectionTop.newButton = "%{collectionLabel} erstellen";
+  }
+
   function value(entry, field, fallback = "") {
     const fieldValue = entry.getIn(["data", field]);
 
