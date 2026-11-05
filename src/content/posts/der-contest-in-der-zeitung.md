@@ -1,18 +1,20 @@
 ---
-title: "Der Contest in der Zeitung"
-slug: "der-contest-in-der-zeitung"
-publishedAt: "2024-10-07T09:41:52Z"
-excerpt: "Das Weißenburger Tagblatt widmete dem Goodies-for-Tricks-Contest eine ganze Seite."
-coverImage: "../../assets/images/uploads/dfbc4d_59e1e64566d44ea2b074b9cf058761e7~mv2.jpg"
-coverAlt: "Ganzseitiger Zeitungsbericht über den Goodies-for-Tricks-Skatecontest"
-coverCaption: "Der Contest im Weißenburger Tagblatt"
-coverMode: "contained"
+title: Der Contest in der Zeitung
+publishedAt: 2024-10-07T09:41:52Z
+excerpt: Das Weißenburger Tagblatt widmete dem Goodies-for-Tricks-Contest eine
+  ganze Seite.
+coverImage: ../../assets/images/uploads/dfbc4d_59e1e64566d44ea2b074b9cf058761e7~mv2.jpg
+slug: der-contest-in-der-zeitung
+coverAlt: Ganzseitiger Zeitungsbericht über den Goodies-for-Tricks-Skatecontest
+coverCaption: Der Contest im Weißenburger Tagblatt
+coverMode: contained
 gallery:
-  - image: "../../assets/images/uploads/dfbc4d_a4b7ccd507724b948671fb09a70afe94~mv2.jpg"
-    alt: "Zweite Aufnahme des ganzseitigen Zeitungsberichts über den Skatecontest"
-    caption: "Der Bericht in lesbarer Ganzseitenansicht"
-category: "Presse"
-sourceUrl: "https://briareos.wixsite.com/skateclubbiriciana/post/der-contest-in-der-zeitung"
+  - image: ../../assets/images/uploads/dfbc4d_a4b7ccd507724b948671fb09a70afe94~mv2.jpg
+    alt: Zweite Aufnahme des ganzseitigen Zeitungsberichts über den Skatecontest
+    caption: Der Bericht in lesbarer Ganzseitenansicht
+showGalleryOnMediaPage: true
+category: Presse
+sourceUrl: https://briareos.wixsite.com/skateclubbiriciana/post/der-contest-in-der-zeitung
 ---
 Das Weißenburger Tagblatt widmete unserem Event am vergangenen Wochenende eine ganze Seite – wie dufte ist das denn! Der Skate Club freut und bedankt sich!
 
