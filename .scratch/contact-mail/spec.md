@@ -1,6 +1,6 @@
 # Contact form by mail
 
-Status: ready-for-agent
+Status: resolved
 Branch: feat/contact-mail
 Created: 2026-11-05
 
