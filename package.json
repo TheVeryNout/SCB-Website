@@ -9,12 +9,12 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "dev:cms": "concurrently -k -n site,cms -c cyan,yellow \"astro dev\" \"PORT=4325 decap-server\"",
+    "dev:cms": "concurrently -k -n site,cms -c cyan,yellow \"astro dev\" \"PORT=4335 decap-server\"",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
     "test": "bun test",
-    "cms:proxy": "PORT=4325 decap-server",
+    "cms:proxy": "PORT=4335 decap-server",
     "images:prepare": "bun scripts/prepare_images.mjs",
     "capture:wix-assets": "python scripts/download_wix_assets.py",
     "stage:wix-assets": "python scripts/stage_wix_assets.py"

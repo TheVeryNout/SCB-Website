@@ -3,15 +3,14 @@ backend:
   branch: master
 
 local_backend:
-  url: http://127.0.0.1:4325/api/v1
+  url: http://127.0.0.1:4335/api/v1
   allowed_hosts:
     - 127.0.0.1
     - localhost
 
 locale: de
 media_folder: "src/assets/images/uploads"
-media_folder_relative: true
-public_folder: ""
+public_folder: "/src/assets/images/uploads"
 
 collections:
   - name: "site-settings"
@@ -175,6 +174,7 @@ collections:
 
   - name: "posts"
     label: "Neuigkeiten"
+    label_singular: "Beitrag"
     folder: "src/content/posts"
     create: true
     extension: "md"
@@ -220,6 +220,7 @@ collections:
 
   - name: "events"
     label: "Veranstaltungen"
+    label_singular: "Veranstaltung"
     folder: "src/content/events"
     create: true
     extension: "md"

@@ -12,7 +12,7 @@ What the project is and how to run it: [README.md](README.md).
 - `bun run check`: 0 errors expected; the 8 Zod deprecation hints in `src/content/config.ts` are known (inbox ticket 05)
 - `bun run build`
 - UI changes: check in the browser at desktop (about 1440px) and phone width (390px), with no horizontal overflow. Gallery or lightbox changes: also open the PhotoSwipe viewer.
-- CMS changes (`public/admin/`, `src/content/config.ts`): also open the local Decap editor through the proxy on port 4325 and save/reopen an entry.
+- CMS changes (`public/admin/`, `src/content/config.ts`): also open the local Decap editor through the proxy on port 4335 and save/reopen an entry.
 
 ## Hard limits
 - The user owns the local dev and CMS servers (`bun run dev`, `bun run dev:cms`, `astro dev`, `decap-server`). Use the running one. If a check really needs its own server: check the port first, use a stated alternate port, and stop it in the same turn. Never leave one running.

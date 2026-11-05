@@ -6,7 +6,7 @@ heroIntro: "Egal ob Männlein oder Weiblein, weiß / schwarz / grün / gelb, jun
   Skateboarding interessiert und mit uns die lokale Szene fördern will. Wir
   unternehmen Workshops, Road Trips und Veranstaltungen und kümmern uns um
   Pflege, Erhalt und Ausbau des Skateparks in Weißenburg in Bayern."
-heroImage: ../../assets/images/wix-staging/homepage/site/13cc9c_40230571cb024f61b6936ee67952d0f3~mv2.jpg
+heroImage: ""
 featuredAnnouncement:
   enabled: false
   title: "Spendenaufruf: Der Skate Club baut 'ne Halle!"
