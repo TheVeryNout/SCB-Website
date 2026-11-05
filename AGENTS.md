@@ -1,314 +1,72 @@
-# SCB Website Agent Contract
-
-This repository has already suffered from phase drift, silent assumptions, and weak handoff discipline.
-
-This file exists to stop that from happening again.
-
-The site is now deployed and the CMS is running. Treat implementation phases as historical unless a task explicitly reopens migration, evidence, architecture, or phase-state work.
-
-If this file conflicts with domain specs, the domain specs win on product behavior and content semantics. This file wins on agent workflow, tracking discipline, and handoff behavior.
-
-## Scope
-
-This contract applies to any agent working on the SCB Astro website in this repository.
-
-It is especially important for:
-
-- fresh conversations
-- resumed work after a previous session
-- operational maintenance and content/CMS support
-- any work that touches source evidence, migration, public facts, content, or assets
-
 ---
-
-## Source Of Truth Map
-
-Use these files for these responsibilities:
-
-- `docs/operational-status.md`
-  - current lightweight running status
-  - open operational follow-ups
-  - normal next-continuation point
-- `docs/plans/execution-plan.md`
-  - historical implementation phase ledger
-  - old phase order, checklists, and exit gates
-  - use only if a task intentionally reopens or audits phase state
-- `docs/plans/status-checklist.md`
-  - historical audited phase state
-  - historical exceptions and process drift notes
-  - use only when phase history matters
-- domain/reference specs
-  - `docs/plans/content-cms.md`
-  - `docs/plans/implementation.md`
-  - `docs/plans/routes-and-pages.md`
-  - `docs/plans/calendar.md`
-  - `docs/plans/migration.md`
-  - `docs/plans/public-data-register.md`
-- local source-evidence metadata
-  - `docs/plans/wix-reference/README.md`
-  - `docs/plans/wix-reference/manifest.json`
-- implementation-facing staged assets
-  - `src/assets/images/wix-staging/README.md`
-  - `src/assets/images/wix-staging/manifest.json`
-
-Do not invent alternative control documents when these already exist.
-
+standard: coding-v1
+updated: 2026-11-05
 ---
+# SCB Website agent guide
 
-## Session Start Protocol
+General workflow: the coding profile. This file adds only what is special about this repo.
+What the project is and how to run it: [README.md](README.md).
 
-For normal deployed-site maintenance, do this in order:
-
-1. read `README.md` if repo orientation is needed
-2. read `docs/operational-status.md`
-3. inspect the directly relevant source files
-4. load only the domain/reference docs required for the task
-
-Do not read `docs/plans/cold-start.md`, `docs/plans/execution-plan.md`, or `docs/plans/status-checklist.md` by default during operational work. Those files are implementation-history references now.
-
-Open the historical phase docs only when:
-
-- a task explicitly asks about phase state or prior implementation history
-- a task touches migration/source evidence or route/source parity
-- a task changes public-data confirmation status
-- a task changes CMS/content schema, event semantics, redirects, deployment architecture, or asset-curation policy
-- a contradiction appears that cannot be resolved from `README.md`, `docs/operational-status.md`, and the directly relevant source files
-
-At the start of substantial operational work, state only:
-
-- that the site is in operational maintenance mode
-- whether any known operational blocker from `docs/operational-status.md` affects the task
-- which specific docs, if any, had to be opened beyond the normal operational start
-
-### Prompt Minimization Rule
-
-Stable continuation workflow belongs in committed repo docs, not in repeated user prompts.
-
-Use this rule:
-
-- if a rule is repo-stable and likely to matter across more than one conversation, it should live in `AGENTS.md`, `docs/operational-status.md`, or another appropriate committed doc
-- do not require the user to keep pasting the same startup, evidence, asset, or handoff rules once the repo docs already encode them
-- future continuation prompts should be short and task-specific by default
-- a continuation prompt should normally only need:
-  - resume from current committed state
-  - the specific operational task to continue
-  - any intentional override to the normal repo rules
-- if an agent finds itself needing to restate a stable rule list in chat more than once, that is a documentation failure and the rule should be promoted into committed docs during the same session
-
-Minimal prompt target:
-
-- a new conversation should usually be able to start from a short prompt such as `Resume from the current committed state and handle the next operational follow-up recorded in docs/operational-status.md`
-
-The purpose of the docs is to reduce prompt friction, not move that burden onto the user.
-
----
-
-## Historical Phase Rules
-
-These apply only when a task explicitly reopens implementation history or phase state:
-
-1. Do not silently reinterpret historical phase completion.
-2. Do not treat repo artifacts as proof that a historical phase changed if the historical ledgers do not say so.
-3. If a user intentionally reopens or overrides historical phase state, record that override in the relevant committed tracking file during the same session.
-4. Do not mark a reopened phase complete only because implementation exists. Use the historical checklist and exit gate.
-
----
-
-## Contradiction Handling
-
-If you find tension between:
-
-- the user’s current instruction
-- `execution-plan.md`
-- `status-checklist.md`
-- a domain spec
-
-then do not silently resolve it unless the answer is obvious and low risk.
-
-Use this rule:
-
-- operational-state contradictions must be surfaced
-- historical phase-state contradictions must be surfaced only when phase history is actually in scope
-- product semantics contradictions must be resolved from the docs if possible
-- if a contradiction cannot be resolved locally without risk, ask one concise question
-
-Never bury a state assumption in implementation or in a later summary.
-
----
-
-## Evidence Handling
-
-Use proportional judgment.
-
-Do:
-
-- treat strong local evidence as sufficient when it is actually sufficient
-- use alternate local evidence when one artifact is low-quality or unusable
-- record meaningful anomalies in the relevant metadata or notes
-
-Do not:
-
-- turn one low-value missing artifact into a fake phase blocker when better local evidence already exists
-- overstate the certainty of inferred public facts
-- treat a weak source as confirmed truth if `public-data-register.md` says otherwise
-
-If an artifact gap matters, explain why it matters.
-If it does not materially affect the work, record it proportionally and move on.
-
----
-
-## Asset Rules
-
-These folders have different roles. Do not blur them.
-
-### `docs/plans/wix-reference/`
-
-Role:
-
-- local reference/evidence pack metadata
-
-Git policy:
-
-- lightweight metadata and indexes may be tracked
-- heavy screenshots, HTML captures, PDFs, downloads, and raw archives may remain ignored
-
-Use:
-
-- local evidence lookup
-- manifest/index review
-- anomaly notes
-
-### `docs/plans/wix-reference/asset-source-archive/`
-
-Role:
-
-- provenance and raw recovery only
-
-Rule:
-
-- never import app/content assets directly from this folder
-
-### `src/assets/images/wix-staging/`
-
-Role:
-
-- implementation-facing staging workspace during migration and route build-out
-
-Rules:
-
-- files here may be used directly while migration or post-launch content support is in progress
-- do not prune or reinterpret this folder only because the current code references a smaller subset
-- current references are not a valid proxy for future need until an explicit asset-curation decision is recorded
-- only make final asset-curation decisions after the relevant routes/content migration are complete and the decision is explicitly recorded
-
-Do not confuse:
-
-- source evidence
-- raw provenance
-- implementation staging
-- final curated asset structure
-
-They are related, but they are not the same thing.
-
----
-
-## Implementation Discipline
-
-When making implementation decisions:
-
-1. prefer existing source patterns and the relevant maintained docs over improvisation
-2. keep shared public facts in content/settings when the docs say they belong there
-3. keep the repo buildable unless an explicit blocker makes that impossible
-4. validate substantial changes with the relevant checks
-5. do not call partial implementation “done” if the relevant route, content, migration, or QA concern is still open
-
-Do not use current implementation shape as retroactive proof that the plan must have intended it.
-
-### Dev Server Ownership
-
-The user maintains the local dev/CMS server by default.
-
-Agents may run bounded checks such as:
-
+## Checks before calling work done
 - `bun test`
-- `bun run check`
+- `bun run check`: 0 errors expected; the 8 Zod deprecation hints in `src/content/config.ts` are known (inbox ticket 05)
 - `bun run build`
-- targeted `curl` or HTML inspections against an already-running server
+- UI changes: check in the browser at desktop (about 1440px) and phone width (390px), with no horizontal overflow. Gallery or lightbox changes: also open the PhotoSwipe viewer.
+- CMS changes (`public/admin/`, `src/content/config.ts`): also open the local Decap editor through the proxy on port 4325 and save/reopen an entry.
 
-Agents must not start additional long-running dev servers unless the user explicitly asks or the task cannot be verified otherwise.
+## Hard limits
+- The user owns the local dev and CMS servers (`bun run dev`, `bun run dev:cms`, `astro dev`, `decap-server`). Use the running one. If a check really needs its own server: check the port first, use a stated alternate port, and stop it in the same turn. Never leave one running.
+- A stale localhost (new content or dependency not picked up) is a dev-server state issue to report, not a reason to start more servers.
+- Never import app or content assets from `docs/plans/wix-reference/asset-source-archive/`; it is provenance only.
+- Do not prune or reorganise `src/assets/images/wix-staging/` because current code uses fewer files. That needs a recorded asset-curation decision first.
+- Never present a fact as confirmed when `docs/plans/public-data-register.md` lists it as unconfirmed (bank details, donation claims, social links).
 
-If a temporary dev server is truly necessary:
+## Differences from the standard workflow
+- The main branch is `master`, not `main`.
+- CMS editors publish through Netlify Identity and Git Gateway straight to `master` on GitHub. `master` can move without you: fetch before merging or comparing.
+- Netlify builds and deploys from GitHub `master`. A push to the NAS does not deploy; a push to GitHub does, and needs the user to name GitHub for that push.
+- Existing branches use `feature/<name>`; they keep their names. New work follows the profile (`feat/`, `fix/quick-fixes`).
 
-- first inspect existing listeners/processes for the relevant port
-- prefer using the user's existing server if it is current
-- start the temporary server on a clearly stated alternate port
-- stop it in the same turn immediately after verification
-- do not leave any `bun run dev`, `bun run dev:cms`, `astro dev`, or `decap-server` process running from the agent session unless the user explicitly asks for it
+## Risky areas
+A change here counts as big:
+- `src/content/config.ts` (content schema, shared by every page and the CMS)
+- `public/admin/` (Decap config and preview) and `src/pages/admin/index.astro` (Identity/Git Gateway login and invite flow)
+- calendar recurrence logic in `src/lib/events/` (rules in `docs/plans/calendar.md`)
+- `netlify.toml` (redirects, headers, build)
+- shared layout, navigation and gallery components used by several routes
 
-Avoid getting the workspace tangled in multiple running servers. If localhost appears stale, surface that as a dev-server state issue instead of repeatedly starting new servers.
+## Where the docs are
+| Before / when | Read |
+|---|---|
+| Changing public facts (bank, donations, social links) | `docs/plans/public-data-register.md` |
+| CMS ownership, collections, fields | `docs/plans/content-cms.md` |
+| Event recurrence or calendar behaviour | `docs/plans/calendar.md` |
+| Architecture, hosting, build, deploy | `docs/plans/implementation.md` |
+| Routes and page scope | `docs/plans/routes-and-pages.md` |
+| Late migration recovery or Wix source parity | `docs/plans/migration.md`, `migration/manifest.json`, `docs/plans/wix-reference/README.md` |
+| Staged Wix assets | `src/assets/images/wix-staging/README.md` |
+| Phase history of the 2026 build (only if a task reopens it) | `docs/plans/execution-plan.md`, `docs/plans/status-checklist.md` |
+| Earlier work log and feature ledgers | `docs/operational-status.md`, `docs/plans/news-editorial-refactor.md`, `docs/plans/media-cms-overhaul.md` (history) |
 
----
+Domain specs win on product behaviour and content meaning. If code and a spec disagree, say so; do not pick one silently.
 
-## Mandatory Session-End Updates
+## Domain terms and gotchas
+- Visible German copy uses real umlauts (`Über uns`); route paths and slugs stay ASCII (`/ueber-uns/`).
+- Event pages are generated per occurrence (`/veranstaltungen/[slug]/[date]/`); overviews group occurrences by event slug. Only weekly recurrence is supported.
+- Decap writes empty strings for blank optional fields; the schema normalises them. Keep that in mind when adding fields.
+- Decap's stock media library is single-select even with `multiple: true`.
+- `.codex/` holds the old Codex agent setup from the 2026 build; it is not used.
 
-After every substantial session, update committed state, not just chat.
+## Agent skills
 
-Required:
+### Issue tracker
 
-1. update `docs/operational-status.md`
-   - what was audited
-   - what changed
-   - open exceptions
-   - whether continuation is blocked or allowed
-2. update `docs/plans/execution-plan.md` if:
-   - historical phase checklist state changed
-   - execution wording needs clarification
-   - a historical handoff requirement needs sharpening
-3. update the relevant domain spec if implementation clarified a real product rule
-4. update migration tracking if migration artifacts were touched
-5. leave verification results in committed docs when they materially affect future work
+Local markdown under `.scratch/`. See `docs/agents/issue-tracker.md`.
 
-Do not leave critical process state only in a final chat message.
+### Triage labels
 
----
+The five canonical labels, unchanged, plus `claimed`, `resolved` and `superseded`. See `docs/agents/triage-labels.md`.
 
-## Required Handoff Content
+### Domain docs
 
-At the end of a substantial session, the final answer must include:
-
-- current operational mode
-- what changed
-- what was verified
-- any blocker or contradiction discovered
-- the exact next continuation point
-
-When the user asks for a report/handoff, write it in past tense.
-Do not default to imperative git-commit style when the user asked for a reference record.
-
----
-
-## Review Standard
-
-When reviewing status or prior work:
-
-- distinguish verified technical facts from assumptions
-- distinguish process failures from implementation failures
-- do not overclaim confidence
-- do not recommend destructive cleanup from incomplete evidence
-
-If current-state observations are only snapshots, label them as snapshots.
-Do not inflate them into policy.
-
----
-
-## Default Operating Posture
-
-The user should not have to babysit operational tracking, checklist state, or handoff integrity.
-
-Your job is to:
-
-- read the lightweight operational docs first
-- keep historical phase docs out of the normal startup path
-- record the real state in committed files
-- keep scope and evidence boundaries clear
-- avoid making the user re-audit your assumptions in a later conversation
+Single-context: `GLOSSARY.md` at the root and `docs/adr/`, created when first needed. See `docs/agents/domain.md`.

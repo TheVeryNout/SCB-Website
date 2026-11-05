@@ -1,3 +1,5 @@
+History — not a work queue.
+
 # 2026-04-13 1753 CEST CMS calendar and Zusatzinfos wrap up
 
 Agent: GPT-5.4 Codex

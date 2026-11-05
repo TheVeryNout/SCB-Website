@@ -1,3 +1,5 @@
+History — not a work queue.
+
 # Parallel Agent Environment Specification
 
 ## Purpose
