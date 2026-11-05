@@ -18,7 +18,7 @@ const publicPathField = z
   .trim()
   .min(1)
   .regex(/^\/(?!\/)/, "Use a site-relative path that starts with /.");
-const externalUrlField = z.string().trim().url();
+const externalUrlField = z.string().trim().pipe(z.url());
 const linkField = z
   .string()
   .trim()
@@ -76,7 +76,7 @@ const isoTimeField = z
   .regex(/^([01]\d|2[0-3]):[0-5]\d$/, "Use HH:MM in 24-hour time.");
 const isoDateTimeField = z.preprocess(
   (value) => (value instanceof Date ? value.toISOString() : value),
-  z.string().trim().datetime({ offset: true, message: "Use an ISO datetime with timezone offset." }),
+  z.string().trim().pipe(z.iso.datetime({ offset: true, error: "Use an ISO datetime with timezone offset." })),
 );
 const createGalleryItemField = <TImage extends z.ZodType>(image: () => TImage) =>
   z.object({
@@ -250,7 +250,7 @@ const events = defineCollection({
 
         if (recurrence.type === "daily") {
           context.addIssue({
-            code: z.ZodIssueCode.custom,
+            code: "custom",
             path: ["recurrence", "type"],
             message: "Daily recurrence stays reserved and is not supported at launch.",
           });
@@ -258,7 +258,7 @@ const events = defineCollection({
 
         if (recurrence.type !== "weekly" && recurrence.daysOfWeek.length > 0) {
           context.addIssue({
-            code: z.ZodIssueCode.custom,
+            code: "custom",
             path: ["recurrence", "daysOfWeek"],
             message: "Weekdays are only used for weekly recurrence.",
           });
@@ -266,7 +266,7 @@ const events = defineCollection({
 
         if (recurrence.type !== "monthly" && recurrence.dayOfMonth !== undefined) {
           context.addIssue({
-            code: z.ZodIssueCode.custom,
+            code: "custom",
             path: ["recurrence", "dayOfMonth"],
             message: "A day of month is only used for monthly recurrence.",
           });
@@ -295,7 +295,7 @@ const media = defineCollection({
       .superRefine((value, context) => {
         if (value.type === "youtube" && !value.youtubeUrl) {
           context.addIssue({
-            code: z.ZodIssueCode.custom,
+            code: "custom",
             path: ["youtubeUrl"],
             message: "A YouTube entry needs a playlist URL.",
           });
@@ -303,7 +303,7 @@ const media = defineCollection({
 
         if (value.type === "photo-gallery" && !value.gallery?.length) {
           context.addIssue({
-            code: z.ZodIssueCode.custom,
+            code: "custom",
             path: ["gallery"],
             message: "A standalone photo gallery needs at least one image.",
           });
@@ -317,7 +317,7 @@ const settings = defineCollection({
     z.object({
       organizationName: nonEmptyString,
       siteDescription: nonEmptyString,
-      contactEmail: z.string().trim().email(),
+      contactEmail: z.string().trim().pipe(z.email()),
       contactPhone: optionalNonEmptyString,
       whatsApp: optionalNonEmptyString,
       postalAddress: nonEmptyString,

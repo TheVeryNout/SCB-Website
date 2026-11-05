@@ -1,6 +1,7 @@
 # Zod deprecation hints in content config
 
-Status: needs-triage
+Status: superseded
+Superseded by: [quick-fixes/04](../../quick-fixes/issues/04-zod-deprecations.md)
 Blocked by: None
 Created: 2026-11-05
 Source: [docs/operational-status.md](../../../docs/operational-status.md), Open Operational Items
