@@ -7,8 +7,9 @@ Created: 2026-11-05
 
 **What to build:** The feature works on the Netlify address with real settings, and the club's mail lands in the inbox, not in spam. Docs match the new reality.
 
-- [ ] Owner enters the SMTP settings and password as Netlify environment variables (no agent sees the password)
+- [ ] Owner enters the settings as Netlify environment variables (names in ticket 01; host `mail.skateclubbiriciana.de`, port `465`, user `info@skateclubbiriciana.de`, recipient `scbiriciana@gmail.com`); no agent sees the password
 - [ ] Owner adds an SPF record for `skateclubbiriciana.de` (DKIM and DMARC already exist)
+- [ ] The Netlify build bundles the function and `/api/contact` answers
 - [ ] One real test message from `https://scbiriciana.netlify.app/kontakt/` reaches `scbiriciana@gmail.com`; Reply-To, subject and spam folder checked
 - [ ] The launch rule in `docs/plans/implementation.md` and every doc that describes the form are updated; the "Netlify Forms" wording on `/kontakt/` no longer appears
 - [ ] Deploying to GitHub `master` is a separate step that needs the owner to name GitHub
