@@ -12,10 +12,10 @@ const settings = await getSiteSettingsEntry();
 
 const navItems = [
   { href: "/", label: "Start" },
-  { href: "/neuigkeiten/", label: "Neuigkeiten" },
+  { href: "/neuigkeiten/", label: "News" },
   { href: "/ueber-uns/", label: "Über uns" },
   { href: "/pics-n-vids/", label: "Pics n Vids" },
-  { href: "/veranstaltungen/", label: "Veranstaltungen" },
+  { href: "/veranstaltungen/", label: "Events" },
   { href: "/mitgliedschaft/", label: "Mitgliedschaft" },
   { href: "/kontakt/", label: "Kontakt" },
 ];
@@ -23,13 +23,13 @@ const navItems = [
 
 <header class="relative z-50 border-b border-[#181818] bg-[#303131] text-[#ead871] shadow-[0_8px_24px_-20px_rgba(0,0,0,0.9)]">
   <Container class="py-3">
-    <div class="flex items-center justify-between gap-5">
+    <div class="flex items-center justify-between gap-3 lg:gap-5">
       <a class="inline-flex shrink-0 items-center text-[#ead871] no-underline" href="/">
         <img class="h-12 w-12 object-contain" src={crest.src} alt="" width="48" height="43" />
         <span class="sr-only">{settings.data.organizationName}</span>
       </a>
 
-      <nav aria-label="Primary" class="hidden items-center justify-end gap-1 xl:flex">
+      <nav aria-label="Primary" class="hidden items-center justify-end gap-1 min-[640px]:flex">
         {
           navItems.map((item) => {
             const isActive = currentPath === item.href;
@@ -39,7 +39,7 @@ const navItems = [
                 href={item.href}
                 aria-current={isActive ? "page" : undefined}
                 class:list={[
-                  "rounded-sm px-3 py-2 text-sm font-semibold tracking-[0.04em] uppercase no-underline transition",
+                  "rounded-sm px-[0.45em] py-[0.6em] text-[length:clamp(0.6875rem,calc((100vw-130px)/52),0.875rem)] font-semibold tracking-[0.02em] lg:px-3 lg:py-2 lg:text-sm lg:tracking-[0.04em] uppercase no-underline transition",
                   isActive
                     ? "bg-[#ead871] text-[#252626]"
                     : "text-[#f4eeb5] hover:bg-white/10 hover:text-white",
@@ -52,7 +52,7 @@ const navItems = [
         }
       </nav>
 
-      <details class="group relative ml-auto xl:hidden">
+      <details class="group relative ml-auto min-[640px]:hidden">
         <summary class="flex cursor-pointer list-none items-center gap-2 rounded-sm border border-[#ead871]/60 px-4 py-2 text-sm font-semibold tracking-[0.06em] text-[#f4eeb5] uppercase transition hover:border-[#ead871] hover:bg-white/5 group-open:bg-white/5">
           <span aria-hidden="true" class="text-lg leading-none">☰</span>
           Menü
