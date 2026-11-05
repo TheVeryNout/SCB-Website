@@ -86,6 +86,29 @@ describe("handleContact", () => {
     expect(hasLineBreak(sent[0]!.replyTo.name)).toBe(false);
   });
 
+  it("rejects an email that holds more than one address", async () => {
+    for (const email of ["a@b.de,x@y.de", "a@b.de;x@y.de", "<a@b.de>"]) {
+      const { response, sent } = await run(post({ ...valid, email }));
+      expect(location(response)).toBe("/kontakt/#fehler-eingabe");
+      expect(sent).toHaveLength(0);
+    }
+  });
+
+  it("counts a browser line break (CRLF) as one character", async () => {
+    const message = "ab\r\n".repeat(1250);
+    const { response, sent } = await run(post({ ...valid, message }));
+    expect(location(response)).toBe("/kontakt/danke/");
+    expect(sent[0]!.text.includes("\r")).toBe(false);
+  });
+
+  it("rejects a post that announces a huge body", async () => {
+    const request = post(valid);
+    request.headers.set("Content-Length", "5000000");
+    const { response, sent } = await run(request);
+    expect(location(response)).toBe("/kontakt/#fehler-eingabe");
+    expect(sent).toHaveLength(0);
+  });
+
   it("rejects an email with line breaks", async () => {
     const { response, sent } = await run(post({ ...valid, email: "max@example.de\r\nBcc: evil@x.de" }));
     expect(location(response)).toBe("/kontakt/#fehler-eingabe");

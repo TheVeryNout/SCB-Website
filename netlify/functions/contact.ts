@@ -26,6 +26,10 @@ export default async function contact(request: Request) {
       host: setting("SMTP_HOST"),
       port: Number(setting("SMTP_PORT")),
       secure: process.env.SMTP_SECURE !== "false",
+      // Netlify stops a function after about 10 s; fail first so the visitor still gets the error note.
+      connectionTimeout: 5000,
+      greetingTimeout: 5000,
+      socketTimeout: 8000,
       auth: { user, pass: setting("SMTP_PASS") },
     });
   } catch (error) {

@@ -15,3 +15,5 @@ Created: 2026-11-05
 - [ ] Deploying to GitHub `master` is a separate step that needs the owner to name GitHub
 
 Remaining steps are the owner's (Netlify variables, SPF record, merge and deploy) plus one real test mail. State: waiting for the owner.
+
+Review 2026-11-05 (`fresh-eyes`, no blocker): fixed SMTP timeouts, CRLF counted as one character, 20 KB body cap, stricter email shape, note display after a URL-fragment landing, README line on local testing. Accepted risk: no rate limit beyond the honeypot (a script could flood the mailbox; add a time-trap or an external limiter if spam shows up). Left as is: `status-checklist.md` keeps its history wording.

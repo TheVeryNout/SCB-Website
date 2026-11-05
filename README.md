@@ -70,6 +70,8 @@ Run the site locally:
 bun run dev
 ```
 
+The contact form posts to `/api/contact`, a Netlify Function that `bun run dev` does not serve: locally the form shows the send error. Test the mail path with `bun test` (fake mail sender) and on the Netlify address with the real settings.
+
 Run the local CMS proxy:
 
 ```bash

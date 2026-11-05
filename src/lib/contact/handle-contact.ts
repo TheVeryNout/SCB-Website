@@ -15,7 +15,9 @@ export interface ContactDeps {
 }
 
 const LIMITS = { name: 100, email: 254, subject: 150, message: 5000 } as const;
-const EMAIL_SHAPE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const EMAIL_SHAPE = /^[^\s@,;<>]+@[^\s@,;<>]+\.[^\s@,;<>]+$/;
+// A form with these field limits stays far below this; bigger posts are not from the form.
+const MAX_BODY_BYTES = 20_000;
 
 type Outcome = "danke" | "eingabe" | "senden";
 
@@ -45,6 +47,10 @@ export async function handleContact(request: Request, deps: ContactDeps): Promis
     return new Response("Method Not Allowed", { status: 405, headers: { Allow: "POST" } });
   }
 
+  if (Number(request.headers.get("Content-Length") ?? 0) > MAX_BODY_BYTES) {
+    return reply(request, "eingabe");
+  }
+
   let form: FormData;
   try {
     form = await request.formData();
@@ -59,7 +65,7 @@ export async function handleContact(request: Request, deps: ContactDeps): Promis
   const name = oneLine(field(form, "name"));
   const email = oneLine(field(form, "email"));
   const subject = oneLine(field(form, "subject"));
-  const message = field(form, "message").trim();
+  const message = field(form, "message").replace(/\r\n/g, "\n").trim();
 
   const valid =
     name !== "" &&
