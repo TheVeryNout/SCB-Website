@@ -17,7 +17,16 @@ export interface ContactDeps {
 const LIMITS = { name: 100, email: 254, subject: 150, message: 5000 } as const;
 const EMAIL_SHAPE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-function redirect(location: string) {
+type Outcome = "danke" | "eingabe" | "senden";
+
+// A plain form post gets a redirect (errors land on a note on /kontakt/ through the URL fragment, which
+// needs no JavaScript). The page's script asks for JSON instead so the typed text stays in the form.
+function reply(request: Request, outcome: Outcome) {
+  if (request.headers.get("Accept")?.includes("application/json")) {
+    if (outcome === "danke") return Response.json({ ok: true });
+    return Response.json({ error: outcome }, { status: outcome === "eingabe" ? 400 : 502 });
+  }
+  const location = outcome === "danke" ? "/kontakt/danke/" : `/kontakt/#fehler-${outcome}`;
   return new Response(null, { status: 303, headers: { Location: location } });
 }
 
@@ -40,11 +49,11 @@ export async function handleContact(request: Request, deps: ContactDeps): Promis
   try {
     form = await request.formData();
   } catch {
-    return redirect("/kontakt/?fehler=eingabe");
+    return reply(request, "eingabe");
   }
 
   if (field(form, "bot-field").trim() !== "") {
-    return redirect("/kontakt/danke/");
+    return reply(request, "danke");
   }
 
   const name = oneLine(field(form, "name"));
@@ -62,7 +71,7 @@ export async function handleContact(request: Request, deps: ContactDeps): Promis
     message.length <= LIMITS.message;
 
   if (!valid) {
-    return redirect("/kontakt/?fehler=eingabe");
+    return reply(request, "eingabe");
   }
 
   try {
@@ -74,8 +83,8 @@ export async function handleContact(request: Request, deps: ContactDeps): Promis
       text: `Name: ${name}\nE-Mail: ${email}\n\n${message}\n`,
     });
   } catch {
-    return redirect("/kontakt/?fehler=senden");
+    return reply(request, "senden");
   }
 
-  return redirect("/kontakt/danke/");
+  return reply(request, "danke");
 }

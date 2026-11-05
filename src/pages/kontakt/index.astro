@@ -43,6 +43,14 @@ const phoneHref = settings.data.contactPhone?.replace(/\s+/g, "");
             Das Formular bleibt bewusst schlicht: Deine Nachricht geht per E-Mail direkt an den Verein. Falls das einmal hakt, stehen rechts alle direkten Kontaktwege.
           </p>
 
+          <div id="fehler-eingabe" role="alert" tabindex="-1" class="mt-6 scroll-mt-24 hidden rounded-sm border border-red-800/40 bg-red-50 px-5 py-4 text-sm leading-6 text-red-950 target:block" data-contact-note>
+            Das hat nicht geklappt. Bitte prüfe Name, E-Mail und Nachricht und versuche es noch einmal.
+          </div>
+          <div id="fehler-senden" role="alert" tabindex="-1" class="mt-6 scroll-mt-24 hidden rounded-sm border border-red-800/40 bg-red-50 px-5 py-4 text-sm leading-6 text-red-950 target:block" data-contact-note>
+            Deine Nachricht konnte gerade nicht gesendet werden. Bitte versuche es später noch einmal oder schreibe direkt an
+            <a class="underline underline-offset-4" href={`mailto:${settings.data.contactEmail}`}>{settings.data.contactEmail}</a>.
+          </div>
+
           <form
             name="contact"
             method="POST"
@@ -63,6 +71,7 @@ const phoneHref = settings.data.contactPhone?.replace(/\s+/g, "");
                   class="border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-amber-500"
                   type="text"
                   name="name"
+                  maxlength="100"
                   autocomplete="name"
                   required
                 />
@@ -74,6 +83,7 @@ const phoneHref = settings.data.contactPhone?.replace(/\s+/g, "");
                   class="border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-amber-500"
                   type="email"
                   name="email"
+                  maxlength="254"
                   autocomplete="email"
                   required
                 />
@@ -86,6 +96,7 @@ const phoneHref = settings.data.contactPhone?.replace(/\s+/g, "");
                 class="border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-amber-500"
                 type="text"
                 name="subject"
+                maxlength="150"
                 autocomplete="off"
               />
             </label>
@@ -95,6 +106,7 @@ const phoneHref = settings.data.contactPhone?.replace(/\s+/g, "");
               <textarea
                 class="min-h-40 border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-amber-500"
                 name="message"
+                maxlength="5000"
                 required
               />
             </label>
@@ -199,4 +211,41 @@ const phoneHref = settings.data.contactPhone?.replace(/\s+/g, "");
       </div>
     </Container>
   </section>
+  <script>
+    // Sends the form without leaving the page so the typed text survives an error. Without
+    // JavaScript the browser posts normally and lands on the note through the URL fragment.
+    const form = document.querySelector<HTMLFormElement>("form[name=contact]");
+    const button = form?.querySelector<HTMLButtonElement>("button[type=submit]");
+    const notes = document.querySelectorAll<HTMLElement>("[data-contact-note]");
+
+    function showNote(id: string) {
+      history.replaceState(null, "", location.pathname + location.search);
+      notes.forEach((note) => note.classList.toggle("hidden", note.id !== id));
+      const note = document.getElementById(id);
+      note?.scrollIntoView({ block: "center" });
+      note?.focus();
+    }
+
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!button) return;
+      button.disabled = true;
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: new URLSearchParams(new FormData(form) as unknown as Record<string, string>),
+        });
+        if (response.ok) {
+          location.assign("/kontakt/danke/");
+          return;
+        }
+        const body = await response.json().catch(() => ({}));
+        showNote(body.error === "eingabe" ? "fehler-eingabe" : "fehler-senden");
+      } catch {
+        showNote("fehler-senden");
+      }
+      button.disabled = false;
+    });
+  </script>
 </BaseLayout>

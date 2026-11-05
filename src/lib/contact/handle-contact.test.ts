@@ -57,14 +57,14 @@ describe("handleContact", () => {
   for (const key of ["name", "email", "message"]) {
     it(`rejects a missing ${key}`, async () => {
       const { response, sent } = await run(post({ ...valid, [key]: "" }));
-      expect(location(response)).toBe("/kontakt/?fehler=eingabe");
+      expect(location(response)).toBe("/kontakt/#fehler-eingabe");
       expect(sent).toHaveLength(0);
     });
   }
 
   it("rejects an implausible email", async () => {
     const { response, sent } = await run(post({ ...valid, email: "kein-at-zeichen" }));
-    expect(location(response)).toBe("/kontakt/?fehler=eingabe");
+    expect(location(response)).toBe("/kontakt/#fehler-eingabe");
     expect(sent).toHaveLength(0);
   });
 
@@ -75,7 +75,7 @@ describe("handleContact", () => {
   ] as const) {
     it(`rejects an over-long ${key}`, async () => {
       const { response, sent } = await run(post({ ...valid, [key]: "x".repeat(length) }));
-      expect(location(response)).toBe("/kontakt/?fehler=eingabe");
+      expect(location(response)).toBe("/kontakt/#fehler-eingabe");
       expect(sent).toHaveLength(0);
     });
   }
@@ -88,7 +88,7 @@ describe("handleContact", () => {
 
   it("rejects an email with line breaks", async () => {
     const { response, sent } = await run(post({ ...valid, email: "max@example.de\r\nBcc: evil@x.de" }));
-    expect(location(response)).toBe("/kontakt/?fehler=eingabe");
+    expect(location(response)).toBe("/kontakt/#fehler-eingabe");
     expect(sent).toHaveLength(0);
   });
 
@@ -103,7 +103,29 @@ describe("handleContact", () => {
       throw new Error("smtp down");
     });
     expect(response.status).toBe(303);
-    expect(location(response)).toBe("/kontakt/?fehler=senden");
+    expect(location(response)).toBe("/kontakt/#fehler-senden");
+  });
+
+  it("answers a script request with JSON instead of a redirect", async () => {
+    const asJson = (fields: Record<string, string>) => {
+      const request = post(fields);
+      request.headers.set("Accept", "application/json");
+      return request;
+    };
+
+    const done = await run(asJson(valid));
+    expect(done.response.status).toBe(200);
+    expect(await done.response.json()).toEqual({ ok: true });
+
+    const bad = await run(asJson({ ...valid, email: "kein-at-zeichen" }));
+    expect(bad.response.status).toBe(400);
+    expect(await bad.response.json()).toEqual({ error: "eingabe" });
+
+    const failed = await run(asJson(valid), async () => {
+      throw new Error("smtp down");
+    });
+    expect(failed.response.status).toBe(502);
+    expect(await failed.response.json()).toEqual({ error: "senden" });
   });
 
   it("answers anything but POST with 405", async () => {
