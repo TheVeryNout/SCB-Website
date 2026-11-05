@@ -1,6 +1,6 @@
 # Contact mail: open decisions
 
-Status: open
+Status: resolved
 
 1. **SMTP details** — resolved 2026-11-05: `mail.skateclubbiriciana.de`, port 465, SSL, user `info@skateclubbiriciana.de`. The server certificate covers `*.skateclubbiriciana.de` and verifies.
 2. **Netlify Forms during the switch**: drop at once, or keep both until the first real mail arrives. Leaning: switch at once, because a double path doubles spam. (The Netlify email notification is not an option: team members only.)
