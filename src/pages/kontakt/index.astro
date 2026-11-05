@@ -113,10 +113,12 @@ const phoneHref = settings.data.contactPhone?.replace(/\s+/g, "");
 
             <button
               type="submit"
-              class="inline-flex items-center justify-center border border-slate-950 bg-slate-950 px-5 py-2.5 text-sm font-semibold text-white transition hover:border-slate-800 hover:bg-slate-800"
+              class="inline-flex items-center justify-center border border-slate-950 bg-slate-950 px-5 py-2.5 text-sm font-semibold text-white transition hover:border-slate-800 hover:bg-slate-800 disabled:cursor-wait disabled:opacity-80"
             >
-              Nachricht senden
+              <span data-send-label>Nachricht senden</span>
+              <span data-send-spinner aria-hidden="true" class="ml-3 hidden h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white"></span>
             </button>
+            <p class="sr-only" role="status" data-send-status></p>
           </form>
         </SurfaceCard>
 
@@ -217,6 +219,19 @@ const phoneHref = settings.data.contactPhone?.replace(/\s+/g, "");
     const form = document.querySelector<HTMLFormElement>("form[name=contact]");
     const button = form?.querySelector<HTMLButtonElement>("button[type=submit]");
     const notes = document.querySelectorAll<HTMLElement>("[data-contact-note]");
+    const label = form?.querySelector<HTMLElement>("[data-send-label]");
+    const spinner = form?.querySelector<HTMLElement>("[data-send-spinner]");
+    const status = form?.querySelector<HTMLElement>("[data-send-status]");
+
+    // Sending takes a few seconds; show it at once so the button does not look dead.
+    function setSending(sending: boolean) {
+      if (!button || !label || !spinner || !status) return;
+      button.disabled = sending;
+      button.setAttribute("aria-busy", String(sending));
+      label.textContent = sending ? "Wird gesendet …" : "Nachricht senden";
+      spinner.classList.toggle("hidden", !sending);
+      status.textContent = sending ? "Nachricht wird gesendet." : "";
+    }
 
     function showNote(id: string) {
       hideNotes();
@@ -237,7 +252,7 @@ const phoneHref = settings.data.contactPhone?.replace(/\s+/g, "");
     form?.addEventListener("submit", async (event) => {
       event.preventDefault();
       if (!button) return;
-      button.disabled = true;
+      setSending(true);
       hideNotes();
       try {
         const response = await fetch(form.action, {
@@ -254,7 +269,7 @@ const phoneHref = settings.data.contactPhone?.replace(/\s+/g, "");
       } catch {
         showNote("fehler-senden");
       }
-      button.disabled = false;
+      setSending(false);
     });
   </script>
 </BaseLayout>

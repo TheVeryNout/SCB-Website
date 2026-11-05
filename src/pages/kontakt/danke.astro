@@ -1,7 +1,6 @@
 ---
 import Container from "../../components/Container.astro";
 import LinkButton from "../../components/LinkButton.astro";
-import PageIntro from "../../components/PageIntro.astro";
 import SurfaceCard from "../../components/SurfaceCard.astro";
 import { getSiteSettingsEntry } from "../../lib/content/site";
 import BaseLayout from "../../layouts/BaseLayout.astro";
@@ -10,33 +9,26 @@ const settings = await getSiteSettingsEntry();
 ---
 
 <BaseLayout
-  title={`Kontakt bestätigt | ${settings.data.organizationName}`}
+  title={`Danke für deine Nachricht | ${settings.data.organizationName}`}
   description="Bestätigungsseite nach dem Absenden des Kontaktformulars."
 >
   <section class="py-16 sm:py-24">
-    <Container class="max-w-3xl">
-      <SurfaceCard as="section" tone="warm" class="text-center">
-        <PageIntro
-          eyebrow="Kontakt"
-          title="Nachricht gesendet"
-          intro="Danke für deine Nachricht. Wenn die Formularübermittlung erfolgreich war, landet sie jetzt beim Verein."
-          align="center"
-        />
-
-        <p class="mt-6 text-sm leading-7 text-slate-700">
-          Falls du nichts weiter absenden möchtest oder später direkt nachfassen willst, erreichst du den SCB auch unter
-          {" "}
-          <a class="underline decoration-amber-500/70 underline-offset-4" href={`mailto:${settings.data.contactEmail}`}>
-            {settings.data.contactEmail}
-          </a>
-          .
+    <Container class="max-w-2xl">
+      <SurfaceCard as="section" tone="warm" class="flex flex-col items-center text-center">
+        <span class="flex h-16 w-16 items-center justify-center rounded-full bg-[#414141] text-[#ead871]" aria-hidden="true">
+          <svg viewBox="0 0 24 24" class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12.5l4.5 4.5L19 7.5" />
+          </svg>
+        </span>
+        <h1 class="scb-display mt-6 text-[clamp(1.875rem,5vw,3rem)] leading-tight text-[#353636] uppercase text-balance">
+          Danke für deine Nachricht!
+        </h1>
+        <p class="mt-4 max-w-md text-lg leading-8 text-[#414141] text-balance">
+          Sie ist beim Verein angekommen. Wir melden uns so bald wie möglich bei dir.
         </p>
-
         <div class="mt-8 flex flex-wrap justify-center gap-3">
-          <LinkButton href="/kontakt/" variant="outline">
-            Zurück zum Kontaktformular
-          </LinkButton>
           <LinkButton href="/">Zur Startseite</LinkButton>
+          <LinkButton href="/neuigkeiten/" variant="outline">Zu den News</LinkButton>
         </div>
       </SurfaceCard>
     </Container>
