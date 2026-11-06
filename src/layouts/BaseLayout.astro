@@ -24,6 +24,8 @@ const canonicalUrl = Astro.site ? new URL(currentPath, Astro.site) : undefined;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     {canonicalUrl && <link rel="canonical" href={canonicalUrl.href} />}
     <script is:inline>
       const identityHashPattern =
