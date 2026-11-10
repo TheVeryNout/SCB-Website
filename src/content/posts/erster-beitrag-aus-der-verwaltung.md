@@ -2,7 +2,7 @@
 title: "Erster Beitrag aus der Verwaltung"
 slug: "erster-beitrag-aus-der-verwaltung"
 publishedAt: "2026-11-10T15:05:48.181Z"
-excerpt: "Die Verwaltung kann jetzt direkt auf die Club-Website veröffentlichen. Das hier ist der erste Probelauf."
+excerpt: "Der erste Probelauf der neuen Website-Anbindung ist geglückt."
 category: "Verein"
 ---
 
