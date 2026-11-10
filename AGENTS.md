@@ -23,8 +23,9 @@ What the project is and how to run it: [README.md](README.md).
 
 ## Differences from the standard workflow
 - The main branch is `master`, not `main`.
-- CMS editors publish through Netlify Identity and Git Gateway straight to `master` on GitHub. `master` can move without you: fetch before merging or comparing.
+- CMS editors publish through Netlify Identity and Git Gateway straight to `master` on GitHub, and the management app (SCB-Dash, Website section) publishes content commits straight to GitHub `master` too. `master` can move without you: fetch `github` before merging or comparing.
 - Netlify builds and deploys from GitHub `master`. A push to the NAS does not deploy; a push to GitHub does, and needs the user to name GitHub for that push.
+- Before the first push of new work, fetch both remotes and compare tips (`git fetch origin && git fetch github`, then `git log --oneline --left-right origin/master...github/master`). Integrate what is ahead, publish NAS first, then GitHub. Never learn about divergence from a push rejection — the NAS refuses non-fast-forwards by policy, so a clashed NAS push cannot be force-repaired.
 - Existing branches use `feature/<name>`; they keep their names. New work follows the profile (`feat/`, `fix/quick-fixes`).
 
 ## Risky areas
